@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 const Nav = (props) => {
     const { user } = props;
@@ -21,7 +22,7 @@ const Nav = (props) => {
 };
 
 Nav.propTypes = {
-    user: {}
+    user: PropTypes.object,
   }
 
 export default Nav;

@@ -41,17 +41,6 @@ app.get("/api/users", (req, res) => {
     });
 });
 
-// app.fetch("/api/users")
-//     .then(response => {
-//         console.log('userResponse', response)
-//         return response.json();
-//     })
-//     .then(({results}) => {
-//         const [ user ] = results;
-//         users.push(user);
-//     })
-//     .catch(error => { console.log(error)})
-
 //👇🏻 generates a random string as ID
 const generateID = () => Math.random().toString(36).substring(2, 10);
 

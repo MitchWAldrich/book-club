@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Goal from "./Goal";
 import Nav from "./Nav";
 import SearchBar from "./Searchbar";
 import instance from "../utils/axiosConfig";
@@ -48,6 +49,7 @@ const Home = () => {
         <>
             <Nav user={user || {}}/>
             <SearchBar />
+            <Goal />
             <main className='container'>
                 <h2 className='homeTitle'>Create a Book Club</h2>
                 <form className='form' onSubmit={handleSubmit}>

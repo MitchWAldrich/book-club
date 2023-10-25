@@ -1,4 +1,32 @@
+import { useState } from "react";
+import Input from "./Input";
+
 const Goal = () => {
+  const [number, setNumber] = useState('');
+  const [timeline, setTimeline] = useState('');
+  const [error, setError] = useState(false);
+
+  const handleNumberChange = (e) => {
+    setNumber(e.target.value);
+  };
+
+  const handleTimelineChange = (e) => {
+    setTimeline(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  if (!number) {
+    setError(true)
+  } else {
+    setError(false)
+  }
+  if (!timeline) {
+    setError(true)
+  } else {
+    setError(false)
+  }
+}
   
   return (
     <main className='container'>
@@ -8,13 +36,14 @@ const Goal = () => {
             <div>
                 <label htmlFor='number'>What is your goal?</label>
                 <div className='timeline'>
-                <input
-                    className='units'
-                    type='number'
-                    name='number'
-                    required
-                    value={'three'}
-                    // onChange={(e) => setClub(e.target.value)}
+                <Input
+                    type="number"
+                    label=""
+                    value={number}
+                    name="number"
+                    error={error}
+                    onChange={handleNumberChange}
+                    placeholder="#"
                 />
                 <br></br>
                 <select id="units" name="units">
@@ -25,15 +54,25 @@ const Goal = () => {
                 </div>
                 <br></br>
                 <label htmlFor='units'>What is your goal timeline?</label>
-                <input
-                    type='number'
-                    name='units'
-                    required
-                    value={'three'}
-                    // onChange={(e) => setClub(e.target.value)}
+                <div className='timeline'>
+                <Input
+                    type="number"
+                    label=""
+                    value={timeline}
+                    name="number"
+                    error={error}
+                    onChange={handleTimelineChange}
+                    placeholder="#"
                 />
+                <br></br>
+                <select id="units" name="units">
+                  <option value="week(s)">Week(s)</option>
+                  <option value="month(s)">Month(s)</option>
+                  <option value="year(s)">Year(s)</option>
+                </select>
+                </div>
             </div>
-            <button className='btn'>CREATE GOAL</button>
+            <button className='btn' onSubmit={handleSubmit}>CREATE GOAL</button>
         </form>
     </main>
   )

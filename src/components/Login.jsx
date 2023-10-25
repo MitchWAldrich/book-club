@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Input from "./Input";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState(false)
 
     const navigate = useNavigate();
 
@@ -31,10 +33,26 @@ const loginUser = () => {
         })
         .catch((err) => console.error(err));
 };
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value);
+    }
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value);
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log({ email, password });
+        if (!email.trim()) {
+            setError(true)
+          } else {
+            setError(false)
+          }
+          if (!password.trim()) {
+            setError(true)
+        } else {
+            setError(false)
+        }
         setEmail("");
         setPassword("");
     };
@@ -44,23 +62,23 @@ const loginUser = () => {
         <div className='form'>
             <h1 className='loginTitle'>Log into your account</h1>
             <form className='login-form' onSubmit={handleSubmit}>
-                <label htmlFor='email'>Email Address</label>
-                <input
-                    type='text'
-                    name='email'
-                    id='email'
-                    required
+                <Input
+                    type="email"
+                    label="Email Address"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    name="email"
+                    error={error}
+                    onChange={handleEmailChange}
+                    placeholder="Please enter your e-mail address"
                 />
-                <label htmlFor='password'>Password</label>
-                <input
-                    type='password'
-                    name='password'
-                    id='password'
-                    required
+                <Input
+                    type="password"
+                    label="Password"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    name="password"
+                    error={error}
+                    onChange={handlePasswordChange}
+                    placeholder="Please enter your password"
                 />
                 <button className='btn' onClick={loginUser}>SIGN IN</button>
                 <p className='message'>

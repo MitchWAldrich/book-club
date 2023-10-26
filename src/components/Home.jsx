@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import Goal from "./Goal";
 import Nav from "./Nav";
 import SearchBar from "./Searchbar";
@@ -24,19 +23,6 @@ const Home = () => {
             }); 
     }, []);
 
-    useEffect(() => {
-        axios.get('https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=AIzaSyCbCvAB05gA9TWOT7FWCNpJvOTDAPufP_k')
-            .then(function (response) {
-                console.log('bookResp', response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-            .finally(function () {
-                // always executed
-            }); 
-    }, []);
-
     const [club, setClub] = useState("");
 
     const handleSubmit = (e) => {
@@ -48,8 +34,8 @@ const Home = () => {
     return (
         <>
             <Nav user={user || {}}/>
-            <SearchBar />
             <Goal />
+            <SearchBar />
             <main className='container'>
                 <h2 className='homeTitle'>Create a Book Club</h2>
                 <form className='form' onSubmit={handleSubmit}>

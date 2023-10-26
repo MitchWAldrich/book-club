@@ -1,53 +1,38 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react';
+import axios from 'axios';
 
 const SearchBar = () => {
   const [searchInput, setSearchInput] = useState('');
-  const [country, setCountry] = useState('');
+  const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
 
-  const countries = [
-    { name: "Belgium", continent: "Europe" },
-    { name: "India", continent: "Asia" },
-    { name: "Bolivia", continent: "South America" },
-    { name: "Ghana", continent: "Africa" },
-    { name: "Japan", continent: "Asia" },
-    { name: "Canada", continent: "North America" },
-    { name: "New Zealand", continent: "Australasia" },
-    { name: "Italy", continent: "Europe" },
-    { name: "South Africa", continent: "Africa" },
-    { name: "China", continent: "Asia" },
-    { name: "Paraguay", continent: "South America" },
-    { name: "Usa", continent: "North America" },
-    { name: "France", continent: "Europe" },
-    { name: "Botswana", continent: "Africa" },
-    { name: "Spain", continent: "Europe" },
-    { name: "Senegal", continent: "Africa" },
-    { name: "Brazil", continent: "South America" },
-    { name: "Denmark", continent: "Europe" },
-    { name: "Mexico", continent: "South America" },
-    { name: "Australia", continent: "Australasia" },
-    { name: "Tanzania", continent: "Africa" },
-    { name: "Bangladesh", continent: "Asia" },
-    { name: "Portugal", continent: "Europe" },
-    { name: "Pakistan", continent: "Asia" },
-  ];
+  const results = {title: 'My Favourite Book', author: 'My Favourite Author'};
+  console.log('title', title)
 
-  const updateSearch = (searchInput) => {
-    const filtered = countries.filter(country => {
-     return country.name.includes(searchInput);
-    })
-    setSearchInput(searchInput);
-    setCountry(filtered);
- }
+  useEffect(() => {
+    // axios.get(`https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=AIzaSyCbCvAB05gA9TWOT7FWCNpJvOTDAPufP_k`)
+    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${title}+&key=AIzaSyCbCvAB05gA9TWOT7FWCNpJvOTDAPufP_k`)
+        .then(function (response) {
+            console.log('bookResp', response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+        .finally(function () {
+            // always executed
+        }); 
+  }, [title]);
 
  const handleChange = (e) => {
   e.preventDefault();
   setSearchInput(e.target.value);
 };
 
-if (searchInput.length > 0) {
-    countries.filter((country) => {
-    return country.name.match(searchInput);
-});
+const handleSearch = (e) => {
+  e.preventDefault();
+  setTitle(title);
+  console.log('titleSET', title);
+  setAuthor(author);
 }
 
   return (
@@ -61,12 +46,12 @@ if (searchInput.length > 0) {
               placeholder="Search here"
               onChange={handleChange}
               value={searchInput} />
-            <button className="searchButton" type="submit" onSubmit={updateSearch}>?</button>
+            <button className="searchButton" type="submit" onSubmit={handleSearch}>?</button>
           </div>  
         </form>  
       </div>
       <div>
-        <p>{country}</p>
+        <p>Title: {results.title} Author: {results.author}</p>
       </div>
     </>
   )

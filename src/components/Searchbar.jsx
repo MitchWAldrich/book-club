@@ -16,8 +16,8 @@ const SearchBar = () => {
     const searchType = document.getElementById("searchCategory") ?? 'title';
     setSearchTypeValue(searchType.options[searchType.selectedIndex]);
     console.log('*****', searchType);
-    // axios.get(`https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=AIzaSyCbCvAB05gA9TWOT7FWCNpJvOTDAPufP_k`)
-    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchTypeValue}+&key=AIzaSyCbCvAB05gA9TWOT7FWCNpJvOTDAPufP_k`)
+    axios.get(`https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=AIzaSyCbCvAB05gA9TWOT7FWCNpJvOTDAPufP_k`)
+    // axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchTypeValue}+&key=AIzaSyCbCvAB05gA9TWOT7FWCNpJvOTDAPufP_k`)
         .then(function (response) {
             console.log('bookResp', response);
         })

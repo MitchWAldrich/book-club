@@ -191,3 +191,55 @@ input:focus {
   margin-left: 12px;
   margin-top: 4px;
 }
+
+.bookDescription {
+  display: flex;
+  padding: 2em;
+}
+
+.bookInformation {
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+}
+
+.bookItem {
+  border: solid;
+  border-radius: 10px;
+  display: flex;
+  margin-left: 5rem;
+  margin-right: 5rem;
+  height: 15em;
+  background-color: tan;
+}
+
+.bookItemLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0.75em;
+  width: 17em;
+}
+
+.authorInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.titleInfo {
+  
+}
+
+.authorText {
+
+}
+
+.incidentalText {
+  font-size: 18px;
+  border: solid;
+}
+
+// .ratingStars {
+
+// }

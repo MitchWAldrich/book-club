@@ -43,14 +43,16 @@ const Library = () => {
   return (
     <main>
       <Nav user={user ?? 'Guest'}/>
-      To Read List
-      {toRead.map((book, key) => (
-        <BookItem key={key} author={book.author} categories={book.categories} averageRating={book.averageRating} description={book.description} imageLinks={book.imageLinks} language={book.language} pageCount={book.pageCount} publisher={book.publisher} title={book.title}/>
-      ))}
-      Books I've Read
-      {haveRead.map((book, key) => (
-        <BookItem key={key} author={book.author} categories={book.categories} averageRating={book.averageRating} description={book.description} imageLinks={book.imageLinks} language={book.language} pageCount={book.pageCount} publisher={book.publisher} title={book.title}/>
-      ))}
+      <div>
+        <h2>To Read List</h2>
+          {toRead.map((book, key) => (
+          <BookItem key={key} author={book.author} categories={book.categories} averageRating={book.averageRating} description={book.description} imageLinks={book.imageLinks} language={book.language} pageCount={book.pageCount} publisher={book.publisher} title={book.title}/>
+        ))}
+        <h2>Books I've Read</h2>
+          {haveRead.map((book, key) => (
+          <BookItem key={key} author={book.author} categories={book.categories} averageRating={book.averageRating} description={book.description} imageLinks={book.imageLinks} language={book.language} pageCount={book.pageCount} publisher={book.publisher} title={book.title}/>
+        ))}
+      </div>
     </main>
   )
 }

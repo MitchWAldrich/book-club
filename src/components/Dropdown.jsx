@@ -1,98 +1,73 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const Dropdown = () => {
-  // let { title, list, isListOpen } = props;
+const Dropdown = (props) => {
+  const { category, options } = props;
+  
+  const menu = options.map((item, id) => ({ ['id']: id, ['title']: item, ['selected']: false, ['key']: category }));
 
-  //     list = [
-  //       {
-  //           id: 0,
-  //           title: 'New York',
-  //           selected: false,
-  //           key: 'location'
-  //       },
-  //       {
-  //           id: 1,
-  //           title: 'Dublin',
-  //           selected: false,
-  //           key: 'location'
-  //       },
-  //       {
-  //           id: 2,
-  //           title: 'California',
-  //           selected: false,
-  //           key: 'location'
-  //       },
-  //       {
-  //           id: 3,
-  //           title: 'Istanbul',
-  //           selected: false,
-  //           key: 'location'
-  //       },
-  //       {
-  //           id: 4,
-  //           title: 'Izmir',
-  //           selected: false,
-  //           key: 'location'
-  //       },
-  //       {
-  //           id: 5,
-  //           title: 'Oslo',
-  //           selected: false,
-  //           key: 'location'
-  //       }
-  //     ]
+  const [menuItems, setMenuItems] = useState(menu);
+  const [ isListOpen, setIsListOpen ] = useState(false);
+  const [ titleHeader, setTitleHeader ] = useState(menuItems[0].key);
+  
 
-  //   return (
-  //     <div className="dropdown-wrapper">
-  //       <button
-  //         type="button"
-  //         className="dropdown-header"
-  //         onClick={this.toggleList}
-  //       >
-  //         <div className="dropdown-header-title">{headerTitle}</div>
-  //         {isListOpen
-  //           ? <p>Hold</p>
-  //           : <p>Hold2</p>}
-  //       </button>
-  //       {isListOpen && (
-  //         <div
-  //           role="list"
-  //           className="dropdown-list"
-  //         >
-  //           {list.map((item) => (
-  //             <button
-  //               type="button"
-  //               className="dropdown-list-item"
-  //               key={item.id}
-  //               onClick={() => this.selectItem(item)}
-  //             >
-  //               {item.title}
-  //               {' '}
-  //               {item.selected}
-  //             </button>
-  //           ))}
-  //         </div>
-  //       )}
-  //     </div>
-  //   )
+  const resetThenSet = (id) => {
+    
+    const tempMenu = [...menuItems];
+    tempMenu.forEach((item) => item.selected = false);
+    tempMenu[id].selected = true;
 
-  return (
-    <div className="dropdown-wrapper">
-      <div className="dropdown-header">
-        <div className="dropdown-header-title"></div>
-      </div>
-      <div className="dropdown-list">
-        <button className="dropdown-list-item"></button>
-        <button className="dropdown-list-item"></button>
-        <button className="dropdown-list-item"></button>
-      </div>
-    </div>
-  )
+    setMenuItems(tempMenu);
+
+  }
+
+  const toggleList = () => {
+    setIsListOpen(!isListOpen);
+ };
+
+ const selectItem = (item) => {
+  const { title, id } = item;
+
+  setTitleHeader(title);
+  setIsListOpen(false);
+  resetThenSet(id);
+}
+
+    return (
+      <main >
+        <button
+          type="button"
+          className="dropdown-header"
+          onClick={toggleList}
+        >
+          <div className="dropdown-header-title">{titleHeader}</div>
+        </button>
+        { isListOpen && (
+          <div
+            role="list"
+            className="dropdown-list"
+          >
+            {menuItems.map((item) => (
+              <button
+                type="button"
+                className="dropdown-list-item"
+                key={item.id}
+                onClick={() => selectItem(item)}
+              >
+                {item.title}
+                {' '}
+                {item.selected}
+              </button>
+            ))}
+          </div>
+        )}
+      </main>
+    )
 };
 
 Dropdown.propTypes = {
-  title: PropTypes.string,
-  list: PropTypes.object,
+  category: PropTypes.string,
+  options: PropTypes.array,
 }
 
 export default Dropdown;

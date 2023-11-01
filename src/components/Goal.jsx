@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Dropdown from "./Dropdown";
 import Input from "./Input";
 
 const Goal = () => {
@@ -27,6 +28,9 @@ const Goal = () => {
     setError(false)
   }
 }
+
+const units = ['Page(s)', 'Chapter(s)', 'Book(s)'];
+const timeUnits = ['Day(s)', 'Weeks(s)', 'Month(s)', 'Year(s)'];
   
   return (
     <main className='container'>
@@ -46,11 +50,7 @@ const Goal = () => {
                     placeholder="#"
                 />
                 <br></br>
-                <select id="units" name="units">
-                  <option value="page(s)">Page(s)</option>
-                  <option value="chapter(s)">Chapter(s)</option>
-                  <option value="book(s)">Book(s)</option>
-                </select>
+                <Dropdown category={'Units'} options={units} />
                 </div>
                 <br></br>
                 <label htmlFor='units'>What is your goal timeline?</label>
@@ -65,11 +65,7 @@ const Goal = () => {
                     placeholder="#"
                 />
                 <br></br>
-                <select id="units" name="units">
-                  <option value="week(s)">Week(s)</option>
-                  <option value="month(s)">Month(s)</option>
-                  <option value="year(s)">Year(s)</option>
-                </select>
+                <Dropdown category={'TimeUnits'} options={timeUnits} />
                 </div>
             </div>
             <button className='btn' onSubmit={handleSubmit}>CREATE GOAL</button>

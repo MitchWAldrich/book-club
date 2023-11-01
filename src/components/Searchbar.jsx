@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
+import Dropdown from './Dropdown';
 
 const SearchBar = () => {
   // const [searched, setSearched] = useState(false);
@@ -13,8 +14,12 @@ const SearchBar = () => {
   console.log('STV', searchTypeValue)
 
   useEffect(() => {
-    const searchType = document.getElementById("searchCategory") ?? 'title';
-    setSearchTypeValue(searchType.options[searchType.selectedIndex]);
+    // const searchType = document.getElementById("searchCategory") ?? 'title';
+    const searchType = 'title';
+
+    // setSearchTypeValue(searchType.options[searchType.selectedIndex]);
+    setSearchTypeValue(searchType);
+
     console.log('*****', searchType);
     axios.get(`https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=AIzaSyCbCvAB05gA9TWOT7FWCNpJvOTDAPufP_k`)
     // axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchTypeValue}+&key=AIzaSyCbCvAB05gA9TWOT7FWCNpJvOTDAPufP_k`)
@@ -42,6 +47,7 @@ const handleSearch = (e) => {
   // setSearched(true);
 }
 
+const units = ['Title', 'Author'];
   return (
     <>
       <div className="container">
@@ -54,10 +60,7 @@ const handleSearch = (e) => {
               onChange={handleChange}
               onSubmit={handleSearch}
               value={searchInput} />
-            <select id="searchCategory" name="searchCategory">
-                <option value="title">Title</option>
-                <option value="author">Author</option>
-            </select>
+              <Dropdown category={'Search Type'} options={units}/>
             <button className="searchButton" type="submit" onSubmit={handleSearch}>?</button>
           </div>  
         </form>  

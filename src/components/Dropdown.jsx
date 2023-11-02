@@ -2,39 +2,40 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 const Dropdown = (props) => {
-  const { category, options } = props;
+  const { category, options, valueCallback } = props;
   
   const menu = options.map((item, id) => ({ ['id']: id, ['title']: item, ['selected']: false, ['key']: category }));
 
-  const [menuItems, setMenuItems] = useState(menu);
+  const [ menuItems, setMenuItems ] = useState(menu);
   const [ isListOpen, setIsListOpen ] = useState(false);
-  const [ titleHeader, setTitleHeader ] = useState(menuItems[0].key);
-  
+  const [ titleHeader, setTitleHeader ] = useState(menuItems[0].title || 'Choose');
 
   const resetThenSet = (id) => {
     
     const tempMenu = [...menuItems];
+
     tempMenu.forEach((item) => item.selected = false);
     tempMenu[id].selected = true;
 
     setMenuItems(tempMenu);
-
-  }
+    
+  };
 
   const toggleList = () => {
     setIsListOpen(!isListOpen);
- };
+  };
 
- const selectItem = (item) => {
+ const selectItem = (item, event) => {
   const { title, id } = item;
 
   setTitleHeader(title);
   setIsListOpen(false);
-  resetThenSet(id);
+  resetThenSet(id, title, event);
+  valueCallback(title.toLowerCase());
 }
 
     return (
-      <main >
+      <main>
         <button
           type="button"
           className="dropdown-header"
@@ -52,7 +53,8 @@ const Dropdown = (props) => {
                 type="button"
                 className="dropdown-list-item"
                 key={item.id}
-                onClick={() => selectItem(item)}
+                value={item.selected}
+                onClick={(event) => selectItem(item, event)}
               >
                 {item.title}
                 {' '}
@@ -68,6 +70,7 @@ const Dropdown = (props) => {
 Dropdown.propTypes = {
   category: PropTypes.string,
   options: PropTypes.array,
+  valueCallback: PropTypes.func
 }
 
 export default Dropdown;

@@ -1,30 +1,31 @@
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
+// import BookItem from './BookItem';
 import Dropdown from './Dropdown';
+import Input from './Input';
 
 const SearchBar = () => {
-  // const [searched, setSearched] = useState(false);
+  const [searched, setSearched] = useState(false);
+  const [error, setError] = useState(false)
   const [searchInput, setSearchInput] = useState('');
-  const [searchTypeValue, setSearchTypeValue] = useState('');
+  const [searchTypeValue, setSearchTypeValue] = useState('test');
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
 
   const results = {title: 'My Favourite Book', author: 'My Favourite Author'};
-  console.log('title', title)
-  console.log('STV', searchTypeValue)
+
+  const units = ['Title', 'Author'];
+
+
+  const getUnit = (dropdownValue) => {
+    setSearchTypeValue(dropdownValue);
+  };
 
   useEffect(() => {
-    // const searchType = document.getElementById("searchCategory") ?? 'title';
-    const searchType = 'title';
-
-    // setSearchTypeValue(searchType.options[searchType.selectedIndex]);
-    setSearchTypeValue(searchType);
-
-    console.log('*****', searchType);
-    axios.get(`https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=AIzaSyCbCvAB05gA9TWOT7FWCNpJvOTDAPufP_k`)
-    // axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchTypeValue}+&key=AIzaSyCbCvAB05gA9TWOT7FWCNpJvOTDAPufP_k`)
+    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${`in${searchTypeValue}:${searchInput}`}+&key=AIzaSyCbCvAB05gA9TWOT7FWCNpJvOTDAPufP_k`)
         .then(function (response) {
             console.log('bookResp', response);
+            //Set up Book Item response
         })
         .catch(function (error) {
             console.log(error);
@@ -32,7 +33,7 @@ const SearchBar = () => {
         .finally(function () {
             // always executed
         }); 
-  }, [title]);
+  }, [searched]);
 
  const handleChange = (e) => {
   e.preventDefault();
@@ -41,33 +42,39 @@ const SearchBar = () => {
 
 const handleSearch = (e) => {
   e.preventDefault();
+  if (!searchInput.trim()) {
+    setError(true)
+} else {
+    setError(false)
+}
   setTitle(title);
-  console.log('titleSET', title);
   setAuthor(author);
-  // setSearched(true);
+  setSearched(true);
 }
 
-const units = ['Title', 'Author'];
   return (
     <>
       <div className="container">
-        <form>
+        <form onSubmit={handleSearch} >
           <div className="searchBar">
-            <input
-              className="searchInput"
-              type="text"
-              placeholder="Search here"
-              onChange={handleChange}
-              onSubmit={handleSearch}
-              value={searchInput} />
-              <Dropdown category={'Search Type'} options={units}/>
-            <button className="searchButton" type="submit" onSubmit={handleSearch}>?</button>
+            <Input
+                className="searchInput"
+                type="text"
+                label="search"
+                value={searchInput}
+                name="searchInput"
+                error={error}
+                onChange={handleChange}
+                placeholder="Search here"
+            />
+              <Dropdown category={'Search Type'} options={units} valueCallback={getUnit} />
+            <button className="searchButton" type="text" onSubmit={() => handleSearch()}>?</button>
           </div>  
         </form>  
       </div>
-      <div>
+      { searched ? (<div>
         <p>Title: {results.title} Author: {results.author}</p>
-      </div>
+      </div>) : null }
     </>
   )
 }

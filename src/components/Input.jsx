@@ -1,7 +1,8 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const Input = (props) => {
-  const { type, label, value, name, placeholder, error, disabled, onChange} = props;
+  const { type, label, value, name, placeholder, error, disabled, onChange } =
+    props;
 
   return (
     <div className="input-wrapper">
@@ -17,18 +18,18 @@ const Input = (props) => {
       />
       {error && <p className="error">Input filed can't be empty!</p>}
     </div>
-  )
-}
+  );
+};
 
 Input.propTypes = {
-    type: 'text' | 'number' | 'email' | 'password',
-    label: PropTypes.string,
-    value: PropTypes.string | PropTypes.number,
-    name: PropTypes.string,
-    placeholder: PropTypes.string,
-    error: PropTypes.bool,
-    disabled: PropTypes.bool,
-    onChange: PropTypes.func
-}
+  type: "text" | "number" | "email" | "password",
+  label: PropTypes.string,
+  value: PropTypes.string | PropTypes.number | PropTypes.func,
+  name: PropTypes.string,
+  placeholder: PropTypes.string,
+  error: PropTypes.bool,
+  disabled: PropTypes.bool,
+  onChange: PropTypes.func,
+};
 
-export default Input
+export default Input;

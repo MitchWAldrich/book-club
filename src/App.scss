@@ -1,10 +1,10 @@
 // @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 $background-color: #2c5dd0;
-$font-family: 'Roboto', sans-serif;
+$font-family: "Roboto", sans-serif;
 
-@mixin btn($fontcolor: #FAFAFA){
-  font-family: 'Roboto', sans-serif;
+@mixin btn($fontcolor: #fafafa) {
+  font-family: "Roboto", sans-serif;
   font-size: 15px;
   outline: 0;
   border: 0;
@@ -15,14 +15,14 @@ $font-family: 'Roboto', sans-serif;
   text-transform: uppercase;
 }
 
-@mixin message($fontcolor: #90A4AE){
+@mixin message($fontcolor: #90a4ae) {
   color: $fontcolor;
   text-align: center;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 14px;
 }
 
-@mixin input($bkgnd: #F5F5F5){
+@mixin input($bkgnd: #f5f5f5) {
   font-family: $font-family;
   width: 100%;
   border: 0;
@@ -36,46 +36,47 @@ $font-family: 'Roboto', sans-serif;
   background: $bkgnd;
 }
 
-body{
-  font-family: $font-family;
+body {
+  // font-family: $font-family;
+  font-family: 'Inter', sans-serif;
+  // font-family: 'Poppins', sans-serif;
   background: $background-color;
 }
 
-
-.container{
+.container {
   padding: 8% 0 0;
   width: 365px;
   margin: 0 100px auto;
 }
 
-.form{
+.form {
   position: relative;
   z-index: 1;
   max-width: 350px;
   margin: 0 auto 100px;
   padding: 45px;
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 25px;
 }
 
 .form {
-  input{
-    @include input; 
-    
+  input {
+    @include input;
+
     ::placeholder {
-      color: #90A4AE;
+      color: #90a4ae;
     }
   }
-  
-  .btn{
+
+  .btn {
     @include btn;
   }
-  
-  .message{
+
+  .message {
     @include message;
     a {
       text-decoration: none;
-      color: #00BFA5;
+      color: #00bfa5;
     }
   }
 }
@@ -84,8 +85,8 @@ body{
 //   //display: none;
 // }
 
-.navBar{
-  background-color: #00BFA5;
+.navBar {
+  background-color: #00bfa5;
   display: flex;
   flex-direction: end;
   justify-content: flex-end;
@@ -94,7 +95,7 @@ body{
   width: 100vw;
 }
 
-.navBarRight{
+.navBarRight {
   display: flex;
   justify-content: space-between;
   align-content: center;
@@ -103,38 +104,38 @@ body{
   width: 40vw;
 }
 
-.searchBar{
+.searchBar {
   display: flex;
   height: 5.5vh;
   width: 25vw;
-  background-color: #F0F0F0;
+  background-color: #f0f0f0;
   border-radius: 25px;
   justify-content: space-between;
   padding: 2px;
-};
+}
 
-.searchButton{
-  background-color:#00BFA5;
+.searchButton {
+  background-color: #00bfa5;
   border-radius: 25px;
   height: 5vh;
-  margin-bottom: .25vh;
-  margin-top: .25vh;
+  margin-bottom: 0.25vh;
+  margin-top: 0.25vh;
   width: 5vh;
 }
 
-.searchInput{
-  background-color: #F0F0F0;
+.searchInput {
+  background-color: #f0f0f0;
   border: none;
   margin-left: 3vh;
 }
 
-.timeline{
+.timeline {
   display: flex;
   justify-content: space-between;
   width: 17rem;
 }
 
-.units{
+.units {
   // display: flex;
   // align-self: center;
   // height: 10vh;
@@ -143,7 +144,7 @@ body{
   height: 3rem;
   border-radius: 4px;
   position: relative;
-  background-color: rgba(255,255,255,0.3);
+  background-color: rgba(255, 255, 255, 0.3);
   transition: 0.3s all;
 }
 
@@ -192,60 +193,152 @@ input:focus {
   margin-top: 4px;
 }
 
+.bookAdditional {
+  // background-color: pink;
+  width: 20%;
+}
+
 .bookDescription {
   display: flex;
-  padding: 2em;
+  flex-direction: column;
+  margin: 0 5em 0 1em;
+  overflow: auto;
+  width: 50%;
+  // background-color: red;
+}
+
+.descriptionText {
+  // background-color: yellow;
+  // margin: 0 -0.5em 0.5em 0;
+  // flex: 1;
+  // overflow: hidden;
+  // font-size: 1.4vw;
+  margin: 0 auto auto 0.5em;
 }
 
 .bookInformation {
   display: flex;
   flex-direction: row;
-  padding: 1rem;
+  padding: 1em;
+  width: 85%;
+  // background-color: green;
 }
 
-.bookItem {
-  border: solid;
+.bookListItem {
+  // border: solid;
   border-radius: 10px;
   display: flex;
-  margin-left: 5rem;
-  margin-right: 5rem;
-  height: 15em;
-  background-color: tan;
+  margin: 0.5rem 7.5rem 0.4rem 7.5rem;
+  height: 10em;
+  background-color: silver;
+  box-shadow: 0 0 0.4em 0.2em slategray
 }
 
-.bookItemLeft {
+.bookListItemLeft {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-self: center;
   align-items: center;
-  padding-top: 0.75em;
-  width: 17em;
+  // padding-top: 0.75em;
+  width: 15%;
+  // height: 90%;
+  // background-color: white;
+  object-fit: cover;
+
+}
+
+.bookImage {
+  object-fit: cover;
+  height: 80%;
+  padding: 0.5em 0 0.1em 0;
+}
+
+.ratingDisplay {
+  height: 10%;
+}
+
+.titleAndAuthorInfo {
+  display: flex;
+  flex-direction: column;
+  // background-color: purple;
+  width: 20%;
+}
+
+.titleInfo {
+  display: flex;
+  flex-direction: column;
+  // background-color: silver;
+  height: 50%;
+}
+
+.titleText {
+  // background-color: lime;
+  font-size: 1.4vw;
+  margin: 0 auto auto 0.5em;
 }
 
 .authorInfo {
   display: flex;
   flex-direction: column;
-}
-
-.titleInfo {
-  
+  // background-color: aqua;
+  height: 50%;
 }
 
 .authorText {
-
+  // background-color: orange;
+  font-size: 1.4vw;
+  margin: 0 auto auto 0.5em;
 }
 
-.incidentalText {
-  font-size: 18px;
-  border: solid;
+.smallHeading {
+  // background-color: gold;
+}
+
+.smallHeadingText {
+  // background-color: coral;
+  font-size: 1.2vw;
+  font-weight: bold;
+  margin: 0;
+}
+
+.categoryInfo {
+  display: flex;
+  flex-direction: column;
+  height: 33.33%;
+}
+
+.categoryText {
+  font-size: 1vw;
+  margin: 0 auto auto 0.5em;
+  // background-color: white;
+}
+
+.pageInfo {
+  display: flex;
+  flex-direction: column;
+  height: 33.33%;
+}
+
+.pagesText {
+  font-size: 1vw;
+  margin: 0 auto auto 0.5em;
+}
+
+.publisherInfo {
+  display: flex;
+  flex-direction: column;
+  height: 33.33%;
+}
+
+.publisherText {
+  font-size: 1vw;
+  margin: 0 auto auto 0.5em;
 }
 
 .dropdown-wrapper {
-  
 }
 
 .dropdown-header {
-  
 }
 
 .dropdown-header-title {
@@ -258,5 +351,4 @@ input:focus {
 }
 
 .dropdown-list-item {
-  
 }

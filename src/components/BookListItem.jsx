@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-import { IconContext } from "react-icons";
-import { getFontSize } from "../utils/helpers";
+import BookRating from "./BookRating";
+import { getFontSize, shortenDescription } from "../utils/helpers";
 
 const BookListItem = (props) => {
   // const { author, categories, averageRating, description, imageLinks, language, pageCount, publisher, title } = props;
@@ -22,44 +21,6 @@ const BookListItem = (props) => {
     box.style.fontSize = getFontSize(box.textContent.length, 12)
   })
 
-  const ratingDisplay = (rating) => {
-    const stars = [1, 2, 3, 4, 5];
-
-    return (
-      <div className="ratingStars">
-        {stars.map((star, key) =>
-          star <= rating ? (
-            <IconContext.Provider
-              key={key}
-              value={{ color: "gold", size: "1.3em", className: "review-star" }}
-            >
-              <AiFillStar />
-            </IconContext.Provider>
-          ) : (
-            <IconContext.Provider
-              key={key}
-              value={{ size: "1.3em", className: "review-star" }}
-            >
-              <AiOutlineStar />
-            </IconContext.Provider>
-          )
-        )}
-      </div>
-    );
-  };
-
-  const shortenDescription = (descriptionString) => {
-    let blurb = descriptionString;
-
-    if (blurb.length >= 150) {
-      blurb = blurb.substring(0, 150);
-      const lastSpaceIndex = blurb.lastIndexOf(" ");
-      blurb = `${blurb.substring(0, lastSpaceIndex || 150)} ...`;
-    }
-
-    return blurb;
-  };
-
   //use a symbol for Fiction or Non-Fiction
   //don't display language?
 
@@ -73,7 +34,7 @@ const BookListItem = (props) => {
             alt="Girl in a jacket"
           />
           <div className="ratingDisplay">
-            {ratingDisplay(averageRating) || null}
+            {BookRating(averageRating) || null}
           </div>
         </div>
         <div className="bookInformation">

@@ -352,3 +352,146 @@ input:focus {
 
 .dropdown-list-item {
 }
+
+.singleBookItem {
+  // border: solid;
+  border-radius: 10px;
+  display: flex;
+  margin: 0.5rem 15rem 0.4rem 15rem;
+  height: 40em;
+  background-color: silver;
+  box-shadow: 0 0 0.4em 0.2em slategray
+}
+.singleBookItemLeft {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-items: center;
+  // padding-top: 0.75em;
+  width: 75%;
+  // height: 90%;
+  // background-color: white;
+  object-fit: cover;
+}
+
+.singleBookInformation {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  width: 25%;
+  // background-color: green;
+}
+
+.singleBookImage {
+  object-fit: cover;
+  height: 80%;
+  padding: 0.5em 0 0.1em 0;
+}
+
+.singleBookRatingDisplay {
+  height: 10%;
+}
+
+.singleBookTitleAndAuthorInfo {
+  display: flex;
+  // flex-direction: column;
+  // background-color: purple;
+  width: 20%;
+}
+
+.singleBookTitleInfo {
+  display: flex;
+  flex-direction: column;
+  // background-color: silver;
+  height: 50%;
+}
+
+.singleBookTitleText {
+  // background-color: lime;
+  font-size: 1.4vw;
+  margin: 0 auto auto 0.5em;
+}
+
+.singleBookAuthorInfo {
+  display: flex;
+  flex-direction: column;
+  // background-color: aqua;
+  height: 50%;
+}
+
+.singleBookAuthorText {
+  // background-color: orange;
+  font-size: 1.4vw;
+  margin: 0 auto auto 0.5em;
+}
+
+.singleBookSmallHeading {
+  // background-color: gold;
+}
+
+.singleBookSmallHeadingText {
+  // background-color: coral;
+  font-size: 1.2vw;
+  font-weight: bold;
+  margin: 0;
+}
+
+.singleBookCategoryInfo {
+  display: flex;
+  flex-direction: column;
+  height: 33.33%;
+}
+
+.singleBookCategoryText {
+  font-size: 1vw;
+  margin: 0 auto auto 0.5em;
+  // background-color: white;
+}
+
+.singleBookPageInfo {
+  display: flex;
+  flex-direction: column;
+  height: 33.33%;
+}
+
+.singleBookPagesText {
+  font-size: 1vw;
+  margin: 0 auto auto 0.5em;
+}
+
+.singleBookPublisherInfo {
+  display: flex;
+  flex-direction: column;
+  height: 33.33%;
+}
+
+.singleBookPublisherText {
+  font-size: 1vw;
+  margin: 0 auto auto 0.5em;
+}
+
+
+.singleBookAdditional {
+  display: flex;
+  
+  // background-color: pink;
+  width: 20%;
+}
+
+.singleBookDescription {
+  display: flex;
+  flex-direction: column;
+  margin: 0 5em 0 1em;
+  overflow: auto;
+  width: 50%;
+  // background-color: red;
+}
+
+.singleBookDescriptionText {
+  // background-color: yellow;
+  // margin: 0 -0.5em 0.5em 0;
+  // flex: 1;
+  // overflow: hidden;
+  // font-size: 1.4vw;
+  margin: 0 auto auto 0.5em;
+}

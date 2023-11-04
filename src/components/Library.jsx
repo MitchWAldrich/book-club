@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import BookListItem from "./BookListItem";
 import Nav from "./Nav";
+import SingleBookItem from "./SingleBookItem";
 import instance from "../utils/axiosConfig";
 import { getUser } from "../utils/selectors";
 
@@ -24,7 +25,7 @@ const Library = () => {
   }, []);
 
   const sampleBook = {
-    author: "Daniel Keyes",
+    authors: ["Daniel Keyes"],
     categories: ["Fiction", "Non-Fiction"],
     averageRating: 4,
     description:
@@ -52,7 +53,7 @@ const Library = () => {
         {toRead.map((book, key) => (
           <BookListItem
             key={key}
-            authors={book.author}
+            authors={book.authors}
             categories={book.categories}
             averageRating={book.averageRating}
             description={book.description}
@@ -78,6 +79,18 @@ const Library = () => {
             title={book.title}
           />
         ))}
+        <SingleBookItem
+            // key={key}
+            authors={sampleBook.authors}
+            categories={sampleBook.categories}
+            averageRating={sampleBook.averageRating}
+            description={sampleBook.description}
+            imageLinks={sampleBook.imageLinks}
+            language={sampleBook.language}
+            pageCount={sampleBook.pageCount}
+            publisher={sampleBook.publisher}
+            title={sampleBook.title}
+          />
       </div>
     </main>
   );

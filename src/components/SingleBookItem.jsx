@@ -15,6 +15,12 @@ const SingleBookItem = (props) => {
     title,
   } = props;
 
+  // const addToLibrary = (event, bookObject) => {
+  const addToLibrary = (event) => {
+    event.preventDefault(); 
+    // add book object to user object
+  };
+
 
   return (
     <main>
@@ -70,6 +76,7 @@ const SingleBookItem = (props) => {
               <p className="singleBookPublisherText">{publisher || 'No publisher available.'}</p>
             </div>
           </div>
+              <button type="button" onClick={addToLibrary}>Add to my library</button>
         </div>
       </div>
     </main>

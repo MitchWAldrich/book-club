@@ -11,7 +11,7 @@ const Register = () => {
     const navigate = useNavigate();
 
     const signUp = () => {
-        fetch("http://localhost:4000/api/register", {
+        fetch("http://localhost:4000/api/users", {
             method: "POST",
             body: JSON.stringify({
                 email,

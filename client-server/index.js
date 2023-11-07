@@ -1,5 +1,7 @@
 import express from 'express';
 import cors from 'cors';
+import { getUserById } from '../src/utils/selectors.js';
+
 const app = express();
 const PORT = 4000;
 // const PORT = process.env.PORT ||4000;
@@ -40,6 +42,30 @@ app.get("/api/users", (req, res) => {
         users
     });
 });
+
+app.use("/api/users/:id", (req, res, next) => {
+    const id = req.params.id;
+    const user = getUserById(users, id)
+    console.log('User:', user)
+    next()
+});
+
+app.get('/users/:id', (req, res, next) => {
+    console.log('userID request params:', req.params)
+    res.json({
+        users
+    });
+    // res.send('USER')
+    next()
+  })
+
+  app.use('/users/:id', (req, res, next) => {
+    console.log('Request URL:', req.originalUrl)
+    next()
+  }, (req, res, next) => {
+    console.log('Request Type:', req.method)
+    next()
+  })
 
 //👇🏻 generates a random string as ID
 const generateID = () => Math.random().toString(36).substring(2, 10);

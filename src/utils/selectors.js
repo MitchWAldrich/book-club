@@ -1,4 +1,4 @@
-export const getUser = (users, id) => {
+export const getUserById = (users, id) => {
   return users.find((user) => user.id === id);
 };
 

@@ -3,7 +3,7 @@ import BookListItem from "./BookListItem";
 import Nav from "./Nav";
 import SingleBookItem from "./SingleBookItem";
 import instance from "../utils/axiosConfig";
-import { getUser } from "../utils/selectors";
+import { getUserById } from "../utils/selectors";
 
 const Library = () => {
   const [user, setUser] = useState("loading");
@@ -13,7 +13,7 @@ const Library = () => {
       .get("http://localhost:4000/api/users")
       .then(function (response) {
         const usersResult = response.data.users;
-        setUser(getUser(usersResult, 1));
+        setUser(getUserById(usersResult, 1));
         // console.log(response);
       })
       .catch(function (error) {

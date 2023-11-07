@@ -3,7 +3,7 @@ import Goal from "./Goal";
 import Nav from "./Nav";
 import SearchBar from "./Searchbar";
 import instance from "../utils/axiosConfig";
-import { getUser } from "../utils/selectors";
+import { getUserById } from "../utils/selectors";
 
 const Home = () => {
     const [user, setUser] = useState("loading");
@@ -12,7 +12,7 @@ const Home = () => {
         instance.get('http://localhost:4000/api/users')
             .then(function (response) {
                 const usersResult = response.data.users;
-                setUser(getUser(usersResult, 1));
+                setUser(getUserById(usersResult, 1));
                 // console.log(response);
             })
             .catch(function (error) {

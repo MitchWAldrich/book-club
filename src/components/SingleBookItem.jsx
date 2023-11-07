@@ -4,6 +4,7 @@ import BookRating from './BookRating';
 import instance from '../utils/axiosConfig';
 
 import { shortenDescription } from '../utils/helpers';
+// import { getUserById } from '../utils/selectors';
 
 const SingleBookItem = (props) => {
   const {
@@ -20,18 +21,18 @@ const SingleBookItem = (props) => {
   const [ savedBook, setSavedBook ] = useState(null);
 
   useEffect(() => {
-    instance.patch('https://jsonplaceholder.typicode.com/users/1', {
+    instance.patch('http://localhost:4000/api/users/1', {
       book: 'My Favourite Book'
   })
   .then(response => {
-    console.log(response.data)
+    console.log(response.data)  
   })
   .catch(error => console.error(error));
 
     // instance.get('http://localhost:4000/api/users')
     //     .then(function (response) {
     //         const usersResult = response.data.users;
-    //         setUser(getUser(usersResult, 1));
+    //         setUser(ById(usersResult, 1));
     //         // console.log(response);
     //     })
     //     .catch(function (error) {

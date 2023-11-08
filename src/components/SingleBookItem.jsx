@@ -16,13 +16,14 @@ const SingleBookItem = (props) => {
     pageCount,
     publisher,
     title,
+    userId
   } = props;
 
   const [ savedBook, setSavedBook ] = useState(null);
 
   useEffect(() => {
-    instance.patch('http://localhost:4000/api/users/1', {
-      book: 'My Favourite Book'
+    instance.patch(`/api/users/${userId}`, {
+      // book: 'My Favourite Book'
   })
   .then(response => {
     console.log(response.data)  
@@ -122,6 +123,7 @@ SingleBookItem.propTypes = {
   pageCount: PropTypes.number | PropTypes.string,
   publisher: PropTypes.string,
   title: PropTypes.string,
+  userId: PropTypes.number
 };
 
 export default SingleBookItem;

@@ -6,7 +6,12 @@ import instance from "../utils/axiosConfig";
 import { getUserById } from "../utils/selectors";
 
 const Library = () => {
-  const [user, setUser] = useState("loading");
+  const [user, setUser] = useState({
+    id: 1,
+    email: 'user1@email.com',
+    password: 'password',
+    username: 'user1',
+});
 
   useEffect(() => {
     instance
@@ -90,6 +95,7 @@ const Library = () => {
             pageCount={sampleBook.pageCount}
             publisher={sampleBook.publisher}
             title={sampleBook.title}
+            userId={user.id}
           />
       </div>
     </main>

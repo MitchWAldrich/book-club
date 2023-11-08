@@ -1,4 +1,8 @@
 export const getUserById = (users, id) => {
+  if (typeof id === 'string') {
+    id = parseInt(id);
+  }
+
   return users.find((user) => user.id === id);
 };
 

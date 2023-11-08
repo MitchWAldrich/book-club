@@ -43,29 +43,34 @@ app.get("/api/users", (req, res) => {
     });
 });
 
-app.use("/api/users/:id", (req, res, next) => {
+// app.use("/api/users/:id", (req, res, next) => {
+//     const id = req.params.id;
+//     const user = getUserById(users, id)
+//     console.log('User:', user)
+//     next()
+// });
+
+app.get("/api/users/:id", (req, res, next) => {
     const id = req.params.id;
     const user = getUserById(users, id)
-    console.log('User:', user)
-    next()
-});
-
-app.get('/users/:id', (req, res, next) => {
+    console.log('user', user);
     console.log('userID request params:', req.params)
     res.json({
-        users
+        user
     });
     // res.send('USER')
     next()
   })
 
-  app.use('/users/:id', (req, res, next) => {
-    console.log('Request URL:', req.originalUrl)
-    next()
-  }, (req, res, next) => {
-    console.log('Request Type:', req.method)
-    next()
-  })
+//   app.use('/users/:id', (req, res, next) => {
+//     console.log('Request URL:', req.originalUrl)
+//     next()
+//   }, (req, res, next) => {
+//     console.log('Request Type:', req.method)
+//     next()
+//   })
+
+// app.use("/api/users/:id", bookObj )
 
 //👇🏻 generates a random string as ID
 const generateID = () => Math.random().toString(36).substring(2, 10);
@@ -93,6 +98,22 @@ app.post("/api/users", async (req, res) => {
     })
     //👇🏻 logs all the user's credentials to the console.
     console.log({ email, password, username, id });
+});
+
+app.post("/api/users/:id", async (req, res) => {
+    const { id, bookObj } = req.body;
+
+    const user = users.filter(
+        (user) => user.id === id
+    );
+
+    user.library['toRead'] = bookObj;
+
+    res.json({
+        error_message: "User already exists",
+    })
+    //👇🏻 logs all the user's credentials to the console.
+    console.log({ id, bookObj });
 });
 
 // Login Route

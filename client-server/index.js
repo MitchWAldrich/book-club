@@ -69,8 +69,17 @@ app.get("/api/users/:id", (req, res, next) => {
 //     console.log('Request Type:', req.method)
 //     next()
 //   })
-
-// app.use("/api/users/:id", bookObj )
+const bookObj = {
+    title: 'title',
+    authors: ['Fred Smith', 'Julie Steinberg'],
+    categories: ['Fiction'],
+    averageRating: 4,
+    description: 'A great book about stuff',
+    imageLinks: {smallThumbnail: 'http:', thumbnail: 'https:'},
+    pageCount: 234,
+    publisher: 'Smith',
+  };
+app.use("/api/users/:id", {bookObj} )
 
 //👇🏻 generates a random string as ID
 const generateID = () => Math.random().toString(36).substring(2, 10);

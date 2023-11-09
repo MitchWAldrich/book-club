@@ -21,9 +21,20 @@ const SingleBookItem = (props) => {
 
   const [ savedBook, setSavedBook ] = useState(null);
 
+  const book = {
+    title,
+    authors,
+    categories,
+    averageRating,
+    description,
+    imageLinks,
+    pageCount,
+    publisher,
+  };
+
   useEffect(() => {
     instance.patch(`/api/users/${userId}`, {
-      // book: 'My Favourite Book'
+      book: book
   })
   .then(response => {
     console.log(response.data)  

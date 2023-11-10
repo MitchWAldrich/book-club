@@ -43,13 +43,6 @@ app.get("/api/users", (req, res) => {
     });
 });
 
-// app.use("/api/users/:id", (req, res, next) => {
-//     const id = req.params.id;
-//     const user = getUserById(users, id)
-//     console.log('User:', user)
-//     next()
-// });
-
 app.get("/api/users/:id", (req, res, next) => {
     const id = req.params.id;
     const user = getUserById(users, id)
@@ -61,25 +54,6 @@ app.get("/api/users/:id", (req, res, next) => {
     // res.send('USER')
     next()
   })
-
-//   app.use('/users/:id', (req, res, next) => {
-//     console.log('Request URL:', req.originalUrl)
-//     next()
-//   }, (req, res, next) => {
-//     console.log('Request Type:', req.method)
-//     next()
-//   })
-const bookObj = {
-    title: 'title',
-    authors: ['Fred Smith', 'Julie Steinberg'],
-    categories: ['Fiction'],
-    averageRating: 4,
-    description: 'A great book about stuff',
-    imageLinks: {smallThumbnail: 'http:', thumbnail: 'https:'},
-    pageCount: 234,
-    publisher: 'Smith',
-  };
-app.use("/api/users/:id", {bookObj} )
 
 //👇🏻 generates a random string as ID
 const generateID = () => Math.random().toString(36).substring(2, 10);
@@ -109,18 +83,15 @@ app.post("/api/users", async (req, res) => {
     console.log({ email, password, username, id });
 });
 
-app.post("/api/users/:id", async (req, res) => {
-    const { id, bookObj } = req.body;
+app.patch("/api/users/:id", async (req) => {
+    let { id, bookObj } = req.body;
 
-    const user = users.filter(
+    const user = users.find(
         (user) => user.id === id
     );
+    
+    user['toRead'] = bookObj;
 
-    user.library['toRead'] = bookObj;
-
-    res.json({
-        error_message: "User already exists",
-    })
     //👇🏻 logs all the user's credentials to the console.
     console.log({ id, bookObj });
 });

@@ -46,8 +46,7 @@ app.get("/api/users", (req, res) => {
 app.get("/api/users/:id", (req, res, next) => {
     const id = req.params.id;
     const user = getUserById(users, id)
-    console.log('user', user);
-    console.log('userID request params:', req.params)
+    
     res.json({
         user
     });
@@ -92,7 +91,7 @@ app.patch("/api/users/:id", async (req) => {
     
     user['toRead'] = bookObj;
 
-    //👇🏻 logs all the user's credentials to the console.
+    //👇🏻 logs all the request fields to the console.
     console.log({ id, bookObj });
 });
 

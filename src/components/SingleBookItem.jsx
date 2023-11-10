@@ -1,10 +1,8 @@
-import { useEffect, useState } from 'react';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import BookRating from './BookRating';
-import instance from '../utils/axiosConfig';
 
 import { shortenDescription } from '../utils/helpers';
-// import { getUserById } from '../utils/selectors';
 
 const SingleBookItem = (props) => {
   const {
@@ -19,46 +17,24 @@ const SingleBookItem = (props) => {
     userId
   } = props;
 
-  const [ savedBook, setSavedBook ] = useState(null);
+const bookObj = {
+      title: 'title',
+      authors: ['Fred Smith', 'Julie Steinberg'],
+      categories: ['Fiction'],
+      averageRating: 4,
+      description: 'A great book about stuff',
+      imageLinks: {smallThumbnail: 'http:', thumbnail: 'https:'},
+      pageCount: 234,
+      publisher: 'Smith',
+    };
 
-  const book = {
-    title,
-    authors,
-    categories,
-    averageRating,
-    description,
-    imageLinks,
-    pageCount,
-    publisher,
-  };
-
-  useEffect(() => {
-    instance.patch(`/api/users/${userId}`, {
-      book: book
-  })
+  // const addToLibrary = (event, bookObject) => {
+  const addToLibrary = () => {
+    axios.patch(`http://localhost:4000/api/users/${userId}`, {id: userId, bookObj: bookObj })
   .then(response => {
     console.log(response.data)  
   })
-  .catch(error => console.error(error));
-
-    // instance.get('http://localhost:4000/api/users')
-    //     .then(function (response) {
-    //         const usersResult = response.data.users;
-    //         setUser(ById(usersResult, 1));
-    //         // console.log(response);
-    //     })
-    //     .catch(function (error) {
-    //         console.log(error);
-    //     })
-    //     .finally(function () {
-    //         // always executed
-    //     }); 
-}, [savedBook]);
-
-  // const addToLibrary = (event, bookObject) => {
-  const addToLibrary = (event) => {
-    event.preventDefault(); 
-    setSavedBook('book')
+  .catch(error => console.error(error)); 
     // add book object to user object
   };
 
@@ -117,7 +93,7 @@ const SingleBookItem = (props) => {
               <p className="singleBookPublisherText">{publisher || 'No publisher available.'}</p>
             </div>
           </div>
-              <button type="button" onClick={addToLibrary}>Add to my library</button>
+              <button type="button" onClick={() => addToLibrary()}>Add to my library</button>
         </div>
       </div>
     </main>

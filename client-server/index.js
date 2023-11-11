@@ -16,18 +16,77 @@ const users = [
         email: 'user1@email.com',
         password: 'password',
         username: 'user1',
+        library: {
+            haveRead: [],
+            toRead: []
+        }
     },
     {
         id: 2,
         email: 'user2@email.com',
         password: 'password',
         username: 'user2',
+        library: {
+            haveRead: [],
+            toRead: []
+        }
     },
     {
         id: 3,
         email: 'user3@email.com',
         password: 'password',
         username: 'user3',
+        library: {
+            haveRead: [{
+                title: 'title1',
+                authors: [ 'John Smith', 'Julie Black' ],
+                categories: [ 'Non-Fiction' ],
+                averageRating: 5,
+                description: 'A great book about things',
+                imageLinks: { smallThumbnail: 'http:', thumbnail: 'https:' },
+                pageCount: 234,
+                publisher: 'Clearly'
+              },{
+                title: 'title2',
+                authors: [ 'Fred Smith', 'Julie Steinberg' ],
+                categories: [ 'Fiction' ],
+                averageRating: 4,
+                description: 'A great book about stuff',
+                imageLinks: { smallThumbnail: 'http:', thumbnail: 'https:' },
+                pageCount: 154,
+                publisher: 'Smithson'
+              },
+              {
+                title: 'title3',
+                authors: [ 'Fred Smith', 'Julie Steinberg' ],
+                categories: [ 'Fiction' ],
+                averageRating: 3,
+                description: 'A great novel about stuff',
+                imageLinks: { smallThumbnail: 'http:', thumbnail: 'https:' },
+                pageCount: 200,
+                publisher: 'Smithly'
+              }],
+              toRead: [{
+                title: 'title4',
+                authors: [ 'Whit Merrifield'],
+                categories: [ 'Biography', 'Sports' ],
+                averageRating: 5,
+                description: 'A great book about Whit',
+                imageLinks: { smallThumbnail: 'http:', thumbnail: 'https:' },
+                pageCount: 234,
+                publisher: 'Jays'
+              },
+              {
+                title: 'title5',
+                authors: [ 'Fred Smith Black', 'Julie Steinberg' ],
+                categories: [ 'Fiction' ],
+                averageRating: 4,
+                description: 'A great book about stuff',
+                imageLinks: { smallThumbnail: 'http:', thumbnail: 'https:' },
+                pageCount: 34,
+                publisher: 'New'
+              }]
+        }
     }
 ];
 
@@ -83,13 +142,14 @@ app.post("/api/users", async (req, res) => {
 });
 
 app.patch("/api/users/:id", async (req) => {
-    let { id, bookObj } = req.body;
+    let { id, bookObj, status } = req.body;
 
     const user = users.find(
         (user) => user.id === id
     );
     
-    user['toRead'] = bookObj;
+   if ( status === 'toRead' ) user.library.toRead.push(bookObj)
+   if ( status === 'haveRead' ) user.library.haveRead.push(bookObj)
 
     //👇🏻 logs all the request fields to the console.
     console.log({ id, bookObj });

@@ -29,8 +29,21 @@ const bookObj = {
     };
 
   // const addToLibrary = (event, bookObject) => {
-  const addToLibrary = () => {
-    axios.patch(`http://localhost:4000/api/users/${userId}`, {id: userId, bookObj: bookObj })
+  const addToToRead = () => {
+    const status = "toRead";
+
+    axios.patch(`http://localhost:4000/api/users/${userId}`, {id: userId, bookObj: bookObj, status: status })
+  .then(response => {
+    console.log(response.data)  
+  })
+  .catch(error => console.error(error)); 
+    // add book object to user object
+  };
+
+  const addToHaveRead = () => {
+    const status = "haveRead";
+
+    axios.patch(`http://localhost:4000/api/users/${userId}`, {id: userId, bookObj: bookObj, status: status })
   .then(response => {
     console.log(response.data)  
   })
@@ -93,7 +106,9 @@ const bookObj = {
               <p className="singleBookPublisherText">{publisher || 'No publisher available.'}</p>
             </div>
           </div>
-              <button type="button" onClick={() => addToLibrary()}>Add to my library</button>
+              <button type="button" onClick={() => addToToRead()}>I want to read this</button>
+              <br></br>
+              <button type="button" onClick={() => addToHaveRead()}>I have read this</button>
         </div>
       </div>
     </main>

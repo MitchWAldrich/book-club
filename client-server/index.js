@@ -157,10 +157,10 @@ app.patch("/api/users/:id", async (req) => {
     
    if ( status === 'toRead' ) user.library.toRead.push(bookObj)
    if ( status === 'haveRead' ) user.library.haveRead.push(bookObj)
-   user.goals.push(goalObj)
+   if (goalObj) user.goals.push(goalObj)
 
     //👇🏻 logs all the request fields to the console.
-    console.log({ id, bookObj });
+    console.log({ id, bookObj, goalObj });
 });
 
 // Login Route

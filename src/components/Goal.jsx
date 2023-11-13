@@ -1,11 +1,20 @@
 import { useState } from "react";
+import PropTypes from 'prop-types';
+import axios from 'axios';
 import Dropdown from "./Dropdown";
 import Input from "./Input";
 
-const Goal = () => {
+const Goal = (props) => {
+  const { userId } = props;
+
+  const [goalName, setGoalName] = useState('');
   const [number, setNumber] = useState('');
   const [timeline, setTimeline] = useState('');
   const [error, setError] = useState(false);
+
+  const handleNameChange = (e) => {
+    setGoalName(e.target.value);
+  };
 
   const handleNumberChange = (e) => {
     setNumber(e.target.value);
@@ -27,6 +36,18 @@ const Goal = () => {
   } else {
     setError(false)
   }
+  const goalObj = {
+    name: goalName,
+    number: number,
+    timelime: timeline
+  }
+
+  axios.patch(`http://localhost:4000/api/users/${userId}`, {id: userId, goalObj: goalObj })
+  .then(response => {
+    console.log(response.data)  
+  })
+  .catch(error => console.error(error)); 
+    // add book object to user object
 }
 
 const units = ['Page(s)', 'Chapter(s)', 'Book(s)'];
@@ -39,6 +60,17 @@ const timeUnits = ['Day(s)', 'Weeks(s)', 'Month(s)', 'Year(s)'];
         <form className='form'>
             <div>
                 <label htmlFor='number'>What is your goal?</label>
+                <div className='goalName'>
+                <Input
+                    type="text"
+                    label=""
+                    value={goalName}
+                    name="goalName"
+                    error={error}
+                    onChange={handleNameChange}
+                    placeholder="Goal Name"
+                />
+                </div>
                 <div className='timeline'>
                 <Input
                     type="number"
@@ -73,5 +105,9 @@ const timeUnits = ['Day(s)', 'Weeks(s)', 'Month(s)', 'Year(s)'];
     </main>
   )
 };
+
+Goal.propTypes = {
+  userId: PropTypes.number
+}
 
 export default Goal;

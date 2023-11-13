@@ -4,7 +4,7 @@ import { useState } from "react";
 import Goal from "./Goal";
 import Nav from "./Nav";
 import SearchBar from "./Searchbar";
-import userContext from "../userContext";
+import userContext from "../userContext"; 
 // import instance from "../utils/axiosConfig";
 // import { getUserById } from "../utils/selectors";
 
@@ -36,10 +36,12 @@ const Home = () => {
     };
 
     return (
+        <>
         <userContext.Consumer>
         {({value}) => {
-            <>
             <Nav user={value} />
+        }}
+        </userContext.Consumer>
             {/* <Nav user={{ 
     id: 3,
         email: 'user3@email.com',
@@ -96,6 +98,7 @@ const Home = () => {
                 publisher: 'New'
               }]
             }} || {}} /> */}
+            <>
             <Goal />
             <SearchBar />
             <main className='container'>
@@ -115,10 +118,8 @@ const Home = () => {
                 </form>
             </main>
             </>
-      }}
-      </userContext.Consumer>
-    );
-};
+</>
+    )}
 
 // Home.propTypes = {
 //     userObj: PropTypes.object

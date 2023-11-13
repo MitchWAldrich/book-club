@@ -31,7 +31,7 @@ const BookRating = (rating) => {
 };
 
 BookRating.propTypes = {
-  rating: PropTypes.string | PropTypes.number
+  rating: PropTypes.string || PropTypes.number
 }
 
 export default BookRating;

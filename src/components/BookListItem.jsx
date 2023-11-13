@@ -91,7 +91,7 @@ BookListItem.propTypes = {
   description: PropTypes.string,
   imageLinks: PropTypes.object,
   language: PropTypes.string,
-  pageCount: PropTypes.number | PropTypes.string,
+  pageCount: PropTypes.number || PropTypes.string,
   publisher: PropTypes.string,
   title: PropTypes.string,
 };

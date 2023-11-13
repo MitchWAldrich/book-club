@@ -1,93 +1,14 @@
-// import { useState } from "react";
-// import PropTypes from 'prop-types';
+import { useContext } from "react";
+
 import BookListItem from "./BookListItem";
 import Nav from "./Nav";
 import SingleBookItem from "./SingleBookItem";
 
 import userContext from './../userContext';
-// import instance from "../utils/axiosConfig";
-// import { getUserById } from "../utils/selectors";
 
 const Library = () => {
-  // const { userObj } = props;
-//   const [ user, setUser ] = useState(userObj ?? { 
-//     id: 3,
-//         email: 'user3@email.com',
-//         password: 'password',
-//         username: 'user3',
-//         library: {
-//             haveRead: [{
-//                 title: 'title1',
-//                 authors: [ 'John Smith', 'Julie Black' ],
-//                 categories: [ 'Non-Fiction' ],
-//                 averageRating: 5,
-//                 description: 'A great book about things',
-//                 imageLinks: { smallThumbnail: 'http:', thumbnail: 'https:' },
-//                 pageCount: 234,
-//                 publisher: 'Clearly'
-//               },{
-//                 title: 'title2',
-//                 authors: [ 'Fred Smith', 'Julie Steinberg' ],
-//                 categories: [ 'Fiction' ],
-//                 averageRating: 4,
-//                 description: 'A great book about stuff',
-//                 imageLinks: { smallThumbnail: 'http:', thumbnail: 'https:' },
-//                 pageCount: 154,
-//                 publisher: 'Smithson'
-//               },
-//               {
-//                 title: 'title3',
-//                 authors: [ 'Fred Smith', 'Julie Steinberg' ],
-//                 categories: [ 'Fiction' ],
-//                 averageRating: 3,
-//                 description: 'A great novel about stuff',
-//                 imageLinks: { smallThumbnail: 'http:', thumbnail: 'https:' },
-//                 pageCount: 200,
-//                 publisher: 'Smithly'
-//               }],
-//               toRead: [{
-//                 title: 'title4',
-//                 authors: [ 'Whit Merrifield'],
-//                 categories: [ 'Biography', 'Sports' ],
-//                 averageRating: 5,
-//                 description: 'A great book about Whit',
-//                 imageLinks: { smallThumbnail: 'http:', thumbnail: 'https:' },
-//                 pageCount: 234,
-//                 publisher: 'Jays'
-//               },
-//               {
-//                 title: 'title5',
-//                 authors: [ 'Fred Smith Black', 'Julie Steinberg' ],
-//                 categories: [ 'Fiction' ],
-//                 averageRating: 4,
-//                 description: 'A great book about stuff',
-//                 imageLinks: { smallThumbnail: 'http:', thumbnail: 'https:' },
-//                 pageCount: 34,
-//                 publisher: 'New'
-//               }]
-//         }
-// });
+  const user = useContext(userContext);
 
-
-// const [ libraryUpdated, setLibraryUpdated ] = useState(false);
-
-  // useEffect(() => {
-  //   instance
-  //     .get("http://localhost:4000/api/users")
-  //     .then(function (response) {
-  //       const usersResult = response.data.users;
-  //       setUser(getUserById(usersResult, 3));
-  //       console.log('user has been set');
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     })
-  //     .finally(function () {
-  //       // always executed
-  //     });
-  // }, [libraryUpdated]);
-
-// console.log('user', user)
   const sampleBook = {
     authors: ["Daniel Keyes"],
     categories: ["Fiction", "Non-Fiction"],
@@ -106,18 +27,12 @@ const Library = () => {
     title: "Flowers for Algernon",
   };
 
-  // const haveRead = [sampleBook, sampleBook, sampleBook];
-  // const toRead = [sampleBook, sampleBook];
-
   return (
     <main>
-      <userContext.Consumer>
-      {({value}) => {
-        <>
-      <Nav user={value ?? "Guest"} />
+      <Nav user={user ?? "Guest"} />
       <div>
         <h2>To Read List</h2>
-        {value?.library?.toRead.map((book, key) => (
+        {user?.library?.toRead.map((book, key) => (
           <BookListItem
             key={key}
             authors={book.authors}
@@ -132,7 +47,7 @@ const Library = () => {
           />
         )) ?? null}
         <h2>Books I've Read</h2>
-        {value?.library?.haveRead.map((book, key) => (
+        {user?.library?.haveRead.map((book, key) => (
           <BookListItem
             key={key}
             authors={book.author}
@@ -160,15 +75,8 @@ const Library = () => {
             userId={3}
           />
       </div>
-      </>
-      }}
-      </userContext.Consumer>
     </main>
   );
 };
-
-// Library.propTypes = {
-//   userObj: PropTypes.object
-// }
 
 export default Library;

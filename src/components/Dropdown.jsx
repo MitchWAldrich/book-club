@@ -31,7 +31,7 @@ const Dropdown = (props) => {
   setTitleHeader(title);
   setIsListOpen(false);
   resetThenSet(id, title, event);
-  valueCallback(title.toLowerCase());
+  () => valueCallback(title.toLowerCase());
 }
 
     return (

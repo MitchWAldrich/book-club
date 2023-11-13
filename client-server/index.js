@@ -16,6 +16,7 @@ const users = [
         email: 'user1@email.com',
         password: 'password',
         username: 'user1',
+        goals: [],
         library: {
             haveRead: [],
             toRead: []
@@ -26,6 +27,7 @@ const users = [
         email: 'user2@email.com',
         password: 'password',
         username: 'user2',
+        goals: [],
         library: {
             haveRead: [],
             toRead: []
@@ -36,6 +38,11 @@ const users = [
         email: 'user3@email.com',
         password: 'password',
         username: 'user3',
+        goals: [{
+            name: 'My First Goal',
+            number: '20 pages',
+            timeline: '3 days',
+        }],
         library: {
             haveRead: [{
                 title: 'title1',
@@ -142,7 +149,7 @@ app.post("/api/users", async (req, res) => {
 });
 
 app.patch("/api/users/:id", async (req) => {
-    let { id, bookObj, status } = req.body;
+    let { id, bookObj, goalObj, status } = req.body;
 
     const user = users.find(
         (user) => user.id === id
@@ -150,6 +157,7 @@ app.patch("/api/users/:id", async (req) => {
     
    if ( status === 'toRead' ) user.library.toRead.push(bookObj)
    if ( status === 'haveRead' ) user.library.haveRead.push(bookObj)
+   user.goals.push(goalObj)
 
     //👇🏻 logs all the request fields to the console.
     console.log({ id, bookObj });

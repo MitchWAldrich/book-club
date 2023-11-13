@@ -22,9 +22,9 @@ const Input = (props) => {
 };
 
 Input.propTypes = {
-  type: "text" | "number" | "email" | "password",
+  type: PropTypes.string || PropTypes.number,
   label: PropTypes.string,
-  value: PropTypes.string | PropTypes.number | PropTypes.func,
+  value: PropTypes.string || PropTypes.number || PropTypes.func,
   name: PropTypes.string,
   placeholder: PropTypes.string,
   error: PropTypes.bool,

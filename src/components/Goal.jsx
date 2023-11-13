@@ -1,11 +1,13 @@
-import { useState } from "react";
-import PropTypes from 'prop-types';
+import { useContext, useState } from "react";
 import axios from 'axios';
+
 import Dropdown from "./Dropdown";
 import Input from "./Input";
 
-const Goal = (props) => {
-  const { userId } = props;
+import userContext from "../userContext";
+
+const Goal = () => {
+  const user = useContext(userContext);
 
   const [goalName, setGoalName] = useState('');
   const [number, setNumber] = useState('');
@@ -24,31 +26,32 @@ const Goal = (props) => {
     setTimeline(e.target.value);
   };
 
+  const updateGoal = (goalObj) => {
+    axios.patch(`http://localhost:4000/api/users/${user.id}`, {id: user.id, goalObj: goalObj })
+  .then(response => {
+    console.log('goalObjResponse', response.data)  
+  })
+  .catch(error => console.error(error)); 
+    // add book object to user object
+}
+
   const handleSubmit = (e) => {
     e.preventDefault();
-  if (!number) {
+  
+  if (!goalName || !number || !timeline ) {
     setError(true)
   } else {
     setError(false)
   }
-  if (!timeline) {
-    setError(true)
-  } else {
-    setError(false)
-  }
+
   const goalObj = {
     name: goalName,
     number: number,
     timelime: timeline
   }
 
-  axios.patch(`http://localhost:4000/api/users/${userId}`, {id: userId, goalObj: goalObj })
-  .then(response => {
-    console.log(response.data)  
-  })
-  .catch(error => console.error(error)); 
-    // add book object to user object
-}
+  updateGoal(goalObj);
+  }
 
 const units = ['Page(s)', 'Chapter(s)', 'Book(s)'];
 const timeUnits = ['Day(s)', 'Weeks(s)', 'Month(s)', 'Year(s)'];
@@ -56,8 +59,7 @@ const timeUnits = ['Day(s)', 'Weeks(s)', 'Month(s)', 'Year(s)'];
   return (
     <main className='container'>
         <h2 className='homeTitle'>Create a Reading Goal</h2>
-        {/* <form className='form' onSubmit={handleSubmit}> */}
-        <form className='form'>
+        <form className='form' onSubmit={handleSubmit}>
             <div>
                 <label htmlFor='number'>What is your goal?</label>
                 <div className='goalName'>
@@ -105,9 +107,5 @@ const timeUnits = ['Day(s)', 'Weeks(s)', 'Month(s)', 'Year(s)'];
     </main>
   )
 };
-
-Goal.propTypes = {
-  userId: PropTypes.number
-}
 
 export default Goal;

@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import Register from "./components/Register";
+import BookClub from "./components/BookClub";
 import Library from "./components/Library";
 import Login from "./components/Login";
 import Home from "./components/Home";
+import Register from "./components/Register";
 import Replies from "./components/Replies";
 
 import userContext from "./userContext";
@@ -78,6 +79,7 @@ function App() {
                 <Route path='/register' element={<Register />} />
                 <Route path='/dashboard' element={<Home userObj={user} />} />
                 <Route path='/my-library' element={<Library userObj={user} />} />
+                <Route path='/bookclubs' element={<BookClub userObj={user} />} />
                 <Route path='/:id/replies' element={<Replies />} />
               </Routes>
           </BrowserRouter>

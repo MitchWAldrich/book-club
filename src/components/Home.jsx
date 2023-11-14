@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 
 import Goal from "./Goal";
+import Input from "./Input";
 import Nav from "./Nav";
 import SearchBar from "./Searchbar";
 
@@ -9,12 +10,19 @@ import userContext from "../userContext";
 const Home = () => {
     const user = useContext(userContext);
 
-    const [club, setClub] = useState("");
+    const [bookClubName, setBookClubName] = useState("");
+    const [error, setError] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log({ club });
-        setClub("");
+
+        if (!bookClubName) {
+            setError(true)
+          }
+        
+        console.log({ bookClubName });
+
+        setBookClubName(e.target.value);
     };
 
     return (
@@ -26,16 +34,18 @@ const Home = () => {
                 <h2 className='homeTitle'>Create a Book Club</h2>
                 <form className='form' onSubmit={handleSubmit}>
                     <div>
-                        <label htmlFor='thread'>Title</label>
-                        <input
-                            type='text'
-                            name='thread'
-                            required
-                            value={club}
-                            onChange={(e) => setClub(e.target.value)}
+                        <label htmlFor='Book Club Name'>Book Club Name</label>
+                        <Input
+                            type="text"
+                            label="Book Club Name"
+                            value={bookClubName}
+                            name="bookClubName"
+                            error={error}
+                            onChange={(e) => setBookClubName(e.target.value)}
+                            placeholder="Book Club Name"
                         />
                     </div>
-                    <button className='btn'>CREATE CLUB</button>
+                    <button className='btn'>CREATE BOOK CLUB</button>
                 </form>
             </main>
         </>

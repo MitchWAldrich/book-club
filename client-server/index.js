@@ -13,6 +13,7 @@ app.use(cors());
 const users = [
     {
         id: 1,
+        userId: '34xc98(dfk',
         email: 'user1@email.com',
         password: 'password',
         username: 'user1',
@@ -24,6 +25,7 @@ const users = [
     },
     {
         id: 2,
+        userId: '523dgf*5gn&',
         email: 'user2@email.com',
         password: 'password',
         username: 'user2',
@@ -35,6 +37,7 @@ const users = [
     },
     {
         id: 3,
+        userId: '62jt*(kj!3',
         email: 'user3@email.com',
         password: 'password',
         username: 'user3',
@@ -97,6 +100,36 @@ const users = [
     }
 ];
 
+const bookClubs = [
+    {
+        name: 'My First Book Club',
+        members: [ 'userId1', 'userId2', 'userId3', 'userId4', 'userId5'],
+        currentBook: 'Reese\'s Favourite Book',
+        nextBook: 'Oprah\'s Favourite Book',
+        previousBooks: ['Old Book', 'Other Old Book', 'A Graphic Novel'],
+        meetingFrequency: 'weekly',
+        nextMeetingDate: '12/24/2023'
+    },
+    {
+        name: 'My Second Book Club',
+        members: [ 'userId6', 'userId7', 'userId8', 'userId9', 'userId10'],
+        currentBook: 'Reese\'s 2nd Favourite Book',
+        nextBook: 'Oprah\'s 2nd Favourite Book',
+        previousBooks: ['Old Book 2', 'A 2nd Old Book', 'A 2nd Graphic Novel'],
+        meetingFrequency: 'monthly',
+        nextMeetingDate: '12/27/2023'
+    },
+    {
+        name: 'Book Clubbing',
+        members: [ 'userId11', 'userId12', 'userId13', 'userId14', 'userId15'],
+        currentBook: 'Reese\'s 3rd Favourite Book',
+        nextBook: 'Oprah\'s 3rd Favourite Book',
+        previousBooks: ['Old Book 3', 'Third Old Book', 'A 3rd Graphic Novel'],
+        meetingFrequency: 'bi-weekly',
+        nextMeetingDate: '11/24/2023'
+    }
+]
+
 app.get("/api", (req, res) => {
     res.json({
         message: "Hello world",
@@ -120,20 +153,28 @@ app.get("/api/users/:id", (req, res, next) => {
     next()
   })
 
+app.get("/api/bookclubs", (req, res) => {
+    res.json({
+        bookClubs
+    });
+});
+
 //👇🏻 generates a random string as ID
 const generateID = () => Math.random().toString(36).substring(2, 10);
+//Need to make unique
 
 // Register Route
 app.post("/api/users", async (req, res) => {
     const { email, password, username } = req.body;
-    //👇🏻 holds the ID
-    const id = generateID();
-    const result = users.filter(
+
+    //👇🏻 holds the userID
+    const userId = generateID();
+    const userSearch = users.filter(
         (user) => user.email === email && user.password === password
     );
 
-    if (result.length === 0) {
-        const newUser = { id, email, password, username };
+    if (userSearch.length === 0) {
+        const newUser = { userId, email, password, username };
         users.push(newUser);
 
         return res.json({
@@ -145,7 +186,44 @@ app.post("/api/users", async (req, res) => {
         error_message: "User already exists",
     })
     //👇🏻 logs all the user's credentials to the console.
-    console.log({ email, password, username, id });
+    console.log({ email, password, username, userId });
+});
+
+app.post("/api/bookclubs", async (req, res) => {
+    const { bookClubName } = req.body;
+
+    //👇🏻 holds the bookclub Id
+    const bookClubId = generateID();
+
+    const newBookClub = { bookClubId: bookClubId, bookClubName: bookClubName };
+
+    bookClubs.push(newBookClub);
+
+    //👇🏻 logs all the user's credentials to the console.
+    console.log({ bookClubId, bookClubName });
+
+    return res.json({
+        message: "Bookclub created successfully!"
+    });
+
+    // res.json({
+    //     error_message: "User already exists",
+    // })
+});
+
+app.patch("/api/bookclubs/:id", async (req) => {
+    let { bookClubId, newMembers } = req.body;
+
+    const bookClub = bookClubs.find(
+        (bookClub) => bookClub.bookClubId === bookClubId
+    );
+
+    if (newMembers) {
+        newMembers.forEach( (member) => bookClub.members.push(member) )
+    }
+    
+    //👇🏻 logs all the request fields to the console.
+    console.log({ bookClubId, newMembers });
 });
 
 app.patch("/api/users/:id", async (req) => {

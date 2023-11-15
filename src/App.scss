@@ -502,6 +502,42 @@ input:focus {
   margin: 0 auto auto 0.5em;
 }
 
+.member-image {
+  border: solid;
+  border-radius: 50%;
+  border-width: 1px;
+  object-fit: cover;
+  width: 4em;
+  height: 4em;
+  margin: 0.4em 1em 0.4em 0.4em;
+}
+
+.member-item {
+  background-color: silver;
+  border: solid;
+  border-radius: 15px;
+  display: flex;
+  margin: 0.2em;
+  width: 15em;
+}
+
+.member-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.member-name {
+  align-self: center;
+  margin: 0 0.4em 0 0.4em;
+}
+
+.member-online {
+  display: flex;
+  align-items: center;
+}
+
 .online-display {
-  height: 10%;
+  display: flex;
+  align-self: center;
+  height: 0.9em;
 }

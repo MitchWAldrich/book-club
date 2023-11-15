@@ -6,7 +6,7 @@ const MemberListItem = (props) => {
   const { members } = props;
 
   return (
-    <div>
+    <div className="member-list">
       {members.map( (member, key) => (
         <MemberItem key={key} image={member.image} userName={member.userName} isOnline={member.isOnline}/>
       ))

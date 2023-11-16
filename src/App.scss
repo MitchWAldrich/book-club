@@ -502,6 +502,13 @@ input:focus {
   margin: 0 auto auto 0.5em;
 }
 
+.members-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: teal;
+}
+
 .member-image {
   border: solid;
   border-radius: 50%;
@@ -540,4 +547,8 @@ input:focus {
   display: flex;
   align-self: center;
   height: 0.9em;
+}
+
+.member-add-button {
+  margin: .5em;
 }

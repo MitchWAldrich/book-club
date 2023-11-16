@@ -27,7 +27,7 @@ const Goal = () => {
   };
 
   const updateGoal = (goalObj) => {
-    axios.patch(`http://localhost:4000/api/users/${user.id}`, {id: user.id, goalObj: goalObj })
+    axios.patch(`http://localhost:4000/api/users/${user.id}`, {userId: user.id, goalObj: goalObj })
   .then(response => {
     console.log('goalObjResponse', response.data)  
   })

@@ -6,6 +6,14 @@ export const getUserById = (users, id) => {
   return users.find((user) => user.id === id);
 };
 
+export const getBookClubById = (bookclubs, bookClubId) => {
+  if (typeof bookClubId === 'string') {
+    bookClubId = parseInt(bookClubId);
+  }
+
+  return bookclubs.find((bookclub) => bookclub.bookClubId === bookClubId);
+};
+
 export const getBooks = (bookArray) => {
   const bookObjects = bookArray.map((book) => ({
     ["authors"]: book.volumeInfo.authors ?? null,

@@ -7,9 +7,6 @@ export const getUserById = (users, id) => {
 };
 
 export const getBookClubById = (bookclubs, bookClubId) => {
-  if (typeof bookClubId === 'string') {
-    bookClubId = parseInt(bookClubId);
-  }
 
   return bookclubs.find((bookclub) => bookclub.bookClubId === bookClubId);
 };

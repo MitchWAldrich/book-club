@@ -9,8 +9,6 @@ const MemberList = (props) => {
 
   const invitee = '34xc98(dfk';
 
-    //invite members
-    //2 statuses: invited, accepted
     const inviteMember = (e) => {
       () => e.preventdefault();
 
@@ -20,7 +18,7 @@ const MemberList = (props) => {
     })
     .catch(error => console.error('invite error', error)); 
 
-    instance.patch(`/api/users/${invitee}`, { userId: invitee, bookClubId: bookClubId })
+    instance.patch(`/api/users/${invitee}`, { userId: invitee, bookClubId: bookClubId, bookClubApprovalStatus: 'invited' })
      .then(response => {
       console.log('invite response', response.data)  
     })

@@ -9,7 +9,7 @@ const BookClub = () => {
   const user = useContext(userContext);
 
   const bookClub = {
-    id: 1,
+    id: 'sdfjil234)',
     name: 'My First Book Club',
     members: [
       {
@@ -44,8 +44,6 @@ const BookClub = () => {
     nextMeetingDate: '12/24/2023'
 }
 
-  //invite members
-
   //set book (and next/future book(s))
 
   //archive book
@@ -55,9 +53,9 @@ const BookClub = () => {
   return (
     <main className='container'>
       <Nav user={user ?? "Guest"} />
-      <div className='container'>
-          <h2 className='homeTitle'>{bookClub.name}</h2>
-          <MemberList members={bookClub.members} />
+      <h2 className='homeTitle'>{bookClub.name}</h2>
+      <div>
+          <MemberList members={bookClub.members} bookClubId={bookClub.id} />
       </div>
     </main>
   );

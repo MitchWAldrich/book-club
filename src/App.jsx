@@ -15,6 +15,7 @@ import './App.scss';
 function App() {
   const [ user, setUser ] = useState({ 
     id: 3,
+    userId: '62jt*(kj!3',
         email: 'user3@email.com',
         password: 'password',
         username: 'user3',
@@ -68,7 +69,11 @@ function App() {
                 pageCount: 34,
                 publisher: 'New'
               }]
-        }});
+        },
+        bookClubs: {
+          invited: ['sdfjil234)'],
+          accepted: []
+      }});
 
   return (
     <div>

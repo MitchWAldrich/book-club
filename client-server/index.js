@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import { getUserById } from '../src/utils/selectors.js';
+import { getBookClubById, getUserById } from '../src/utils/selectors.js';
 
 const app = express();
 const PORT = 4000;
@@ -102,6 +102,8 @@ const users = [
 
 const bookClubs = [
     {
+        id: 1,
+        bookClubId: 'sdfjil234)',
         name: 'My First Book Club',
         members: [ 'userId1', 'userId2', 'userId3', 'userId4', 'userId5'],
         currentBook: 'Reese\'s Favourite Book',
@@ -111,6 +113,8 @@ const bookClubs = [
         nextMeetingDate: '12/24/2023'
     },
     {
+        id: 2,
+        bookClubId: 'fsqjil%t72',
         name: 'My Second Book Club',
         members: [ 'userId6', 'userId7', 'userId8', 'userId9', 'userId10'],
         currentBook: 'Reese\'s 2nd Favourite Book',
@@ -120,6 +124,8 @@ const bookClubs = [
         nextMeetingDate: '12/27/2023'
     },
     {
+        id: 3,
+        bookClubId: 'fdul694*',
         name: 'Book Clubbing',
         members: [ 'userId11', 'userId12', 'userId13', 'userId14', 'userId15'],
         currentBook: 'Reese\'s 3rd Favourite Book',
@@ -156,6 +162,16 @@ app.get("/api/users/:id", (req, res, next) => {
 app.get("/api/bookclubs", (req, res) => {
     res.json({
         bookClubs
+    });
+});
+
+app.get("/api/bookclubs/:id", (req, res) => {
+    console.log('params', req.params)
+    const bookClubId = req.params.id;
+    const bookClub = getBookClubById(bookClubs, bookClubId)
+
+    res.json({
+        bookClub
     });
 });
 
@@ -221,7 +237,7 @@ app.patch("/api/bookclubs/:id", async (req) => {
     if (newMembers) {
         newMembers.forEach( (member) => bookClub.members.push(member) )
     }
-    
+
     //👇🏻 logs all the request fields to the console.
     console.log({ bookClubId, newMembers });
 });

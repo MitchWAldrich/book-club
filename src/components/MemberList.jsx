@@ -7,17 +7,25 @@ import MemberListItem from "./MemberListItem";
 const MemberList = (props) => {
   const { members, bookClubId } = props;
 
-  const invitee = 'userId1xxx';
+  const invitee = '34xc98(dfk';
 
     //invite members
     //2 statuses: invited, accepted
     const inviteMember = (e) => {
       () => e.preventdefault();
-      instance.patch(`/api/bookclubs/${bookClubId}`, { userId: invitee, bookClubId: bookClubId })
+
+      instance.patch(`/api/bookclubs/${bookClubId}`, { newMembers: members, bookClubId: bookClubId })
      .then(response => {
       console.log('invite response', response.data)  
     })
     .catch(error => console.error('invite error', error)); 
+
+    instance.patch(`/api/users/${invitee}`, { userId: invitee, bookClubId: bookClubId })
+     .then(response => {
+      console.log('invite response', response.data)  
+    })
+    .catch(error => console.error('invite error', error)); 
+
     }
 
   return (

@@ -21,7 +21,8 @@ const users = [
         library: {
             haveRead: [],
             toRead: []
-        }
+        },
+        bookClubs: []
     },
     {
         id: 2,
@@ -33,7 +34,8 @@ const users = [
         library: {
             haveRead: [],
             toRead: []
-        }
+        },
+        bookClubs: []
     },
     {
         id: 3,
@@ -96,7 +98,8 @@ const users = [
                 pageCount: 34,
                 publisher: 'New'
               }]
-        }
+        },
+        bookClubs: []
     }
 ];
 
@@ -114,7 +117,7 @@ const bookClubs = [
     },
     {
         id: 2,
-        bookClubId: 'fsqjil%t72',
+        bookClubId: 'fsqjil$t72',
         name: 'My Second Book Club',
         members: [ 'userId6', 'userId7', 'userId8', 'userId9', 'userId10'],
         currentBook: 'Reese\'s 2nd Favourite Book',
@@ -228,7 +231,7 @@ app.post("/api/bookclubs", async (req, res) => {
 });
 
 app.patch("/api/bookclubs/:id", async (req) => {
-    let { bookClubId, newMembers } = req.body;
+    const { bookClubId, newMembers } = req.body;
 
     const bookClub = bookClubs.find(
         (bookClub) => bookClub.bookClubId === bookClubId
@@ -243,18 +246,19 @@ app.patch("/api/bookclubs/:id", async (req) => {
 });
 
 app.patch("/api/users/:id", async (req) => {
-    let { id, bookObj, goalObj, status } = req.body;
+    let { userId, bookObj, goalObj, status, bookClubId } = req.body;
 
     const user = users.find(
-        (user) => user.id === id
+        (user) => user.userId === userId
     );
     
    if ( status === 'toRead' ) user.library.toRead.push(bookObj)
    if ( status === 'haveRead' ) user.library.haveRead.push(bookObj)
    if (goalObj) user.goals.push(goalObj)
+   if (bookClubId) user.bookClubs.push(bookClubId)
 
     //👇🏻 logs all the request fields to the console.
-    console.log({ id, bookObj, goalObj });
+    console.log({ userId, bookObj, goalObj });
 });
 
 // Login Route

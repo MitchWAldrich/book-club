@@ -10,6 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
+//Temp Users Object
 const users = [
     {
         id: 1,
@@ -22,7 +23,10 @@ const users = [
             haveRead: [],
             toRead: []
         },
-        bookClubs: []
+        bookClubs: {
+            invited: [],
+            accepted: []
+        }
     },
     {
         id: 2,
@@ -35,7 +39,10 @@ const users = [
             haveRead: [],
             toRead: []
         },
-        bookClubs: []
+        bookClubs: {
+            invited: [],
+            accepted: []
+        }
     },
     {
         id: 3,
@@ -99,16 +106,21 @@ const users = [
                 publisher: 'New'
               }]
         },
-        bookClubs: []
+        bookClubs: {
+            invited: ['sdfjil234)'],
+            accepted: []
+        }
     }
 ];
+
+// Temp Book Clubs Object
 
 const bookClubs = [
     {
         id: 1,
         bookClubId: 'sdfjil234)',
         name: 'My First Book Club',
-        members: [ 'userId1', 'userId2', 'userId3', 'userId4', 'userId5'],
+        members: {invited: ['62jt*(kj!3'], accepted: [ 'userId1', 'userId2', 'userId3', 'userId4', 'userId5']},
         currentBook: 'Reese\'s Favourite Book',
         nextBook: 'Oprah\'s Favourite Book',
         previousBooks: ['Old Book', 'Other Old Book', 'A Graphic Novel'],
@@ -119,7 +131,7 @@ const bookClubs = [
         id: 2,
         bookClubId: 'fsqjil$t72',
         name: 'My Second Book Club',
-        members: [ 'userId6', 'userId7', 'userId8', 'userId9', 'userId10'],
+        members: {invited: [], accepted: [ 'userId6', 'userId7', 'userId8', 'userId9', 'userId10']},
         currentBook: 'Reese\'s 2nd Favourite Book',
         nextBook: 'Oprah\'s 2nd Favourite Book',
         previousBooks: ['Old Book 2', 'A 2nd Old Book', 'A 2nd Graphic Novel'],
@@ -130,7 +142,7 @@ const bookClubs = [
         id: 3,
         bookClubId: 'fdul694*',
         name: 'Book Clubbing',
-        members: [ 'userId11', 'userId12', 'userId13', 'userId14', 'userId15'],
+        members: {invited: [], accepted: [ 'userId11', 'userId12', 'userId13', 'userId14', 'userId15']},
         currentBook: 'Reese\'s 3rd Favourite Book',
         nextBook: 'Oprah\'s 3rd Favourite Book',
         previousBooks: ['Old Book 3', 'Third Old Book', 'A 3rd Graphic Novel'],
@@ -139,11 +151,21 @@ const bookClubs = [
     }
 ]
 
+//👇🏻 generates a random string as ID
+const generateID = () => Math.random().toString(36).substring(2, 10);
+//Need to make unique
+
+
+/* ***** ROUTES ***** */
+
+// API Route
 app.get("/api", (req, res) => {
     res.json({
         message: "Hello world",
     });
 });
+
+/* *** USER ROUTES *** */
 
 app.get("/api/users", (req, res) => {
     res.json({
@@ -161,26 +183,6 @@ app.get("/api/users/:id", (req, res, next) => {
     // res.send('USER')
     next()
   })
-
-app.get("/api/bookclubs", (req, res) => {
-    res.json({
-        bookClubs
-    });
-});
-
-app.get("/api/bookclubs/:id", (req, res) => {
-    console.log('params', req.params)
-    const bookClubId = req.params.id;
-    const bookClub = getBookClubById(bookClubs, bookClubId)
-
-    res.json({
-        bookClub
-    });
-});
-
-//👇🏻 generates a random string as ID
-const generateID = () => Math.random().toString(36).substring(2, 10);
-//Need to make unique
 
 // Register Route
 app.post("/api/users", async (req, res) => {
@@ -208,6 +210,52 @@ app.post("/api/users", async (req, res) => {
     console.log({ email, password, username, userId });
 });
 
+app.patch("/api/users/:id", async (req) => {
+    let { userId, bookObj, goalObj, readStatus, bookClubId, bookClubApprovalStatus } = req.body;
+
+    const user = users.find(
+        (user) => user.userId === userId
+    );
+    
+    // Update Read Status
+    if ( readStatus === 'toRead' ) user.library.toRead.push(bookObj)
+    if ( readStatus === 'haveRead' ) user.library.haveRead.push(bookObj)
+
+    // Update Goals
+    if (goalObj) user.goals.push(goalObj)
+
+    // Update Book Clubs
+    if (bookClubApprovalStatus === 'invited') user.bookClubs.invited.push(bookClubId)
+    if (bookClubApprovalStatus === 'accepted') {
+        user.bookClubs.accepted.push(bookClubId);
+        user.bookClubs.invited.splice(user.bookClubs.invited.indexOf(bookClubId))
+    }
+    if (bookClubApprovalStatus === 'rejected') {
+        user.bookClubs.invited.splice(user.bookClubs.invited.indexOf(bookClubId))
+    }
+    //👇🏻 logs all the request fields to the console.
+    console.log({ userId, bookObj, goalObj });
+});
+
+
+/* *** BOOKCLUBS ROUTES *** */
+app.get("/api/bookclubs", (req, res) => {
+    res.json({
+        bookClubs
+    });
+});
+
+app.get("/api/bookclubs/:id", (req, res) => {
+    console.log('params', req.params)
+    const bookClubId = req.params.id;
+    const bookClub = getBookClubById(bookClubs, bookClubId)
+
+    res.json({
+        bookClub
+    });
+});
+
+
 app.post("/api/bookclubs", async (req, res) => {
     const { bookClubName } = req.body;
 
@@ -224,41 +272,24 @@ app.post("/api/bookclubs", async (req, res) => {
     return res.json({
         message: "Bookclub created successfully!"
     });
-
-    // res.json({
-    //     error_message: "User already exists",
-    // })
 });
 
 app.patch("/api/bookclubs/:id", async (req) => {
-    const { bookClubId, newMembers } = req.body;
+    const { bookClubId, newMembers, acceptanceStatus } = req.body;
 
-    const bookClub = bookClubs.find(
-        (bookClub) => bookClub.bookClubId === bookClubId
-    );
+    const bookClub = bookClubs.find( bookClub => bookClub.bookClubId === bookClubId )
 
     if (newMembers) {
-        newMembers.forEach( (member) => bookClub.members.push(member) )
+        if (acceptanceStatus === 'accepted') newMembers.forEach( (member) => {
+            bookClub.members.accepted.push(member)
+            bookClub.members.invited.splice(bookClub.members.invited.indexOf(member))
+        })
+
+        if (acceptanceStatus === 'rejected') newMembers.forEach( (member) => bookClub.members.invited.splice(bookClub.members.invited.indexOf(member)))
     }
 
     //👇🏻 logs all the request fields to the console.
     console.log({ bookClubId, newMembers });
-});
-
-app.patch("/api/users/:id", async (req) => {
-    let { userId, bookObj, goalObj, status, bookClubId } = req.body;
-
-    const user = users.find(
-        (user) => user.userId === userId
-    );
-    
-   if ( status === 'toRead' ) user.library.toRead.push(bookObj)
-   if ( status === 'haveRead' ) user.library.haveRead.push(bookObj)
-   if (goalObj) user.goals.push(goalObj)
-   if (bookClubId) user.bookClubs.push(bookClubId)
-
-    //👇🏻 logs all the request fields to the console.
-    console.log({ userId, bookObj, goalObj });
 });
 
 // Login Route

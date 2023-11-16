@@ -552,3 +552,17 @@ input:focus {
 .member-add-button {
   margin: .5em;
 }
+
+.invitation-buttons {
+  display: flex;
+}
+
+.invitation-buttons-accept {
+  margin: 0 1em 0 1em;
+  background-color: green;
+}
+
+.invitation-buttons-reject {
+  margin: 0 1em 0 1em;  
+  background-color: red;
+}

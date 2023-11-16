@@ -32,7 +32,7 @@ const bookObj = {
   const addToToRead = () => {
     const status = "toRead";
 
-    axios.patch(`http://localhost:4000/api/users/${userId}`, {id: userId, bookObj: bookObj, status: status })
+    axios.patch(`http://localhost:4000/api/users/${userId}`, {userId: userId, bookObj: bookObj, status: status })
   .then(response => {
     console.log(response.data)  
   })
@@ -43,7 +43,7 @@ const bookObj = {
   const addToHaveRead = () => {
     const status = "haveRead";
 
-    axios.patch(`http://localhost:4000/api/users/${userId}`, {id: userId, bookObj: bookObj, status: status })
+    axios.patch(`http://localhost:4000/api/users/${userId}`, {userId: userId, bookObj: bookObj, status: status })
   .then(response => {
     console.log(response.data)  
   })

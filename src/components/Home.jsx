@@ -8,45 +8,11 @@ import SearchBar from "./Searchbar";
 
 import userContext from "../userContext"; 
 import { getBookClubById } from "../utils/selectors";
+import { bookClubsMock } from "../mocks/bookClubs";
 
 const Home = () => {
     const user = useContext(userContext);
     console.log('homeUser', user);
-    const bookClubs = [
-        {
-            id: 1,
-            bookClubId: 'sdfjil234)',
-            name: 'My First Book Club',
-            members: {invited: [], accepted: [ 'userId1', 'userId2', 'userId3', 'userId4', 'userId5']},
-            currentBook: 'Reese\'s Favourite Book',
-            nextBook: 'Oprah\'s Favourite Book',
-            previousBooks: ['Old Book', 'Other Old Book', 'A Graphic Novel'],
-            meetingFrequency: 'weekly',
-            nextMeetingDate: '12/24/2023'
-        },
-        {
-            id: 2,
-            bookClubId: 'fsqjil$t72',
-            name: 'My Second Book Club',
-            members: {invited: [], accepted: [ 'userId6', 'userId7', 'userId8', 'userId9', 'userId10']},
-            currentBook: 'Reese\'s 2nd Favourite Book',
-            nextBook: 'Oprah\'s 2nd Favourite Book',
-            previousBooks: ['Old Book 2', 'A 2nd Old Book', 'A 2nd Graphic Novel'],
-            meetingFrequency: 'monthly',
-            nextMeetingDate: '12/27/2023'
-        },
-        {
-            id: 3,
-            bookClubId: 'fdul694*',
-            name: 'Book Clubbing',
-            members: {invited: [], accepted: [ 'userId11', 'userId12', 'userId13', 'userId14', 'userId15']},
-            currentBook: 'Reese\'s 3rd Favourite Book',
-            nextBook: 'Oprah\'s 3rd Favourite Book',
-            previousBooks: ['Old Book 3', 'Third Old Book', 'A 3rd Graphic Novel'],
-            meetingFrequency: 'bi-weekly',
-            nextMeetingDate: '11/24/2023'
-        }
-    ];
 
     const [bookClubName, setBookClubName] = useState("");
     const [error, setError] = useState(false);
@@ -70,7 +36,7 @@ const Home = () => {
             <Nav user={user} />
             <Goal />
             { isInvited ? (
-                <Invitation bookClubObj={getBookClubById(bookClubs, user.bookClubs.invited[0])} userId={user.userId} />
+                <Invitation bookClubObj={getBookClubById(bookClubsMock, user.bookClubs.invited[0])} userId={user.userId} />
             ) : null
             }
             <SearchBar />

@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import BookRating from './BookRating';
 
 import { formatByLocation, shortenDescription } from '../utils/helpers';
+import { bookMock } from '../mocks/books';
 
 const SingleBookItem = (props) => {
   const {
@@ -21,27 +22,11 @@ const SingleBookItem = (props) => {
   } = props;
   //Style the whole thing to look like an open book
 
-const bookObj = {
-      title: 'title',
-      authors: ['Fred Smith', 'Julie Steinberg'],
-      categories: ['Fiction'],
-      averageRating: 4,
-      description: 'A great book about stuff',
-      imageLinks: {
-        smallThumbnail:
-          "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
-        thumbnail:
-          "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-      },
-      pageCount: 234,
-      publisher: 'Smith',
-    };
-
   // const addToLibrary = (event, bookObject) => {
   const addToToRead = () => {
     const status = "toRead";
 
-    axios.patch(`http://localhost:4000/api/users/${userId}`, {userId: userId, bookObj: bookObj, status: status })
+    axios.patch(`http://localhost:4000/api/users/${userId}`, {userId: userId, bookObj: bookMock, status: status })
   .then(response => {
     console.log(response.data)  
   })
@@ -52,7 +37,7 @@ const bookObj = {
   const addToHaveRead = () => {
     const status = "haveRead";
 
-    axios.patch(`http://localhost:4000/api/users/${userId}`, {userId: userId, bookObj: bookObj, status: status })
+    axios.patch(`http://localhost:4000/api/users/${userId}`, {userId: userId, bookObj: bookMock, status: status })
   .then(response => {
     console.log(response.data)  
   })

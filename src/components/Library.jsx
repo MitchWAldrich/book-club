@@ -5,27 +5,10 @@ import Nav from "./Nav";
 import SingleBookItem from "./SingleBookItem";
 
 import userContext from './../userContext';
+import { bookMock } from "../mocks/books";
 
 const Library = () => {
   const user = useContext(userContext);
-
-  const sampleBook = {
-    authors: ["Daniel Keyes"],
-    categories: ["Fiction", "Non-Fiction"],
-    averageRating: 4,
-    description:
-      "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
-    imageLinks: {
-      smallThumbnail:
-        "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
-      thumbnail:
-        "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-    },
-    language: "en",
-    pageCount: 328,
-    publisher: "Houghton Mifflin Harcourt",
-    title: "Flowers for Algernon",
-  };
 
   return (
     <main>
@@ -64,23 +47,17 @@ const Library = () => {
         <br></br>
         <SingleBookItem
             // key={key}
-            authors={sampleBook.authors}
-            categories={sampleBook.categories}
-            averageRating={sampleBook.averageRating}
-            description={sampleBook.description}
-            imageLinks={sampleBook.imageLinks}
-            language={sampleBook.language}
-            pageCount={sampleBook.pageCount}
-            publisher={sampleBook.publisher}
-            title={sampleBook.title}
+            authors={bookMock.authors}
+            categories={bookMock.categories}
+            averageRating={bookMock.averageRating}
+            description={bookMock.description}
+            imageLinks={bookMock.imageLinks}
+            language={bookMock.language}
+            pageCount={bookMock.pageCount}
+            publisher={bookMock.publisher}
+            title={bookMock.title}
             userId={3}
             location={'expanded'}
-          />
-          <SingleBookItem
-            authors={sampleBook.authors}
-            imageLinks={sampleBook.imageLinks}
-            title={sampleBook.title}
-            location={'bookClubFeature'}
           />
       </div>
     </main>

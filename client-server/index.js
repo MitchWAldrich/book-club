@@ -1,6 +1,9 @@
 import express from 'express';
 import cors from 'cors';
+
 import { getBookClubById, getUserById } from '../src/utils/selectors.js';
+import { bookClubsMock } from '../src/mocks/bookClubs.js';
+import { usersMock } from '../src/mocks/users.js';
 
 const app = express();
 const PORT = 4000;
@@ -9,147 +12,6 @@ const PORT = 4000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
-
-//Temp Users Object
-const users = [
-    {
-        id: 1,
-        userId: '34xc98(dfk',
-        email: 'user1@email.com',
-        password: 'password',
-        username: 'user1',
-        goals: [],
-        library: {
-            haveRead: [],
-            toRead: []
-        },
-        bookClubs: {
-            invited: [],
-            accepted: []
-        }
-    },
-    {
-        id: 2,
-        userId: '523dgf*5gn&',
-        email: 'user2@email.com',
-        password: 'password',
-        username: 'user2',
-        goals: [],
-        library: {
-            haveRead: [],
-            toRead: []
-        },
-        bookClubs: {
-            invited: [],
-            accepted: []
-        }
-    },
-    {
-        id: 3,
-        userId: '62jt*(kj!3',
-        email: 'user3@email.com',
-        password: 'password',
-        username: 'user3',
-        goals: [{
-            name: 'My First Goal',
-            number: '20 pages',
-            timeline: '3 days',
-        }],
-        library: {
-            haveRead: [{
-                title: 'title1',
-                authors: [ 'John Smith', 'Julie Black' ],
-                categories: [ 'Non-Fiction' ],
-                averageRating: 5,
-                description: 'A great book about things',
-                imageLinks: { smallThumbnail: 'http:', thumbnail: 'https:' },
-                pageCount: 234,
-                publisher: 'Clearly'
-              },{
-                title: 'title2',
-                authors: [ 'Fred Smith', 'Julie Steinberg' ],
-                categories: [ 'Fiction' ],
-                averageRating: 4,
-                description: 'A great book about stuff',
-                imageLinks: { smallThumbnail: 'http:', thumbnail: 'https:' },
-                pageCount: 154,
-                publisher: 'Smithson'
-              },
-              {
-                title: 'title3',
-                authors: [ 'Fred Smith', 'Julie Steinberg' ],
-                categories: [ 'Fiction' ],
-                averageRating: 3,
-                description: 'A great novel about stuff',
-                imageLinks: { smallThumbnail: 'http:', thumbnail: 'https:' },
-                pageCount: 200,
-                publisher: 'Smithly'
-              }],
-              toRead: [{
-                title: 'title4',
-                authors: [ 'Whit Merrifield'],
-                categories: [ 'Biography', 'Sports' ],
-                averageRating: 5,
-                description: 'A great book about Whit',
-                imageLinks: { smallThumbnail: 'http:', thumbnail: 'https:' },
-                pageCount: 234,
-                publisher: 'Jays'
-              },
-              {
-                title: 'title5',
-                authors: [ 'Fred Smith Black', 'Julie Steinberg' ],
-                categories: [ 'Fiction' ],
-                averageRating: 4,
-                description: 'A great book about stuff',
-                imageLinks: { smallThumbnail: 'http:', thumbnail: 'https:' },
-                pageCount: 34,
-                publisher: 'New'
-              }]
-        },
-        bookClubs: {
-            invited: ['sdfjil234)'],
-            accepted: []
-        }
-    }
-];
-
-// Temp Book Clubs Object
-
-const bookClubs = [
-    {
-        id: 1,
-        bookClubId: 'sdfjil234)',
-        name: 'My First Book Club',
-        members: {invited: ['62jt*(kj!3'], accepted: [ 'userId1', 'userId2', 'userId3', 'userId4', 'userId5']},
-        currentBook: 'Reese\'s Favourite Book',
-        nextBook: 'Oprah\'s Favourite Book',
-        previousBooks: ['Old Book', 'Other Old Book', 'A Graphic Novel'],
-        meetingFrequency: 'weekly',
-        nextMeetingDate: '12/24/2023'
-    },
-    {
-        id: 2,
-        bookClubId: 'fsqjil$t72',
-        name: 'My Second Book Club',
-        members: {invited: [], accepted: [ 'userId6', 'userId7', 'userId8', 'userId9', 'userId10']},
-        currentBook: 'Reese\'s 2nd Favourite Book',
-        nextBook: 'Oprah\'s 2nd Favourite Book',
-        previousBooks: ['Old Book 2', 'A 2nd Old Book', 'A 2nd Graphic Novel'],
-        meetingFrequency: 'monthly',
-        nextMeetingDate: '12/27/2023'
-    },
-    {
-        id: 3,
-        bookClubId: 'fdul694*',
-        name: 'Book Clubbing',
-        members: {invited: [], accepted: [ 'userId11', 'userId12', 'userId13', 'userId14', 'userId15']},
-        currentBook: 'Reese\'s 3rd Favourite Book',
-        nextBook: 'Oprah\'s 3rd Favourite Book',
-        previousBooks: ['Old Book 3', 'Third Old Book', 'A 3rd Graphic Novel'],
-        meetingFrequency: 'bi-weekly',
-        nextMeetingDate: '11/24/2023'
-    }
-]
 
 //👇🏻 generates a random string as ID
 const generateID = () => Math.random().toString(36).substring(2, 10);
@@ -169,13 +31,13 @@ app.get("/api", (req, res) => {
 
 app.get("/api/users", (req, res) => {
     res.json({
-        users
+        usersMock
     });
 });
 
 app.get("/api/users/:id", (req, res, next) => {
     const id = req.params.id;
-    const user = getUserById(users, id)
+    const user = getUserById(usersMock, id)
     
     res.json({
         user
@@ -190,13 +52,13 @@ app.post("/api/users", async (req, res) => {
 
     //👇🏻 holds the userID
     const userId = generateID();
-    const userSearch = users.filter(
+    const userSearch = usersMock.filter(
         (user) => user.email === email && user.password === password
     );
 
     if (userSearch.length === 0) {
         const newUser = { userId, email, password, username };
-        users.push(newUser);
+        usersMock.push(newUser);
 
         return res.json({
             message: "Account created successfully!"
@@ -213,7 +75,7 @@ app.post("/api/users", async (req, res) => {
 app.patch("/api/users/:id", async (req) => {
     let { userId, bookObj, goalObj, readStatus, bookClubId, bookClubApprovalStatus } = req.body;
 
-    const user = users.find(
+    const user = usersMock.find(
         (user) => user.userId === userId
     );
     
@@ -241,14 +103,14 @@ app.patch("/api/users/:id", async (req) => {
 /* *** BOOKCLUBS ROUTES *** */
 app.get("/api/bookclubs", (req, res) => {
     res.json({
-        bookClubs
+        bookClubsMock
     });
 });
 
 app.get("/api/bookclubs/:id", (req, res) => {
     console.log('params', req.params)
     const bookClubId = req.params.id;
-    const bookClub = getBookClubById(bookClubs, bookClubId)
+    const bookClub = getBookClubById(bookClubsMock, bookClubId)
 
     res.json({
         bookClub
@@ -264,7 +126,7 @@ app.post("/api/bookclubs", async (req, res) => {
 
     const newBookClub = { bookClubId: bookClubId, bookClubName: bookClubName };
 
-    bookClubs.push(newBookClub);
+    bookClubsMock.push(newBookClub);
 
     //👇🏻 logs all the user's credentials to the console.
     console.log({ bookClubId, bookClubName });
@@ -275,9 +137,9 @@ app.post("/api/bookclubs", async (req, res) => {
 });
 
 app.patch("/api/bookclubs/:id", async (req) => {
-    const { bookClubId, newMembers, acceptanceStatus } = req.body;
+    const { bookClubId, newMembers, acceptanceStatus, bookObj } = req.body;
 
-    const bookClub = bookClubs.find( bookClub => bookClub.bookClubId === bookClubId )
+    const bookClub = bookClubsMock.find( bookClub => bookClub.bookClubId === bookClubId )
 
     if (newMembers) {
         if (acceptanceStatus === 'accepted') newMembers.forEach( (member) => {
@@ -288,6 +150,10 @@ app.patch("/api/bookclubs/:id", async (req) => {
         if (acceptanceStatus === 'rejected') newMembers.forEach( (member) => bookClub.members.invited.splice(bookClub.members.invited.indexOf(member)))
     }
 
+    if (bookObj) {
+        bookClub.upcomingBooks.push(bookObj);
+    }
+
     //👇🏻 logs all the request fields to the console.
     console.log({ bookClubId, newMembers });
 });
@@ -296,7 +162,7 @@ app.patch("/api/bookclubs/:id", async (req) => {
 app.post("/api/login", (req, res) => {
     const { email, password } = req.body;
     //👇🏻 checks if the user exists
-    let result = users.filter(
+    let result = usersMock.filter(
         (user) => user.email === email && user.password === password
     );
     //👇🏻 if the user doesn't exist

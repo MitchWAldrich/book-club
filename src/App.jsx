@@ -44,8 +44,13 @@ function App() {
                 authors: [ 'Fred Smith', 'Julie Steinberg' ],
                 categories: [ 'Fiction' ],
                 averageRating: 3,
-                description: 'A great novel about stuff',
-                imageLinks: { smallThumbnail: 'http:', thumbnail: 'https:' },
+                description: 'A great novel about lots of stuff',
+                imageLinks: {
+                  smallThumbnail:
+                    "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                  thumbnail:
+                    "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+                },
                 pageCount: 200,
                 publisher: 'Smithly'
               }],

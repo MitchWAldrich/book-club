@@ -78,15 +78,8 @@ const Library = () => {
           />
           <SingleBookItem
             authors={sampleBook.authors}
-            categories={sampleBook.categories}
-            averageRating={sampleBook.averageRating}
-            description={sampleBook.description}
             imageLinks={sampleBook.imageLinks}
-            language={sampleBook.language}
-            pageCount={sampleBook.pageCount}
-            publisher={sampleBook.publisher}
             title={sampleBook.title}
-            userId={3}
             location={'bookClubFeature'}
           />
       </div>

@@ -10,10 +10,11 @@ const BookRating = (props) => {
 
   const starSize = location === 'expanded' ? '2em' : '1em';
   const className = location === 'expanded' ? 'ratingStarsHor' : 'ratingStarsVert';
+  if (location === 'listItem') stars.reverse();
 
   return (
     <div className={className}>
-      {stars.reverse().map((star, key) =>
+      {stars.map((star, key) =>
         star <= averageRating ? (
           <IconContext.Provider
             key={key}

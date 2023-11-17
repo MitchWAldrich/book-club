@@ -204,7 +204,7 @@ input:focus {
   width: 20%;
 }
 
-.bookDescription {
+.descriptionInfo {
   display: flex;
   flex-direction: column;
   margin: 0 5em 0 1em;
@@ -242,7 +242,7 @@ input:focus {
 
 .bookListItemLeft {
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
   justify-self: center;
   align-items: center;
   // padding-top: 0.75em;
@@ -250,18 +250,38 @@ input:focus {
   // height: 90%;
   // background-color: white;
   object-fit: cover;
-
 }
 
 .bookImage {
-  object-fit: cover;
-  height: 80%;
-  padding: 0.5em 0 0.1em 0;
+  object-fit: contain;
+  height: 90%;
+  width: 80%;
+  margin: 0.5em 0.25em 0.5em 0.5em;
+  // background: orange;
 }
 
 .ratingDisplay {
-  height: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  // background-color: red;
+  height: 90%;
+  width: 20%;
 }
+
+.ratingStarsVert {
+// background-color: teal;
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+}
+
+.ratingStarsHor {
+  // background-color: teal;
+    display: flex;
+    flex-direction: row;
+    height: 75%;
+  }
 
 .titleAndAuthorInfo {
   display: flex;
@@ -364,45 +384,54 @@ input:focus {
   border-radius: 10px;
   display: flex;
   margin: 0.5rem 15rem 0.4rem 15rem;
-  height: 40em;
+  height: 35em;
+  width: 60%;
   background-color: silver;
-  box-shadow: 0 0 0.4em 0.2em slategray
+  box-shadow: 0 0 0.4em 0.2em slategray;
+  align-items: center;
 }
 .singleBookItemLeft {
   display: flex;
   flex-direction: column;
-  justify-self: center;
+  justify-content: center;
   align-items: center;
-  // padding-top: 0.75em;
-  width: 75%;
-  // height: 90%;
-  // background-color: white;
+  width: 50%;
+  height: 100%;
+  background-color: lime;
   object-fit: cover;
 }
 
 .singleBookInformation {
   display: flex;
   flex-direction: column;
-  padding: 1em;
-  width: 25%;
-  // background-color: green;
+  width: 50%;
+  height: 100%;
+  background-color: green;
 }
 
 .singleBookImage {
   object-fit: cover;
   height: 80%;
-  padding: 0.5em 0 0.1em 0;
+  margin: 0 0 0.5em 0;
 }
 
 .singleBookRatingDisplay {
   height: 10%;
 }
 
+.review-star {
+  display: flex;
+  // background-color: orange;
+}
+
 .singleBookTitleAndAuthorInfo {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1em 1.5em 0 0;
   // flex-direction: column;
   // background-color: purple;
-  width: 20%;
+  // width: 20%;
 }
 
 .singleBookTitleInfo {
@@ -410,6 +439,7 @@ input:focus {
   flex-direction: column;
   // background-color: silver;
   height: 50%;
+  margin: 0 0 0.5em 0;
 }
 
 .singleBookTitleText {
@@ -423,6 +453,7 @@ input:focus {
   flex-direction: column;
   // background-color: aqua;
   height: 50%;
+  margin: 0.5em 0 0 0;
 }
 
 .singleBookAuthorText {
@@ -440,12 +471,15 @@ input:focus {
   font-size: 1.2vw;
   font-weight: bold;
   margin: 0;
+  align-self: center;
 }
 
 .singleBookCategoryInfo {
   display: flex;
   flex-direction: column;
   height: 33.33%;
+  width: 35%;
+  background-color: orange;
 }
 
 .singleBookCategoryText {
@@ -458,6 +492,8 @@ input:focus {
   display: flex;
   flex-direction: column;
   height: 33.33%;
+  width: 25%;
+  background-color: white;
 }
 
 .singleBookPagesText {
@@ -469,6 +505,8 @@ input:focus {
   display: flex;
   flex-direction: column;
   height: 33.33%;
+  width: 35%;
+  background-color:red;
 }
 
 .singleBookPublisherText {
@@ -476,21 +514,20 @@ input:focus {
   margin: 0 auto auto 0.5em;
 }
 
-
 .singleBookAdditional {
   display: flex;
-  
-  // background-color: pink;
-  width: 20%;
+  justify-content: space-between;
+  // width: 100%;
+  margin: 0 1.5em 1em 0;
+  background-color: aqua;
 }
 
 .singleBookDescription {
   display: flex;
   flex-direction: column;
-  margin: 0 5em 0 1em;
+  margin: 1em 1.5em 1em 0;
   overflow: auto;
-  width: 50%;
-  // background-color: red;
+  background-color: purple;
 }
 
 .singleBookDescriptionText {
@@ -502,11 +539,31 @@ input:focus {
   margin: 0 auto auto 0.5em;
 }
 
+.singleBookButtonsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 1.5em;
+  // background-color: teal;
+}
+
+.singleBookButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+}
+
+.singleBookRatingDisplay {
+  height: 10%;
+  
+}
+
 .members-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: teal;
+  // background-color: teal;
 }
 
 .member-image {
@@ -565,4 +622,80 @@ input:focus {
 .invitation-buttons-reject {
   margin: 0 1em 0 1em;  
   background-color: red;
+}
+
+.bookClubFeature {
+  background-color: orange;
+}
+
+.bookClubFeature {
+  // border: solid;
+  border-radius: 10px;
+  display: flex;
+  margin: 0.5rem 15rem 0.4rem 15rem;
+  height: 10em;
+  background-color: silver;
+  box-shadow: 0 0 0.4em 0.2em slategray
+}
+.bookClubFeatureLeft {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-items: center;
+  // padding-top: 0.75em;
+  width: 75%;
+  // height: 90%;
+  // background-color: white;
+  object-fit: cover;
+}
+
+.bookClubFeatureInformation {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  width: 25%;
+  // background-color: green;
+}
+
+.bookClubFeatureImage {
+  object-fit: cover;
+  height: 80%;
+  padding: 0.5em 0 0.1em 0;
+}
+
+.bookClubFeatureTitleAndAuthorInfo {
+  display: flex;
+  width: 20%;
+}
+
+.bookClubFeatureTitleInfo {
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+}
+
+.bookClubFeatureTitleText {
+  font-size: 1.4vw;
+  margin: 0 auto auto 0.5em;
+}
+
+.bookClubFeatureAuthorInfo {
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+}
+
+.bookClubFeatureAuthorText {
+  font-size: 1.4vw;
+  margin: 0 auto auto 0.5em;
+}
+
+.bookClubFeaturemallHeading {
+  // background-color: gold;
+}
+
+.bookClubFeatureSmallHeadingText {
+  font-size: 1.2vw;
+  font-weight: bold;
+  margin: 0;
 }

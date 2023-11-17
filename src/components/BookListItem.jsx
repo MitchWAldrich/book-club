@@ -20,7 +20,7 @@ const BookListItem = (props) => {
   boxes.forEach(box => {
     box.style.fontSize = getFontSize(box.textContent.length, 12)
   })
-
+  
   //use a symbol for Fiction or Non-Fiction
   //don't display language?
 
@@ -34,7 +34,7 @@ const BookListItem = (props) => {
             alt="Girl in a jacket"
           />
           <div className="ratingDisplay">
-            {BookRating(averageRating) || null}
+            <BookRating averageRating={averageRating} location="listItem" />
           </div>
         </div>
         <div className="bookInformation">
@@ -52,7 +52,7 @@ const BookListItem = (props) => {
               ))}
             </div>
           </div>
-          <div className="titleInfo">
+          <div className="descriptionInfo">
             <p className="smallHeadingText">Description:</p>
             <p className="descriptionText">
               {description

@@ -50,7 +50,7 @@ const Library = () => {
         {user?.library?.haveRead.map((book, key) => (
           <BookListItem
             key={key}
-            authors={book.author}
+            authors={book.authors}
             categories={book.categories}
             averageRating={book.averageRating}
             description={book.description}
@@ -61,6 +61,7 @@ const Library = () => {
             title={book.title}
           />
         )) ?? null}
+        <br></br>
         <SingleBookItem
             // key={key}
             authors={sampleBook.authors}
@@ -73,6 +74,20 @@ const Library = () => {
             publisher={sampleBook.publisher}
             title={sampleBook.title}
             userId={3}
+            location={'expanded'}
+          />
+          <SingleBookItem
+            authors={sampleBook.authors}
+            categories={sampleBook.categories}
+            averageRating={sampleBook.averageRating}
+            description={sampleBook.description}
+            imageLinks={sampleBook.imageLinks}
+            language={sampleBook.language}
+            pageCount={sampleBook.pageCount}
+            publisher={sampleBook.publisher}
+            title={sampleBook.title}
+            userId={3}
+            location={'bookClubFeature'}
           />
       </div>
     </main>

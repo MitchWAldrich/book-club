@@ -2,6 +2,7 @@ import { useContext } from "react";
 
 import MemberList from "./MemberList";
 import Nav from "./Nav";
+import SingleBookItem from "./SingleBookItem";
 
 import userContext from "../userContext";
 
@@ -44,6 +45,24 @@ const BookClub = () => {
     nextMeetingDate: '12/24/2023'
 }
 
+const bookObj = {
+  authors: ["Daniel Keyes"],
+  categories: ["Fiction", "Non-Fiction"],
+  averageRating: 4,
+  description:
+    "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+  imageLinks: {
+    smallThumbnail:
+      "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+    thumbnail:
+      "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+  },
+  language: "en",
+  pageCount: 328,
+  publisher: "Houghton Mifflin Harcourt",
+  title: "Flowers for Algernon",
+};
+
   //set book (and next/future book(s))
 
   //archive book
@@ -55,7 +74,26 @@ const BookClub = () => {
       <Nav user={user ?? "Guest"} />
       <h2 className='homeTitle'>{bookClub.name}</h2>
       <div>
-          <MemberList members={bookClub.members} bookClubId={bookClub.id} />
+      <SingleBookItem
+            authors={bookObj.authors}
+            categories={bookObj.categories}
+            averageRating={bookObj.averageRating}
+            description={bookObj.description}
+            imageLinks={bookObj.imageLinks}
+            language={bookObj.language}
+            pageCount={bookObj.pageCount}
+            publisher={bookObj.publisher}
+            title={bookObj.title}
+            userId={3}
+            location={'expanded'}
+          />
+        <SingleBookItem
+          authors={bookObj.authors}
+          imageLinks={bookObj.imageLinks}
+          title={bookObj.title}
+          location={'bookClubFeature'}
+        />
+        <MemberList members={bookClub.members} bookClubId={bookClub.id} />
       </div>
     </main>
   );

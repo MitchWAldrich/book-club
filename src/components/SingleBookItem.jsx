@@ -1,8 +1,10 @@
 import axios from 'axios';
+
 import PropTypes from 'prop-types';
+
 import BookRating from './BookRating';
 
-import { shortenDescription } from '../utils/helpers';
+import { formatByLocation, shortenDescription } from '../utils/helpers';
 
 const SingleBookItem = (props) => {
   const {
@@ -58,30 +60,38 @@ const bookObj = {
     // add book object to user object
   };
 
+  // const singleBookClassName
+  // const locationStatuses = ['expanded', 'listItem', 'bookClubFeature'];
+  // const locationStatuses = ['expanded', 'bookClubFeature'];
+
+  const locationsObject = formatByLocation(location);
+  console.log('locationsObj', locationsObject);
 
   return (
     <main>
-      <div className="singleBookItem">
-        <div className="singleBookItemLeft">
+      <div className={locationsObject.className}>
+        <div className={locationsObject.left}>
           <img
-            className="singleBookImage"
+            className={locationsObject.image}
             src={imageLinks?.thumbnail || imageLinks?.smallThumbnail || null}
             alt="Girl in a jacket"
           />
-          <div className="singleBookRatingDisplay">
-            <BookRating averageRating={averageRating} location={'expanded'} />
-          </div>
-        </div>
-        <div className="singleBookInformation">
-          <div className="singleBookTitleAndAuthorInfo">
-            <div className="singleBookTitleInfo">
-              <p className="singleBookSmallHeadingText">Title:</p>
-              <h4 className="singleBookTitleText">{title || 'No title available.'}</h4>
+          { location === 'expanded' ? (
+            <div className="singleBookRatingDisplay">
+              <BookRating averageRating={averageRating} location={'expanded'} />
             </div>
-            <div className="singleBookAuthorInfo">
-              <p className="singleBookSmallHeadingText">Author(s):</p>
+          ) : null }
+        </div>
+        <div className={locationsObject.information}>
+          <div className={locationsObject.titleAndAuthorInfo}>
+            <div className={locationsObject.titleInfo}>
+              <p className={locationsObject.smallHeadingText}>Title:</p>
+              <h4 className={locationsObject.titleText}>{title || 'No title available.'}</h4>
+            </div>
+            <div className={locationsObject.authorInfo}>
+              <p className={locationsObject.smallHeadingText}>Author(s):</p>
               {authors?.map((author, key) => (
-                <h4 key={key} className="singleBookAuthorText">
+                <h4 key={key} className={locationsObject.authorText}>
                   {author || 'No author available.'}
                 </h4>
               ))}
@@ -99,19 +109,17 @@ const bookObj = {
             </div>
             <div className="singleBookAdditional">
               <div className="singleBookCategoryInfo">
-                <p className="singleBookSmallHeadingText">Categories:</p>
-                {/* <p className="categoryText"> */}
+                <p className={locationsObject.smallHeadingText}>Categories:</p>
                   {categories
                     ? categories.map((category, key) => <p className="singleBookCategoryText" key={key}>{category}</p>)
                     : 'No categories available.'}
-                {/* </p> */}
               </div>
               <div className="singleBookPageInfo">
-                <p className="singleBookSmallHeadingText">Pages:</p>
+                <p className={locationsObject.smallHeadingText}>Pages:</p>
                 <p className="singleBookPagesText">{pageCount?.toString() || 'No publisher available.'}</p>
               </div>
               <div className="singleBookPublisherInfo">
-                <p className="singleBookSmallHeadingText">Publisher:</p>
+                <p className={locationsObject.smallHeadingText}>Publisher:</p>
                 <p className="singleBookPublisherText">{publisher || 'No publisher available.'}</p>
               </div>
             </div>

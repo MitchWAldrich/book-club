@@ -14,8 +14,10 @@ const SingleBookItem = (props) => {
     pageCount,
     publisher,
     title,
-    userId
+    userId,
+    location
   } = props;
+  //Style the whole thing to look like an open book
 
 const bookObj = {
       title: 'title',
@@ -23,7 +25,12 @@ const bookObj = {
       categories: ['Fiction'],
       averageRating: 4,
       description: 'A great book about stuff',
-      imageLinks: {smallThumbnail: 'http:', thumbnail: 'https:'},
+      imageLinks: {
+        smallThumbnail:
+          "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+        thumbnail:
+          "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      },
       pageCount: 234,
       publisher: 'Smith',
     };
@@ -62,7 +69,7 @@ const bookObj = {
             alt="Girl in a jacket"
           />
           <div className="singleBookRatingDisplay">
-            {BookRating(averageRating) || null}
+            <BookRating averageRating={averageRating} location={'expanded'} />
           </div>
         </div>
         <div className="singleBookInformation">
@@ -80,35 +87,41 @@ const bookObj = {
               ))}
             </div>
           </div>
-          <div className="singleBookTitleInfo">
-            <p className="singleBookSmallHeadingText">Description:</p>
-            <p className="singleBookDescriptionText">
-              {description
-                ? shortenDescription(description)
-                : "No description available."}
-            </p>
-          </div>
-          <div className="singleBookAdditional">
-            <div className="singleBookCategoryInfo">
-              <p className="singleBookSmallHeadingText">Categories:</p>
-              {/* <p className="categoryText"> */}
-                {categories
-                  ? categories.map((category, key) => <p className="singleBookCategoryText" key={key}>{category}</p>)
-                  : 'No categories available.'}
-              {/* </p> */}
+          { location === 'expanded' ? (
+            <>
+            <div className="singleBookDescription">
+              <p className="singleBookSmallHeadingText">Description:</p>
+              <p className="singleBookDescriptionText">
+                {description
+                  ? shortenDescription(description)
+                  : "No description available."}
+              </p>
             </div>
-            <div className="singleBookPageInfo">
-              <p className="singleBookSmallHeadingText">Pages:</p>
-              <p className="singleBookPagesText">{pageCount?.toString() || 'No publisher available.'}</p>
+            <div className="singleBookAdditional">
+              <div className="singleBookCategoryInfo">
+                <p className="singleBookSmallHeadingText">Categories:</p>
+                {/* <p className="categoryText"> */}
+                  {categories
+                    ? categories.map((category, key) => <p className="singleBookCategoryText" key={key}>{category}</p>)
+                    : 'No categories available.'}
+                {/* </p> */}
+              </div>
+              <div className="singleBookPageInfo">
+                <p className="singleBookSmallHeadingText">Pages:</p>
+                <p className="singleBookPagesText">{pageCount?.toString() || 'No publisher available.'}</p>
+              </div>
+              <div className="singleBookPublisherInfo">
+                <p className="singleBookSmallHeadingText">Publisher:</p>
+                <p className="singleBookPublisherText">{publisher || 'No publisher available.'}</p>
+              </div>
             </div>
-            <div className="singleBookPublisherInfo">
-              <p className="singleBookSmallHeadingText">Publisher:</p>
-              <p className="singleBookPublisherText">{publisher || 'No publisher available.'}</p>
-            </div>
-          </div>
-              <button type="button" onClick={() => addToToRead()}>I want to read this</button>
+            <div className="singleBookButtonsContainer">
+              <button className="singleBookButton" type="button" onClick={() => addToToRead()}>I want to read this</button>
               <br></br>
-              <button type="button" onClick={() => addToHaveRead()}>I have read this</button>
+              <button className="singleBookButton" type="button" onClick={() => addToHaveRead()}>I have read this</button>
+            </div>
+            </> 
+            ) : null }
         </div>
       </div>
     </main>
@@ -125,7 +138,8 @@ SingleBookItem.propTypes = {
   pageCount: PropTypes.number || PropTypes.string,
   publisher: PropTypes.string,
   title: PropTypes.string,
-  userId: PropTypes.number
+  userId: PropTypes.number,
+  location: PropTypes.string
 };
 
 export default SingleBookItem;

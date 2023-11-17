@@ -627,7 +627,7 @@ input:focus {
 .bookClubFeature {
   border-radius: 10px;
   display: flex;
-  margin: 0.5rem 15rem 0.4rem 15rem;
+  margin: 0.5rem 5rem 0.4rem 5rem;
   height: 10em;
   width: 20%;
   background-color: silver;
@@ -709,4 +709,13 @@ input:focus {
   font-size: 1.2vw;
   font-weight: bold;
   margin: 0;
+}
+
+.bookClubBookDisplay {
+  // display: flex;
+  // background-color: aqua;
+}
+
+.bookClubAddBookButton {
+
 }

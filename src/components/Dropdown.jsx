@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 const Dropdown = (props) => {
-  const { category, options, valueCallback } = props;
+  const { category, options, valueCallback, dropdownName } = props;
   
   const menu = options.map((item, id) => ({ ['id']: id, ['title']: item, ['selected']: false, ['key']: category }));
 
@@ -31,7 +31,13 @@ const Dropdown = (props) => {
   setTitleHeader(title);
   setIsListOpen(false);
   resetThenSet(id, title, event);
-  () => valueCallback(title.toLowerCase());
+
+  if (dropdownName === 'GoalUnitsDropdown') {
+    () => valueCallback(title.toLowerCase())
+   } else {
+    () => valueCallback(title)
+   }
+
 }
 
     return (
@@ -70,7 +76,8 @@ const Dropdown = (props) => {
 Dropdown.propTypes = {
   category: PropTypes.string,
   options: PropTypes.array,
-  valueCallback: PropTypes.func
+  valueCallback: PropTypes.func,
+  dropdownName: PropTypes.string
 }
 
 export default Dropdown;

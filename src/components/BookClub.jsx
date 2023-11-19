@@ -1,8 +1,10 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import instance from "../utils/axiosConfig";
 
+import BookClubItem from "./BookClubItem";
 import MemberList from "./MemberList";
 import Nav from "./Nav";
+import NextMeeting from "./NextMeeting";
 import SearchBar from "./Searchbar";
 import SingleBookItem from "./SingleBookItem";
 
@@ -13,10 +15,17 @@ import { bookMock } from "../mocks/books";
 const BookClub = () => {
   const user = useContext(userContext);
 
+  const [ isAddBooksClicked, setIsAddBooksClicked ] = useState(false);
+
+  const isHost = user.bookClubs.host.includes(bookClubMock.bookClubId) ? true : false;
+  const isNewBookClub = bookClubMock.isNewBookClub;
+
   //set book (and next/future book(s))
   //make it possible to add multiple
   const addBooksToBookClub = (e) => {
     e.preventDefault();
+    setIsAddBooksClicked(true);
+    
     instance.patch(`/api/bookclubs/${bookClubMock.bookClubId}`, { bookClubId: bookClubMock.bookClubId, bookObj: bookMock })
     .then(response => {
      console.log('addBooksToClub response', response.data)  
@@ -27,6 +36,11 @@ const BookClub = () => {
   //archive book
 
   //schedule meeting
+
+  //first update bookclub
+  const handleSubmit = () => {
+
+  }
 
   return (
     <>
@@ -64,10 +78,20 @@ const BookClub = () => {
           location={'bookClubFeature'}
         />
         </div>
-        <div className="bookClubAddBookButton">
-          <SearchBar />
-          <button type="button" onClick={addBooksToBookClub} >Add Books</button>
-        </div>
+        { isHost ? (
+          <>
+          <div className="bookClubAddBookButton">
+            { isAddBooksClicked ? (
+              <SearchBar />
+            ) : null }
+            <button type="button" onClick={addBooksToBookClub} >Add Books</button>
+          </div>
+          <div>
+              <BookClubItem />
+          </div>
+        </>
+        ) : null }
+        <NextMeeting bookClub={bookClubMock} />
         <MemberList members={bookClubMock.members.accepted} bookClubId={bookClubMock.bookClubId} />
       </div>
     </>

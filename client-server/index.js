@@ -119,12 +119,43 @@ app.get("/api/bookclubs/:id", (req, res) => {
 
 
 app.post("/api/bookclubs", async (req, res) => {
-    const { bookClubName } = req.body;
+    const { bookClubName, bookClubHost } = req.body;
 
     //👇🏻 holds the bookclub Id
+    // make unique
     const bookClubId = generateID();
 
-    const newBookClub = { bookClubId: bookClubId, bookClubName: bookClubName };
+    const newBookClub = {
+        bookClubId: bookClubId,
+        bookClubHostId: bookClubHost,
+        name: bookClubName,
+        members: {invited: [], accepted: []},
+        books: {
+            currentBook: '',
+            nextBook: '',
+            upcomingBooks: [],
+            previousBooks: [],
+        },
+        meetings: {
+            meetingFrequency: '',
+            nextMeetingDate: '',
+            nextMeetingTime: '',
+            nextMeetingLocation: {
+              online: 'N/A',
+              inPerson: {
+                'streetNumber': '',
+                'unitNumber': '',
+                'streetName': '',
+                'city': '',
+                'province': '',
+                'country': ''
+              }
+            }
+        },
+        isNewBookClub: true, 
+    }
+
+    // const newBookClub = { bookClubId: bookClubId, bookClubHostId: bookClubHost, bookClubName: bookClubName };
 
     bookClubsMock.push(newBookClub);
 

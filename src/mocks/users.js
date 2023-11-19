@@ -28,8 +28,8 @@ export const usersMock = [
           toRead: []
       },
       bookClubs: {
-          host: ['fsqjil$t72', 'sdfjil234)'],
-          invited: [],
+          host: ['fsqjil$t72'],
+          invited: ['sdfjil234'],
           accepted: ['fdul694*']
       }
   },
@@ -96,11 +96,11 @@ export const usersMock = [
             }]
       },
       bookClubs: {
-          host: [],
-          invited: ['sdfjil234)', 'fdul694*'],
+          host: ['sdfjil234)'],
+          invited: ['fdul694*'],
           accepted: ['fsqjil$t72']
       }
   }
 ];
 
-export const userMock = usersMock[0];
+export const userMock = usersMock[2];

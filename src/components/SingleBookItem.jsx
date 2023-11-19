@@ -50,7 +50,7 @@ const SingleBookItem = (props) => {
   // const locationStatuses = ['expanded', 'bookClubFeature'];
 
   const locationsObject = formatByLocation(location);
-  console.log('locationsObj', locationsObject);
+  // console.log('locationsObj', locationsObject);
 
   return (
     <main>

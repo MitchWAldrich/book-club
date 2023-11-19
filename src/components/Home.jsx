@@ -1,4 +1,6 @@
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import instance from "../utils/axiosConfig";
 
 import Goal from "./Goal";
 import Input from "./Input";
@@ -12,21 +14,30 @@ import { bookClubsMock } from "../mocks/bookClubs";
 
 const Home = () => {
     const user = useContext(userContext);
+    const navigate = useNavigate();
+
     console.log('homeUser', user);
 
-    const [bookClubName, setBookClubName] = useState("");
-    const [error, setError] = useState(false);
-
+    const [ bookClubName, setBookClubName ] = useState("");
+    const [ error, setError ] = useState(false);
+    
     const handleCreateBookClub = (e) => {
         e.preventDefault();
 
         if (!bookClubName) {
             setError(true)
           }
-        
-        console.log({ bookClubName });
 
-        setBookClubName(e.target.value);
+        console.log({ bookClubName });
+        
+        // setBookClubName(e.target.value);
+        instance.post('/api/bookclubs', { bookClubHost: user.userId, bookClubName: bookClubName })
+        .then(response => {
+            console.log('create Book Club response', response.data)
+            navigate('/bookClubs');
+        })
+        .catch(error => console.error('create Book Club error', error));
+        
     };
 
     const isInvited = true;
@@ -40,11 +51,9 @@ const Home = () => {
             ) : null
             }
             <SearchBar />
-            <main className='container'>
+            <main className='addBookClubContainer'>
                 <h2 className='homeTitle'>Create a Book Club</h2>
-                <form className='form' onSubmit={handleCreateBookClub}>
-                    <div>
-                        <label htmlFor='Book Club Name'>Book Club Name</label>
+                    <div className='addBookClub'>
                         <Input
                             type="text"
                             label="Book Club Name"
@@ -55,8 +64,9 @@ const Home = () => {
                             placeholder="Book Club Name"
                         />
                     </div>
-                    <button className='btn'>CREATE BOOK CLUB</button>
-                </form>
+                    <div>
+                        <button className='btn' onClick={handleCreateBookClub}>CREATE BOOK CLUB</button>
+                    </div>
             </main>
         </>
     )}

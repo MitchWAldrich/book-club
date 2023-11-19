@@ -84,7 +84,8 @@ const timeUnits = ['Day(s)', 'Weeks(s)', 'Month(s)', 'Year(s)'];
                     placeholder="#"
                 />
                 <br></br>
-                <Dropdown category={'Units'} options={units} />
+                {/* missing valueCallback? */}
+                <Dropdown category={'Units'} options={units} dropdownName='GoalUnitsDropdown' />
                 </div>
                 <br></br>
                 <label htmlFor='units'>What is your goal timeline?</label>

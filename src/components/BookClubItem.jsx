@@ -1,19 +1,45 @@
 import { useState } from "react";
+import instance from "../utils/axiosConfig";
 
+import PropTypes from "prop-types";
+import Calendar from "react-calendar";
+import TimePicker from "react-time-picker";
+
+import Address from "./Address";
 import Input from "./Input";
 import SearchBar from "./Searchbar";
 import Dropdown from "./Dropdown";
 
-const BookClubItem = () => {
+const BookClubItem = (props) => {
+  const { userId } = props;
+
   const [ meetingBoolean, setMeetingBoolean ] = useState(true);
   // const [ meetingBoolean, setMeetingBoolean ] = useState(null);
   const [ meetingTransmissionType, setMeetingTransmissionType ] = useState('In Person');
   // const [ meetingTransmissionType, setMeetingTransmissionType ] = useState(null);
   const [ meetingLink, setMeetingLink ] = useState(null);
   const [ meetingLinkError, setMeetingLinkError ] = useState(null);
+  const [ meetingFrequency, setMeetingFrequency ] = useState(null);
+  const [ meetingDate, setMeetingDate ] = useState(null);
+  const [ meetingTime, setMeetingTime ] = useState(null);
+  const [ firstBook, setFirstBook ] = useState(null);
+
+console.log('meetingDate', meetingDate);
 
   const updateBookClub = () => {
-
+    instance.patch(`/bookclubs/${userId}`, {
+      'members': {invited: ['62jt*(kj!3'], accepted: ['523dgf*5gn&']},
+      'firstBook': firstBook,
+      'meetings': {
+        'meetingFrequency': meetingFrequency,
+        'nextMeetingDate': meetingDate,
+        'nextMeetingTime': meetingTime,
+        'nextMeetingLocation': {
+          'online': meetingTransmissionType === 'Online' ? meetingLink : null
+          }
+      },
+      'isNewBookClub': false
+    })
   }
 
   const handleSubmit = () => {
@@ -25,7 +51,8 @@ const BookClubItem = () => {
   };
 
   const meetingUnits = ['Yes', 'No'];
-  const meetingTypes = ['In Person', 'Online', 'Both']
+  const meetingTypes = ['In Person', 'Online', 'Both'];
+  const meetingFrequencyList = ['Weekly', 'Bi-weekly', 'Monthly', 'Custom'];
   
   const getResult = (dropdownValue) => {
     if (dropdownValue === 'Yes') {
@@ -45,6 +72,7 @@ const BookClubItem = () => {
     }
   }
 
+  //make into smaller sections and pages turn to transition
   return (
     <main className='container'>
         <div className='form'>
@@ -59,7 +87,10 @@ const BookClubItem = () => {
                     <h4>Will your meetings be in person or online?</h4>
                     <Dropdown category={'MeetingTransmissionType'} options={meetingTypes} valueCallback={getResult} dropdownName='NewBookClubMeetingTransmissionType' />  
                     {meetingTransmissionType === 'In Person' ? (
-                    <h4>Where is your meeting?</h4>
+                      <>
+                        <h4>Where is your meeting?</h4>
+                       <Address />
+                      </>
                     ) : null }
                     {meetingTransmissionType === 'Virtual' ? (
                     <>
@@ -68,13 +99,20 @@ const BookClubItem = () => {
                         type="text"
                         // label="Meeting Link"
                         value={meetingLink}
-                        name="username"
+                        name="meetingLink"
                         error={meetingLinkError}
                         onChange={handleMeetingLinkChange}
                         placeholder="Please enter your meeting link"
                       />
                     </>
                     ) : null }
+                    <h4>How often will you meet?</h4>
+                    <Dropdown category={'MeetingFrequency'} options={meetingFrequencyList} valueCallback={setMeetingFrequency} dropdownName='NewBookClubMeetingFrequency' />  
+                    <h4>When is the first meeting?</h4>
+                    <Calendar onChange={setMeetingDate} value={meetingDate} />
+                  <TimePicker onChange={setMeetingTime} value={meetingTime} />
+                  <h4>What book will you read first?</h4>
+                  <SearchBar />
                   </>
                 ) : null }
                 <button className='btn' onClick={updateBookClub}>UPDATE</button>
@@ -84,29 +122,8 @@ const BookClubItem = () => {
   )
 };
 
-export default BookClubItem;
+BookClubItem.propTypes = {
+  userId: PropTypes.string
+}
 
-// members: {invited: ['62jt*(kj!3'], accepted: ['523dgf*5gn&']},
-// books: {
-//   currentBook: 'Reese\'s 3rd Favourite Book',
-//   nextBook: 'Oprah\'s 3rd Favourite Book',
-//   upcomingBooks: ['Three and One Book', 'Books are Fun', 'Anatomy of a Society'],
-//   previousBooks: ['Old Book 3', 'Third Old Book', 'A 3rd Graphic Novel'],
-// },
-// meetings: {
-//   meetingFrequency: 'bi-weekly',
-//   nextMeetingDate: '11/24/2023',
-//   nextMeetingTime: '7:00pm',
-//   nextMeetingLocation: {
-//     online: 'Zoom.otherLink',
-//     inPerson: {
-//       'streetNumber': 12,
-//       'unitNumber': 'N/A',
-//       'streetName': 'Dundas St. W',
-//       'city': 'Toronto',
-//       'province': 'ON',
-//       'country': 'CA'
-//     }
-//   } 
-// },
-// isNewBookClub: false
+export default BookClubItem;

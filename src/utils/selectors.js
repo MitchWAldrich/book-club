@@ -6,6 +6,16 @@ export const getUserById = (users, id) => {
   return users.find((user) => user.id === id);
 };
 
+export const getUserByUserId = (users, userId) => {
+
+  return users.find((user) => user.userId === userId);
+};
+
+export const getIdByUserId = (users, userId) => {
+  
+  return users.find((user) => user.userId === userId).id;
+};
+
 export const getBookClubById = (bookclubs, bookClubId) => {
 
   return bookclubs.find((bookclub) => bookclub.bookClubId === bookClubId);

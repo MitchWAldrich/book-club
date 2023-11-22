@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
 
 const Input = (props) => {
-  const { type, label, value, name, placeholder, error, disabled, onChange } =
+  const { type, label, value, name, placeholder, error, disabled, onChange, className } =
     props;
 
   return (
-    <div className="input-wrapper">
-      <label htmlFor={label}>{label}</label>
+    <div className={className}>
+      {/* <label htmlFor={label}>{label}</label> */}
       <input
         type={type}
         id={label}
@@ -15,8 +15,10 @@ const Input = (props) => {
         placeholder={placeholder}
         onChange={onChange}
         disabled={disabled}
+        // style={{ backgroundColor: 'orange', height: '100%' }}
+        style={{ height: '100%' }}
       />
-      {error && <p className="error">Input filed can't be empty!</p>}
+      {error && <p className="error">Input field can't be empty!</p>}
     </div>
   );
 };
@@ -30,6 +32,7 @@ Input.propTypes = {
   error: PropTypes.bool,
   disabled: PropTypes.bool,
   onChange: PropTypes.func,
+  className: PropTypes.string,
 };
 
 export default Input;

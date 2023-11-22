@@ -1,8 +1,10 @@
 import PropTypes from "prop-types";
 
 const Input = (props) => {
-  const { type, label, value, name, placeholder, error, disabled, onChange, className } =
+  const { type, label, name, placeholder, error, disabled, onChange, className } =
     props;
+  let { value } = props;
+  if (value === null) value = '';
 
   return (
     <div className={className}>
@@ -24,9 +26,16 @@ const Input = (props) => {
 };
 
 Input.propTypes = {
-  type: PropTypes.string || PropTypes.number,
+  type: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
   label: PropTypes.string,
-  value: PropTypes.string || PropTypes.number || PropTypes.func,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.func
+  ]),
   name: PropTypes.string,
   placeholder: PropTypes.string,
   error: PropTypes.bool,

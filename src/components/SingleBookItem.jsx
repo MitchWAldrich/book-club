@@ -124,11 +124,17 @@ const SingleBookItem = (props) => {
 SingleBookItem.propTypes = {
   authors: PropTypes.array,
   categories: PropTypes.array,
-  averageRating: PropTypes.number,
+  averageRating: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
   description: PropTypes.string,
   imageLinks: PropTypes.object,
   language: PropTypes.string,
-  pageCount: PropTypes.number || PropTypes.string,
+  pageCount: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
   publisher: PropTypes.string,
   title: PropTypes.string,
   userId: PropTypes.number,

@@ -60,14 +60,13 @@ console.log('clickedBookId', bookId)
   // }, [bookSearched, searchTypeValue, searchInput]);
 }, [bookSearched]);
   
-    useEffect(() => {
+  useEffect(() => {
     instance
       .get(`/api/users/${id}`)
       .then(function (response) {
         console.log("userResp", response);
         const friendsObjs = response.data.user.friends.accepted.map((friend) => getUserByUserId(usersMock, friend))
         setUserResponse(friendsObjs);
-        //Set up Book Item response
       })
       .catch(function (error) {
         console.log(error);
@@ -166,7 +165,10 @@ SearchBar.propTypes = {
   className: PropTypes.string,
   location: PropTypes.string,
   dropDown: PropTypes.bool,
-  id: PropTypes.string,
+  id: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
   valueCallback: PropTypes.func,
 }
 

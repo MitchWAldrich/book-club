@@ -37,7 +37,10 @@ const BookRating = (props) => {
 
 BookRating.propTypes = {
   location: PropTypes.string,
-  averageRating: PropTypes.string || PropTypes.number
+  averageRating: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ])
 }
 
 export default BookRating;

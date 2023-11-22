@@ -44,7 +44,6 @@ const BookClubItem = (props) => {
   }
 
   const getChosenSearchResults = (searchValue) => {
-    console.log('searchValue', searchValue);
     setFirstBook(searchValue);
   }
 
@@ -123,6 +122,11 @@ const BookClubItem = (props) => {
                   <TimePicker onChange={setMeetingTime} value={meetingTime} />
                   <h4>What book will you read first?</h4>
                   <SearchBar className='searchInput' location='bookClubFirstBook' dropDown={true} id={userObj.id} valueCallback={getChosenSearchResults} />
+                  {firstBook ? (
+                    <div>
+                      First Book: {firstBook}
+                    </div>
+                 ) : null}
                   </>
                 ) : null }
                 <button className='btn' onClick={updateBookClub}>UPDATE</button>

@@ -50,7 +50,7 @@ const Home = () => {
                 <Invitation bookClubObj={getBookClubById(bookClubsMock, user.bookClubs.invited[0])} userId={user.userId} />
             ) : null
             }
-            <SearchBar />
+            <SearchBar className='searchBar' location='home' dropDown={true} />
             <main className='addBookClubContainer'>
                 <h2 className='homeTitle'>Create a Book Club</h2>
                     <div className='addBookClub'>

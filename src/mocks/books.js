@@ -1,4 +1,5 @@
 export const bookMock = {
+  bookId: 'afs2*',
   authors: ["Daniel Keyes"],
   categories: ["Fiction", "Non-Fiction"],
   averageRating: 4,

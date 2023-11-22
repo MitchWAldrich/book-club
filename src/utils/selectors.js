@@ -22,7 +22,9 @@ export const getBookClubById = (bookclubs, bookClubId) => {
 };
 
 export const getBooks = (bookArray) => {
+  console.log('bookArray', bookArray)
   const bookObjects = bookArray.map((book) => ({
+    ["bookId"]: book.id ?? null,
     ["authors"]: book.volumeInfo.authors ?? null,
     ["categories"]: book.volumeInfo.categories ?? null,
     ["averageRating"]: book.volumeInfo.averageRating ?? null,
@@ -33,6 +35,7 @@ export const getBooks = (bookArray) => {
     ["publisher"]: book.volumeInfo.publisher ?? null,
     ["title"]: book.volumeInfo.title ?? null,
   }));
+  console.log('bookObjs', bookObjects)
 
   return bookObjects;
 };

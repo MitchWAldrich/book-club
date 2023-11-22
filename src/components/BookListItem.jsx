@@ -1,10 +1,14 @@
+// import { useState } from "react";
 import PropTypes from "prop-types";
+
 import BookRating from "./BookRating";
+
 import { getFontSize, shortenDescription } from "../utils/helpers";
 
 const BookListItem = (props) => {
   // const { author, categories, averageRating, description, imageLinks, language, pageCount, publisher, title } = props;
   const {
+    bookId,
     authors,
     categories,
     averageRating,
@@ -13,7 +17,11 @@ const BookListItem = (props) => {
     pageCount,
     publisher,
     title,
+    valueCallback
   } = props;
+  // console.log('props', props);
+
+  // const [ clicked, setClicked ] = useState(false);
 
   const boxes = document.querySelectorAll('titleText')
   
@@ -21,11 +29,18 @@ const BookListItem = (props) => {
     box.style.fontSize = getFontSize(box.textContent.length, 12)
   })
   
+  const handleClick = (e) => {
+    e.preventDefault();
+    console.log('CLICKED');
+    // setClicked(true);
+    () => valueCallback(bookId);
+  }
   //use a symbol for Fiction or Non-Fiction
   //don't display language?
 
   return (
-    <main>
+    <div>
+    <button type="button" onClick={handleClick}>
       <div className="bookListItem">
         <div className="bookListItemLeft">
           <img
@@ -80,20 +95,23 @@ const BookListItem = (props) => {
           </div>
         </div>
       </div>
-    </main>
+  </button>
+  </div>
   );
 };
 
 BookListItem.propTypes = {
+  bookId: PropTypes.string,
   authors: PropTypes.array,
   categories: PropTypes.array,
-  averageRating: PropTypes.number,
+  averageRating: PropTypes.number || PropTypes.string,
   description: PropTypes.string,
   imageLinks: PropTypes.object,
   language: PropTypes.string,
   pageCount: PropTypes.number || PropTypes.string,
   publisher: PropTypes.string,
   title: PropTypes.string,
+  valueCallback: PropTypes.func,
 };
 
 export default BookListItem;

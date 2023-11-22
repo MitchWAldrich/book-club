@@ -26,8 +26,17 @@ const Address = (props) => {
   }
 
   const submitAddress = () => {
-    instance.patch(`/bookclubs/${userId}`, addressObj)
+    if (!addressObj) {
+      setMeetingStreetAddressError(true);
+    } else {
+      setMeetingStreetAddressError(false);
+    }
     
+    instance.patch(`/bookclubs/${userId}`, addressObj)
+    .then(response => {
+      console.log('addressresponse', response.data)  
+    })
+    .catch(error => console.error('address error', error));
   };
 
 
@@ -87,7 +96,7 @@ const Address = (props) => {
       onChange={setMeetingCountry}
       placeholder="Please enter your country"
   />
-  <button type="btn" onClick={submitAddress}>Submit Address</button>
+  <button type="button" onClick={submitAddress}>Submit Address</button>
   </>
   )
 }

@@ -19,9 +19,6 @@ const BookListItem = (props) => {
     title,
     valueCallback
   } = props;
-  // console.log('props', props);
-
-  // const [ clicked, setClicked ] = useState(false);
 
   const boxes = document.querySelectorAll('titleText')
   
@@ -31,9 +28,7 @@ const BookListItem = (props) => {
   
   const handleClick = (e) => {
     e.preventDefault();
-    console.log('CLICKED');
-    // setClicked(true);
-    () => valueCallback(bookId);
+    valueCallback(bookId);
   }
   //use a symbol for Fiction or Non-Fiction
   //don't display language?

@@ -9,6 +9,8 @@ const app = express();
 const PORT = 4000;
 // const PORT = process.env.PORT ||4000;
 
+// add error handling
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
@@ -38,11 +40,10 @@ app.get("/api/users", (req, res) => {
 app.get("/api/users/:id", (req, res, next) => {
     const id = req.params.id;
     const user = getUserById(usersMock, id)
-    
+
     res.json({
         user
     });
-    // res.send('USER')
     next()
   })
 
@@ -154,8 +155,6 @@ app.post("/api/bookclubs", async (req, res) => {
         },
         isNewBookClub: true, 
     }
-
-    // const newBookClub = { bookClubId: bookClubId, bookClubHostId: bookClubHost, bookClubName: bookClubName };
 
     bookClubsMock.push(newBookClub);
 

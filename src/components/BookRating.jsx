@@ -1,16 +1,17 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-import { IconContext } from 'react-icons';
-import { AiFillStar } from 'react-icons/ai';
-import { AiOutlineStar } from 'react-icons/ai';
+import { IconContext } from "react-icons";
+import { AiFillStar } from "react-icons/ai";
+import { AiOutlineStar } from "react-icons/ai";
 
 const BookRating = (props) => {
   const { location, averageRating } = props;
   const stars = [1, 2, 3, 4, 5];
 
-  const starSize = location === 'expanded' ? '2em' : '1em';
-  const className = location === 'expanded' ? 'ratingStarsHor' : 'ratingStarsVert';
-  if (location === 'listItem') stars.reverse();
+  const starSize = location === "expanded" ? "2em" : "1em";
+  const className =
+    location === "expanded" ? "ratingStarsHor" : "ratingStarsVert";
+  if (location === "listItem") stars.reverse();
 
   return (
     <div className={className}>
@@ -18,14 +19,18 @@ const BookRating = (props) => {
         star <= averageRating ? (
           <IconContext.Provider
             key={key}
-            value={{ color: "gold", size: {starSize}, className: "review-star" }}
+            value={{
+              color: "gold",
+              size: { starSize },
+              className: "review-star",
+            }}
           >
             <AiFillStar />
           </IconContext.Provider>
         ) : (
           <IconContext.Provider
             key={key}
-            value={{ size: {starSize}, className: "review-star" }}
+            value={{ size: { starSize }, className: "review-star" }}
           >
             <AiOutlineStar />
           </IconContext.Provider>
@@ -37,10 +42,7 @@ const BookRating = (props) => {
 
 BookRating.propTypes = {
   location: PropTypes.string,
-  averageRating: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number
-  ])
-}
+  averageRating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+};
 
 export default BookRating;

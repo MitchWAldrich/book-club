@@ -1,10 +1,18 @@
 import PropTypes from "prop-types";
 
 const Input = (props) => {
-  const { type, label, name, placeholder, error, disabled, onChange, className } =
-    props;
+  const {
+    type,
+    label,
+    name,
+    placeholder,
+    error,
+    disabled,
+    onChange,
+    className,
+  } = props;
   let { value } = props;
-  if (value === null) value = '';
+  if (value === null) value = "";
 
   return (
     <div className={className}>
@@ -18,23 +26,20 @@ const Input = (props) => {
         onChange={onChange}
         disabled={disabled}
         // style={{ backgroundColor: 'orange', height: '100%' }}
-        style={{ height: '100%' }}
+        style={{ height: "100%" }}
       />
-      {error && <p className="error">Input field can't be empty!</p>}
+      {error && <p className='error'>Input field can't be empty!</p>}
     </div>
   );
 };
 
 Input.propTypes = {
-  type: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number
-  ]),
+  type: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   label: PropTypes.string,
   value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
-    PropTypes.func
+    PropTypes.func,
   ]),
   name: PropTypes.string,
   placeholder: PropTypes.string,

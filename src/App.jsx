@@ -11,28 +11,27 @@ import Replies from "./components/Replies";
 import userContext from "./userContext";
 import { userMock } from "./mocks/users";
 
-import './App.scss';
+import "./App.scss";
 
 function App() {
-  const [ user, setUser ] = useState(userMock);
+  const [user, setUser] = useState(userMock);
 
   return (
     <div>
       <userContext.Provider value={user}>
-          <BrowserRouter>
-              <Routes>
-                <Route path='/' element={<Login />} />
-                <Route path='/register' element={<Register />} />
-                <Route path='/dashboard' element={<Home userObj={user} />} />
-                <Route path='/my-library' element={<Library userObj={user} />} />
-                <Route path='/bookclubs' element={<BookClub userObj={user} />} />
-                <Route path='/:id/replies' element={<Replies />} />
-              </Routes>
-          </BrowserRouter>
-        </userContext.Provider>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<Login />} />
+            <Route path='/register' element={<Register />} />
+            <Route path='/dashboard' element={<Home userObj={user} />} />
+            <Route path='/my-library' element={<Library userObj={user} />} />
+            <Route path='/bookclubs' element={<BookClub userObj={user} />} />
+            <Route path='/:id/replies' element={<Replies />} />
+          </Routes>
+        </BrowserRouter>
+      </userContext.Provider>
     </div>
-)
+  );
 }
 
-export default App
-
+export default App;

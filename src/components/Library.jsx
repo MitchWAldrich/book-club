@@ -18,6 +18,7 @@ const Library = () => {
         {user?.library?.toRead.map((book, key) => (
           <BookListItem
             key={key}
+            bookId={book.bookId}
             authors={book.authors}
             categories={book.categories}
             averageRating={book.averageRating}
@@ -33,6 +34,7 @@ const Library = () => {
         {user?.library?.haveRead.map((book, key) => (
           <BookListItem
             key={key}
+            bookId={book.bookId}
             authors={book.authors}
             categories={book.categories}
             averageRating={book.averageRating}

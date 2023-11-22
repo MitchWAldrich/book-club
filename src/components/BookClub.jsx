@@ -18,7 +18,8 @@ const BookClub = () => {
   const [ isAddBooksClicked, setIsAddBooksClicked ] = useState(false);
 
   const isHost = user.bookClubs.host.includes(bookClubMock.bookClubId) ? true : false;
-  const isNewBookClub = bookClubMock.isNewBookClub;
+  // const isNewBookClub = bookClubMock.isNewBookClub;
+  const isNewBookClub = true;
 
   //set book (and next/future book(s))
   //make it possible to add multiple
@@ -38,9 +39,6 @@ const BookClub = () => {
   //schedule meeting
 
   //first update bookclub
-  const handleSubmit = () => {
-
-  }
 
   return (
     <>
@@ -82,13 +80,15 @@ const BookClub = () => {
           <>
           <div className="bookClubAddBookButton">
             { isAddBooksClicked ? (
-              <SearchBar />
+              <SearchBar className='searchBar' location='bookClubMain' dropDown={true} />
             ) : null }
             <button type="button" onClick={addBooksToBookClub} >Add Books</button>
           </div>
+        { isNewBookClub ? (
           <div>
-              <BookClubItem />
+              <BookClubItem userObj={user} />
           </div>
+        ) : null }
         </>
         ) : null }
         <NextMeeting bookClub={bookClubMock} />

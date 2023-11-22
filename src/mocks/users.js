@@ -5,6 +5,7 @@ export const usersMock = [
       email: 'user1@email.com',
       password: 'password',
       username: 'user1',
+      image: 'https://www.perfocal.com/blog/content/images/2021/01/Perfocal_17-11-2019_TYWFAQ_100_standard-3.jpg',
       goals: [],
       library: {
           haveRead: [],
@@ -14,6 +15,10 @@ export const usersMock = [
           host: ['fdul694*'],
           invited: [],
           accepted: ['sdfjil234)', 'fsqjil$t72']
+      },
+      friends: {
+        requested: [],
+        accepted: [ '523dgf*5gn&', '62jt*(kj!3' ]
       }
   },
   {
@@ -22,6 +27,7 @@ export const usersMock = [
       email: 'user2@email.com',
       password: 'password',
       username: 'user2',
+      image: 'https://writestylesonline.com/wp-content/uploads/2018/11/Three-Statistics-That-Will-Make-You-Rethink-Your-Professional-Profile-Picture.jpg',
       goals: [],
       library: {
           haveRead: [],
@@ -31,6 +37,10 @@ export const usersMock = [
           host: ['fsqjil$t72'],
           invited: ['sdfjil234'],
           accepted: ['fdul694*']
+      },
+      friends: {
+        requested: [],
+        accepted: [ '34xc98(dfk', '62jt*(kj!3' ]
       }
   },
   {
@@ -39,6 +49,7 @@ export const usersMock = [
       email: 'user3@email.com',
       password: 'password',
       username: 'user3',
+      image: 'https://www.elitesingles.co.uk/wp-content/uploads/sites/59/2019/11/2b_en_articleslide_sm2-350x264.jpg',
       goals: [{
           name: 'My First Goal',
           number: '20 pages',
@@ -99,6 +110,10 @@ export const usersMock = [
           host: ['sdfjil234)'],
           invited: ['fdul694*'],
           accepted: ['fsqjil$t72']
+      },
+      friends: {
+        requested: [],
+        accepted: [ '34xc98(dfk', '523dgf*5gn&' ]
       }
   }
 ];

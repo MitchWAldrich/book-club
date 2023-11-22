@@ -4,7 +4,7 @@ import BookListItem from "./BookListItem";
 import Nav from "./Nav";
 import SingleBookItem from "./SingleBookItem";
 
-import userContext from './../userContext';
+import userContext from "./../userContext";
 import { bookMock } from "../mocks/books";
 
 const Library = () => {
@@ -48,19 +48,20 @@ const Library = () => {
         )) ?? null}
         <br></br>
         <SingleBookItem
-            // key={key}
-            authors={bookMock.authors}
-            categories={bookMock.categories}
-            averageRating={bookMock.averageRating}
-            description={bookMock.description}
-            imageLinks={bookMock.imageLinks}
-            language={bookMock.language}
-            pageCount={bookMock.pageCount}
-            publisher={bookMock.publisher}
-            title={bookMock.title}
-            userId={3}
-            location={'expanded'}
-          />
+          // key={key}
+          bookId={bookMock.bookId}
+          authors={bookMock.authors}
+          categories={bookMock.categories}
+          averageRating={bookMock.averageRating}
+          description={bookMock.description}
+          imageLinks={bookMock.imageLinks}
+          language={bookMock.language}
+          pageCount={bookMock.pageCount}
+          publisher={bookMock.publisher}
+          title={bookMock.title}
+          userId={3}
+          location={"expanded"}
+        />
       </div>
     </main>
   );

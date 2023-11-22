@@ -41,7 +41,7 @@ const Dropdown = (props) => {
 }
 
     return (
-      <main>
+      <main className="dropdown-container">
         <button
           type="button"
           className="dropdown-header"

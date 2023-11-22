@@ -11,11 +11,13 @@ import SearchBar from "./Searchbar";
 import Dropdown from "./Dropdown";
 
 const BookClubItem = (props) => {
-  const { userId } = props;
+  const { userObj } = props;
+
+  const userId = userObj.userId;
 
   const [ meetingBoolean, setMeetingBoolean ] = useState(true);
   // const [ meetingBoolean, setMeetingBoolean ] = useState(null);
-  const [ meetingTransmissionType, setMeetingTransmissionType ] = useState('In Person');
+  const [ meetingTransmissionType, setMeetingTransmissionType ] = useState('Virtual');
   // const [ meetingTransmissionType, setMeetingTransmissionType ] = useState(null);
   const [ meetingLink, setMeetingLink ] = useState(null);
   const [ meetingLinkError, setMeetingLinkError ] = useState(null);
@@ -23,8 +25,7 @@ const BookClubItem = (props) => {
   const [ meetingDate, setMeetingDate ] = useState(null);
   const [ meetingTime, setMeetingTime ] = useState(null);
   const [ firstBook, setFirstBook ] = useState(null);
-
-console.log('meetingDate', meetingDate);
+  // const [ searchResults, setSearchResults ] = useState(null);
 
   const updateBookClub = () => {
     instance.patch(`/bookclubs/${userId}`, {
@@ -42,8 +43,17 @@ console.log('meetingDate', meetingDate);
     })
   }
 
-  const handleSubmit = () => {
+  const getChosenSearchResults = (searchValue) => {
+    console.log('searchValue', searchValue);
+    setFirstBook(searchValue);
+  }
 
+  const handleSubmit = () => {
+    if (!meetingLink) {
+      setMeetingLinkError(true);
+    } else {
+      setMeetingLinkError(false);
+    }
   };
 
   const handleMeetingLinkChange = (e) => {
@@ -79,7 +89,7 @@ console.log('meetingDate', meetingDate);
             <h1 className='newBookClubTitle'>Create a BookClub</h1>
             <form className='newBookClubForm' onSubmit={handleSubmit}>
                 <h4>Add Members</h4>
-                <SearchBar />
+                <SearchBar className='searchInput' location='bookClub' dropDown={false} id={userObj.id} />
                 <h4>Will your book club have meetings?</h4>
                 <Dropdown category={'Meetings'} options={meetingUnits} valueCallback={getResult} dropdownName='NewBookClubMeeting' />
                 { meetingBoolean ? (
@@ -112,7 +122,7 @@ console.log('meetingDate', meetingDate);
                     <Calendar onChange={setMeetingDate} value={meetingDate} />
                   <TimePicker onChange={setMeetingTime} value={meetingTime} />
                   <h4>What book will you read first?</h4>
-                  <SearchBar />
+                  <SearchBar className='searchInput' location='bookClubFirstBook' dropDown={true} id={userObj.id} valueCallback={getChosenSearchResults} />
                   </>
                 ) : null }
                 <button className='btn' onClick={updateBookClub}>UPDATE</button>
@@ -123,7 +133,7 @@ console.log('meetingDate', meetingDate);
 };
 
 BookClubItem.propTypes = {
-  userId: PropTypes.string
+  userObj: PropTypes.object,
 }
 
 export default BookClubItem;

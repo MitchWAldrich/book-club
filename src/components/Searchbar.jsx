@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import instance from "../utils/axiosConfig";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-import { IconContext } from 'react-icons';
+import { IconContext } from "react-icons";
 import { HiOutlineSearchCircle } from "react-icons/hi";
 
 import BookListItem from "./BookListItem";
@@ -18,17 +18,18 @@ import { usersMock } from "../mocks/users";
 const SearchBar = (props) => {
   const { className, location, dropDown, id, valueCallback } = props;
 
-  const [ bookSearched, setBookSearched ] = useState(false);
-  const [ userSearched, setUserSearched ] = useState(location === 'bookClub' ? true : false);
-  const [ error, setError ] = useState(false);
-  const [ searchInput, setSearchInput ] = useState("");
-  const [ searchTypeValue, setSearchTypeValue ] = useState("title");
-  const [ title, setTitle ] = useState("");
-  const [ author, setAuthor ] = useState("");
-  const [ bookResponse, setBookResponse ] = useState([]);
-  const [ userResponse, setUserResponse ] = useState([]);
-  // const [ searchResult, setSearchResult ] = useState(null);
-  const [ bookId, setBookId ] = useState(null);
+  const [bookSearched, setBookSearched] = useState(false);
+  const [userSearched, setUserSearched] = useState(
+    location === "bookClub" ? true : false
+  );
+  const [error, setError] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
+  const [searchTypeValue, setSearchTypeValue] = useState("title");
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [bookResponse, setBookResponse] = useState([]);
+  const [userResponse, setUserResponse] = useState([]);
+  const [bookId, setBookId] = useState(null);
 
   const units = ["Title", "Author"];
 
@@ -37,10 +38,9 @@ const SearchBar = (props) => {
   };
 
   const getClicked = (clickedValue) => {
-    setBookId(clickedValue)
+    setBookId(clickedValue);
   };
-console.log('clickedBookId', bookId)
-// console.log('bookSearched', bookSearched);
+
   useEffect(() => {
     axios
       .get(
@@ -57,15 +57,17 @@ console.log('clickedBookId', bookId)
       .finally(function () {
         // always executed
       });
-  // }, [bookSearched, searchTypeValue, searchInput]);
-}, [bookSearched]);
-  
+    // }, [bookSearched, searchTypeValue, searchInput]);
+  }, [bookSearched]);
+
   useEffect(() => {
     instance
       .get(`/api/users/${id}`)
       .then(function (response) {
         console.log("userResp", response);
-        const friendsObjs = response.data.user.friends.accepted.map((friend) => getUserByUserId(usersMock, friend))
+        const friendsObjs = response.data.user.friends.accepted.map((friend) =>
+          getUserByUserId(usersMock, friend)
+        );
         setUserResponse(friendsObjs);
       })
       .catch(function (error) {
@@ -88,19 +90,24 @@ console.log('clickedBookId', bookId)
     } else {
       setError(false);
     }
-    console.log('**SEARCHED**')
-  
-    if ( location === 'home' || location === 'bookClubFirstBook') {
+
+    if (location === "home" || location === "bookClubFirstBook") {
       setTitle(title);
       setAuthor(author);
       setBookSearched(true);
     }
 
-    if ( location === 'bookClub' ) setUserSearched(true);
-    if ( location === 'bookClubFirstBook') {
-      () => valueCallback(bookId)
-      console.log('bookIdCallback', bookId);
+    if (location === "bookClub") setUserSearched(true);
+    if (location === "bookClubFirstBook") {
+      valueCallback(bookId);
+      console.log("bookIdCallback", bookId);
     }
+  };
+
+  const handleChooseBook = () => {
+    setBookId(bookId);
+    setBookSearched(false);
+    valueCallback(bookId);
   };
 
   // add Loading spinner
@@ -111,24 +118,24 @@ console.log('clickedBookId', bookId)
           <div className={"searchBar"}>
             <Input
               className={className}
-              type="text"
+              type='text'
               // label="search"
               value={searchInput}
-              name="searchInput"
+              name='searchInput'
               error={error}
               onChange={handleChange}
-              placeholder="Search here"
+              placeholder='Search here'
             />
             {dropDown ? (
               <Dropdown
-              category={"Search Type"}
-              options={units}
-              valueCallback={getUnit}
-            />
-            ) : null }
+                category={"Search Type"}
+                options={units}
+                valueCallback={getUnit}
+              />
+            ) : null}
             <IconContext.Provider
-            // key={key}
-            value={{ color: 'teal', size: "100%", className: "searchButton" }}
+              // key={key}
+              value={{ color: "teal", size: "100%", className: "searchButton" }}
             >
               <HiOutlineSearchCircle onClick={handleSearch} />
             </IconContext.Provider>
@@ -138,8 +145,9 @@ console.log('clickedBookId', bookId)
       <br></br>
 
       <br></br>
-      {bookSearched
-        ? bookResponse.map((book, key) => (
+      {bookSearched ? (
+        <>
+          {bookResponse.map((book, key) => (
             <BookListItem
               key={key}
               bookId={book.bookId}
@@ -154,8 +162,12 @@ console.log('clickedBookId', bookId)
               title={book.title}
               valueCallback={getClicked}
             />
-          ))
-        : null}
+          ))}
+          <button type='button' onClick={handleChooseBook}>
+            CHOOSE BOOK
+          </button>
+        </>
+      ) : null}
       {userSearched ? <MemberList members={userResponse} /> : null}
     </>
   );
@@ -165,11 +177,8 @@ SearchBar.propTypes = {
   className: PropTypes.string,
   location: PropTypes.string,
   dropDown: PropTypes.bool,
-  id: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number
-  ]),
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   valueCallback: PropTypes.func,
-}
+};
 
 export default SearchBar;

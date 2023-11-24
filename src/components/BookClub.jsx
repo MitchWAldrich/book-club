@@ -9,8 +9,9 @@ import SearchBar from "./Searchbar";
 import SingleBookItem from "./SingleBookItem";
 
 import userContext from "../userContext";
-import { bookClubMock } from "../mocks/bookClubs";
+import { bookClubMock, bookClubsMock } from "../mocks/bookClubs";
 import { bookMock } from "../mocks/books";
+import { getBookClubById } from "../utils/selectors";
 
 const BookClub = () => {
   const user = useContext(userContext);
@@ -20,8 +21,25 @@ const BookClub = () => {
   const isHost = user.bookClubs.host.includes(bookClubMock.bookClubId)
     ? true
     : false;
-  // const isNewBookClub = bookClubMock.isNewBookClub;
-  const isNewBookClub = true;
+
+  const bookClubsIHost = user.bookClubs.host.map((bookClub) =>
+    getBookClubById(bookClubsMock, bookClub)
+  );
+  console.log("I Host", bookClubsIHost);
+
+  const bookClubsImIn = user.bookClubs.accepted.map((bookClub) =>
+    getBookClubById(bookClubsMock, bookClub)
+  );
+  console.log("I'm In", bookClubsImIn);
+
+  const bookClubsImInvitedTo = user.bookClubs.invited.map((bookClub) =>
+    getBookClubById(bookClubsMock, bookClub)
+  );
+  console.log("I'm Invited", bookClubsImInvitedTo);
+
+  const isNewBookClub = bookClubsIHost.find(
+    (bookClub) => bookClub.isNewBookClub === true
+  );
 
   //set book (and next/future book(s))
   //make it possible to add multiple
@@ -98,7 +116,10 @@ const BookClub = () => {
             </div>
             {isNewBookClub ? (
               <div>
-                <BookClubItem userObj={user} />
+                <BookClubItem
+                  userObj={user}
+                  bookClubId={isNewBookClub.bookClubId}
+                />
               </div>
             ) : null}
           </>

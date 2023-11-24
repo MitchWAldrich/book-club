@@ -1,3 +1,5 @@
+/* User Searches */
+
 export const getUserById = (users, id) => {
   if (typeof id === 'string') {
     id = parseInt(id);
@@ -16,10 +18,17 @@ export const getIdByUserId = (users, userId) => {
   return users.find((user) => user.userId === userId).id;
 };
 
-export const getBookClubById = (bookclubs, bookClubId) => {
 
+/* BookClub Searches */
+
+export const getBookClubById = (bookclubs, bookClubId) => {
+  console.log({bookclubs, bookClubId})
+console.log('func results', bookclubs.find((bookclub) => bookclub.bookClubId === bookClubId))
   return bookclubs.find((bookclub) => bookclub.bookClubId === bookClubId);
 };
+
+
+/* Book Searches */
 
 export const getBooks = (bookArray) => {
   const bookObjects = bookArray.map((book) => ({

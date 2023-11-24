@@ -4,7 +4,7 @@ export const bookClubsMock = [
       bookClubId: 'sdfjil234)',
       bookClubHostId: '62jt*(kj!3',
       name: 'My First Book Club',
-      members: {invited: ['523dgf*5gn&'], accepted: ['34xc98(dfk']},
+      members: {invited: [], accepted: []},
       books: {
         currentBook: 'Reese\'s Favourite Book',
         nextBook: 'Oprah\'s Favourite Book',
@@ -27,7 +27,7 @@ export const bookClubsMock = [
           }
         }
       },
-      isNewBookClub: false
+      isNewBookClub: true
   },
   {
       id: 2,

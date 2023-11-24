@@ -26,7 +26,7 @@ const BookClubItem = (props) => {
   const [meetingDate, setMeetingDate] = useState(null);
   const [meetingTime, setMeetingTime] = useState(null);
   const [firstBook, setFirstBook] = useState(null);
-  // const [ searchResults, setSearchResults ] = useState(null);
+  const [addMember, setAddMember] = useState(null);
 
   const updateBookClub = () => {
     instance.patch(`/bookclubs/${userId}`, {
@@ -46,6 +46,10 @@ const BookClubItem = (props) => {
 
   const getChosenSearchResults = (searchValue) => {
     setFirstBook(searchValue);
+  };
+
+  const getChosenMemberResults = (searchValue) => {
+    setAddMember(searchValue);
   };
 
   const handleSubmit = () => {
@@ -82,19 +86,31 @@ const BookClubItem = (props) => {
     }
   };
 
+  const updateMembers = (userId) => {
+    // inviteMembers.push(userId);
+    // () => setStoredMembers(inviteMembers);
+    // console.log("inviteMembers", inviteMembers);
+  };
+
   //make into smaller sections and pages turn to transition
   return (
     <main className='container'>
       <div className='form'>
         <h1 className='newBookClubTitle'>Create a BookClub</h1>
         <form className='newBookClubForm' onSubmit={handleSubmit}>
-          <h4>Add Members</h4>
+          <h4>Search Members</h4>
           <SearchBar
             className='searchInput'
             location='bookClub'
             dropDown={false}
             id={userObj.id}
+            valueCallback={getChosenMemberResults}
           />
+          {addMember?.length > 0 ? (
+            <button type='button' onClick={updateMembers(addMember)}>
+              Invite Member
+            </button>
+          ) : null}
           <h4>Will your book club have meetings?</h4>
           <Dropdown
             category={"Meetings"}

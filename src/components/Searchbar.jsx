@@ -30,6 +30,7 @@ const SearchBar = (props) => {
   const [bookResponse, setBookResponse] = useState([]);
   const [userResponse, setUserResponse] = useState([]);
   const [bookId, setBookId] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const units = ["Title", "Author"];
 
@@ -61,6 +62,7 @@ const SearchBar = (props) => {
   }, [bookSearched]);
 
   useEffect(() => {
+    setIsLoading(true);
     instance
       .get(`/api/users/${id}`)
       .then(function (response) {
@@ -74,7 +76,7 @@ const SearchBar = (props) => {
         console.log(error);
       })
       .finally(function () {
-        // always executed
+        setIsLoading(false);
       });
   }, [userSearched]);
 
@@ -168,7 +170,13 @@ const SearchBar = (props) => {
           </button>
         </>
       ) : null}
-      {userSearched ? <MemberList members={userResponse} /> : null}
+      {userSearched ? (
+        <MemberList
+          members={userResponse}
+          valueCallback={valueCallback}
+          location='bookClubCreate'
+        />
+      ) : null}
     </>
   );
 };

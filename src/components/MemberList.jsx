@@ -10,55 +10,55 @@ const MemberList = (props) => {
   const { members, bookClubId, valueCallback, location } = props;
 
   const [membersAdd, setMembersAdd] = useState([]);
-  const [membersSuggested, setMembersSuggested] = useState(members);
-  // const [membersSuggested, setMembersSuggested] = useState([
-  //   {
-  //     id: 1,
-  //     userId: "34xc98(dfk",
-  //     email: "user1@email.com",
-  //     password: "password",
-  //     username: "user1",
-  //     image:
-  //       "https://www.perfocal.com/blog/content/images/2021/01/Perfocal_17-11-2019_TYWFAQ_100_standard-3.jpg",
-  //     goals: [],
-  //     library: {
-  //       haveRead: [],
-  //       toRead: [],
-  //     },
-  //     bookClubs: {
-  //       host: ["fdul694*"],
-  //       invited: [],
-  //       accepted: ["sdfjil234)", "fsqjil$t72"],
-  //     },
-  //     friends: {
-  //       requested: [],
-  //       accepted: ["523dgf*5gn&", "62jt*(kj!3"],
-  //     },
-  //   },
-  //   {
-  //     id: 2,
-  //     userId: "523dgf*5gn&",
-  //     email: "user2@email.com",
-  //     password: "password",
-  //     username: "user2",
-  //     image:
-  //       "https://writestylesonline.com/wp-content/uploads/2018/11/Three-Statistics-That-Will-Make-You-Rethink-Your-Professional-Profile-Picture.jpg",
-  //     goals: [],
-  //     library: {
-  //       haveRead: [],
-  //       toRead: [],
-  //     },
-  //     bookClubs: {
-  //       host: ["fsqjil$t72"],
-  //       invited: ["sdfjil234"],
-  //       accepted: ["fdul694*"],
-  //     },
-  //     friends: {
-  //       requested: [],
-  //       accepted: ["34xc98(dfk", "62jt*(kj!3"],
-  //     },
-  // },
-  // ]);
+  // const [membersSuggested, setMembersSuggested] = useState(members);
+  const [membersSuggested, setMembersSuggested] = useState([
+    {
+      id: 1,
+      userId: "34xc98(dfk",
+      email: "user1@email.com",
+      password: "password",
+      username: "user1",
+      image:
+        "https://www.perfocal.com/blog/content/images/2021/01/Perfocal_17-11-2019_TYWFAQ_100_standard-3.jpg",
+      goals: [],
+      library: {
+        haveRead: [],
+        toRead: [],
+      },
+      bookClubs: {
+        host: ["fdul694*"],
+        invited: [],
+        accepted: ["sdfjil234)", "fsqjil$t72"],
+      },
+      friends: {
+        requested: [],
+        accepted: ["523dgf*5gn&", "62jt*(kj!3"],
+      },
+    },
+    {
+      id: 2,
+      userId: "523dgf*5gn&",
+      email: "user2@email.com",
+      password: "password",
+      username: "user2",
+      image:
+        "https://writestylesonline.com/wp-content/uploads/2018/11/Three-Statistics-That-Will-Make-You-Rethink-Your-Professional-Profile-Picture.jpg",
+      goals: [],
+      library: {
+        haveRead: [],
+        toRead: [],
+      },
+      bookClubs: {
+        host: ["fsqjil$t72"],
+        invited: ["sdfjil234"],
+        accepted: ["fdul694*"],
+      },
+      friends: {
+        requested: [],
+        accepted: ["34xc98(dfk", "62jt*(kj!3"],
+      },
+    },
+  ]);
   // const [isLoading, setIsLoading] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -137,18 +137,22 @@ const MemberList = (props) => {
           </div>
         </>
       ) : null}
-      <h3>Suggested Members</h3>
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <div>
-          <MemberListItem
-            members={membersSuggested}
-            valueCallback={getMembers}
-            container='suggestedMembers'
-          />
-        </div>
-      )}
+      {membersSuggested.length > 0 ? (
+        <>
+          <h3>Suggested Members</h3>
+          {isLoading ? (
+            <Loading />
+          ) : (
+            <div>
+              <MemberListItem
+                members={membersSuggested}
+                valueCallback={getMembers}
+                container='suggestedMembers'
+              />
+            </div>
+          )}
+        </>
+      ) : null}
       {/* <button
         type='button'
         className='member-add-button'

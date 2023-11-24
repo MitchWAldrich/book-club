@@ -3,34 +3,32 @@ import PropTypes from "prop-types";
 import MemberItem from "./MemberItem";
 
 const MemberListItem = (props) => {
-  const { members } = props;
+  const { members, valueCallback, container, location } = props;
 
   const renderMembers = (membersArray) => {
-    if (!membersArray.length && membersArray) {
+    if (!membersArray?.length && membersArray) {
       <MemberItem
+        user={membersArray}
         image={membersArray.image}
+        userId={membersArray.userId}
         userName={membersArray.username}
         isOnline={membersArray.isOnline}
+        location={location}
       />;
     } else null;
 
-    if (membersArray.length === 1) {
-      return (
-        <MemberItem
-          image={membersArray[0].image}
-          userName={membersArray[0].username}
-          isOnline={membersArray[0].isOnline}
-        />
-      );
-    }
-
-    if (membersArray.length > 1) {
+    if (membersArray?.length >= 1) {
       return members.map((member, key) => (
         <MemberItem
           key={key}
+          user={member}
+          userId={member.userId}
           image={member.image}
-          userName={member.username}
+          username={member.username}
           isOnline={member.isOnline}
+          valueCallback={valueCallback}
+          container={container}
+          location={location}
         />
       ));
     }
@@ -43,6 +41,9 @@ const MemberListItem = (props) => {
 
 MemberListItem.propTypes = {
   members: PropTypes.array,
+  valueCallback: PropTypes.func,
+  container: PropTypes.string,
+  location: PropTypes.string,
 };
 
 export default MemberListItem;

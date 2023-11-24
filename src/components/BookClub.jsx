@@ -107,6 +107,7 @@ const BookClub = () => {
         <MemberList
           members={bookClubMock.members.accepted}
           bookClubId={bookClubMock.bookClubId}
+          location='bookClubPage'
         />
       </div>
     </>

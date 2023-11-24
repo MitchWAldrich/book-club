@@ -11,7 +11,7 @@ import SearchBar from "./Searchbar";
 import Dropdown from "./Dropdown";
 
 const BookClubItem = (props) => {
-  const { userObj } = props;
+  const { userObj, bookClubId } = props;
 
   const userId = userObj.userId;
 
@@ -26,10 +26,10 @@ const BookClubItem = (props) => {
   const [meetingDate, setMeetingDate] = useState(null);
   const [meetingTime, setMeetingTime] = useState(null);
   const [firstBook, setFirstBook] = useState(null);
-  const [addMember, setAddMember] = useState(null);
+  const [addMembers, setAddMembers] = useState(null);
 
   const updateBookClub = () => {
-    instance.patch(`/bookclubs/${userId}`, {
+    instance.patch(`/bookclubs/${bookClubId}`, {
       members: { invited: ["62jt*(kj!3"], accepted: ["523dgf*5gn&"] },
       firstBook: firstBook,
       meetings: {
@@ -49,7 +49,8 @@ const BookClubItem = (props) => {
   };
 
   const getChosenMemberResults = (searchValue) => {
-    setAddMember(searchValue);
+    console.log("searchValue", searchValue);
+    setAddMembers(searchValue);
   };
 
   const handleSubmit = () => {
@@ -86,10 +87,11 @@ const BookClubItem = (props) => {
     }
   };
 
-  const updateMembers = (userId) => {
-    // inviteMembers.push(userId);
-    // () => setStoredMembers(inviteMembers);
-    // console.log("inviteMembers", inviteMembers);
+  const updateMembers = (userObj, bookClubId) => {
+    console.log("bookClubId", bookClubId);
+    instance.patch(`/api/bookclubs/${bookClubId}`, {
+      newMembers: { invited: addMembers },
+    });
   };
 
   //make into smaller sections and pages turn to transition
@@ -98,6 +100,7 @@ const BookClubItem = (props) => {
       <div className='form'>
         <h1 className='newBookClubTitle'>Create a BookClub</h1>
         <form className='newBookClubForm' onSubmit={handleSubmit}>
+          {/* Add search functionality */}
           <h4>Search Members</h4>
           <SearchBar
             className='searchInput'
@@ -106,9 +109,12 @@ const BookClubItem = (props) => {
             id={userObj.id}
             valueCallback={getChosenMemberResults}
           />
-          {addMember?.length > 0 ? (
-            <button type='button' onClick={updateMembers(addMember)}>
-              Invite Member
+          {addMembers?.length > 0 ? (
+            <button
+              type='button'
+              onClick={updateMembers(addMembers, bookClubId)}
+            >
+              {addMembers.length > 1 ? "Invite Members" : "Invite Member"}
             </button>
           ) : null}
           <h4>Will your book club have meetings?</h4>
@@ -179,6 +185,7 @@ const BookClubItem = (props) => {
 
 BookClubItem.propTypes = {
   userObj: PropTypes.object,
+  bookClubId: PropTypes.string,
 };
 
 export default BookClubItem;

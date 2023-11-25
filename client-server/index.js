@@ -167,7 +167,7 @@ app.post("/api/bookclubs", async (req, res) => {
 });
 
 app.patch("/api/bookclubs/:id", async (req) => {
-    const { bookClubId, newMembers, acceptanceStatus, bookObj } = req.body;
+    const { bookClubId, newMembers, acceptanceStatus, bookObj, location } = req.body;
 
     const bookClub = bookClubsMock.find( bookClub => bookClub.bookClubId === bookClubId )
 
@@ -178,6 +178,8 @@ app.patch("/api/bookclubs/:id", async (req) => {
         })
 
         if (acceptanceStatus === 'rejected') newMembers.forEach( (member) => bookClub.members.invited.splice(bookClub.members.invited.indexOf(member)))
+
+        if (location === 'bookClubCreate') newMembers.invited.forEach( (member) => bookClub.members.invited.push(member));
     }
 
     if (bookObj) {

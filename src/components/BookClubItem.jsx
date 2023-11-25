@@ -15,11 +15,8 @@ const BookClubItem = (props) => {
 
   const userId = userObj.userId;
 
-  const [meetingBoolean, setMeetingBoolean] = useState(true);
-  // const [ meetingBoolean, setMeetingBoolean ] = useState(null);
-  const [meetingTransmissionType, setMeetingTransmissionType] =
-    useState("Virtual");
-  // const [ meetingTransmissionType, setMeetingTransmissionType ] = useState(null);
+  const [meetingBoolean, setMeetingBoolean] = useState(null);
+  const [meetingTransmissionType, setMeetingTransmissionType] = useState(null);
   const [meetingLink, setMeetingLink] = useState(null);
   const [meetingLinkError, setMeetingLinkError] = useState(null);
   const [meetingFrequency, setMeetingFrequency] = useState(null);
@@ -28,20 +25,27 @@ const BookClubItem = (props) => {
   const [firstBook, setFirstBook] = useState(null);
   const [addMembers, setAddMembers] = useState(null);
 
-  const updateBookClub = () => {
+  const addMeetingDetails = () => {
     instance.patch(`/bookclubs/${bookClubId}`, {
-      members: { invited: ["62jt*(kj!3"], accepted: ["523dgf*5gn&"] },
-      firstBook: firstBook,
       meetings: {
         meetingFrequency: meetingFrequency,
         nextMeetingDate: meetingDate,
         nextMeetingTime: meetingTime,
         nextMeetingLocation: {
-          online: meetingTransmissionType === "Online" ? meetingLink : null,
+          virtual: meetingTransmissionType === "virtual" ? meetingLink : null,
+          inPerson: meetingTransmissionType === "inPerson" ? address : null,
         },
       },
       isNewBookClub: false,
     });
+  };
+
+  const addFirstBook = () => {
+    instance.patch(`/bookclubs/${bookClubId}`, {
+      firstBook: firstBook,
+      isNewBookClub: false,
+    });
+    /* show congratulations screen, then to bookclubs page */
   };
 
   const getChosenSearchResults = (searchValue) => {
@@ -49,7 +53,6 @@ const BookClubItem = (props) => {
   };
 
   const getChosenMemberResults = (searchValue) => {
-    console.log("searchValue", searchValue);
     setAddMembers(searchValue);
   };
 
@@ -66,7 +69,7 @@ const BookClubItem = (props) => {
   };
 
   const meetingUnits = ["Yes", "No"];
-  const meetingTypes = ["In Person", "Online", "Both"];
+  const meetingTypes = ["In Person", "Virtual", "Both"];
   const meetingFrequencyList = ["Weekly", "Bi-weekly", "Monthly", "Custom"];
 
   const getResult = (dropdownValue) => {
@@ -79,18 +82,21 @@ const BookClubItem = (props) => {
     }
 
     if (dropdownValue === "In Person") {
-      setMeetingTransmissionType(dropdownValue);
+      setMeetingTransmissionType("inPerson");
     }
 
     if (dropdownValue === "Virtual") {
-      setMeetingTransmissionType(dropdownValue);
+      setMeetingTransmissionType("virtual");
     }
   };
 
+  const getMeetingAddress = () => {};
+
   const updateMembers = (userObj, bookClubId) => {
-    console.log("bookClubId", bookClubId);
     instance.patch(`/api/bookclubs/${bookClubId}`, {
+      bookClubId: bookClubId,
       newMembers: { invited: addMembers },
+      location: "bookClubCreate",
     });
   };
 
@@ -112,7 +118,7 @@ const BookClubItem = (props) => {
           {addMembers?.length > 0 ? (
             <button
               type='button'
-              onClick={updateMembers(addMembers, bookClubId)}
+              onClick={() => updateMembers(addMembers, bookClubId)}
             >
               {addMembers.length > 1 ? "Invite Members" : "Invite Member"}
             </button>
@@ -133,13 +139,13 @@ const BookClubItem = (props) => {
                 valueCallback={getResult}
                 dropdownName='NewBookClubMeetingTransmissionType'
               />
-              {meetingTransmissionType === "In Person" ? (
+              {meetingTransmissionType === "inPerson" ? (
                 <>
                   <h4>Where is your meeting?</h4>
-                  <Address />
+                  <Address valueCallback={getMeetingAddress} />
                 </>
               ) : null}
-              {meetingTransmissionType === "Virtual" ? (
+              {meetingTransmissionType === "virtual" ? (
                 <>
                   <h4>What is your meeting link?</h4>
                   <Input
@@ -163,19 +169,19 @@ const BookClubItem = (props) => {
               <h4>When is the first meeting?</h4>
               <Calendar onChange={setMeetingDate} value={meetingDate} />
               <TimePicker onChange={setMeetingTime} value={meetingTime} />
-              <h4>What book will you read first?</h4>
-              <SearchBar
-                className='searchInput'
-                location='bookClubFirstBook'
-                dropDown={true}
-                id={userObj.id}
-                valueCallback={getChosenSearchResults}
-              />
-              {firstBook ? <div>First Book: {firstBook}</div> : null}
             </>
           ) : null}
-          <button className='btn' onClick={updateBookClub}>
-            UPDATE
+          <h4>What book will you read first?</h4>
+          <SearchBar
+            className='searchInput'
+            location='bookClubFirstBook'
+            dropDown={true}
+            id={userObj.id}
+            valueCallback={getChosenSearchResults}
+          />
+          {firstBook ? <div>First Book: {firstBook}</div> : null}
+          <button className='btn' onClick={addFirstBook}>
+            ADD BOOK
           </button>
         </form>
       </div>

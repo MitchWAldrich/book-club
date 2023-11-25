@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import Input from "./Input";
 
 const Address = (props) => {
-  const { userId } = props;
+  const { userId, valueCallback } = props;
 
   const [meetingStreetNumber, setMeetingStreetNumber] = useState(null);
   const [meetingStreetName, setMeetingStreetName] = useState(null);
@@ -18,28 +18,30 @@ const Address = (props) => {
   const [meetingCountry, setMeetingCountry] = useState(null);
 
   const addressObj = {
-    streetNumber: meetingStreetNumber,
-    unitNumber: meetingUnitNumber,
-    streetName: meetingStreetName,
-    city: meetingCity,
-    province: meetingProvince,
-    country: meetingCountry,
+    streetNumber: meetingStreetNumber ?? "",
+    unitNumber: meetingUnitNumber ?? "",
+    streetName: meetingStreetName ?? "",
+    city: meetingCity ?? "",
+    province: meetingProvince ?? "",
+    country: meetingCountry ?? "",
   };
 
-  const submitAddress = () => {
-    if (!addressObj) {
-      setMeetingStreetAddressError(true);
-    } else {
-      setMeetingStreetAddressError(false);
-    }
+  valueCallback(addressObj);
 
-    instance
-      .patch(`/bookclubs/${userId}`, addressObj)
-      .then((response) => {
-        console.log("addressresponse", response.data);
-      })
-      .catch((error) => console.error("address error", error));
-  };
+  // const submitAddress = () => {
+  // if (!addressObj) {
+  //   setMeetingStreetAddressError(true);
+  // } else {
+  //   setMeetingStreetAddressError(false);
+  // }
+
+  // instance
+  //   .patch(`/bookclubs/${userId}`, addressObj)
+  //   .then((response) => {
+  //     console.log("addressresponse", response.data);
+  //   })
+  //   .catch((error) => console.error("address error", error));
+  // };
 
   return (
     <>
@@ -97,15 +99,16 @@ const Address = (props) => {
         onChange={setMeetingCountry}
         placeholder='Please enter your country'
       />
-      <button type='button' onClick={submitAddress}>
+      {/* <button type='button' onClick={submitAddress}>
         Submit Address
-      </button>
+      </button> */}
     </>
   );
 };
 
 Address.propTypes = {
   userId: PropTypes.string,
+  valueCallback: PropTypes.func,
 };
 
 export default Address;

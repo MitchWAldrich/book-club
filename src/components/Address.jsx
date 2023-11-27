@@ -28,6 +28,30 @@ const Address = (props) => {
 
   valueCallback(addressObj);
 
+  const handleStreetNameChange = (e) => {
+    setMeetingStreetName(e.target.value);
+  };
+
+  const handleStreetNumberChange = (e) => {
+    setMeetingStreetNumber(e.target.value);
+  };
+
+  const handleUnitNumberChange = (e) => {
+    setMeetingUnitNumber(e.target.value);
+  };
+
+  const handleCityChange = (e) => {
+    setMeetingCity(e.target.value);
+  };
+
+  const handleProvinceChange = (e) => {
+    setMeetingProvince(e.target.value);
+  };
+
+  const handleCountryChange = (e) => {
+    setMeetingCountry(e.target.value);
+  };
+
   // const submitAddress = () => {
   // if (!addressObj) {
   //   setMeetingStreetAddressError(true);
@@ -42,6 +66,7 @@ const Address = (props) => {
   //   })
   //   .catch((error) => console.error("address error", error));
   // };
+  console.log;
 
   return (
     <>
@@ -51,7 +76,7 @@ const Address = (props) => {
         value={meetingStreetNumber}
         name='meetingStreetNumber'
         error={meetingStreetAddressError}
-        onChange={setMeetingStreetNumber}
+        onChange={handleStreetNumberChange}
         placeholder='Please enter your street number'
       />
       <Input
@@ -60,7 +85,7 @@ const Address = (props) => {
         value={meetingStreetName}
         name='meetingStreetName'
         error={meetingStreetAddressError}
-        onChange={setMeetingStreetName}
+        onChange={handleStreetNameChange}
         placeholder='Please enter your street name'
       />
       <Input
@@ -69,7 +94,7 @@ const Address = (props) => {
         value={meetingUnitNumber}
         name='meetingUnitNumber'
         error={meetingStreetAddressError}
-        onChange={setMeetingUnitNumber}
+        onChange={handleUnitNumberChange}
         placeholder='Please enter your unit/apartment number'
       />
       <Input
@@ -78,7 +103,7 @@ const Address = (props) => {
         value={meetingCity}
         name='meetingCity'
         error={meetingCity}
-        onChange={setMeetingCity}
+        onChange={handleCityChange}
         placeholder='Please enter your city'
       />
       <Input
@@ -87,7 +112,7 @@ const Address = (props) => {
         value={meetingProvince}
         name='meetingProvince'
         error={meetingProvince}
-        onChange={setMeetingProvince}
+        onChange={handleProvinceChange}
         placeholder='Please enter your province or state'
       />
       <Input
@@ -96,7 +121,7 @@ const Address = (props) => {
         value={meetingCountry}
         name='meetingCountry'
         error={meetingStreetAddressError}
-        onChange={setMeetingCountry}
+        onChange={handleCountryChange}
         placeholder='Please enter your country'
       />
       {/* <button type='button' onClick={submitAddress}>

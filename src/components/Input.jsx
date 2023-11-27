@@ -11,7 +11,9 @@ const Input = (props) => {
     onChange,
     className,
   } = props;
-  let { value } = props;
+
+  let value = props.value;
+
   if (value === null) value = "";
 
   return (
@@ -28,7 +30,7 @@ const Input = (props) => {
         // style={{ backgroundColor: 'orange', height: '100%' }}
         style={{ height: "100%" }}
       />
-      {error && <p className='error'>Input field can't be empty!</p>}
+      {/* {error && <p className='error'>Input field can't be empty!</p>} */}
     </div>
   );
 };

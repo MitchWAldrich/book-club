@@ -171,6 +171,9 @@ const BookClubItem = (props) => {
               <TimePicker onChange={setMeetingTime} value={meetingTime} />
             </>
           ) : null}
+          <button className='btn' onClick={addMeetingDetails}>
+            SET MEETING
+          </button>
           <h4>What book will you read first?</h4>
           <SearchBar
             className='searchInput'

@@ -119,6 +119,7 @@ const BookClub = () => {
                 <BookClubItem
                   userObj={user}
                   bookClubId={isNewBookClub.bookClubId}
+                  isNew={true}
                 />
               </div>
             ) : null}

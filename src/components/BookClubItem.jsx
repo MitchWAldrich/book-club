@@ -11,7 +11,7 @@ import SearchBar from "./Searchbar";
 import Dropdown from "./Dropdown";
 
 const BookClubItem = (props) => {
-  const { userObj, bookClubId } = props;
+  const { userObj, bookClubId, isNew } = props;
 
   const userId = userObj.userId;
 
@@ -24,6 +24,10 @@ const BookClubItem = (props) => {
   const [meetingTime, setMeetingTime] = useState(null);
   const [firstBook, setFirstBook] = useState(null);
   const [addMembers, setAddMembers] = useState(null);
+  const [bookClubSetupState, setBookClubSetupState] = useState(
+    // isNew ? "membersState" : null
+    isNew ? "membersState" : null
+  );
 
   const addMeetingDetails = () => {
     instance.patch(`/bookclubs/${bookClubId}`, {
@@ -38,6 +42,7 @@ const BookClubItem = (props) => {
       },
       isNewBookClub: false,
     });
+    setBookClubSetupState("firstBookState");
   };
 
   const addFirstBook = () => {
@@ -86,114 +91,142 @@ const BookClubItem = (props) => {
       newMembers: { invited: addMembers },
       location: "bookClubCreate",
     });
+    setBookClubSetupState("meetingState");
   };
 
+  const closeBookClubSetup = () => {
+    setBookClubSetupState("congratulationsState");
+  };
   //make into smaller sections and pages turn to transition
   return (
     <main className='container'>
       <div className='form'>
         <h1 className='newBookClubTitle'>Create a BookClub</h1>
         <form className='newBookClubForm' onSubmit={handleSubmit}>
-          {/* Add search functionality */}
-          <h4>Search Members</h4>
-          <SearchBar
-            className='searchInput'
-            location='bookClub'
-            dropDown={false}
-            id={userObj.id}
-            valueCallback={getChosenMemberResults}
-          />
-          {addMembers?.length > 0 ? (
-            <button
-              type='button'
-              onClick={() => updateMembers(addMembers, bookClubId)}
-            >
-              {addMembers.length > 1 ? "Invite Members" : "Invite Member"}
-            </button>
+          {bookClubSetupState === "membersState" ? (
+            <div>
+              <h4>Search Members</h4>
+              <SearchBar
+                className='searchInput'
+                location='bookClub'
+                dropDown={false}
+                id={userObj.id}
+                valueCallback={getChosenMemberResults}
+              />
+              {addMembers?.length > 0 ? (
+                <button
+                  type='button'
+                  onClick={() => updateMembers(addMembers, bookClubId)}
+                >
+                  {addMembers.length > 1 ? "Invite Members" : "Invite Member"}
+                </button>
+              ) : null}
+            </div>
           ) : null}
-          <h4>Will your book club have meetings?</h4>
-          <div className='buttons-2'>
-            <button
-              type='button'
-              onClick={() => getMeetingBoolean(true)}
-              className='buttons-accept'
-            >
-              Yes
-            </button>
-            <button
-              type='button'
-              onClick={() => getMeetingBoolean(false)}
-              className='buttons-reject'
-            >
-              No
-            </button>
-          </div>
-          {meetingBoolean ? (
-            <>
-              <h4>Will your meetings be in person or online?</h4>
+          {bookClubSetupState === "meetingState" ? (
+            <div>
+              <h4>Will your book club have meetings?</h4>
               <div className='buttons-2'>
                 <button
                   type='button'
-                  onClick={() => getMeetingTransmissionType("inPerson")}
+                  onClick={() => getMeetingBoolean(true)}
                   className='buttons-accept'
                 >
-                  In Person
+                  Yes
                 </button>
                 <button
                   type='button'
-                  onClick={() => getMeetingTransmissionType("virtual")}
+                  onClick={() => getMeetingBoolean(false)}
                   className='buttons-reject'
                 >
-                  Online
+                  No
                 </button>
               </div>
-              {meetingTransmissionType === "inPerson" ? (
+
+              {meetingBoolean ? (
                 <>
-                  <h4>Where is your meeting?</h4>
-                  <Address valueCallback={getMeetingAddress} />
-                </>
-              ) : null}
-              {meetingTransmissionType === "virtual" ? (
-                <>
-                  <h4>What is your meeting link?</h4>
-                  <Input
-                    type='text'
-                    // label="Meeting Link"
-                    value={meetingLink}
-                    name='meetingLink'
-                    error={meetingLinkError}
-                    onChange={handleMeetingLinkChange}
-                    placeholder='Please enter your meeting link'
+                  <h4>Will your meetings be in person or online?</h4>
+                  <div className='buttons-2'>
+                    <button
+                      type='button'
+                      onClick={() => getMeetingTransmissionType("inPerson")}
+                      className='buttons-accept'
+                    >
+                      In Person
+                    </button>
+                    <button
+                      type='button'
+                      onClick={() => getMeetingTransmissionType("virtual")}
+                      className='buttons-reject'
+                    >
+                      Online
+                    </button>
+                  </div>
+                  {meetingTransmissionType === "inPerson" ? (
+                    <>
+                      <h4>Where is your meeting?</h4>
+                      <Address valueCallback={getMeetingAddress} />
+                    </>
+                  ) : null}
+                  {meetingTransmissionType === "virtual" ? (
+                    <>
+                      <h4>What is your meeting link?</h4>
+                      <Input
+                        type='text'
+                        // label="Meeting Link"
+                        value={meetingLink}
+                        name='meetingLink'
+                        error={meetingLinkError}
+                        onChange={handleMeetingLinkChange}
+                        placeholder='Please enter your meeting link'
+                      />
+                    </>
+                  ) : null}
+                  <h4>How often will you meet?</h4>
+                  <Dropdown
+                    category={"MeetingFrequency"}
+                    options={meetingFrequencyList}
+                    valueCallback={setMeetingFrequency}
+                    dropdownName='NewBookClubMeetingFrequency'
                   />
+                  <h4>When is the first meeting?</h4>
+                  <Calendar onChange={setMeetingDate} value={meetingDate} />
+                  <TimePicker onChange={setMeetingTime} value={meetingTime} />
                 </>
               ) : null}
-              <h4>How often will you meet?</h4>
-              <Dropdown
-                category={"MeetingFrequency"}
-                options={meetingFrequencyList}
-                valueCallback={setMeetingFrequency}
-                dropdownName='NewBookClubMeetingFrequency'
-              />
-              <h4>When is the first meeting?</h4>
-              <Calendar onChange={setMeetingDate} value={meetingDate} />
-              <TimePicker onChange={setMeetingTime} value={meetingTime} />
-            </>
+              <button className='btn' onClick={addMeetingDetails}>
+                SET MEETING
+              </button>
+            </div>
           ) : null}
-          <button className='btn' onClick={addMeetingDetails}>
-            SET MEETING
-          </button>
-          <h4>What book will you read first?</h4>
-          <SearchBar
-            className='searchInput'
-            location='bookClubFirstBook'
-            dropDown={true}
-            id={userObj.id}
-            valueCallback={getChosenSearchResults}
-          />
-          {firstBook ? <div>First Book: {firstBook}</div> : null}
-          <button className='btn' onClick={addFirstBook}>
-            ADD BOOK
-          </button>
+          {bookClubSetupState === "firstBookState" ? (
+            <div>
+              <h4>What book will you read first?</h4>
+              <SearchBar
+                className='searchInput'
+                location='bookClubFirstBook'
+                dropDown={true}
+                id={userObj.id}
+                valueCallback={getChosenSearchResults}
+              />
+              {firstBook ? <div>First Book: {firstBook}</div> : null}
+              <button className='btn' onClick={addFirstBook}>
+                ADD BOOK
+              </button>
+            </div>
+          ) : null}
+          {bookClubSetupState === "congratulationsState" ? (
+            <div>
+              <h4>Congratulations! You've set up your Book Club!</h4>
+              <button
+                className='btn'
+                type='button'
+                onClick={closeBookClubSetup}
+              >
+                CLOSE
+              </button>
+            </div>
+          ) : null}
         </form>
       </div>
     </main>
@@ -203,6 +236,7 @@ const BookClubItem = (props) => {
 BookClubItem.propTypes = {
   userObj: PropTypes.object,
   bookClubId: PropTypes.string,
+  isNew: PropTypes.bool,
 };
 
 export default BookClubItem;

@@ -650,12 +650,12 @@ input:focus {
   display: flex;
 }
 
-.invitation-buttons-accept {
+.buttons-accept {
   margin: 0 1em 0 1em;
   background-color: green;
 }
 
-.invitation-buttons-reject {
+.buttons-reject {
   margin: 0 1em 0 1em;  
   background-color: red;
 }
@@ -816,4 +816,10 @@ input:focus {
   border-top: 10px solid #383636; /* Black */
   border-radius: 50%;
   animation: spinner 1.5s linear infinite;
+}
+
+.buttons-2 {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 2em 0;
 }

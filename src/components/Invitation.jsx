@@ -46,14 +46,14 @@ const Invitation = (props) => {
       You are invited to {bookClubObj.name}
       <div className='invitation-buttons'>
         <button
-          className='invitation-buttons-accept'
+          className='buttons-accept'
           type='button'
           onClick={handleAcceptInvitation}
         >
           Accept Invitation
         </button>
         <button
-          className='invitation-buttons-reject'
+          className='buttons-reject'
           type='button'
           onClick={handleRejectInvitation}
         >

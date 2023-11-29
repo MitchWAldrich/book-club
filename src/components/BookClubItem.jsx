@@ -68,26 +68,14 @@ const BookClubItem = (props) => {
     setMeetingLink(e.target.value);
   };
 
-  const meetingUnits = ["Yes", "No"];
-  const meetingTypes = ["In Person", "Virtual", "Both"];
   const meetingFrequencyList = ["Weekly", "Bi-weekly", "Monthly", "Custom"];
 
-  const getResult = (dropdownValue) => {
-    if (dropdownValue === "Yes") {
-      setMeetingBoolean(true);
-    }
+  const getMeetingBoolean = (bool) => {
+    bool ? setMeetingBoolean(true) : setMeetingBoolean(false);
+  };
 
-    if (dropdownValue === "No") {
-      setMeetingBoolean(false);
-    }
-
-    if (dropdownValue === "In Person") {
-      setMeetingTransmissionType("inPerson");
-    }
-
-    if (dropdownValue === "Virtual") {
-      setMeetingTransmissionType("virtual");
-    }
+  const getMeetingTransmissionType = (transmissionType) => {
+    setMeetingTransmissionType(transmissionType);
   };
 
   const getMeetingAddress = () => {};
@@ -124,21 +112,41 @@ const BookClubItem = (props) => {
             </button>
           ) : null}
           <h4>Will your book club have meetings?</h4>
-          <Dropdown
-            category={"Meetings"}
-            options={meetingUnits}
-            valueCallback={getResult}
-            dropdownName='NewBookClubMeeting'
-          />
+          <div className='buttons-2'>
+            <button
+              type='button'
+              onClick={() => getMeetingBoolean(true)}
+              className='buttons-accept'
+            >
+              Yes
+            </button>
+            <button
+              type='button'
+              onClick={() => getMeetingBoolean(false)}
+              className='buttons-reject'
+            >
+              No
+            </button>
+          </div>
           {meetingBoolean ? (
             <>
               <h4>Will your meetings be in person or online?</h4>
-              <Dropdown
-                category={"MeetingTransmissionType"}
-                options={meetingTypes}
-                valueCallback={getResult}
-                dropdownName='NewBookClubMeetingTransmissionType'
-              />
+              <div className='buttons-2'>
+                <button
+                  type='button'
+                  onClick={() => getMeetingTransmissionType("inPerson")}
+                  className='buttons-accept'
+                >
+                  In Person
+                </button>
+                <button
+                  type='button'
+                  onClick={() => getMeetingTransmissionType("virtual")}
+                  className='buttons-reject'
+                >
+                  Online
+                </button>
+              </div>
               {meetingTransmissionType === "inPerson" ? (
                 <>
                   <h4>Where is your meeting?</h4>

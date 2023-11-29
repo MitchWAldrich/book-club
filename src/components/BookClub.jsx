@@ -18,6 +18,10 @@ const BookClub = () => {
 
   const [isAddBooksClicked, setIsAddBooksClicked] = useState(false);
 
+  const getIsNewBookClub = () => {
+    setIsNewBookClub(false);
+  };
+
   const isHost = user.bookClubs.host.includes(bookClubMock.bookClubId)
     ? true
     : false;
@@ -37,8 +41,8 @@ const BookClub = () => {
   );
   console.log("I'm Invited", bookClubsImInvitedTo);
 
-  const isNewBookClub = bookClubsIHost.find(
-    (bookClub) => bookClub.isNewBookClub === true
+  const [isNewBookClub, setIsNewBookClub] = useState(
+    bookClubsIHost.find((bookClub) => bookClub.isNewBookClub === true)
   );
 
   //set book (and next/future book(s))
@@ -115,11 +119,12 @@ const BookClub = () => {
               </button>
             </div>
             {isNewBookClub ? (
-              <div>
+              <div className='newBookClubContainer'>
                 <BookClubItem
                   userObj={user}
                   bookClubId={isNewBookClub.bookClubId}
                   isNew={true}
+                  valueCallback={getIsNewBookClub}
                 />
               </div>
             ) : null}

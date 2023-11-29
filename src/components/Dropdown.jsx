@@ -13,9 +13,7 @@ const Dropdown = (props) => {
 
   const [menuItems, setMenuItems] = useState(menu);
   const [isListOpen, setIsListOpen] = useState(false);
-  const [titleHeader, setTitleHeader] = useState(
-    menuItems[0].title || "Choose"
-  );
+  const [titleHeader, setTitleHeader] = useState("Select");
 
   const resetThenSet = (id) => {
     const tempMenu = [...menuItems];

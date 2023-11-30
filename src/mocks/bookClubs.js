@@ -3,10 +3,11 @@ export const bookClubsMock = [
       id: 1,
       bookClubId: 'sdfjil234)',
       bookClubHostId: '62jt*(kj!3',
+      hostUserName: 'Amari Bolt',
       name: 'My First Book Club',
       members: {invited: [], accepted: []},
       books: {
-        currentBook: 'Reese\'s Favourite Book',
+        currentBook: {title: 'Reese\'s Favourite Book', author: 'Luna Slink', thumbnail: ''},
         nextBook: 'Oprah\'s Favourite Book',
         upcomingBooks: ['Next Book', 'Other Next Book', 'Biography of a Celeb'],
         previousBooks: ['Old Book', 'Other Old Book', 'A Graphic Novel'],
@@ -27,16 +28,19 @@ export const bookClubsMock = [
           }
         }
       },
-      isNewBookClub: true
+      isNewBookClub: true,
+      visibility: 'public',
+      genre: 'Fantasy',
   },
   {
       id: 2,
       bookClubId: 'fsqjil$t72',
       bookClubHostId: '523dgf*5gn&',
+      hostUserName: 'Jenna Black',
       name: 'My Second Book Club',
       members: {invited: [],  accepted: ['62jt*(kj!3', '34xc98(dfk']},
       books: {
-        currentBook: 'Reese\'s 2nd Favourite Book',
+        currentBook: {title: 'Reese\'s 2nd Favourite Book', author: 'Luna Slink', thumbnail: ''},
         nextBook: 'Oprah\'s 2nd Favourite Book',
         upcomingBooks: ['New Book', 'New Odd Book', 'SoCal Dreams'],
         previousBooks: ['Old Book 2', 'A 2nd Old Book', 'A 2nd Graphic Novel'],
@@ -50,16 +54,19 @@ export const bookClubsMock = [
           inPerson: 'N/A'
         }
       },
-      isNewBookClub: false
+      isNewBookClub: false,
+      visibility: 'friendsCanSee',
+      genre: 'Fiction',
   },
   {
       id: 3,
       bookClubId: 'fdul694*',
       bookClubHostId: '34xc98(dfk',
+      hostUserName: 'Jamie Smith',
       name: 'Book Clubbing',
       members: {invited: ['62jt*(kj!3'], accepted: ['523dgf*5gn&']},
       books: {
-        currentBook: 'Reese\'s 3rd Favourite Book',
+        currentBook: {title: 'Reese\'s 3rd Favourite Book', author: 'Luna Slink', thumbnail: ''},
         nextBook: 'Oprah\'s 3rd Favourite Book',
         upcomingBooks: ['Three and One Book', 'Books are Fun', 'Anatomy of a Society'],
         previousBooks: ['Old Book 3', 'Third Old Book', 'A 3rd Graphic Novel'],
@@ -80,7 +87,9 @@ export const bookClubsMock = [
           }
         } 
       },
-      isNewBookClub: false
+      isNewBookClub: false,
+      visibility: 'inviteOnly',
+      genre: 'Non-Fiction',
   }
 ]
 

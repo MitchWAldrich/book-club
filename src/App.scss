@@ -660,6 +660,28 @@ input:focus {
   background-color: red;
 }
 
+/* Book Club Dashboard */
+
+.bookClubsDashboard {
+  display: flex;
+  flex-direction: column;
+  margin: 10em 0 0 0;
+}
+
+/* Book Club List Item */
+
+.bookClubItemContainer {
+  display: flex;
+  flex-direction: column;
+  border: solid;
+  border-radius: 10px;
+}
+
+.bookClubItemTitle {
+  // background-color: red;
+  text-align: center;
+}
+
 /* Book Club Feature Book */
 
 .bookClubFeature {

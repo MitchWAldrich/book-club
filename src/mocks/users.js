@@ -4,7 +4,7 @@ export const usersMock = [
       userId: '34xc98(dfk',
       email: 'user1@email.com',
       password: 'password',
-      username: 'user1',
+      username: 'Jamie Smith',
       image: 'https://www.perfocal.com/blog/content/images/2021/01/Perfocal_17-11-2019_TYWFAQ_100_standard-3.jpg',
       goals: [],
       library: {
@@ -26,7 +26,7 @@ export const usersMock = [
       userId: '523dgf*5gn&',
       email: 'user2@email.com',
       password: 'password',
-      username: 'user2',
+      username: 'Jenna Black',
       image: 'https://writestylesonline.com/wp-content/uploads/2018/11/Three-Statistics-That-Will-Make-You-Rethink-Your-Professional-Profile-Picture.jpg',
       goals: [],
       library: {
@@ -35,7 +35,7 @@ export const usersMock = [
       },
       bookClubs: {
           host: ['fsqjil$t72'],
-          invited: ['sdfjil234'],
+          invited: ['sdfjil234)'],
           accepted: ['fdul694*']
       },
       friends: {
@@ -48,7 +48,7 @@ export const usersMock = [
       userId: '62jt*(kj!3',
       email: 'user3@email.com',
       password: 'password',
-      username: 'user3',
+      username: 'Amari Bolt',
       image: 'https://www.elitesingles.co.uk/wp-content/uploads/sites/59/2019/11/2b_en_articleslide_sm2-350x264.jpg',
       goals: [{
           name: 'My First Goal',
@@ -119,3 +119,7 @@ export const usersMock = [
 ];
 
 export const userMock = usersMock[2];
+
+export const userMock1 = usersMock[0];
+
+export const userMock2 = usersMock[1];

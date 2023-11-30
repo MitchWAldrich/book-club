@@ -22,8 +22,6 @@ export const getIdByUserId = (users, userId) => {
 /* BookClub Searches */
 
 export const getBookClubById = (bookclubs, bookClubId) => {
-  console.log({bookclubs, bookClubId})
-console.log('func results', bookclubs.find((bookclub) => bookclub.bookClubId === bookClubId))
   return bookclubs.find((bookclub) => bookclub.bookClubId === bookClubId);
 };
 

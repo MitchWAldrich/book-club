@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import instance from "../utils/axiosConfig";
 
 import BookClubItem from "./BookClubItem";
+import BookClubListItem from "./BookClubListItem";
 import MemberList from "./MemberList";
 import Nav from "./Nav";
 import NextMeeting from "./NextMeeting";
@@ -69,23 +70,17 @@ const BookClub = () => {
   //first update bookclub
 
   return (
-    <>
+    <main className='bookClubsDashboard'>
       <Nav user={user ?? "Guest"} />
       <h2 className='homeTitle'>{bookClubMock.name}</h2>
       <div>
-        <SingleBookItem
-          authors={bookMock.authors}
-          categories={bookMock.categories}
-          averageRating={bookMock.averageRating}
-          description={bookMock.description}
-          imageLinks={bookMock.imageLinks}
-          language={bookMock.language}
-          pageCount={bookMock.pageCount}
-          publisher={bookMock.publisher}
-          title={bookMock.title}
-          userId={3}
-          location={"expanded"}
-        />
+        <div>
+          {bookClubsImInvitedTo.length
+            ? bookClubsImInvitedTo.map((bookClub, key) => (
+                <BookClubListItem key={key} bookClubObj={bookClub} />
+              ))
+            : null}
+        </div>
         <div>
           <h3>Current Book</h3>
           <SingleBookItem
@@ -137,7 +132,7 @@ const BookClub = () => {
           location='bookClubPage'
         />
       </div>
-    </>
+    </main>
   );
 };
 

@@ -9,12 +9,12 @@ import Register from "./components/Register";
 import Replies from "./components/Replies";
 
 import userContext from "./userContext";
-import { userMock } from "./mocks/users";
+import { userMock2 } from "./mocks/users";
 
 import "./App.scss";
 
 function App() {
-  const [user, setUser] = useState(userMock);
+  const [user, setUser] = useState(userMock2);
 
   return (
     <div>

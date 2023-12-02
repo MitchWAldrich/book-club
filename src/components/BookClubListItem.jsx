@@ -1,11 +1,13 @@
+import instance from "../utils/axiosConfig";
+
 import PropTypes from "prop-types";
 
 import { bookMock } from "../mocks/books";
 
 const BookClubListItem = (props) => {
-  const { bookClubObj } = props;
+  const { bookClubObj, userId } = props;
   const {
-    // bookClubId,
+    bookClubId,
     // bookClubHostId,
     hostUserName,
     name,
@@ -36,6 +38,25 @@ const BookClubListItem = (props) => {
   const { streetNumber, streetName, city, province, country } =
     nextMeetingLocation;
 
+  const joinBookClub = () => {
+    instance.patch(`/bookclubs/${bookClubId}`, {
+      userId: userId,
+      requestStatus: "join",
+    });
+    instance.patch(`/users/${userId}`, bookClubId);
+  };
+
+  const requestBookClub = () => {
+    instance.patch(`/bookclubs/${bookClubId}`, {
+      userId: userId,
+      requestStatus: "request",
+    });
+    instance.patch(`/users/${userId}`, {
+      bookClubId: bookClubId,
+      requestStatus: "request",
+    });
+  };
+
   return (
     <main className='bookClubItemContainer'>
       <div>
@@ -57,6 +78,12 @@ const BookClubListItem = (props) => {
           <p>{`CurrentBook: ${title} by ${authors}`}</p>
           <img src={thumbnail} />
         </div>
+        <button type='button' onClick={joinBookClub}>
+          Join Book Club
+        </button>
+        <button type='button' onClick={requestBookClub}>
+          Request Invitation
+        </button>
       </div>
     </main>
   );
@@ -64,6 +91,7 @@ const BookClubListItem = (props) => {
 
 BookClubListItem.propTypes = {
   bookClubObj: PropTypes.object,
+  userId: PropTypes.string,
 };
 
 export default BookClubListItem;

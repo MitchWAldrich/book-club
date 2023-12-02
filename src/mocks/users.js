@@ -14,7 +14,8 @@ export const usersMock = [
       bookClubs: {
           host: ['fdul694*'],
           invited: [],
-          accepted: ['sdfjil234)', 'fsqjil$t72']
+          accepted: ['sdfjil234)', 'fsqjil$t72'],
+          requested: [],
       },
       friends: {
         requested: [],
@@ -36,7 +37,8 @@ export const usersMock = [
       bookClubs: {
           host: ['fsqjil$t72'],
           invited: ['sdfjil234)'],
-          accepted: ['fdul694*']
+          accepted: ['fdul694*'],
+          requested: []
       },
       friends: {
         requested: [],
@@ -109,7 +111,8 @@ export const usersMock = [
       bookClubs: {
           host: ['sdfjil234)'],
           invited: ['fdul694*'],
-          accepted: ['fsqjil$t72']
+          accepted: ['fsqjil$t72'],
+          requested: []
       },
       friends: {
         requested: [],

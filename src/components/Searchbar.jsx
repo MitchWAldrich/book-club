@@ -6,14 +6,20 @@ import PropTypes from "prop-types";
 import { IconContext } from "react-icons";
 import { HiOutlineSearchCircle } from "react-icons/hi";
 
+import BookClubsList from "./BookClubsList";
 import BookListItem from "./BookListItem";
 import Dropdown from "./Dropdown";
 import Input from "./Input";
 
-import { getBooks, getUserByUserId } from "../utils/selectors";
+import {
+  getBooks,
+  getUserByUserId,
+  getBookClubsByCategory,
+} from "../utils/selectors";
 import MemberList from "./MemberList";
 
 import { usersMock } from "../mocks/users";
+import { bookClubsMock } from "../mocks/bookClubs";
 
 const SearchBar = (props) => {
   const { className, location, dropDown, id, valueCallback } = props;
@@ -22,6 +28,7 @@ const SearchBar = (props) => {
   const [userSearched, setUserSearched] = useState(
     location === "bookClub" ? true : false
   );
+  const [bookClubsSearched, setBookClubsSearched] = useState(false);
   const [error, setError] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const [searchTypeValue, setSearchTypeValue] = useState("title");
@@ -29,6 +36,7 @@ const SearchBar = (props) => {
   const [author, setAuthor] = useState("");
   const [bookResponse, setBookResponse] = useState([]);
   const [userResponse, setUserResponse] = useState([]);
+  const [bookClubsResponse, setBookClubsResponse] = useState([]);
   const [bookId, setBookId] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -79,6 +87,25 @@ const SearchBar = (props) => {
         setIsLoading(false);
       });
   }, [userSearched]);
+
+  useEffect(() => {
+    setIsLoading(true);
+    instance
+      .get(`/api/bookClubs/${id}`)
+      .then(function (response) {
+        console.log("bookClubsResp", response);
+        const bookClubsObjs = response.data.bookClubs.map((bookClub) =>
+          getBookClubsByCategory(bookClubsMock, bookClub)
+        );
+        setBookClubsResponse(bookClubsObjs);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .finally(function () {
+        setIsLoading(false);
+      });
+  }, [bookClubsSearched]);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -177,6 +204,7 @@ const SearchBar = (props) => {
           location='bookClubCreate'
         />
       ) : null}
+      {bookClubsResponse ? <BookClubsList /> : null}
     </>
   );
 };

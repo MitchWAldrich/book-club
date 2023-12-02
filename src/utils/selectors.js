@@ -25,6 +25,9 @@ export const getBookClubById = (bookclubs, bookClubId) => {
   return bookclubs.find((bookclub) => bookclub.bookClubId === bookClubId);
 };
 
+export const getBookClubsByCategory = (bookclubs, category) => {
+  return bookclubs.find((bookclub) => bookclub.categories.includes(category));
+};
 
 /* Book Searches */
 

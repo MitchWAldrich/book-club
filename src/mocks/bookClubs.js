@@ -5,7 +5,7 @@ export const bookClubsMock = [
       bookClubHostId: '62jt*(kj!3',
       hostUserName: 'Amari Bolt',
       name: 'My First Book Club',
-      members: {invited: [], accepted: []},
+      members: {invited: [], accepted: [], requested: []},
       books: {
         currentBook: {title: 'Reese\'s Favourite Book', author: 'Luna Slink', thumbnail: ''},
         nextBook: 'Oprah\'s Favourite Book',
@@ -38,7 +38,7 @@ export const bookClubsMock = [
       bookClubHostId: '523dgf*5gn&',
       hostUserName: 'Jenna Black',
       name: 'My Second Book Club',
-      members: {invited: [],  accepted: ['62jt*(kj!3', '34xc98(dfk']},
+      members: {invited: [],  accepted: ['62jt*(kj!3', '34xc98(dfk'], requested: []},
       books: {
         currentBook: {title: 'Reese\'s 2nd Favourite Book', author: 'Luna Slink', thumbnail: ''},
         nextBook: 'Oprah\'s 2nd Favourite Book',
@@ -64,7 +64,7 @@ export const bookClubsMock = [
       bookClubHostId: '34xc98(dfk',
       hostUserName: 'Jamie Smith',
       name: 'Book Clubbing',
-      members: {invited: ['62jt*(kj!3'], accepted: ['523dgf*5gn&']},
+      members: {invited: ['62jt*(kj!3'], accepted: ['523dgf*5gn&'], requested: []},
       books: {
         currentBook: {title: 'Reese\'s 3rd Favourite Book', author: 'Luna Slink', thumbnail: ''},
         nextBook: 'Oprah\'s 3rd Favourite Book',

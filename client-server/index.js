@@ -74,7 +74,7 @@ app.post("/api/users", async (req, res) => {
 });
 
 app.patch("/api/users/:id", async (req) => {
-    let { userId, bookObj, goalObj, readStatus, bookClubId, bookClubApprovalStatus } = req.body;
+    let { userId, bookObj, goalObj, readStatus, bookClubId, bookClubApprovalStatus, requestStatus } = req.body;
 
     const user = usersMock.find(
         (user) => user.userId === userId
@@ -95,6 +95,9 @@ app.patch("/api/users/:id", async (req) => {
     }
     if (bookClubApprovalStatus === 'rejected') {
         user.bookClubs.invited.splice(user.bookClubs.invited.indexOf(bookClubId))
+    }
+    if (requestStatus === 'request') {
+        user.bookClubs.requested.push(bookClubId)
     }
     //👇🏻 logs all the request fields to the console.
     console.log({ userId, bookObj, goalObj });
@@ -167,7 +170,7 @@ app.post("/api/bookclubs", async (req, res) => {
 });
 
 app.patch("/api/bookclubs/:id", async (req) => {
-    const { bookClubId, newMembers, acceptanceStatus, bookObj, location } = req.body;
+    const { bookClubId, newMembers, acceptanceStatus, bookObj, location, requestStatus, userId } = req.body;
 
     const bookClub = bookClubsMock.find( bookClub => bookClub.bookClubId === bookClubId )
 
@@ -180,6 +183,14 @@ app.patch("/api/bookclubs/:id", async (req) => {
         if (acceptanceStatus === 'rejected') newMembers.forEach( (member) => bookClub.members.invited.splice(bookClub.members.invited.indexOf(member)))
 
         if (location === 'bookClubCreate') newMembers.invited.forEach( (member) => bookClub.members.invited.push(member));
+        
+        if (requestStatus === 'join') {
+            bookClub.members.accepted.push(userId)
+        }
+    
+        if (requestStatus === 'request') {
+            bookClub.members.requested.push(userId)
+        }
     }
 
     if (bookObj) {

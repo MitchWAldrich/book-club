@@ -63,6 +63,8 @@ const BookClub = () => {
       .catch((error) => console.error("addBooksToClub error", error));
   };
 
+  const getBookClubSearchResults = () => {};
+
   //archive book
 
   //schedule meeting
@@ -75,11 +77,21 @@ const BookClub = () => {
       <h2 className='homeTitle'>{bookClubMock.name}</h2>
       <div>
         <div>
-          {bookClubsImInvitedTo.length
-            ? bookClubsImInvitedTo.map((bookClub, key) => (
-                <BookClubListItem key={key} bookClubObj={bookClub} />
-              ))
-            : null}
+          <div>
+            <h3>Find a Book Club</h3>
+            <SearchBar
+              className='searchInput'
+              location='bookClubSearch'
+              dropDown={true}
+              id={user.id}
+              valueCallback={getBookClubSearchResults}
+            />
+            {/* <BookClubListItem
+                    key={key}
+                    bookClubObj={bookClub}
+                    userId={user.userId}
+                  /> */}
+          </div>
         </div>
         <div>
           <h3>Current Book</h3>

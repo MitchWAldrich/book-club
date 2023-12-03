@@ -6,6 +6,7 @@ import { bookMock } from "../mocks/books";
 
 const BookClubListItem = (props) => {
   const { bookClubObj, userId } = props;
+  console.log("bookClubObj", bookClubObj);
   const {
     bookClubId,
     // bookClubHostId,

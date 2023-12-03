@@ -22,7 +22,7 @@ import { usersMock } from "../mocks/users";
 import { bookClubsMock } from "../mocks/bookClubs";
 
 const SearchBar = (props) => {
-  const { className, location, dropDown, id, valueCallback } = props;
+  const { className, location, dropDown, id, valueCallback, userId } = props;
 
   const [bookSearched, setBookSearched] = useState(false);
   const [userSearched, setUserSearched] = useState(
@@ -204,7 +204,9 @@ const SearchBar = (props) => {
           location='bookClubCreate'
         />
       ) : null}
-      {bookClubsResponse ? <BookClubsList /> : null}
+      {bookClubsSearched ? (
+        <BookClubsList bookClubs={bookClubsResponse} userId={userId} />
+      ) : null}
     </>
   );
 };
@@ -215,6 +217,7 @@ SearchBar.propTypes = {
   dropDown: PropTypes.bool,
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   valueCallback: PropTypes.func,
+  userId: PropTypes.string,
 };
 
 export default SearchBar;

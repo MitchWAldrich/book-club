@@ -35,7 +35,10 @@ const Dropdown = (props) => {
     setIsListOpen(false);
     resetThenSet(id, title, event);
 
-    if (dropdownName === "GoalUnitsDropdown") {
+    if (
+      dropdownName === "GoalUnitsDropdown" ||
+      dropdownName === "bookClubSearch"
+    ) {
       valueCallback(title.toLowerCase());
     } else {
       valueCallback(title);

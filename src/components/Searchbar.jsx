@@ -39,8 +39,16 @@ const SearchBar = (props) => {
   const [bookClubsResponse, setBookClubsResponse] = useState([]);
   const [bookId, setBookId] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [category, setCategory] = useState(null);
 
   const units = ["Title", "Author"];
+  const categories = [
+    "Fiction",
+    "Non-Fiction",
+    "Romance",
+    "Mystery",
+    "Fantasy",
+  ];
 
   const getUnit = (dropdownValue) => {
     setSearchTypeValue(dropdownValue);
@@ -48,6 +56,10 @@ const SearchBar = (props) => {
 
   const getClicked = (clickedValue) => {
     setBookId(clickedValue);
+  };
+
+  const getCategory = (categoryValue) => {
+    setCategory(categoryValue);
   };
 
   useEffect(() => {
@@ -156,11 +168,19 @@ const SearchBar = (props) => {
               placeholder='Search here'
             />
             {dropDown ? (
-              <Dropdown
-                category={"Search Type"}
-                options={units}
-                valueCallback={getUnit}
-              />
+              location === "bookClubSearch" ? (
+                <Dropdown
+                  category={"Search Type"}
+                  options={categories}
+                  valueCallback={getCategory}
+                />
+              ) : (
+                <Dropdown
+                  category={"Search Type"}
+                  options={units}
+                  valueCallback={getUnit}
+                />
+              )
             ) : null}
             <IconContext.Provider
               // key={key}

@@ -30,7 +30,7 @@ export const bookClubsMock = [
       },
       isNewBookClub: true,
       visibility: 'public',
-      genre: 'Fantasy',
+      categories: 'Fantasy',
   },
   {
       id: 2,
@@ -56,7 +56,7 @@ export const bookClubsMock = [
       },
       isNewBookClub: false,
       visibility: 'friendsCanSee',
-      genre: 'Fiction',
+      categories: 'Fiction',
   },
   {
       id: 3,
@@ -89,7 +89,7 @@ export const bookClubsMock = [
       },
       isNewBookClub: false,
       visibility: 'inviteOnly',
-      genre: 'Non-Fiction',
+      categories: 'Non-Fiction',
   }
 ]
 

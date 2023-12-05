@@ -16,7 +16,7 @@ const BookClubListItem = (props) => {
     books,
     meetings,
     visibility,
-    genre,
+    categories,
   } = bookClubObj;
 
   const { accepted } = members;
@@ -68,7 +68,7 @@ const BookClubListItem = (props) => {
         <p>{`Members: ${bookClubObj.members.accepted.length}`}</p>
         {/* Members Icons: Accepted */}
         <p>{`Meetings: ${meetingFrequency}`}</p>
-        <p>{`Genre: ${genre}`}</p>
+        <p>{`Genre: ${categories}`}</p>
         <p>{`Next Meeting: ${nextMeetingDate} at ${nextMeetingTime}`}</p>
         <p>
           {nextMeetingLocation.online

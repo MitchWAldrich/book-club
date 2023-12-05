@@ -143,6 +143,11 @@ const SearchBar = (props) => {
       valueCallback(bookId);
       console.log("bookIdCallback", bookId);
     }
+    if (location === "bookClubSearch") {
+      setCategory(category);
+      setBookClubsSearched(false);
+      valueCallback(category);
+    }
   };
 
   const handleChooseBook = () => {

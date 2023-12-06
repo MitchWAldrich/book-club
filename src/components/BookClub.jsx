@@ -46,6 +46,8 @@ const BookClub = () => {
     bookClubsIHost.find((bookClub) => bookClub.isNewBookClub === true)
   );
 
+  const pendingBookClubs = user.bookClubs?.request;
+
   //set book (and next/future book(s))
   //make it possible to add multiple
   const addBooksToBookClub = (e) => {
@@ -91,6 +93,14 @@ const BookClub = () => {
                     bookClubObj={bookClub}
                     userId={user.userId}
                   /> */}
+          </div>
+          <div>
+            <h3>Pending Book Clubs</h3>
+            {pendingBookClubs?.length
+              ? pendingBookClubs.map((bookclub, key) => (
+                  <BookClubListItem bookClubObj={bookclub} key={key} />
+                ))
+              : null}
           </div>
         </div>
         <div>

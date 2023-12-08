@@ -106,9 +106,11 @@ const SearchBar = (props) => {
       .get(`/api/bookClubs/${id}`)
       .then(function (response) {
         console.log("bookClubsResp", response);
-        const bookClubsObjs = response.data.bookClubs.map((bookClub) =>
-          getBookClubsByCategory(bookClubsMock, bookClub)
-        );
+        const bookClubsObjs = response?.data?.bookClubs?.length
+          ? response.data.bookClubs.map((bookClub) =>
+              getBookClubsByCategory(bookClubsMock, bookClub)
+            )
+          : {};
         setBookClubsResponse(bookClubsObjs);
       })
       .catch(function (error) {

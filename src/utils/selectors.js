@@ -29,6 +29,14 @@ export const getBookClubsByCategory = (bookclubs, category) => {
   return bookclubs.find((bookclub) => bookclub.categories.includes(category));
 };
 
+export const getBookClubsByName = (bookclubs, name) => {
+  return bookclubs.find((bookclub) => bookclub.name === name);
+};
+
+export const getBookClubsByLocation = (bookclubs, location) => {
+  return bookclubs.find((bookclub) => bookclub.meetings.nextMeetingLocation.inPerson.city === location);
+};
+
 /* Book Searches */
 
 export const getBooks = (bookArray) => {

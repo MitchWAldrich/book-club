@@ -15,6 +15,8 @@ import {
   getBooks,
   getUserByUserId,
   getBookClubsByCategory,
+  getBookClubsByName,
+  getBookClubsByLocation,
 } from "../utils/selectors";
 import MemberList from "./MemberList";
 
@@ -39,7 +41,7 @@ const SearchBar = (props) => {
   const [bookClubsResponse, setBookClubsResponse] = useState([]);
   const [bookId, setBookId] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [category, setCategory] = useState(null);
+  const [searchType, setSearchType] = useState(null);
 
   const units = ["Title", "Author"];
   const categories = [
@@ -49,6 +51,7 @@ const SearchBar = (props) => {
     "Mystery",
     "Fantasy",
   ];
+  const bookClubDropdown = ["Name", "Category", "Location"];
 
   const getUnit = (dropdownValue) => {
     setSearchTypeValue(dropdownValue);
@@ -58,8 +61,18 @@ const SearchBar = (props) => {
     setBookId(clickedValue);
   };
 
-  const getCategory = (categoryValue) => {
-    setCategory(categoryValue);
+  const getSearchType = (searchType) => {
+    setSearchType(searchType);
+  };
+
+  const searchBookClubs = (searchType, searchValue) => {
+    let bookClubObject = {};
+    if (searchType === "category")
+      bookClubObject = getBookClubsByCategory(bookClubsMock, searchValue);
+    if (searchType === "name")
+      bookClubObject = getBookClubsByName(bookClubsMock, searchValue);
+    if (searchType === "location")
+      bookClubObject = getBookClubsByLocation(bookClubsMock, searchValue);
   };
 
   useEffect(() => {
@@ -107,9 +120,7 @@ const SearchBar = (props) => {
       .then(function (response) {
         console.log("bookClubsResp", response);
         const bookClubsObjs = response?.data?.bookClubs?.length
-          ? response.data.bookClubs.map((bookClub) =>
-              getBookClubsByCategory(bookClubsMock, bookClub)
-            )
+          ? response.data.bookClubs.map((bookClub) => searchBookClubs(bookClub))
           : {};
         setBookClubsResponse(bookClubsObjs);
       })
@@ -146,9 +157,9 @@ const SearchBar = (props) => {
       console.log("bookIdCallback", bookId);
     }
     if (location === "bookClubSearch") {
-      setCategory(category);
+      setSearchType(searchType);
       setBookClubsSearched(false);
-      valueCallback(category);
+      valueCallback(searchType);
     }
   };
 
@@ -178,8 +189,8 @@ const SearchBar = (props) => {
               location === "bookClubSearch" ? (
                 <Dropdown
                   category={"Search Type"}
-                  options={categories}
-                  valueCallback={getCategory}
+                  options={bookClubDropdown}
+                  valueCallback={getSearchType}
                 />
               ) : (
                 <Dropdown

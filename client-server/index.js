@@ -32,9 +32,9 @@ app.get("/api", (req, res) => {
 /* *** USER ROUTES *** */
 
 app.get("/api/users", (req, res) => {
-    res.json({
+    res.json(
         usersMock
-    });
+    );
 });
 
 app.get("/api/users/:id", (req, res, next) => {
@@ -106,13 +106,13 @@ app.patch("/api/users/:id", async (req) => {
 
 /* *** BOOKCLUBS ROUTES *** */
 app.get("/api/bookclubs", (req, res) => {
-    res.json({
+    res.json(
         bookClubsMock
-    });
+    );
 });
 
 app.get("/api/bookclubs/:id", (req, res) => {
-    console.log('params', req.params)
+    console.log('params', req.params);
     const bookClubId = req.params.id;
     const bookClub = getBookClubById(bookClubsMock, bookClubId)
 

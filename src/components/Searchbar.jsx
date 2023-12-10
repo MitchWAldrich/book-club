@@ -65,14 +65,15 @@ const SearchBar = (props) => {
     setSearchType(searchType);
   };
 
-  const searchBookClubs = (searchType, searchValue) => {
+  const searchBookClubs = (bookClubsArray, searchType, searchValue) => {
     let bookClubObject = {};
     if (searchType === "category")
-      bookClubObject = getBookClubsByCategory(bookClubsMock, searchValue);
+      bookClubObject = getBookClubsByCategory(bookClubsArray, searchValue);
     if (searchType === "name")
-      bookClubObject = getBookClubsByName(bookClubsMock, searchValue);
+      bookClubObject = getBookClubsByName(bookClubsArray, searchValue);
     if (searchType === "location")
-      bookClubObject = getBookClubsByLocation(bookClubsMock, searchValue);
+      bookClubObject = getBookClubsByLocation(bookClubsArray, searchValue);
+    return bookClubObject;
   };
 
   useEffect(() => {
@@ -116,11 +117,11 @@ const SearchBar = (props) => {
   useEffect(() => {
     setIsLoading(true);
     instance
-      .get(`/api/bookClubs/${id}`)
+      .get(`/api/bookClubs/`)
       .then(function (response) {
         console.log("bookClubsResp", response);
-        const bookClubsObjs = response?.data?.bookClubs?.length
-          ? response.data.bookClubs.map((bookClub) => searchBookClubs(bookClub))
+        const bookClubsObjs = response?.data
+          ? searchBookClubs(response.data, searchType, searchInput)
           : {};
         setBookClubsResponse(bookClubsObjs);
       })
@@ -129,6 +130,7 @@ const SearchBar = (props) => {
       })
       .finally(function () {
         setIsLoading(false);
+        console.log("FINbcres", bookClubsResponse);
       });
   }, [bookClubsSearched]);
 
@@ -158,8 +160,9 @@ const SearchBar = (props) => {
     }
     if (location === "bookClubSearch") {
       setSearchType(searchType);
-      setBookClubsSearched(false);
-      valueCallback(searchType);
+      setBookClubsSearched(true);
+      // For the bookClub selected
+      // valueCallback(searchType);
     }
   };
 
@@ -191,6 +194,7 @@ const SearchBar = (props) => {
                   category={"Search Type"}
                   options={bookClubDropdown}
                   valueCallback={getSearchType}
+                  dropdownName={"bookClubSearch"}
                 />
               ) : (
                 <Dropdown
@@ -243,7 +247,7 @@ const SearchBar = (props) => {
         />
       ) : null}
       {bookClubsSearched ? (
-        <BookClubsList bookClubs={bookClubsResponse} userId={userId} />
+        <BookClubsList bookClubObjs={bookClubsResponse} userId={userId} />
       ) : null}
     </>
   );

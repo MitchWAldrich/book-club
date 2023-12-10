@@ -21,11 +21,16 @@ export const getIdByUserId = (users, userId) => {
 
 /* BookClub Searches */
 
-export const getBookClubById = (bookclubs, bookClubId) => {
+export const getBookClubById = (bookclubs, id) => {
+  return bookclubs.find((bookclub) => bookclub.bookClubId === id);
+};
+
+export const getBookClubByBookClubId = (bookclubs, bookClubId) => {
   return bookclubs.find((bookclub) => bookclub.bookClubId === bookClubId);
 };
 
 export const getBookClubsByCategory = (bookclubs, category) => {
+  console.log('category', bookclubs, category)
   return bookclubs.find((bookclub) => bookclub.categories.includes(category));
 };
 

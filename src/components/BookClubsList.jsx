@@ -3,20 +3,23 @@ import PropTypes from "prop-types";
 import BookClubListItem from "./BookClubListItem";
 
 const BookClubsList = (props) => {
-  const { bookClubObj, userId } = props;
+  const { bookClubObjs, userId } = props;
+  console.log("bookCObjs", bookClubObjs);
   return (
     <main>
-      <BookClubListItem
-        // key={key}
-        bookClubObj={bookClubObj}
-        userId={userId}
-      />
+      {bookClubObjs.length ? (
+        bookClubObjs.map((bookClub, key) => (
+          <BookClubListItem key={key} bookClubObj={bookClub} userId={userId} />
+        ))
+      ) : bookClubObjs ? (
+        <BookClubListItem bookClubObj={bookClubObjs} userId={userId} />
+      ) : null}
     </main>
   );
 };
 
 BookClubsList.propTypes = {
-  bookClubObj: PropTypes.object,
+  bookClubObjs: PropTypes.object,
   userId: PropTypes.string,
 };
 

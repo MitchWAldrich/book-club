@@ -97,7 +97,7 @@ export const bookClubsMock = [
     bookClubHostId: '62jt*(kj!3',
     hostUserName: 'Snuggz',
     name: 'Fantasy Fans',
-    members: {invited: [], accepted: [], requested: []},
+    members: {invited: ['98(ol)hg4e'], accepted: [], requested: []},
     books: {
       currentBook: {title: 'Birds', author: 'Smart Guy', thumbnail: ''},
       nextBook: 'Yakkity Yak',

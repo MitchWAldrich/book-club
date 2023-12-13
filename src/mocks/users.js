@@ -12,14 +12,14 @@ export const usersMock = [
           toRead: []
       },
       bookClubs: {
-          host: ['fdul694*'],
-          invited: [],
-          accepted: ['sdfjil234)', 'fsqjil$t72'],
-          requested: [],
+          host: ['fdul694*d3'],
+          invited: ['4gfu6)u$ep'],
+          accepted: ['sdfjil234)', 'dvu89w(l3n', 'fsqjil$t72',],
+          requested: ['s4hu8*i(ol'],
       },
       friends: {
-        requested: [],
-        accepted: [ '523dgf*5gn&', '62jt*(kj!3' ]
+        requested: ['t4dfhu8gf*'],
+        accepted: [ '523dgf*5gn&', '62jt*(kj!3', 'gt46a^u(o0', '98(ol)hg4e' ]
       }
   },
   {
@@ -36,13 +36,13 @@ export const usersMock = [
       },
       bookClubs: {
           host: ['fsqjil$t72'],
-          invited: ['sdfjil234)'],
-          accepted: ['fdul694*'],
+          invited: ['dvu89w(l3n'],
+          accepted: ['fdul694*d3', 'sdfjil234)', '4gfu6)u$ep', 's4hu8*i(ol'],
           requested: []
       },
       friends: {
-        requested: [],
-        accepted: [ '34xc98(dfk', '62jt*(kj!3' ]
+        requested: ['gt46a^u(o0', 't4dfhu8gf*'],
+        accepted: [ '34xc98(dfk', '62jt*(kj!3', '98(ol)hg4e' ]
       }
   },
   {
@@ -110,13 +110,13 @@ export const usersMock = [
       },
       bookClubs: {
           host: ['sdfjil234)'],
-          invited: ['fdul694*'],
-          accepted: ['fsqjil$t72'],
-          requested: []
+          invited: ['fdul694*d3', 's4hu8*i(ol'],
+          accepted: ['fsqjil$t72', '4gfu6)u$ep'],
+          requested: ['dvu89w(l3n']
       },
       friends: {
-        requested: [],
-        accepted: [ '34xc98(dfk', '523dgf*5gn&' ]
+        requested: ['gt46a^u(o0'],
+        accepted: [ '34xc98(dfk', '523dgf*5gn&', 't4dfhu8gf*', '98(ol)hg4e' ]
       }
   },
   {
@@ -124,22 +124,22 @@ export const usersMock = [
     userId: 'gt46a^u(o0',
     email: 'user4@email.com',
     password: 'password',
-    username: 'Anita Dominguez',
-    image: 'https://www.perfocal.com/blog/content/images/2021/01/Perfocal_17-11-2019_TYWFAQ_100_standard-3.jpg',
+    username: 'Anita Dominga',
+    image: 'https://media.npr.org/assets/img/2012/02/27/claudia-acua-ca_en-este-momento_press01_wide-e015cbf01b3d330dcd7d11c0ced61fa88bd48656-s1100-c50.jpg',
     goals: [],
     library: {
         haveRead: [],
         toRead: []
     },
     bookClubs: {
-        host: ['fdul694*'],
-        invited: [],
-        accepted: ['sdfjil234)', 'fsqjil$t72'],
-        requested: [],
+        host: ['s4hu8*i(ol'],
+        invited: ['sdfjil234)', '4gfu6)u$ep'],
+        accepted: ['fdul694*d3', 'dvu89w(l3n'],
+        requested: ['fsqjil$t72'],
     },
     friends: {
-      requested: [],
-      accepted: [ '523dgf*5gn&', '62jt*(kj!3' ]
+      requested: ['34xc98(dfk'],
+      accepted: [ '523dgf*5gn&', '62jt*(kj!3', 't4dfhu8gf*', '98(ol)hg4e' ]
     }
 },
 {
@@ -148,21 +148,21 @@ export const usersMock = [
     email: 'user5@email.com',
     password: 'password',
     username: 'Zenya Slant',
-    image: 'https://writestylesonline.com/wp-content/uploads/2018/11/Three-Statistics-That-Will-Make-You-Rethink-Your-Professional-Profile-Picture.jpg',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6Ia5l4WAe2j5B1E_f6PKoFjJ5W2J3gqbqUA&usqp=CAU',
     goals: [],
     library: {
         haveRead: [],
         toRead: []
     },
     bookClubs: {
-        host: ['fsqjil$t72'],
-        invited: ['sdfjil234)'],
-        accepted: ['fdul694*'],
-        requested: []
+        host: ['dvu89w(l3n'],
+        invited: ['fsqjil$t72', 's4hu8*i(ol'],
+        accepted: ['fdul694*d3', 'sdfjil234)'],
+        requested: ['4gfu6)u$ep']
     },
     friends: {
-      requested: [],
-      accepted: [ '34xc98(dfk', '62jt*(kj!3' ]
+      requested: ['523dgf*5gn&', '98(ol)hg4e'],
+      accepted: [ '34xc98(dfk', '62jt*(kj!3', 'gt46a^u(o0' ]
     }
 },
 {
@@ -171,7 +171,7 @@ export const usersMock = [
     email: 'user6@email.com',
     password: 'password',
     username: 'Matthew Dracon',
-    image: 'https://www.elitesingles.co.uk/wp-content/uploads/sites/59/2019/11/2b_en_articleslide_sm2-350x264.jpg',
+    image: 'https://img.freepik.com/premium-photo/smiling-young-white-guy-with-beard-white_150254-1036.jpg?w=2000',
     goals: [{
         name: 'My First Goal',
         number: '20 pages',
@@ -229,14 +229,14 @@ export const usersMock = [
           }]
     },
     bookClubs: {
-        host: ['sdfjil234)'],
-        invited: ['fdul694*'],
-        accepted: ['fsqjil$t72'],
-        requested: []
+        host: ['4gfu6)u$ep'],
+        invited: ['dvu89w(l3n'],
+        accepted: ['fsqjil$t72', 's4hu8*i(ol'],
+        requested: ['sdfjil234)', 'fdul694*d3']
     },
     friends: {
-      requested: [],
-      accepted: [ '34xc98(dfk', '523dgf*5gn&' ]
+      requested: ['62jt*(kj!3', 't4dfhu8gf*'],
+      accepted: [ '34xc98(dfk', '523dgf*5gn&', 'gt46a^u(o0' ]
     }
 }
 ];

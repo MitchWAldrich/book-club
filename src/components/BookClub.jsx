@@ -95,12 +95,34 @@ const BookClub = () => {
                   /> */}
           </div>
           <div>
-            <h3>Pending Book Clubs</h3>
-            {pendingBookClubs?.length
-              ? pendingBookClubs.map((bookclub, key) => (
+            {pendingBookClubs?.length ? (
+              <>
+                <h3>Pending Book Clubs</h3>
+                {pendingBookClubs.map((bookclub, key) => (
                   <BookClubListItem bookClubObj={bookclub} key={key} />
-                ))
-              : null}
+                ))}{" "}
+              </>
+            ) : null}
+          </div>
+          <div>
+            {bookClubsIHost?.length ? (
+              <>
+                <h3>Book Clubs I Host</h3>
+                {bookClubsIHost.map((bookclub, key) => (
+                  <BookClubListItem bookClubObj={bookclub} key={key} />
+                ))}{" "}
+              </>
+            ) : null}
+          </div>
+          <div>
+            {bookClubsImIn?.length ? (
+              <>
+                <h3>My Book Clubs</h3>
+                {bookClubsImIn.map((bookclub, key) => (
+                  <BookClubListItem bookClubObj={bookclub} key={key} />
+                ))}{" "}
+              </>
+            ) : null}
           </div>
         </div>
         <div>

@@ -97,6 +97,9 @@ app.patch("/api/users/:id", async (req) => {
         user.bookClubs.invited.splice(user.bookClubs.invited.indexOf(bookClubId))
     }
     if (requestStatus === 'request') {
+        if (!user.bookClubs.requested.includes(bookClubId) || !user.bookClubs.invited.includes(bookClubId) || !user.bookClubs.accepted.includes(bookClubId) || !user.bookClubs.host.includes(bookClubId)) {
+            alert('You have already requested this book club')
+        }
         user.bookClubs.requested.push(bookClubId)
     }
     //👇🏻 logs all the request fields to the console.

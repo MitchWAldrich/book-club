@@ -35,3 +35,22 @@ export const bookMock2 = {
   publisher: "Houghton Mifflin Harcourt",
   title: "Flowers for Algernon",
 };
+
+export const bookMock3 = {
+  bookId: 'sgt#4',
+  authors: ["Banksy"],
+  categories: ["Fiction", "Non-Fiction"],
+  averageRating: 4,
+  description:
+    "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+  imageLinks: {
+    smallThumbnail:
+      "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+    thumbnail:
+      "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+  },
+  language: "en",
+  pageCount: 328,
+  publisher: "Houghton Mifflin Harcourt",
+  title: "Flowers for Algernon",
+};

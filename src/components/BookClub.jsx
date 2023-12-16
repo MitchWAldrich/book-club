@@ -37,6 +37,11 @@ const BookClub = () => {
   );
   console.log("I'm In", bookClubsImIn);
 
+  const pendingBookClubs = user.bookClubs.requested.map((bookClub) =>
+    getBookClubById(bookClubsMock, bookClub)
+  );
+  console.log("I've requested", pendingBookClubs);
+
   const bookClubsImInvitedTo = user.bookClubs.invited.map((bookClub) =>
     getBookClubById(bookClubsMock, bookClub)
   );
@@ -45,8 +50,6 @@ const BookClub = () => {
   const [isNewBookClub, setIsNewBookClub] = useState(
     bookClubsIHost.find((bookClub) => bookClub.isNewBookClub === true)
   );
-
-  const pendingBookClubs = user.bookClubs?.request;
 
   //set book (and next/future book(s))
   //make it possible to add multiple
@@ -109,7 +112,11 @@ const BookClub = () => {
               <>
                 <h3>Book Clubs I Host</h3>
                 {bookClubsIHost.map((bookclub, key) => (
-                  <BookClubListItem bookClubObj={bookclub} key={key} />
+                  <BookClubListItem
+                    bookClubObj={bookclub}
+                    isHost={true}
+                    key={key}
+                  />
                 ))}{" "}
               </>
             ) : null}

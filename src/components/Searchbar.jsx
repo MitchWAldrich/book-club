@@ -247,7 +247,11 @@ const SearchBar = (props) => {
         />
       ) : null}
       {bookClubsSearched ? (
-        <BookClubsList bookClubObjs={bookClubsResponse} userId={userId} />
+        <BookClubsList
+          bookClubObjs={bookClubsResponse}
+          userId={userId}
+          isSearch={true}
+        />
       ) : null}
     </>
   );

@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { bookMock } from "../mocks/books";
 
 const BookClubListItem = (props) => {
-  const { bookClubObj, userId } = props;
+  const { bookClubObj, userId, isHost, isSearch } = props;
   console.log("bookClubObj", bookClubObj);
   const {
     bookClubId,
@@ -19,7 +19,7 @@ const BookClubListItem = (props) => {
     categories,
   } = bookClubObj;
 
-  const { accepted } = members;
+  // const { accepted } = members;
   // const { invited, accepted } = members;
 
   const { currentBook } = books;
@@ -79,12 +79,20 @@ const BookClubListItem = (props) => {
           <p>{`CurrentBook: ${title} by ${authors}`}</p>
           <img src={thumbnail} />
         </div>
-        <button type='button' onClick={joinBookClub}>
-          Join Book Club
-        </button>
-        <button type='button' onClick={requestBookClub}>
-          Request Invitation
-        </button>
+        {isSearch ? (
+          <div>
+            {visibility === "public" ? (
+              <button type='button' onClick={joinBookClub}>
+                Join Book Club
+              </button>
+            ) : null}
+            {visibility === "friendsCanSee" ? (
+              <button type='button' onClick={requestBookClub}>
+                Request Invitation
+              </button>
+            ) : null}
+          </div>
+        ) : null}
       </div>
     </main>
   );
@@ -93,6 +101,8 @@ const BookClubListItem = (props) => {
 BookClubListItem.propTypes = {
   bookClubObj: PropTypes.object,
   userId: PropTypes.string,
+  isHost: PropTypes.bool,
+  isSearch: PropTypes.bool,
 };
 
 export default BookClubListItem;

@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import instance from "../utils/axiosConfig";
 
 import PropTypes from "prop-types";
@@ -39,6 +41,8 @@ const BookClubListItem = (props) => {
   const { streetNumber, streetName, city, province, country } =
     nextMeetingLocation;
 
+  const navigate = useNavigate();
+
   const joinBookClub = () => {
     instance.patch(`/bookclubs/${bookClubId}`, {
       userId: userId,
@@ -58,42 +62,50 @@ const BookClubListItem = (props) => {
     });
   };
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    navigate(`/bookclubs/${bookClubId}`);
+    // valueCallback(bookId);
+  };
+
   return (
     <main className='bookClubItemContainer'>
-      <div>
-        <h3 className='bookClubItemTitle'>{name}</h3>
-      </div>
-      <div>
-        <p>{`Host: ${hostUserName}`}</p>
-        <p>{`Members: ${bookClubObj.members.accepted.length}`}</p>
-        {/* Members Icons: Accepted */}
-        <p>{`Meetings: ${meetingFrequency}`}</p>
-        <p>{`Genre: ${categories}`}</p>
-        <p>{`Next Meeting: ${nextMeetingDate} at ${nextMeetingTime}`}</p>
-        <p>
-          {nextMeetingLocation.online
-            ? "Online"
-            : `Location: ${streetNumber} ${streetName}, ${city}, ${province}, ${country}`}
-        </p>
+      <button type='button' onClick={handleClick}>
         <div>
-          <p>{`CurrentBook: ${title} by ${authors}`}</p>
-          <img src={thumbnail} />
+          <h3 className='bookClubItemTitle'>{name}</h3>
         </div>
-        {isSearch ? (
+        <div>
+          <p>{`Host: ${hostUserName}`}</p>
+          <p>{`Members: ${bookClubObj.members.accepted.length}`}</p>
+          {/* Members Icons: Accepted */}
+          <p>{`Meetings: ${meetingFrequency}`}</p>
+          <p>{`Genre: ${categories}`}</p>
+          <p>{`Next Meeting: ${nextMeetingDate} at ${nextMeetingTime}`}</p>
+          <p>
+            {nextMeetingLocation.online
+              ? "Online"
+              : `Location: ${streetNumber} ${streetName}, ${city}, ${province}, ${country}`}
+          </p>
           <div>
-            {visibility === "public" ? (
-              <button type='button' onClick={joinBookClub}>
-                Join Book Club
-              </button>
-            ) : null}
-            {visibility === "friendsCanSee" ? (
-              <button type='button' onClick={requestBookClub}>
-                Request Invitation
-              </button>
-            ) : null}
+            <p>{`CurrentBook: ${title} by ${authors}`}</p>
+            <img src={thumbnail} />
           </div>
-        ) : null}
-      </div>
+          {isSearch ? (
+            <div>
+              {visibility === "public" ? (
+                <button type='button' onClick={joinBookClub}>
+                  Join Book Club
+                </button>
+              ) : null}
+              {visibility === "friendsCanSee" ? (
+                <button type='button' onClick={requestBookClub}>
+                  Request Invitation
+                </button>
+              ) : null}
+            </div>
+          ) : null}
+        </div>
+      </button>
     </main>
   );
 };

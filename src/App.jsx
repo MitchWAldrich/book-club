@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import BookClub from "./components/BookClub";
+import BookClubs from "./components/BookClubs";
 import Library from "./components/Library";
 import Login from "./components/Login";
 import Home from "./components/Home";
@@ -25,7 +25,7 @@ function App() {
             <Route path='/register' element={<Register />} />
             <Route path='/dashboard' element={<Home userObj={user} />} />
             <Route path='/my-library' element={<Library userObj={user} />} />
-            <Route path='/bookclubs' element={<BookClub userObj={user} />} />
+            <Route path='/bookclubs' element={<BookClubs userObj={user} />} />
             <Route path='/:id/replies' element={<Replies />} />
           </Routes>
         </BrowserRouter>

@@ -14,7 +14,7 @@ import { bookClubMock, bookClubsMock } from "../mocks/bookClubs";
 import { bookMock } from "../mocks/books";
 import { getBookClubById } from "../utils/selectors";
 
-const BookClub = () => {
+const BookClubs = () => {
   const user = useContext(userContext);
 
   const [isAddBooksClicked, setIsAddBooksClicked] = useState(false);
@@ -187,4 +187,4 @@ const BookClub = () => {
   );
 };
 
-export default BookClub;
+export default BookClubs;

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+import BookClubItem from "./components/BookClubItem";
 import BookClubs from "./components/BookClubs";
 import Library from "./components/Library";
 import Login from "./components/Login";
@@ -26,6 +27,10 @@ function App() {
             <Route path='/dashboard' element={<Home userObj={user} />} />
             <Route path='/my-library' element={<Library userObj={user} />} />
             <Route path='/bookclubs' element={<BookClubs userObj={user} />} />
+            <Route
+              path='/bookclubs/:id'
+              element={<BookClubItem userObj={user} />}
+            />
             <Route path='/:id/replies' element={<Replies />} />
           </Routes>
         </BrowserRouter>

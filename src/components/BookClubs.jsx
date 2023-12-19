@@ -3,7 +3,6 @@ import instance from "../utils/axiosConfig";
 
 import BookClubItem from "./BookClubItem";
 import BookClubListItem from "./BookClubListItem";
-import MemberList from "./MemberList";
 import Nav from "./Nav";
 import NextMeeting from "./NextMeeting";
 import SearchBar from "./Searchbar";
@@ -177,11 +176,6 @@ const BookClubs = () => {
           </>
         ) : null}
         <NextMeeting bookClub={bookClubMock} />
-        <MemberList
-          members={bookClubMock.members.accepted}
-          bookClubId={bookClubMock.bookClubId}
-          location='bookClubPage'
-        />
       </div>
     </main>
   );

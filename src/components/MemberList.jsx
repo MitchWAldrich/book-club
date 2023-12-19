@@ -13,7 +13,7 @@ const MemberList = (props) => {
 
   const [membersAdd, setMembersAdd] = useState([]);
   // const [membersSuggested, setMembersSuggested] = useState(members);
-  const [membersSuggested, setMembersSuggested] = useState(usersMock);
+  const [membersSuggested, setMembersSuggested] = useState(members ?? []);
   // const [isLoading, setIsLoading] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -94,7 +94,6 @@ const MemberList = (props) => {
       ) : null}
       {membersSuggested.length > 0 ? (
         <>
-          <h3>Suggested Members</h3>
           {isLoading ? (
             <Loading />
           ) : (

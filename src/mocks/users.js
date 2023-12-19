@@ -238,6 +238,126 @@ export const usersMock = [
       requested: ['62jt*(kj!3', 't4dfhu8gf*'],
       accepted: [ '34xc98(dfk', '523dgf*5gn&', 'gt46a^u(o0' ]
     }
+},
+{
+  id: 7,
+  userId: 'lnkd*67(j2',
+  email: 'user7@email.com',
+  password: 'password',
+  username: 'Kyle McLean',
+  image: 'https://img.freepik.com/free-photo/handsome-man-with-white-teeth-smiling-wearing-glasses-grey-wall_176420-21716.jpg?size=626&ext=jpg&ga=GA1.1.1546980028.1702598400&semt=ais',
+  goals: [],
+  library: {
+      haveRead: [],
+      toRead: []
+  },
+  bookClubs: {
+      host: [],
+      invited: [],
+      accepted: [],
+      requested: [],
+  },
+  friends: {
+    requested: ['34xc98(dfk'],
+    accepted: [ '523dgf*5gn&', '62jt*(kj!3', 't4dfhu8gf*', '98(ol)hg4e' ]
+  }
+},
+{
+  id: 8,
+  userId: 't4dfhu8gf*',
+  email: 'user5@email.com',
+  password: 'password',
+  username: 'Laura Whitacre',
+  image: 'https://imageio.forbes.com/specials-images/imageserve/6031e310d4a4c4b5ccb17871/Natural-beauty-portrait-of-young-woman/960x0.jpg?format=jpg&width=960',
+  goals: [],
+  library: {
+      haveRead: [],
+      toRead: []
+  },
+  bookClubs: {
+      host: [],
+      invited: [],
+      accepted: [],
+      requested: []
+  },
+  friends: {
+    requested: ['523dgf*5gn&', '98(ol)hg4e'],
+    accepted: [ '34xc98(dfk', '62jt*(kj!3', 'gt46a^u(o0' ]
+  }
+},
+{
+  id: 9,
+  userId: '98(ol)hg4e',
+  email: 'user6@email.com',
+  password: 'password',
+  username: 'Mei Li',
+  image: 'https://d3i6fh83elv35t.cloudfront.net/static/2019/08/celesteng1-1200x838.jpg',
+  goals: [{
+      name: 'My First Goal',
+      number: '20 pages',
+      timeline: '3 days',
+  }],
+  library: {
+      haveRead: [{
+          title: 'title1',
+          authors: [ 'John Smith', 'Julie Black' ],
+          categories: [ 'Non-Fiction' ],
+          averageRating: 5,
+          description: 'A great book about things',
+          imageLinks: { smallThumbnail: 'http:', thumbnail: 'https:' },
+          pageCount: 234,
+          publisher: 'Clearly'
+        },{
+          title: 'title2',
+          authors: [ 'Fred Smith', 'Julie Steinberg' ],
+          categories: [ 'Fiction' ],
+          averageRating: 4,
+          description: 'A great book about stuff',
+          imageLinks: { smallThumbnail: 'http:', thumbnail: 'https:' },
+          pageCount: 154,
+          publisher: 'Smithson'
+        },
+        {
+          title: 'title3',
+          authors: [ 'Fred Smith', 'Julie Steinberg' ],
+          categories: [ 'Fiction' ],
+          averageRating: 3,
+          description: 'A great novel about stuff',
+          imageLinks: { smallThumbnail: 'http:', thumbnail: 'https:' },
+          pageCount: 200,
+          publisher: 'Smithly'
+        }],
+        toRead: [{
+          title: 'title4',
+          authors: [ 'Whit Merrifield'],
+          categories: [ 'Biography', 'Sports' ],
+          averageRating: 5,
+          description: 'A great book about Whit',
+          imageLinks: { smallThumbnail: 'http:', thumbnail: 'https:' },
+          pageCount: 234,
+          publisher: 'Jays'
+        },
+        {
+          title: 'title5',
+          authors: [ 'Fred Smith Black', 'Julie Steinberg' ],
+          categories: [ 'Fiction' ],
+          averageRating: 4,
+          description: 'A great book about stuff',
+          imageLinks: { smallThumbnail: 'http:', thumbnail: 'https:' },
+          pageCount: 34,
+          publisher: 'New'
+        }]
+  },
+  bookClubs: {
+      host: [],
+      invited: [],
+      accepted: [],
+      requested: []
+  },
+  friends: {
+    requested: ['62jt*(kj!3', 't4dfhu8gf*'],
+    accepted: [ '34xc98(dfk', '523dgf*5gn&', 'gt46a^u(o0' ]
+  }
 }
 ];
 

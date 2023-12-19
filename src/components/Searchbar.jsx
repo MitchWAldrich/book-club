@@ -25,6 +25,7 @@ import { bookClubsMock } from "../mocks/bookClubs";
 
 const SearchBar = (props) => {
   const { className, location, dropDown, id, valueCallback, userId } = props;
+  if (!valueCallback) return;
 
   const [bookSearched, setBookSearched] = useState(false);
   const [userSearched, setUserSearched] = useState(

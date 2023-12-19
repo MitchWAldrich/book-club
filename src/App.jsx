@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import BookClubItem from "./components/BookClubItem";
+import BookClubMain from "./components/BookClubMain";
 import BookClubs from "./components/BookClubs";
 import Library from "./components/Library";
 import Login from "./components/Login";
@@ -13,9 +13,11 @@ import userContext from "./userContext";
 import { userMock2 } from "./mocks/users";
 
 import "./App.scss";
+import { bookClubMock } from "./mocks/bookClubs";
 
 function App() {
   const [user, setUser] = useState(userMock2);
+  const [bookClub, setBookClub] = useState(bookClubMock);
 
   return (
     <div>
@@ -29,7 +31,7 @@ function App() {
             <Route path='/bookclubs' element={<BookClubs userObj={user} />} />
             <Route
               path='/bookclubs/:id'
-              element={<BookClubItem userObj={user} />}
+              element={<BookClubMain bookClubObj={bookClub} />}
             />
             <Route path='/:id/replies' element={<Replies />} />
           </Routes>

@@ -61,6 +61,33 @@ const BookClubMain = (props) => {
 
   const filteredMembers = filterSuggested(usersMock, combinedMembers);
 
+  // meetings: {
+  //   meetingFrequency: 'bi-weekly',
+  //   nextMeetingDate: '11/24/2023',
+  //   nextMeetingTime: '7:00pm',
+  //   nextMeetingLocation: {
+  //     online: 'Zoom.otherLink',
+  //     inPerson: {
+  //       'streetNumber': 12,
+  //       'unitNumber': 'N/A',
+  //       'streetName': 'Dundas St. W',
+  //       'city': 'Toronto',
+  //       'province': 'ON',
+  //       'country': 'CA'
+  //     }
+  //   }
+  // },
+
+  const {
+    meetingFrequency,
+    nextMeetingDate,
+    nextMeetingTime,
+    nextMeetingLocation,
+  } = meetings;
+  const { online, inPerson } = nextMeetingLocation;
+  const { streetNumber, unitNumber, streetName, city, province, country } =
+    inPerson;
+
   return (
     <main>
       {/* <MemberList members={members} bookClubId={bookClubId} valueCallback={} location={} /> */}
@@ -86,6 +113,12 @@ const BookClubMain = (props) => {
           />
         </>
       ) : null}
+      <div>
+        <h3>Next Meeting:</h3>
+        <p>
+          {nextMeetingDate} @ {nextMeetingTime}
+        </p>
+      </div>
       {/* <MemberList members={filteredMembers} bookClubId={bookClubId} /> */}
     </main>
   );

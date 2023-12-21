@@ -82,3 +82,10 @@ export const formatByLocation = (location) => {
 
   return formattedObj;
 }
+
+export const formatStreetAddress = (addressObj) => {
+  const { streetNumber, unitNumber, streetName} = addressObj;
+
+  return unitNumber ? `${streetNumber} ${streetName}, ${unitNumber}` : `${streetNumber} ${streetName}`
+
+}

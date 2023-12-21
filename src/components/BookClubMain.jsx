@@ -10,6 +10,7 @@ import userContext from "../userContext";
 
 import { getUserByUserId } from "../utils/selectors";
 import { usersMock } from "../mocks/users";
+import { formatStreetAddress } from "../utils/helpers";
 
 const BookClubMain = (props) => {
   const user = useContext(userContext);
@@ -85,8 +86,10 @@ const BookClubMain = (props) => {
     nextMeetingLocation,
   } = meetings;
   const { online, inPerson } = nextMeetingLocation;
-  const { streetNumber, unitNumber, streetName, city, province, country } =
+  const { city, province, country } =
     inPerson;
+
+    const streetAddress = formatStreetAddress(inPerson);
 
   return (
     <main>
@@ -117,6 +120,13 @@ const BookClubMain = (props) => {
         <h3>Next Meeting:</h3>
         <p>
           {nextMeetingDate} @ {nextMeetingTime}
+          {online ? (
+            `Meeting Link: ${online}`
+          ) : null}
+          {inPerson ? (
+            {streetAddress}
+            {city, province}
+          ) : null }
         </p>
       </div>
       {/* <MemberList members={filteredMembers} bookClubId={bookClubId} /> */}

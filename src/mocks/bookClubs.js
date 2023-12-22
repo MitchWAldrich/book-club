@@ -17,7 +17,7 @@ export const bookClubsMock = [
         nextMeetingDate: '12/24/2023',
         nextMeetingTime: '7:00pm',
         nextMeetingLocation: {
-          online: 'N/A',
+          online: null,
           inPerson: {
             'streetNumber': 234,
             'unitNumber': '3',
@@ -51,7 +51,7 @@ export const bookClubsMock = [
         nextMeetingTime: '7:00pm',
         nextMeetingLocation: {
           online: 'Zoom.link',
-          inPerson: 'N/A'
+          inPerson: null
         }
       },
       isNewBookClub: false,
@@ -109,7 +109,7 @@ export const bookClubsMock = [
       nextMeetingDate: '01/12/2024',
       nextMeetingTime: '7:30pm',
       nextMeetingLocation: {
-        online: 'N/A',
+        online: null,
         inPerson: {
           'streetNumber': 765,
           'unitNumber': '',
@@ -143,7 +143,7 @@ export const bookClubsMock = [
       nextMeetingTime: '7:00pm',
       nextMeetingLocation: {
         online: 'Zoom.secondlink',
-        inPerson: 'N/A'
+        inPerson: null
       }
     },
     isNewBookClub: false,
@@ -171,7 +171,6 @@ export const bookClubsMock = [
         online: 'Zoom.otherLink',
         inPerson: {
           'streetNumber': 12,
-          'unitNumber': 'N/A',
           'streetName': 'Dundas St. W',
           'city': 'Toronto',
           'province': 'ON',

@@ -32,23 +32,27 @@ const BookClubMain = (props) => {
     ? true
     : false;
 
-  const combinedUsers = (users) => {
-    const combinedUsers = [getUserByUserId(usersMock, bookClubHostId)];
+  const combinedUsers = (users, type) => {
+    if (type === "allMembers") {
+      const combinedUsers = [getUserByUserId(usersMock, bookClubHostId)];
 
-    users?.accepted?.forEach((user) =>
-      combinedUsers.push(getUserByUserId(usersMock, user))
-    );
-    users?.requested?.forEach((user) =>
-      combinedUsers.push(getUserByUserId(usersMock, user))
-    );
-    users?.invited?.forEach((user) =>
-      combinedUsers.push(getUserByUserId(usersMock, user))
-    );
+      users?.accepted?.forEach((user) =>
+        combinedUsers.push(getUserByUserId(usersMock, user))
+      );
+      users?.requested?.forEach((user) =>
+        combinedUsers.push(getUserByUserId(usersMock, user))
+      );
+      users?.invited?.forEach((user) =>
+        combinedUsers.push(getUserByUserId(usersMock, user))
+      );
 
-    return combinedUsers;
+      return combinedUsers;
+    }
   };
 
-  const combinedMembers = combinedUsers(members);
+  const combinedMembers = combinedUsers(members, "allMembers");
+
+  const isMember = combinedMembers.includes(user.userId) ? true : false;
 
   const filterSuggested = (usersFull, usersExempt) => {
     if (!usersFull?.length) return;
@@ -62,23 +66,6 @@ const BookClubMain = (props) => {
 
   const filteredMembers = filterSuggested(usersMock, combinedMembers);
 
-  // meetings: {
-  //   meetingFrequency: 'bi-weekly',
-  //   nextMeetingDate: '11/24/2023',
-  //   nextMeetingTime: '7:00pm',
-  //   nextMeetingLocation: {
-  //     online: 'Zoom.otherLink',
-  //     inPerson: {
-  //       'streetNumber': 12,
-  //       'unitNumber': 'N/A',
-  //       'streetName': 'Dundas St. W',
-  //       'city': 'Toronto',
-  //       'province': 'ON',
-  //       'country': 'CA'
-  //     }
-  //   }
-  // },
-
   const {
     meetingFrequency,
     nextMeetingDate,
@@ -86,10 +73,9 @@ const BookClubMain = (props) => {
     nextMeetingLocation,
   } = meetings;
   const { online, inPerson } = nextMeetingLocation;
-  const { city, province, country } =
-    inPerson;
+  const { city, province } = inPerson;
 
-    const streetAddress = formatStreetAddress(inPerson);
+  const streetAddress = formatStreetAddress(inPerson);
 
   return (
     <main>
@@ -104,6 +90,7 @@ const BookClubMain = (props) => {
       </div>
       <h3>Members</h3>
       <MemberList members={combinedMembers} bookClubId={bookClubId} />
+
       {isHost ? (
         <>
           <h3>Suggested Members</h3>
@@ -111,7 +98,7 @@ const BookClubMain = (props) => {
             className='searchInput'
             location='bookClub'
             dropDown={false}
-            // id={userObj.id}
+            // userId
             // valueCallback={getChosenMemberResults}
           />
         </>
@@ -120,14 +107,18 @@ const BookClubMain = (props) => {
         <h3>Next Meeting:</h3>
         <p>
           {nextMeetingDate} @ {nextMeetingTime}
-          {online ? (
-            `Meeting Link: ${online}`
-          ) : null}
+          {online ? `Meeting Link: ${online}` : null}
           {inPerson ? (
-            {streetAddress}
-            {city, province}
-          ) : null }
+            <div>
+              <p>{streetAddress}</p>
+              <p>
+                {city}, {province}
+              </p>
+            </div>
+          ) : null}
         </p>
+        <h3>Meeting Frequency:</h3>
+        {meetingFrequency}
       </div>
       {/* <MemberList members={filteredMembers} bookClubId={bookClubId} /> */}
     </main>

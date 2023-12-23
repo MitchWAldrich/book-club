@@ -8,6 +8,7 @@ import { formatByLocation, shortenDescription } from "../utils/helpers";
 import { bookMock } from "../mocks/books";
 
 const SingleBookItem = (props) => {
+  const { bookObj, userId, location } = props;
   const {
     authors,
     categories,
@@ -17,9 +18,7 @@ const SingleBookItem = (props) => {
     pageCount,
     publisher,
     title,
-    userId,
-    location,
-  } = props;
+  } = bookObj;
   //Style the whole thing to look like an open book
 
   // const addToLibrary = (event, bookObject) => {
@@ -156,15 +155,16 @@ const SingleBookItem = (props) => {
 };
 
 SingleBookItem.propTypes = {
-  authors: PropTypes.array,
-  categories: PropTypes.array,
-  averageRating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  description: PropTypes.string,
-  imageLinks: PropTypes.object,
-  language: PropTypes.string,
-  pageCount: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  publisher: PropTypes.string,
-  title: PropTypes.string,
+  bookObj: PropTypes.object,
+  // authors: PropTypes.array,
+  // categories: PropTypes.array,
+  // averageRating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  // description: PropTypes.string,
+  // imageLinks: PropTypes.object,
+  // language: PropTypes.string,
+  // pageCount: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  // publisher: PropTypes.string,
+  // title: PropTypes.string,
   userId: PropTypes.number,
   location: PropTypes.string,
 };

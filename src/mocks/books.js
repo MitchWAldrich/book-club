@@ -54,3 +54,22 @@ export const bookMock3 = {
   publisher: "Houghton Mifflin Harcourt",
   title: "Flowers for Algernon",
 };
+
+export const bookMock4 = {
+  bookId: 'u^y5r',
+  authors: ["Ted Bell"],
+  categories: ["Thriller", "Action"],
+  averageRating: 4.5,
+  description:
+    "Super rad spy novel.",
+  imageLinks: {
+    smallThumbnail:
+      "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg",
+    thumbnail:
+      "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg,
+  },
+  language: "en",
+  pageCount: 640,
+  publisher: "Simon & Schuster",
+  title: "Pirate",
+};

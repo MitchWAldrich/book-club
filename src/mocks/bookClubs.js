@@ -7,10 +7,78 @@ export const bookClubsMock = [
       name: 'My First Book Club',
       members: {invited: ['gt46a^u(o0'], accepted: ['t4dfhu8gf*', '523dgf*5gn&', '34xc98(dfk'], requested: ['98(ol)hg4e']},
       books: {
-        currentBook: {title: 'Reese\'s Favourite Book', author: 'Luna Slink', thumbnail: ''},
-        nextBook: 'Oprah\'s Favourite Book',
-        upcomingBooks: ['Next Book', 'Other Next Book', 'Biography of a Celeb'],
-        previousBooks: ['Old Book', 'Other Old Book', 'A Graphic Novel'],
+        currentBook: {
+          bookId: 'afs2*',
+          authors: ["Daniel Keyes"],
+          categories: ["Fiction", "Non-Fiction"],
+          averageRating: 4,
+          description:
+            "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+          imageLinks: {
+            smallThumbnail:
+              "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+            thumbnail:
+              "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+          },
+          language: "en",
+          pageCount: 328,
+          publisher: "Houghton Mifflin Harcourt",
+          title: "Flowers for Algernon",
+        },
+        nextBook: {
+          bookId: 'sgt#4',
+          authors: ["Banksy"],
+          categories: ["Fiction", "Non-Fiction"],
+          averageRating: 4,
+          description:
+            "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+          imageLinks: {
+            smallThumbnail:
+              "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+            thumbnail:
+              "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+          },
+          language: "en",
+          pageCount: 328,
+          publisher: "Houghton Mifflin Harcourt",
+          title: "Flowers for Algernon",
+        },
+        upcomingBooks: [{
+          bookId: 'feg5(',
+          authors: ["Daniel Keyes"],
+          categories: ["Fiction", "Non-Fiction"],
+          averageRating: 4,
+          description:
+            "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+          imageLinks: {
+            smallThumbnail:
+              "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+            thumbnail:
+              "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+          },
+          language: "en",
+          pageCount: 328,
+          publisher: "Houghton Mifflin Harcourt",
+          title: "Flowers for Algernon",
+        }, 'Other Next Book', 'Biography of a Celeb'],
+        previousBooks: [{
+          bookId: 'u^y5r',
+          authors: ["Ted Bell"],
+          categories: ["Thriller", "Action"],
+          averageRating: 4.5,
+          description:
+            "Super rad spy novel.",
+          imageLinks: {
+            smallThumbnail:
+              "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg",
+            thumbnail:
+              "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg,
+          },
+          language: "en",
+          pageCount: 640,
+          publisher: "Simon & Schuster",
+          title: "Pirate",
+        }, 'Other Old Book', 'A Graphic Novel'],
       },
       meetings: {
         meetingFrequency: 'weekly',
@@ -40,10 +108,78 @@ export const bookClubsMock = [
       name: 'My Second Book Club',
       members: {invited: ['t4dfhu8gf*'],  accepted: ['62jt*(kj!3', '98(ol)hg4e', '34xc98(dfk'], requested: ['gt46a^u(o0']},
       books: {
-        currentBook: {title: 'Reese\'s 2nd Favourite Book', author: 'Luna Slink', thumbnail: ''},
-        nextBook: 'Oprah\'s 2nd Favourite Book',
-        upcomingBooks: ['New Book', 'New Odd Book', 'SoCal Dreams'],
-        previousBooks: ['Old Book 2', 'A 2nd Old Book', 'A 2nd Graphic Novel'],
+        currentBook: {
+          bookId: 'sgt#4',
+          authors: ["Banksy"],
+          categories: ["Fiction", "Non-Fiction"],
+          averageRating: 4,
+          description:
+            "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+          imageLinks: {
+            smallThumbnail:
+              "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+            thumbnail:
+              "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+          },
+          language: "en",
+          pageCount: 328,
+          publisher: "Houghton Mifflin Harcourt",
+          title: "Flowers for Algernon",
+        },
+        nextBook: {
+          bookId: 'feg5(',
+          authors: ["Daniel Keyes"],
+          categories: ["Fiction", "Non-Fiction"],
+          averageRating: 4,
+          description:
+            "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+          imageLinks: {
+            smallThumbnail:
+              "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+            thumbnail:
+              "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+          },
+          language: "en",
+          pageCount: 328,
+          publisher: "Houghton Mifflin Harcourt",
+          title: "Flowers for Algernon",
+        },
+        upcomingBooks: [{
+          bookId: 'afs2*',
+          authors: ["Daniel Keyes"],
+          categories: ["Fiction", "Non-Fiction"],
+          averageRating: 4,
+          description:
+            "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+          imageLinks: {
+            smallThumbnail:
+              "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+            thumbnail:
+              "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+          },
+          language: "en",
+          pageCount: 328,
+          publisher: "Houghton Mifflin Harcourt",
+          title: "Flowers for Algernon",
+        }, 'New Odd Book', 'SoCal Dreams'],
+        previousBooks: [{
+          bookId: 'u^y5r',
+          authors: ["Ted Bell"],
+          categories: ["Thriller", "Action"],
+          averageRating: 4.5,
+          description:
+            "Super rad spy novel.",
+          imageLinks: {
+            smallThumbnail:
+              "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg",
+            thumbnail:
+              "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg,
+          },
+          language: "en",
+          pageCount: 640,
+          publisher: "Simon & Schuster",
+          title: "Pirate",
+        }, 'A 2nd Old Book', 'A 2nd Graphic Novel'],
       },
       meetings: {
         meetingFrequency: 'monthly',
@@ -66,10 +202,78 @@ export const bookClubsMock = [
       name: 'Book Clubbing',
       members: {invited: ['62jt*(kj!3'], accepted: ['523dgf*5gn&', 't4dfhu8gf*', 'gt46a^u(o0'], requested: ['98(ol)hg4e']},
       books: {
-        currentBook: {title: 'Reese\'s 3rd Favourite Book', author: 'Luna Slink', thumbnail: ''},
-        nextBook: 'Oprah\'s 3rd Favourite Book',
-        upcomingBooks: ['Three and One Book', 'Books are Fun', 'Anatomy of a Society'],
-        previousBooks: ['Old Book 3', 'Third Old Book', 'A 3rd Graphic Novel'],
+        currentBook: {
+          bookId: 'feg5(',
+          authors: ["Daniel Keyes"],
+          categories: ["Fiction", "Non-Fiction"],
+          averageRating: 4,
+          description:
+            "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+          imageLinks: {
+            smallThumbnail:
+              "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+            thumbnail:
+              "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+          },
+          language: "en",
+          pageCount: 328,
+          publisher: "Houghton Mifflin Harcourt",
+          title: "Flowers for Algernon",
+        },
+        nextBook: {
+          bookId: 'afs2*',
+          authors: ["Daniel Keyes"],
+          categories: ["Fiction", "Non-Fiction"],
+          averageRating: 4,
+          description:
+            "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+          imageLinks: {
+            smallThumbnail:
+              "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+            thumbnail:
+              "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+          },
+          language: "en",
+          pageCount: 328,
+          publisher: "Houghton Mifflin Harcourt",
+          title: "Flowers for Algernon",
+        },
+        upcomingBooks: [{
+          bookId: 'u^y5r',
+          authors: ["Ted Bell"],
+          categories: ["Thriller", "Action"],
+          averageRating: 4.5,
+          description:
+            "Super rad spy novel.",
+          imageLinks: {
+            smallThumbnail:
+              "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg",
+            thumbnail:
+              "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg,
+          },
+          language: "en",
+          pageCount: 640,
+          publisher: "Simon & Schuster",
+          title: "Pirate",
+        }, 'Books are Fun', 'Anatomy of a Society'],
+        previousBooks: [{
+          bookId: 'sgt#4',
+          authors: ["Banksy"],
+          categories: ["Fiction", "Non-Fiction"],
+          averageRating: 4,
+          description:
+            "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+          imageLinks: {
+            smallThumbnail:
+              "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+            thumbnail:
+              "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+          },
+          language: "en",
+          pageCount: 328,
+          publisher: "Houghton Mifflin Harcourt",
+          title: "Flowers for Algernon",
+        }, 'Third Old Book', 'A 3rd Graphic Novel'],
       },
       meetings: {
         meetingFrequency: 'bi-weekly',
@@ -99,10 +303,78 @@ export const bookClubsMock = [
     name: 'Fantasy Fans',
     members: {invited: ['98(ol)hg4e', '523dgf*5gn&'], accepted: ['gt46a^u(o0', '34xc98(dfk'], requested: ['62jt*(kj!3']},
     books: {
-      currentBook: {title: 'Birds', author: 'Smart Guy', thumbnail: ''},
-      nextBook: 'Yakkity Yak',
-      upcomingBooks: ['I Love Books', 'My Best Day', 'Nobody Knows'],
-      previousBooks: ['Read It All', 'Can I Borrow A Feeling?', 'Batman'],
+      currentBook: {
+        bookId: 'u^y5r',
+        authors: ["Ted Bell"],
+        categories: ["Thriller", "Action"],
+        averageRating: 4.5,
+        description:
+          "Super rad spy novel.",
+        imageLinks: {
+          smallThumbnail:
+            "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg",
+          thumbnail:
+            "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg,
+        },
+        language: "en",
+        pageCount: 640,
+        publisher: "Simon & Schuster",
+        title: "Pirate",
+      },
+      nextBook: {
+        bookId: 'sgt#4',
+        authors: ["Banksy"],
+        categories: ["Fiction", "Non-Fiction"],
+        averageRating: 4,
+        description:
+          "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+        imageLinks: {
+          smallThumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          thumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+        },
+        language: "en",
+        pageCount: 328,
+        publisher: "Houghton Mifflin Harcourt",
+        title: "Flowers for Algernon",
+      },
+      upcomingBooks: [{
+        bookId: 'feg5(',
+        authors: ["Daniel Keyes"],
+        categories: ["Fiction", "Non-Fiction"],
+        averageRating: 4,
+        description:
+          "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+        imageLinks: {
+          smallThumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          thumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+        },
+        language: "en",
+        pageCount: 328,
+        publisher: "Houghton Mifflin Harcourt",
+        title: "Flowers for Algernon",
+      }, 'My Best Day', 'Nobody Knows'],
+      previousBooks: [{
+        bookId: 'afs2*',
+        authors: ["Daniel Keyes"],
+        categories: ["Fiction", "Non-Fiction"],
+        averageRating: 4,
+        description:
+          "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+        imageLinks: {
+          smallThumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          thumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+        },
+        language: "en",
+        pageCount: 328,
+        publisher: "Houghton Mifflin Harcourt",
+        title: "Flowers for Algernon",
+      }, 'Can I Borrow A Feeling?', 'Batman'],
     },
     meetings: {
       meetingFrequency: 'monthly',
@@ -132,10 +404,78 @@ export const bookClubsMock = [
     name: 'Pop Jams',
     members: {invited: ['gt46a^u(o0', '34xc98(dfk'],  accepted: ['62jt*(kj!3', '523dgf*5gn&'], requested: ['t4dfhu8gf*']},
     books: {
-      currentBook: {title: 'Book: Taylor\'s Version', author: 'Taylor Swift', thumbnail: ''},
-      nextBook: 'Buy An Island',
-      upcomingBooks: ['45 Bloor Street', 'Cats', 'Katy Perry: A Biography'],
-      previousBooks: ['When I Was Young', 'Goosebumps', 'Cher'],
+      currentBook: {
+        bookId: 'afs2*',
+        authors: ["Daniel Keyes"],
+        categories: ["Fiction", "Non-Fiction"],
+        averageRating: 4,
+        description:
+          "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+        imageLinks: {
+          smallThumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          thumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+        },
+        language: "en",
+        pageCount: 328,
+        publisher: "Houghton Mifflin Harcourt",
+        title: "Flowers for Algernon",
+      },
+      nextBook: {
+        bookId: 'feg5(',
+        authors: ["Daniel Keyes"],
+        categories: ["Fiction", "Non-Fiction"],
+        averageRating: 4,
+        description:
+          "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+        imageLinks: {
+          smallThumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          thumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+        },
+        language: "en",
+        pageCount: 328,
+        publisher: "Houghton Mifflin Harcourt",
+        title: "Flowers for Algernon",
+      },
+      upcomingBooks: [{
+        bookId: 'sgt#4',
+        authors: ["Banksy"],
+        categories: ["Fiction", "Non-Fiction"],
+        averageRating: 4,
+        description:
+          "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+        imageLinks: {
+          smallThumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          thumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+        },
+        language: "en",
+        pageCount: 328,
+        publisher: "Houghton Mifflin Harcourt",
+        title: "Flowers for Algernon",
+      }, 'Cats', 'Katy Perry: A Biography'],
+      previousBooks: [{
+        bookId: 'u^y5r',
+        authors: ["Ted Bell"],
+        categories: ["Thriller", "Action"],
+        averageRating: 4.5,
+        description:
+          "Super rad spy novel.",
+        imageLinks: {
+          smallThumbnail:
+            "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg",
+          thumbnail:
+            "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg,
+        },
+        language: "en",
+        pageCount: 640,
+        publisher: "Simon & Schuster",
+        title: "Pirate",
+      }, 'Goosebumps', 'Cher'],
     },
     meetings: {
       meetingFrequency: 'weekly',
@@ -158,10 +498,78 @@ export const bookClubsMock = [
     name: 'Book Clubbing',
     members: {invited: ['62jt*(kj!3', 't4dfhu8gf*'], accepted: ['523dgf*5gn&', '98(ol)hg4e'], requested: ['34xc98(dfk']},
     books: {
-      currentBook: {title: 'Reese\'s 3rd Favourite Book', author: 'Luna Slink', thumbnail: ''},
-      nextBook: 'Oprah\'s 3rd Favourite Book',
-      upcomingBooks: ['Three and One Book', 'Books are Fun', 'Anatomy of a Society'],
-      previousBooks: ['Old Book 3', 'Third Old Book', 'A 3rd Graphic Novel'],
+      currentBook: {
+        bookId: 'u^y5r',
+        authors: ["Ted Bell"],
+        categories: ["Thriller", "Action"],
+        averageRating: 4.5,
+        description:
+          "Super rad spy novel.",
+        imageLinks: {
+          smallThumbnail:
+            "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg",
+          thumbnail:
+            "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg,
+        },
+        language: "en",
+        pageCount: 640,
+        publisher: "Simon & Schuster",
+        title: "Pirate",
+      },
+      nextBook: {
+        bookId: 'feg5(',
+        authors: ["Daniel Keyes"],
+        categories: ["Fiction", "Non-Fiction"],
+        averageRating: 4,
+        description:
+          "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+        imageLinks: {
+          smallThumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          thumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+        },
+        language: "en",
+        pageCount: 328,
+        publisher: "Houghton Mifflin Harcourt",
+        title: "Flowers for Algernon",
+      },
+      upcomingBooks: [{
+        bookId: 'sgt#4',
+        authors: ["Banksy"],
+        categories: ["Fiction", "Non-Fiction"],
+        averageRating: 4,
+        description:
+          "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+        imageLinks: {
+          smallThumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          thumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+        },
+        language: "en",
+        pageCount: 328,
+        publisher: "Houghton Mifflin Harcourt",
+        title: "Flowers for Algernon",
+      }, 'Books are Fun', 'Anatomy of a Society'],
+      previousBooks: [{
+        bookId: 'afs2*',
+        authors: ["Daniel Keyes"],
+        categories: ["Fiction", "Non-Fiction"],
+        averageRating: 4,
+        description:
+          "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+        imageLinks: {
+          smallThumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          thumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+        },
+        language: "en",
+        pageCount: 328,
+        publisher: "Houghton Mifflin Harcourt",
+        title: "Flowers for Algernon",
+      }, 'Third Old Book', 'A 3rd Graphic Novel'],
     },
     meetings: {
       meetingFrequency: 'bi-weekly',

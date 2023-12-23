@@ -11,6 +11,8 @@ import userContext from "../userContext";
 import { getUserByUserId } from "../utils/selectors";
 import { usersMock } from "../mocks/users";
 import { formatStreetAddress } from "../utils/helpers";
+import SingleBookItem from "./SingleBookItem";
+import BookListItem from "./BookListItem";
 
 const BookClubMain = (props) => {
   const user = useContext(userContext);
@@ -121,12 +123,32 @@ const BookClubMain = (props) => {
         {meetingFrequency}
       </div>
       <h3>Current Book:</h3>
+      <SingleBookItem
+        bookObj={books.currentBook}
+        userId={user.userId}
+        location={"bookClubMain"}
+      />
+      {/* <SingleBookItem bookObj={} userId={} location={} /> */}
       <h3>Next Book:</h3>
+      <SingleBookItem
+        bookObj={books.nextBook}
+        userId={user.userId}
+        location={"bookClubMain"}
+      />
       <h3>Past Books:</h3>
+      {books.previousBooks.map((book, key) => {
+        <BookListItem key={key} bookObj={book} />;
+      })}
       {/* <MemberList members={filteredMembers} bookClubId={bookClubId} /> */}
     </main>
   );
 };
+// books: {
+//   currentBook: {title: 'Reese\'s 2nd Favourite Book', author: 'Luna Slink', thumbnail: ''},
+//   nextBook: 'Oprah\'s 2nd Favourite Book',
+//   upcomingBooks: ['New Book', 'New Odd Book', 'SoCal Dreams'],
+//   previousBooks: ['Old Book 2', 'A 2nd Old Book', 'A 2nd Graphic Novel'],
+// },
 
 BookClubMain.propTypes = {
   bookClubObj: PropTypes.object,

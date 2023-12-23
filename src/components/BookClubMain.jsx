@@ -120,6 +120,9 @@ const BookClubMain = (props) => {
         <h3>Meeting Frequency:</h3>
         {meetingFrequency}
       </div>
+      <h3>Current Book:</h3>
+      <h3>Next Book:</h3>
+      <h3>Past Books:</h3>
       {/* <MemberList members={filteredMembers} bookClubId={bookClubId} /> */}
     </main>
   );

@@ -72,7 +72,7 @@ export const bookClubsMock = [
             smallThumbnail:
               "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg",
             thumbnail:
-              "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg,
+              "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg",
           },
           language: "en",
           pageCount: 640,
@@ -173,7 +173,7 @@ export const bookClubsMock = [
             smallThumbnail:
               "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg",
             thumbnail:
-              "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg,
+              "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg",
           },
           language: "en",
           pageCount: 640,
@@ -249,7 +249,7 @@ export const bookClubsMock = [
             smallThumbnail:
               "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg",
             thumbnail:
-              "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg,
+              "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg",
           },
           language: "en",
           pageCount: 640,
@@ -314,7 +314,7 @@ export const bookClubsMock = [
           smallThumbnail:
             "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg",
           thumbnail:
-            "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg,
+            "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg",
         },
         language: "en",
         pageCount: 640,
@@ -469,7 +469,7 @@ export const bookClubsMock = [
           smallThumbnail:
             "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg",
           thumbnail:
-            "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg,
+            "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg",
         },
         language: "en",
         pageCount: 640,
@@ -509,7 +509,7 @@ export const bookClubsMock = [
           smallThumbnail:
             "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg",
           thumbnail:
-            "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg,
+            "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg",
         },
         language: "en",
         pageCount: 640,

@@ -113,7 +113,7 @@ const BookClubItem = (props) => {
                 className='searchInput'
                 location='bookClub'
                 dropDown={false}
-                id={userObj.id}
+                id={userId}
                 valueCallback={getChosenMemberResults}
               />
               {addMembers?.length > 0 ? (
@@ -228,7 +228,7 @@ const BookClubItem = (props) => {
                 className='searchInput'
                 location='bookClubFirstBook'
                 dropDown={true}
-                id={userObj.id}
+                id={userId}
                 valueCallback={getChosenSearchResults}
               />
               {firstBook ? <div>First Book: {firstBook}</div> : null}

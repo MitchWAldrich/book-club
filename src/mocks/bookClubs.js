@@ -166,7 +166,7 @@ export const bookClubsMock = [
       },
       isNewBookClub: true,
       visibility: 'public',
-      categories: ['Fantasy'],
+      categories: ['Fantasy', 'Fiction'],
   },
   {
       id: 2,

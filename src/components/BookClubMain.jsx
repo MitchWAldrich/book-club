@@ -10,9 +10,11 @@ import userContext from "../userContext";
 
 import { getUserByUserId } from "../utils/selectors";
 import { usersMock } from "../mocks/users";
-import { formatStreetAddress } from "../utils/helpers";
+import { filterSuggestedUsers, formatStreetAddress } from "../utils/helpers";
 import SingleBookItem from "./SingleBookItem";
 import BookListItem from "./BookListItem";
+
+import { formatCategories } from "../utils/helpers";
 
 const BookClubMain = (props) => {
   const user = useContext(userContext);
@@ -64,17 +66,7 @@ const BookClubMain = (props) => {
   // const isMember = combinedMembers.includes(user.userId) ? true : false;
   /* need to implement visibility === private and isMember */
 
-  const filterSuggested = (usersFull, usersExempt) => {
-    if (!usersFull?.length) return;
-
-    const filteredUsers = usersFull?.filter(
-      (user) => !usersExempt.includes(user)
-    );
-
-    return filteredUsers;
-  };
-
-  const filteredMembers = filterSuggested(usersMock, combinedMembers);
+  const filteredMembers = filterSuggestedUsers(usersMock, combinedMembers);
 
   const {
     meetingFrequency,
@@ -86,6 +78,8 @@ const BookClubMain = (props) => {
   const { city, province } = inPerson;
 
   const streetAddress = formatStreetAddress(inPerson);
+
+  const formattedCategories = formatCategories(categories);
 
   return (
     <main>
@@ -100,27 +94,28 @@ const BookClubMain = (props) => {
       </div>
       <div>
         <h3>Categories:</h3>
-        <p>{categories.map((category) => `${category}`)}</p>
+        <p>{formattedCategories}</p>
       </div>
-      <h3>Members</h3>
-      {visibility === "public" ? (
-        <MemberList
-          members={combinedMembers}
-          bookClubId={bookClubId}
-          isLoading={isLoading}
-        />
-      ) : null}
-      {visibility === "friendsCanSee" ? (
-        <MemberList
-          members={myFriends}
-          bookClubId={bookClubId}
-          isLoading={isLoading}
-        />
-      ) : null}
-      {visibility === "private" ? (
-        <p>Join this book club to see a list of its members</p>
-      ) : null}
-
+      <div>
+        <h3>Members</h3>
+        {visibility === "public" ? (
+          <MemberList
+            members={combinedMembers}
+            bookClubId={bookClubId}
+            isLoading={isLoading}
+          />
+        ) : null}
+        {visibility === "friendsCanSee" ? (
+          <MemberList
+            members={myFriends}
+            bookClubId={bookClubId}
+            isLoading={isLoading}
+          />
+        ) : null}
+        {visibility === "private" ? (
+          <p>Join this book club to see a list of its members</p>
+        ) : null}
+      </div>
       {!isHost ? (
         <>
           <h3>Suggested Members</h3>
@@ -138,14 +133,14 @@ const BookClubMain = (props) => {
         <h3>Next Meeting:</h3>
         <p>
           {nextMeetingDate} @ {nextMeetingTime}
+          <br />
           {online ? `Meeting Link: ${online}` : null}
           {inPerson ? (
-            <div>
-              <p>{streetAddress}</p>
-              <p>
-                {city}, {province}
-              </p>
-            </div>
+            <>
+              {streetAddress}
+              <br />
+              {city}, {province}
+            </>
           ) : null}
         </p>
         <h3>Meeting Frequency:</h3>
@@ -172,12 +167,6 @@ const BookClubMain = (props) => {
     </main>
   );
 };
-// books: {
-//   currentBook: {title: 'Reese\'s 2nd Favourite Book', author: 'Luna Slink', thumbnail: ''},
-//   nextBook: 'Oprah\'s 2nd Favourite Book',
-//   upcomingBooks: ['New Book', 'New Odd Book', 'SoCal Dreams'],
-//   previousBooks: ['Old Book 2', 'A 2nd Old Book', 'A 2nd Graphic Novel'],
-// },
 
 BookClubMain.propTypes = {
   bookClubObj: PropTypes.object,

@@ -164,7 +164,7 @@ SingleBookItem.propTypes = {
   // pageCount: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   // publisher: PropTypes.string,
   // title: PropTypes.string,
-  userId: PropTypes.number,
+  userId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   location: PropTypes.string,
 };
 

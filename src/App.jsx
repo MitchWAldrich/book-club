@@ -18,11 +18,13 @@ import { bookClubMock } from "./mocks/bookClubs";
 function App() {
   const user = userMock2;
   const bookClub = bookClubMock;
+  const isLoading = false;
 
   /* Implement Login
   const [user, setUser] = useState({});
   const [bookClub, setBookClub] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setUser(userMock2);
@@ -42,7 +44,9 @@ function App() {
             <Route path='/bookclubs' element={<BookClubs userObj={user} />} />
             <Route
               path='/bookclubs/:id'
-              element={<BookClubMain bookClubObj={bookClub} />}
+              element={
+                <BookClubMain bookClubObj={bookClub} isLoading={isLoading} />
+              }
             />
             <Route path='/:id/replies' element={<Replies />} />
           </Routes>

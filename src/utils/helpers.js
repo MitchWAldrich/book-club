@@ -89,3 +89,27 @@ export const formatStreetAddress = (addressObj) => {
   return unitNumber ? `${streetNumber} ${streetName}, Unit ${unitNumber}` : `${streetNumber} ${streetName}`
 
 }
+
+export const filterSuggestedUsers = (usersFull, usersExempt) => {
+  if (!usersFull?.length) return;
+
+  const filteredUsers = usersFull?.filter(
+    (user) => !usersExempt.includes(user)
+  );
+
+  return filteredUsers;
+};
+
+export const formatCategories = (categories) => {
+  let formattedCategories = "";
+
+  for (let i = 0; i < categories.length; i++) {
+    if (i === 0) {
+      formattedCategories = `${categories[i]}`;
+    } else {
+      formattedCategories = `${formattedCategories}, ${categories[i]}`;
+    }
+  }
+
+  return formattedCategories;
+};

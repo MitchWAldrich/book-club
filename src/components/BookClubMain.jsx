@@ -4,7 +4,7 @@ import { useContext } from "react";
 import PropTypes from "prop-types";
 
 import MemberList from "./MemberList";
-import SearchBar from "./Searchbar";
+// import SearchBar from "./Searchbar";
 
 import userContext from "../userContext";
 
@@ -34,9 +34,11 @@ const BookClubMain = (props) => {
     ? true
     : false;
 
-  const combinedUsers = (users, type) => {
+  const combineUsers = (users, type) => {
+    const combinedUsers = [];
+
     if (type === "allMembers") {
-      const combinedUsers = [getUserByUserId(usersMock, bookClubHostId)];
+      combinedUsers.push(getUserByUserId(usersMock, bookClubHostId));
 
       users?.accepted?.forEach((user) =>
         combinedUsers.push(getUserByUserId(usersMock, user))
@@ -47,14 +49,20 @@ const BookClubMain = (props) => {
       users?.invited?.forEach((user) =>
         combinedUsers.push(getUserByUserId(usersMock, user))
       );
-
-      return combinedUsers;
     }
+
+    return combinedUsers;
   };
 
-  const combinedMembers = combinedUsers(members, "allMembers");
+  const combinedMembers = combineUsers(members, "allMembers");
 
-  const isMember = combinedMembers.includes(user.userId) ? true : false;
+  const myFriends =
+    members.accepted.map((user) =>
+      user?.friends?.accepted?.includes(user.userID)
+    ) ?? [];
+
+  // const isMember = combinedMembers.includes(user.userId) ? true : false;
+  /* need to implement visibility === private and isMember */
 
   const filterSuggested = (usersFull, usersExempt) => {
     if (!usersFull?.length) return;
@@ -90,19 +98,32 @@ const BookClubMain = (props) => {
         <h3>Host:</h3>
         <p>{hostUserName}</p>
       </div>
+      <div>
+        <h3>Categories:</h3>
+        <p>{categories.map((category) => `${category}`)}</p>
+      </div>
       <h3>Members</h3>
-      <MemberList members={combinedMembers} bookClubId={bookClubId} />
+      {visibility === "public" ? (
+        <MemberList members={combinedMembers} bookClubId={bookClubId} />
+      ) : null}
+      {visibility === "friendsCanSee" ? (
+        <MemberList members={myFriends} bookClubId={bookClubId} />
+      ) : null}
+      {visibility === "private" ? (
+        <p>Join this book club to see a list of its members</p>
+      ) : null}
 
-      {isHost ? (
+      {!isHost ? (
         <>
           <h3>Suggested Members</h3>
-          <SearchBar
+          <MemberList members={filteredMembers} />
+          {/* <SearchBar
             className='searchInput'
             location='bookClub'
             dropDown={false}
             // userId
             // valueCallback={getChosenMemberResults}
-          />
+          /> */}
         </>
       ) : null}
       <div>

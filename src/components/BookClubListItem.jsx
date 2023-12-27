@@ -5,10 +5,12 @@ import instance from "../utils/axiosConfig";
 import PropTypes from "prop-types";
 
 import { bookMock } from "../mocks/books";
+import MemberList from "./MemberList";
 
 const BookClubListItem = (props) => {
-  const { bookClubObj, userId, isHost, isSearch } = props;
-  console.log("bookClubObj", bookClubObj);
+  // const { bookClubObj, userId, isHost, isSearch, isLoading } = props;
+  const { bookClubObj, userId, isSearch } = props;
+
   const {
     bookClubId,
     // bookClubHostId,
@@ -87,8 +89,13 @@ const BookClubListItem = (props) => {
               : `Location: ${streetNumber} ${streetName}, ${city}, ${province}, ${country}`}
           </p>
           <div>
-            <p>{`CurrentBook: ${title} by ${authors}`}</p>
+            <p>{`Current Book: ${title} by ${authors}`}</p>
             <img src={thumbnail} />
+          </div>
+          <div>
+            <p>{`Contacts in Book Club:`}</p>
+            {/* <MemberList members={members} valueCallback, location, isLoading/> */}
+            <MemberList members={members.accepted} />
           </div>
           {isSearch ? (
             <div>
@@ -115,6 +122,7 @@ BookClubListItem.propTypes = {
   userId: PropTypes.string,
   isHost: PropTypes.bool,
   isSearch: PropTypes.bool,
+  isLoading: PropTypes.bool,
 };
 
 export default BookClubListItem;

@@ -16,7 +16,7 @@ import BookListItem from "./BookListItem";
 
 const BookClubMain = (props) => {
   const user = useContext(userContext);
-  const { bookClubObj } = props;
+  const { bookClubObj, isLoading } = props;
 
   const {
     bookClubId,
@@ -104,10 +104,18 @@ const BookClubMain = (props) => {
       </div>
       <h3>Members</h3>
       {visibility === "public" ? (
-        <MemberList members={combinedMembers} bookClubId={bookClubId} />
+        <MemberList
+          members={combinedMembers}
+          bookClubId={bookClubId}
+          isLoading={isLoading}
+        />
       ) : null}
       {visibility === "friendsCanSee" ? (
-        <MemberList members={myFriends} bookClubId={bookClubId} />
+        <MemberList
+          members={myFriends}
+          bookClubId={bookClubId}
+          isLoading={isLoading}
+        />
       ) : null}
       {visibility === "private" ? (
         <p>Join this book club to see a list of its members</p>
@@ -173,6 +181,7 @@ const BookClubMain = (props) => {
 
 BookClubMain.propTypes = {
   bookClubObj: PropTypes.object,
+  isLoading: PropTypes.bool,
 };
 
 export default BookClubMain;

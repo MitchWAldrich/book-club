@@ -10,6 +10,7 @@ import BookClubsList from "./BookClubsList";
 import BookListItem from "./BookListItem";
 import Dropdown from "./Dropdown";
 import Input from "./Input";
+import Loading from "./Loading";
 
 import {
   getBooks,
@@ -21,7 +22,6 @@ import {
 import MemberList from "./MemberList";
 
 import { usersMock } from "../mocks/users";
-import { bookClubsMock } from "../mocks/bookClubs";
 
 const SearchBar = (props) => {
   const { className, location, dropDown, id, valueCallback, userId } = props;
@@ -44,13 +44,13 @@ const SearchBar = (props) => {
   const [searchType, setSearchType] = useState(null);
 
   const units = ["Title", "Author"];
-  const categories = [
-    "Fiction",
-    "Non-Fiction",
-    "Romance",
-    "Mystery",
-    "Fantasy",
-  ];
+  // const categories = [
+  //   "Fiction",
+  //   "Non-Fiction",
+  //   "Romance",
+  //   "Mystery",
+  //   "Fantasy",
+  // ];
   const bookClubDropdown = ["Name", "Category", "Location"];
 
   const getUnit = (dropdownValue) => {
@@ -219,22 +219,26 @@ const SearchBar = (props) => {
       <br></br>
       {bookSearched ? (
         <>
-          {bookResponse.map((book, key) => (
-            <BookListItem
-              key={key}
-              bookId={book.bookId}
-              authors={book.authors}
-              categories={book.categories}
-              averageRating={book.averageRating}
-              description={book.description}
-              imageLinks={book.imageLinks}
-              language={book.language}
-              pageCount={book.pageCount}
-              publisher={book.publisher}
-              title={book.title}
-              valueCallback={getClicked}
-            />
-          ))}
+          {isLoading ? (
+            <Loading />
+          ) : (
+            bookResponse.map((book, key) => (
+              <BookListItem
+                key={key}
+                bookId={book.bookId}
+                authors={book.authors}
+                categories={book.categories}
+                averageRating={book.averageRating}
+                description={book.description}
+                imageLinks={book.imageLinks}
+                language={book.language}
+                pageCount={book.pageCount}
+                publisher={book.publisher}
+                title={book.title}
+                valueCallback={getClicked}
+              />
+            ))
+          )}
           <button type='button' onClick={handleChooseBook}>
             CHOOSE BOOK
           </button>
@@ -245,6 +249,7 @@ const SearchBar = (props) => {
           members={userResponse}
           valueCallback={valueCallback}
           location='bookClubCreate'
+          isLoading={isLoading}
         />
       ) : null}
       {bookClubsSearched ? (

@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import BookClubMain from "./components/BookClubMain";
@@ -16,8 +16,19 @@ import "./App.scss";
 import { bookClubMock } from "./mocks/bookClubs";
 
 function App() {
-  const [user, setUser] = useState(userMock2);
-  const [bookClub, setBookClub] = useState(bookClubMock);
+  const user = userMock2;
+  const bookClub = bookClubMock;
+
+  /* Implement Login
+  const [user, setUser] = useState({});
+  const [bookClub, setBookClub] = useState({});
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    setUser(userMock2);
+    setBookClub(bookClubMock);
+  }, [loggedIn]);
+*/
 
   return (
     <div>

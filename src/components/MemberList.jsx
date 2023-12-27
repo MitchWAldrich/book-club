@@ -84,7 +84,7 @@ MemberList.propTypes = {
   bookClubId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   valueCallback: PropTypes.func,
   location: PropTypes.string,
-  isLoading: PropTypes.boolean,
+  isLoading: PropTypes.bool,
 };
 
 export default MemberList;

@@ -60,7 +60,41 @@ export const bookClubsMock = [
           pageCount: 328,
           publisher: "Houghton Mifflin Harcourt",
           title: "Flowers for Algernon",
-        }, 'Other Next Book', 'Biography of a Celeb'],
+        }, {
+          bookId: 'feg5(',
+          authors: ["Daniel Keyes"],
+          categories: ["Fiction", "Non-Fiction"],
+          averageRating: 4,
+          description:
+            "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+          imageLinks: {
+            smallThumbnail:
+              "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+            thumbnail:
+              "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+          },
+          language: "en",
+          pageCount: 328,
+          publisher: "Houghton Mifflin Harcourt",
+          title: "Flowers for Algernon",
+        }, {
+          bookId: 'feg5(',
+          authors: ["Daniel Keyes"],
+          categories: ["Fiction", "Non-Fiction"],
+          averageRating: 4,
+          description:
+            "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+          imageLinks: {
+            smallThumbnail:
+              "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+            thumbnail:
+              "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+          },
+          language: "en",
+          pageCount: 328,
+          publisher: "Houghton Mifflin Harcourt",
+          title: "Flowers for Algernon",
+        }],
         previousBooks: [{
           bookId: 'u^y5r',
           authors: ["Ted Bell"],
@@ -78,7 +112,41 @@ export const bookClubsMock = [
           pageCount: 640,
           publisher: "Simon & Schuster",
           title: "Pirate",
-        }, 'Other Old Book', 'A Graphic Novel'],
+        }, {
+          bookId: 'u^y5r',
+          authors: ["Ted Bell"],
+          categories: ["Thriller", "Action"],
+          averageRating: 4.5,
+          description:
+            "Super rad spy novel.",
+          imageLinks: {
+            smallThumbnail:
+              "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg",
+            thumbnail:
+              "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg",
+          },
+          language: "en",
+          pageCount: 640,
+          publisher: "Simon & Schuster",
+          title: "Pirate",
+        }, {
+          bookId: 'u^y5r',
+          authors: ["Ted Bell"],
+          categories: ["Thriller", "Action"],
+          averageRating: 4.5,
+          description:
+            "Super rad spy novel.",
+          imageLinks: {
+            smallThumbnail:
+              "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg",
+            thumbnail:
+              "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg",
+          },
+          language: "en",
+          pageCount: 640,
+          publisher: "Simon & Schuster",
+          title: "Pirate",
+        }],
       },
       meetings: {
         meetingFrequency: 'weekly',
@@ -161,7 +229,41 @@ export const bookClubsMock = [
           pageCount: 328,
           publisher: "Houghton Mifflin Harcourt",
           title: "Flowers for Algernon",
-        }, 'New Odd Book', 'SoCal Dreams'],
+        }, {
+          bookId: 'afs2*',
+          authors: ["Daniel Keyes"],
+          categories: ["Fiction", "Non-Fiction"],
+          averageRating: 4,
+          description:
+            "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+          imageLinks: {
+            smallThumbnail:
+              "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+            thumbnail:
+              "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+          },
+          language: "en",
+          pageCount: 328,
+          publisher: "Houghton Mifflin Harcourt",
+          title: "Flowers for Algernon",
+        }, {
+          bookId: 'afs2*',
+          authors: ["Daniel Keyes"],
+          categories: ["Fiction", "Non-Fiction"],
+          averageRating: 4,
+          description:
+            "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+          imageLinks: {
+            smallThumbnail:
+              "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+            thumbnail:
+              "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+          },
+          language: "en",
+          pageCount: 328,
+          publisher: "Houghton Mifflin Harcourt",
+          title: "Flowers for Algernon",
+        }],
         previousBooks: [{
           bookId: 'u^y5r',
           authors: ["Ted Bell"],
@@ -179,7 +281,41 @@ export const bookClubsMock = [
           pageCount: 640,
           publisher: "Simon & Schuster",
           title: "Pirate",
-        }, 'A 2nd Old Book', 'A 2nd Graphic Novel'],
+        }, {
+          bookId: 'u^y5r',
+          authors: ["Ted Bell"],
+          categories: ["Thriller", "Action"],
+          averageRating: 4.5,
+          description:
+            "Super rad spy novel.",
+          imageLinks: {
+            smallThumbnail:
+              "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg",
+            thumbnail:
+              "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg",
+          },
+          language: "en",
+          pageCount: 640,
+          publisher: "Simon & Schuster",
+          title: "Pirate",
+        }, {
+          bookId: 'u^y5r',
+          authors: ["Ted Bell"],
+          categories: ["Thriller", "Action"],
+          averageRating: 4.5,
+          description:
+            "Super rad spy novel.",
+          imageLinks: {
+            smallThumbnail:
+              "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg",
+            thumbnail:
+              "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg",
+          },
+          language: "en",
+          pageCount: 640,
+          publisher: "Simon & Schuster",
+          title: "Pirate",
+        }],
       },
       meetings: {
         meetingFrequency: 'monthly',
@@ -255,7 +391,41 @@ export const bookClubsMock = [
           pageCount: 640,
           publisher: "Simon & Schuster",
           title: "Pirate",
-        }, 'Books are Fun', 'Anatomy of a Society'],
+        }, {
+          bookId: 'u^y5r',
+          authors: ["Ted Bell"],
+          categories: ["Thriller", "Action"],
+          averageRating: 4.5,
+          description:
+            "Super rad spy novel.",
+          imageLinks: {
+            smallThumbnail:
+              "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg",
+            thumbnail:
+              "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg",
+          },
+          language: "en",
+          pageCount: 640,
+          publisher: "Simon & Schuster",
+          title: "Pirate",
+        }, {
+          bookId: 'u^y5r',
+          authors: ["Ted Bell"],
+          categories: ["Thriller", "Action"],
+          averageRating: 4.5,
+          description:
+            "Super rad spy novel.",
+          imageLinks: {
+            smallThumbnail:
+              "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg",
+            thumbnail:
+              "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg",
+          },
+          language: "en",
+          pageCount: 640,
+          publisher: "Simon & Schuster",
+          title: "Pirate",
+        }],
         previousBooks: [{
           bookId: 'sgt#4',
           authors: ["Banksy"],
@@ -273,7 +443,41 @@ export const bookClubsMock = [
           pageCount: 328,
           publisher: "Houghton Mifflin Harcourt",
           title: "Flowers for Algernon",
-        }, 'Third Old Book', 'A 3rd Graphic Novel'],
+        }, {
+          bookId: 'sgt#4',
+          authors: ["Banksy"],
+          categories: ["Fiction", "Non-Fiction"],
+          averageRating: 4,
+          description:
+            "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+          imageLinks: {
+            smallThumbnail:
+              "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+            thumbnail:
+              "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+          },
+          language: "en",
+          pageCount: 328,
+          publisher: "Houghton Mifflin Harcourt",
+          title: "Flowers for Algernon",
+        }, {
+          bookId: 'sgt#4',
+          authors: ["Banksy"],
+          categories: ["Fiction", "Non-Fiction"],
+          averageRating: 4,
+          description:
+            "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+          imageLinks: {
+            smallThumbnail:
+              "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+            thumbnail:
+              "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+          },
+          language: "en",
+          pageCount: 328,
+          publisher: "Houghton Mifflin Harcourt",
+          title: "Flowers for Algernon",
+        }],
       },
       meetings: {
         meetingFrequency: 'bi-weekly',
@@ -356,7 +560,41 @@ export const bookClubsMock = [
         pageCount: 328,
         publisher: "Houghton Mifflin Harcourt",
         title: "Flowers for Algernon",
-      }, 'My Best Day', 'Nobody Knows'],
+      }, {
+        bookId: 'feg5(',
+        authors: ["Daniel Keyes"],
+        categories: ["Fiction", "Non-Fiction"],
+        averageRating: 4,
+        description:
+          "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+        imageLinks: {
+          smallThumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          thumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+        },
+        language: "en",
+        pageCount: 328,
+        publisher: "Houghton Mifflin Harcourt",
+        title: "Flowers for Algernon",
+      }, {
+        bookId: 'feg5(',
+        authors: ["Daniel Keyes"],
+        categories: ["Fiction", "Non-Fiction"],
+        averageRating: 4,
+        description:
+          "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+        imageLinks: {
+          smallThumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          thumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+        },
+        language: "en",
+        pageCount: 328,
+        publisher: "Houghton Mifflin Harcourt",
+        title: "Flowers for Algernon",
+      }],
       previousBooks: [{
         bookId: 'afs2*',
         authors: ["Daniel Keyes"],
@@ -374,7 +612,41 @@ export const bookClubsMock = [
         pageCount: 328,
         publisher: "Houghton Mifflin Harcourt",
         title: "Flowers for Algernon",
-      }, 'Can I Borrow A Feeling?', 'Batman'],
+      }, {
+        bookId: 'afs2*',
+        authors: ["Daniel Keyes"],
+        categories: ["Fiction", "Non-Fiction"],
+        averageRating: 4,
+        description:
+          "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+        imageLinks: {
+          smallThumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          thumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+        },
+        language: "en",
+        pageCount: 328,
+        publisher: "Houghton Mifflin Harcourt",
+        title: "Flowers for Algernon",
+      }, {
+        bookId: 'afs2*',
+        authors: ["Daniel Keyes"],
+        categories: ["Fiction", "Non-Fiction"],
+        averageRating: 4,
+        description:
+          "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+        imageLinks: {
+          smallThumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          thumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+        },
+        language: "en",
+        pageCount: 328,
+        publisher: "Houghton Mifflin Harcourt",
+        title: "Flowers for Algernon",
+      }],
     },
     meetings: {
       meetingFrequency: 'monthly',
@@ -457,7 +729,41 @@ export const bookClubsMock = [
         pageCount: 328,
         publisher: "Houghton Mifflin Harcourt",
         title: "Flowers for Algernon",
-      }, 'Cats', 'Katy Perry: A Biography'],
+      }, {
+        bookId: 'sgt#4',
+        authors: ["Banksy"],
+        categories: ["Fiction", "Non-Fiction"],
+        averageRating: 4,
+        description:
+          "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+        imageLinks: {
+          smallThumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          thumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+        },
+        language: "en",
+        pageCount: 328,
+        publisher: "Houghton Mifflin Harcourt",
+        title: "Flowers for Algernon",
+      }, {
+        bookId: 'sgt#4',
+        authors: ["Banksy"],
+        categories: ["Fiction", "Non-Fiction"],
+        averageRating: 4,
+        description:
+          "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+        imageLinks: {
+          smallThumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          thumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+        },
+        language: "en",
+        pageCount: 328,
+        publisher: "Houghton Mifflin Harcourt",
+        title: "Flowers for Algernon",
+      }],
       previousBooks: [{
         bookId: 'u^y5r',
         authors: ["Ted Bell"],
@@ -475,7 +781,41 @@ export const bookClubsMock = [
         pageCount: 640,
         publisher: "Simon & Schuster",
         title: "Pirate",
-      }, 'Goosebumps', 'Cher'],
+      }, {
+        bookId: 'u^y5r',
+        authors: ["Ted Bell"],
+        categories: ["Thriller", "Action"],
+        averageRating: 4.5,
+        description:
+          "Super rad spy novel.",
+        imageLinks: {
+          smallThumbnail:
+            "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg",
+          thumbnail:
+            "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg",
+        },
+        language: "en",
+        pageCount: 640,
+        publisher: "Simon & Schuster",
+        title: "Pirate",
+      }, {
+        bookId: 'u^y5r',
+        authors: ["Ted Bell"],
+        categories: ["Thriller", "Action"],
+        averageRating: 4.5,
+        description:
+          "Super rad spy novel.",
+        imageLinks: {
+          smallThumbnail:
+            "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg",
+          thumbnail:
+            "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390173117i/129549.jpg",
+        },
+        language: "en",
+        pageCount: 640,
+        publisher: "Simon & Schuster",
+        title: "Pirate",
+      }],
     },
     meetings: {
       meetingFrequency: 'weekly',
@@ -551,7 +891,41 @@ export const bookClubsMock = [
         pageCount: 328,
         publisher: "Houghton Mifflin Harcourt",
         title: "Flowers for Algernon",
-      }, 'Books are Fun', 'Anatomy of a Society'],
+      }, {
+        bookId: 'sgt#4',
+        authors: ["Banksy"],
+        categories: ["Fiction", "Non-Fiction"],
+        averageRating: 4,
+        description:
+          "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+        imageLinks: {
+          smallThumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          thumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+        },
+        language: "en",
+        pageCount: 328,
+        publisher: "Houghton Mifflin Harcourt",
+        title: "Flowers for Algernon",
+      }, {
+        bookId: 'sgt#4',
+        authors: ["Banksy"],
+        categories: ["Fiction", "Non-Fiction"],
+        averageRating: 4,
+        description:
+          "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+        imageLinks: {
+          smallThumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          thumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+        },
+        language: "en",
+        pageCount: 328,
+        publisher: "Houghton Mifflin Harcourt",
+        title: "Flowers for Algernon",
+      }],
       previousBooks: [{
         bookId: 'afs2*',
         authors: ["Daniel Keyes"],
@@ -569,7 +943,41 @@ export const bookClubsMock = [
         pageCount: 328,
         publisher: "Houghton Mifflin Harcourt",
         title: "Flowers for Algernon",
-      }, 'Third Old Book', 'A 3rd Graphic Novel'],
+      }, {
+        bookId: 'afs2*',
+        authors: ["Daniel Keyes"],
+        categories: ["Fiction", "Non-Fiction"],
+        averageRating: 4,
+        description:
+          "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+        imageLinks: {
+          smallThumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          thumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+        },
+        language: "en",
+        pageCount: 328,
+        publisher: "Houghton Mifflin Harcourt",
+        title: "Flowers for Algernon",
+      }, {
+        bookId: 'afs2*',
+        authors: ["Daniel Keyes"],
+        categories: ["Fiction", "Non-Fiction"],
+        averageRating: 4,
+        description:
+          "Mentally retarded Charlie Gordon participates in an experiment which turns him into a genius, but only temporarily.",
+        imageLinks: {
+          smallThumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          thumbnail:
+            "http://books.google.com/books/content?id=NRWlitmahXkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+        },
+        language: "en",
+        pageCount: 328,
+        publisher: "Houghton Mifflin Harcourt",
+        title: "Flowers for Algernon",
+      }],
     },
     meetings: {
       meetingFrequency: 'bi-weekly',

@@ -9,16 +9,15 @@ import { bookMock } from "../mocks/books";
 
 const SingleBookItem = (props) => {
   const { bookObj, userId, location } = props;
-  const {
-    authors,
-    categories,
-    averageRating,
-    description,
-    imageLinks,
-    pageCount,
-    publisher,
-    title,
-  } = bookObj;
+
+  const authors = bookObj?.authors ?? [];
+  const categories = bookObj?.categories ?? [];
+  const averageRating = bookObj?.averageRating ?? 0;
+  const description = bookObj?.description ?? "N/A";
+  const imageLinks = bookObj?.imageLinks ?? {};
+  const pageCount = bookObj?.pageCount ?? "N/A";
+  const publisher = bookObj?.publisher ?? "N/A";
+  const title = bookObj?.title ?? "N/A";
   //Style the whole thing to look like an open book
 
   // const addToLibrary = (event, bookObject) => {

@@ -6,7 +6,7 @@ export const usersMock = [
       password: 'password',
       username: 'Jamie Smith',
       image: 'https://www.perfocal.com/blog/content/images/2021/01/Perfocal_17-11-2019_TYWFAQ_100_standard-3.jpg',
-      goals: [],
+      goals: ['dfS8*ur(o2'],
       library: {
           haveRead: [],
           toRead: []
@@ -29,7 +29,7 @@ export const usersMock = [
       password: 'password',
       username: 'Jenna Black',
       image: 'https://writestylesonline.com/wp-content/uploads/2018/11/Three-Statistics-That-Will-Make-You-Rethink-Your-Professional-Profile-Picture.jpg',
-      goals: [],
+      goals: ['rg^5hUi9lj', 'hjKp9&6ygw'],
       library: {
           haveRead: [],
           toRead: []

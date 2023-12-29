@@ -30,7 +30,7 @@ const Input = (props) => {
         // style={{ backgroundColor: 'orange', height: '100%' }}
         style={{ height: "100%" }}
       />
-      {/* {error && <p className='error'>Input field can't be empty!</p>} */}
+      {error && <p className='error'>Input field can't be empty!</p>}
     </div>
   );
 };

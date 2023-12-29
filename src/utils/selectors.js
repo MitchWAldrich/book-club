@@ -30,7 +30,6 @@ export const getBookClubByBookClubId = (bookclubs, bookClubId) => {
 };
 
 export const getBookClubsByCategory = (bookclubs, category) => {
-  console.log('category', bookclubs, category)
   return bookclubs.find((bookclub) => bookclub.categories.includes(category));
 };
 
@@ -60,3 +59,9 @@ export const getBooks = (bookArray) => {
 
   return bookObjects;
 };
+
+/* Goal Searches */
+
+export const getGoalByGoalId = (goalsArray, goalId) => {
+  return goalsArray.find((goal) => goal.goalId === goalId)
+}

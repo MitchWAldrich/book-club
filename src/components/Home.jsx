@@ -2,15 +2,23 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import instance from "../utils/axiosConfig";
 
+import BookClubListItem from "./BookClubListItem";
 import Goal from "./Goal";
+import GoalListItem from "./GoalListItem";
 import Input from "./Input";
 import Invitation from "./Invitation";
 import Nav from "./Nav";
 import SearchBar from "./Searchbar";
 
 import userContext from "../userContext";
-import { getBookClubById } from "../utils/selectors";
+import {
+  getBookClubByBookClubId,
+  getBookClubById,
+  getGoalByGoalId,
+} from "../utils/selectors";
+
 import { bookClubsMock } from "../mocks/bookClubs";
+import { goalsMock } from "../mocks/goals";
 
 const Home = () => {
   const user = useContext(userContext);
@@ -60,6 +68,20 @@ const Home = () => {
       ) : null}
       <SearchBar className='searchBar' location='home' dropDown={true} />
       <main className='addBookClubContainer'>
+        <h2>My Reading Goals</h2>
+        {user.goals.map((goal, key) => (
+          <GoalListItem goalObj={getGoalByGoalId(goalsMock, goal)} key={key} />
+        ))}
+        <h2>My BookClubs</h2>
+        {user.bookClubs.accepted.map((bookClubId, key) => (
+          <BookClubListItem
+            bookClubObj={getBookClubByBookClubId(bookClubsMock, bookClubId)}
+            userId={user.userId}
+            isSearch={false}
+            key={key}
+          />
+        ))}
+        <h2>My Library</h2>
         <h2 className='homeTitle'>Create a Book Club</h2>
         <div className='addBookClub'>
           <Input

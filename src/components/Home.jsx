@@ -2,11 +2,13 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import instance from "../utils/axiosConfig";
 
+import BookListItem from "./BookListItem";
 import BookClubListItem from "./BookClubListItem";
 import Goal from "./Goal";
 import GoalListItem from "./GoalListItem";
 import Input from "./Input";
 import Invitation from "./Invitation";
+import MemberList from "./MemberList";
 import Nav from "./Nav";
 import SearchBar from "./Searchbar";
 
@@ -26,6 +28,7 @@ const Home = () => {
 
   console.log("homeUser", user);
 
+  const [book, setBook] = useState({});
   const [bookClubName, setBookClubName] = useState("");
   const [error, setError] = useState(false);
 
@@ -51,6 +54,10 @@ const Home = () => {
       .catch((error) => console.error("create Book Club error", error));
   };
 
+  const getChosenSearchResults = (searchValue) => {
+    setBook(searchValue);
+  };
+
   const isInvited = true;
 
   return (
@@ -66,7 +73,13 @@ const Home = () => {
           userId={user.userId}
         />
       ) : null}
-      <SearchBar className='searchBar' location='home' dropDown={true} />
+      <SearchBar
+        className='searchBar'
+        location='home'
+        dropDown={true}
+        id={user.userId}
+        valueCallback={getChosenSearchResults}
+      />
       <main className='addBookClubContainer'>
         <h2>My Reading Goals</h2>
         {user.goals.map((goal, key) => (
@@ -82,6 +95,21 @@ const Home = () => {
           />
         ))}
         <h2>My Library</h2>
+        <h3>Have Read</h3>
+        {user.library.haveRead.map((book, key) => (
+          <BookListItem bookObj={book} key={key} />
+        ))}
+        <h3>To Read</h3>
+        {user.library.toRead.map((book, key) => (
+          <BookListItem bookObj={book} key={key} />
+        ))}
+        <h2>My Friends</h2>
+
+        <MemberList
+          members={user.friends.accepted}
+          // bookClubId={bookClubId}
+          // isLoading={isLoading}
+        />
         <h2 className='homeTitle'>Create a Book Club</h2>
         <div className='addBookClub'>
           <Input

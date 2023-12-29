@@ -165,6 +165,9 @@ const SearchBar = (props) => {
       // For the bookClub selected
       // valueCallback(searchType);
     }
+    if (location === "home") {
+      valueCallback(bookId);
+    }
   };
 
   const handleChooseBook = () => {

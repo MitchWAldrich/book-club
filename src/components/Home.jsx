@@ -17,10 +17,12 @@ import {
   getBookClubByBookClubId,
   getBookClubById,
   getGoalByGoalId,
+  getUserByUserId,
 } from "../utils/selectors";
 
 import { bookClubsMock } from "../mocks/bookClubs";
 import { goalsMock } from "../mocks/goals";
+import { usersMock } from "../mocks/users";
 
 const Home = () => {
   const user = useContext(userContext);
@@ -57,6 +59,10 @@ const Home = () => {
   const getChosenSearchResults = (searchValue) => {
     setBook(searchValue);
   };
+
+  const friendObjs = user.friends.accepted.map((member) =>
+    getUserByUserId(usersMock, member)
+  );
 
   const isInvited = true;
 
@@ -104,9 +110,8 @@ const Home = () => {
           <BookListItem bookObj={book} key={key} />
         ))}
         <h2>My Friends</h2>
-
         <MemberList
-          members={user.friends.accepted}
+          members={friendObjs}
           // bookClubId={bookClubId}
           // isLoading={isLoading}
         />

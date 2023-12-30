@@ -7,6 +7,10 @@ import PropTypes from "prop-types";
 import { bookMock } from "../mocks/books";
 import MemberList from "./MemberList";
 
+import { getUserByUserId } from "../utils/selectors";
+
+import { usersMock } from "../mocks/users";
+
 const BookClubListItem = (props) => {
   // const { bookClubObj, userId, isHost, isSearch, isLoading } = props;
   const { bookClubObj, userId, isSearch } = props;
@@ -70,6 +74,11 @@ const BookClubListItem = (props) => {
     // valueCallback(bookId);
   };
 
+  /* Filter friends- add to selector*/
+  const friendObjs = members.accepted.map((member) =>
+    getUserByUserId(usersMock, member)
+  );
+
   return (
     <main className='bookClubItemContainer'>
       <button type='button' onClick={handleClick}>
@@ -95,7 +104,7 @@ const BookClubListItem = (props) => {
           <div>
             <p>{`Contacts in Book Club:`}</p>
             {/* <MemberList members={members} valueCallback, location, isLoading/> */}
-            <MemberList members={members.accepted} />
+            <MemberList members={friendObjs} />
           </div>
           {isSearch ? (
             <div>

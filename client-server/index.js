@@ -1,9 +1,10 @@
 import express from 'express';
 import cors from 'cors';
 
-import { getBookClubById, getUserById } from '../src/utils/selectors.js';
+import { getBookClubById, getGoalByGoalId, getUserById } from '../src/utils/selectors.js';
 import { bookClubsMock } from '../src/mocks/bookClubs.js';
 import { usersMock } from '../src/mocks/users.js';
+import { goalsMock } from '../src/mocks/goals.js';
 
 const app = express();
 const PORT = 4000;
@@ -108,6 +109,7 @@ app.patch("/api/users/:id", async (req) => {
 
 
 /* *** BOOKCLUBS ROUTES *** */
+
 app.get("/api/bookclubs", (req, res) => {
     res.json(
         bookClubsMock
@@ -115,7 +117,6 @@ app.get("/api/bookclubs", (req, res) => {
 });
 
 app.get("/api/bookclubs/:id", (req, res) => {
-    console.log('params', req.params);
     const bookClubId = req.params.id;
     const bookClub = getBookClubById(bookClubsMock, bookClubId)
 
@@ -202,6 +203,23 @@ app.patch("/api/bookclubs/:id", async (req) => {
 
     //👇🏻 logs all the request fields to the console.
     console.log({ bookClubId, newMembers });
+});
+
+/* *** GOAL ROUTES *** */
+
+app.get("/api/goals", (req, res) => {
+    res.json(
+        goalsMock
+    );
+});
+
+app.get("/api/goals/:id", (req, res) => {
+    console.log('params', req.params);
+    const goalId = req.params.id;
+    const goal = getGoalByGoalId(goalsMock, goalId)
+    res.json(
+        goal
+    );
 });
 
 // Login Route

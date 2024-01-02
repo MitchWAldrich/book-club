@@ -1,13 +1,16 @@
 import { useContext, useState } from "react";
 import axios from "axios";
 
+import PropTypes from "prop-types";
+
 import Dropdown from "./Dropdown";
 import Input from "./Input";
 
 import userContext from "../userContext";
 
-const Goal = () => {
+const Goal = (props) => {
   const user = useContext(userContext);
+  const { goalObj } = props;
 
   const [goalName, setGoalName] = useState("");
   const [number, setNumber] = useState("");
@@ -117,6 +120,10 @@ const Goal = () => {
       </form>
     </main>
   );
+};
+
+Goal.propTypes = {
+  goalObj: PropTypes.object,
 };
 
 export default Goal;

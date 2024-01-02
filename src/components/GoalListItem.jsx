@@ -1,10 +1,12 @@
+import { useNavigate } from "react-router-dom";
+
 import PropTypes from "prop-types";
 
 const GoalListItem = (props) => {
   const { goalObj } = props;
 
   const {
-    // goalId,
+    goalId,
     goalName,
     // goalUserId,
     goal,
@@ -15,27 +17,39 @@ const GoalListItem = (props) => {
     goalRecurrenceUnit,
   } = goalObj;
 
+  const navigate = useNavigate();
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    navigate(`/goals/${goalId}`);
+    // valueCallback(bookId);
+  };
+
   return (
     // Make clickable
-    <div className='GoalListItemContainer'>
-      <h3>{goalName}</h3>
-      <p>
-        I will read
-        <br />
-        {goal} {goalUnit}
-        <br />
-        every
-        <br />
-        {goalTimeline} {goalTimelineUnit}
-        {goalRecurrence ? (
-          <>
+    <div>
+      <button type='button' onClick={handleClick}>
+        <div className='GoalListItemContainer'>
+          <h3>{goalName}</h3>
+          <p>
+            I will read
             <br />
-            for
+            {goal} {goalUnit}
             <br />
-            {goalRecurrence} {goalRecurrenceUnit}
-          </>
-        ) : null}
-      </p>
+            every
+            <br />
+            {goalTimeline} {goalTimelineUnit}
+            {goalRecurrence ? (
+              <>
+                <br />
+                for
+                <br />
+                {goalRecurrence} {goalRecurrenceUnit}
+              </>
+            ) : null}
+          </p>
+        </div>
+      </button>
     </div>
   );
 };

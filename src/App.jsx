@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import BookClubMain from "./components/BookClubMain";
 import BookClubs from "./components/BookClubs";
+import Goal from "./components/Goal";
 import Library from "./components/Library";
 import Login from "./components/Login";
 import Home from "./components/Home";
@@ -48,6 +49,8 @@ function App() {
                 <BookClubMain bookClubObj={bookClub} isLoading={isLoading} />
               }
             />
+            <Route path='/goals' element={<Goal goalObj={user} />} />
+            <Route path='/goals/:id' element={<Goal goalObj={bookClub} />} />
             <Route path='/:id/replies' element={<Replies />} />
           </Routes>
         </BrowserRouter>

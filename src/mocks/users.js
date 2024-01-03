@@ -8,6 +8,52 @@ export const usersMock = [
       image: 'https://www.perfocal.com/blog/content/images/2021/01/Perfocal_17-11-2019_TYWFAQ_100_standard-3.jpg',
       goals: ['dfS8*ur(o2'],
       library: {
+        currentBook: {
+          "title": "Google Hacks",
+          "authors": [
+              "Tara Calishain",
+              "Rael Dornfest"
+          ],
+          "publisher": "\"O'Reilly Media, Inc.\"",
+          "publishedDate": "2003",
+          "description": "Explains how to take advantage of Google's user interface, discussing how to filter results, use Google's special services, integrate Google applications into a Web site or Weblog, write information retrieval programs, and play games.",
+          "industryIdentifiers": [
+              {
+                  "type": "ISBN_10",
+                  "identifier": "0596004478"
+              },
+              {
+                  "type": "ISBN_13",
+                  "identifier": "9780596004477"
+              }
+          ],
+          "readingModes": {
+              "text": false,
+              "image": true
+          },
+          "pageCount": 356,
+          "printType": "BOOK",
+          "categories": [
+              "Computer software"
+          ],
+          "averageRating": 5,
+          "ratingsCount": 2,
+          "maturityRating": "NOT_MATURE",
+          "allowAnonLogging": false,
+          "contentVersion": "2.2.4.0.preview.1",
+          "panelizationSummary": {
+              "containsEpubBubbles": false,
+              "containsImageBubbles": false
+          },
+          "imageLinks": {
+              "smallThumbnail": "http://books.google.com/books/content?id=GqTwl7-WZtUC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+              "thumbnail": "http://books.google.com/books/content?id=GqTwl7-WZtUC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+          },
+          "language": "en",
+          "previewLink": "http://books.google.ca/books?id=GqTwl7-WZtUC&pg=PA52&dq=intitle:&hl=&cd=4&source=gbs_api",
+          "infoLink": "http://books.google.ca/books?id=GqTwl7-WZtUC&dq=intitle:&hl=&source=gbs_api",
+          "canonicalVolumeLink": "https://books.google.com/books/about/Google_Hacks.html?hl=&id=GqTwl7-WZtUC"
+        },
           haveRead: [],
           toRead: []
       },
@@ -31,52 +77,53 @@ export const usersMock = [
       image: 'https://writestylesonline.com/wp-content/uploads/2018/11/Three-Statistics-That-Will-Make-You-Rethink-Your-Professional-Profile-Picture.jpg',
       goals: ['rg^5hUi9lj', 'hjKp9&6ygw'],
       library: {
-          haveRead: [{
-            "title": "Google Hacks",
-            "authors": [
-                "Tara Calishain",
-                "Rael Dornfest"
-            ],
-            "publisher": "\"O'Reilly Media, Inc.\"",
-            "publishedDate": "2003",
-            "description": "Explains how to take advantage of Google's user interface, discussing how to filter results, use Google's special services, integrate Google applications into a Web site or Weblog, write information retrieval programs, and play games.",
-            "industryIdentifiers": [
-                {
-                    "type": "ISBN_10",
-                    "identifier": "0596004478"
-                },
-                {
-                    "type": "ISBN_13",
-                    "identifier": "9780596004477"
-                }
-            ],
-            "readingModes": {
-                "text": false,
-                "image": true
-            },
-            "pageCount": 356,
-            "printType": "BOOK",
-            "categories": [
-                "Computer software"
-            ],
-            "averageRating": 5,
-            "ratingsCount": 2,
-            "maturityRating": "NOT_MATURE",
-            "allowAnonLogging": false,
-            "contentVersion": "2.2.4.0.preview.1",
-            "panelizationSummary": {
-                "containsEpubBubbles": false,
-                "containsImageBubbles": false
-            },
-            "imageLinks": {
-                "smallThumbnail": "http://books.google.com/books/content?id=GqTwl7-WZtUC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
-                "thumbnail": "http://books.google.com/books/content?id=GqTwl7-WZtUC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
-            },
-            "language": "en",
-            "previewLink": "http://books.google.ca/books?id=GqTwl7-WZtUC&pg=PA52&dq=intitle:&hl=&cd=4&source=gbs_api",
-            "infoLink": "http://books.google.ca/books?id=GqTwl7-WZtUC&dq=intitle:&hl=&source=gbs_api",
-            "canonicalVolumeLink": "https://books.google.com/books/about/Google_Hacks.html?hl=&id=GqTwl7-WZtUC"
+        currentBook: {
+          "title": "Google Hacks",
+          "authors": [
+              "Tara Calishain",
+              "Rael Dornfest"
+          ],
+          "publisher": "\"O'Reilly Media, Inc.\"",
+          "publishedDate": "2003",
+          "description": "Explains how to take advantage of Google's user interface, discussing how to filter results, use Google's special services, integrate Google applications into a Web site or Weblog, write information retrieval programs, and play games.",
+          "industryIdentifiers": [
+              {
+                  "type": "ISBN_10",
+                  "identifier": "0596004478"
+              },
+              {
+                  "type": "ISBN_13",
+                  "identifier": "9780596004477"
+              }
+          ],
+          "readingModes": {
+              "text": false,
+              "image": true
           },
+          "pageCount": 356,
+          "printType": "BOOK",
+          "categories": [
+              "Computer software"
+          ],
+          "averageRating": 5,
+          "ratingsCount": 2,
+          "maturityRating": "NOT_MATURE",
+          "allowAnonLogging": false,
+          "contentVersion": "2.2.4.0.preview.1",
+          "panelizationSummary": {
+              "containsEpubBubbles": false,
+              "containsImageBubbles": false
+          },
+          "imageLinks": {
+              "smallThumbnail": "http://books.google.com/books/content?id=GqTwl7-WZtUC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+              "thumbnail": "http://books.google.com/books/content?id=GqTwl7-WZtUC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+          },
+          "language": "en",
+          "previewLink": "http://books.google.ca/books?id=GqTwl7-WZtUC&pg=PA52&dq=intitle:&hl=&cd=4&source=gbs_api",
+          "infoLink": "http://books.google.ca/books?id=GqTwl7-WZtUC&dq=intitle:&hl=&source=gbs_api",
+          "canonicalVolumeLink": "https://books.google.com/books/about/Google_Hacks.html?hl=&id=GqTwl7-WZtUC"
+        },
+          haveRead: [
           {
             "title": "The Everything Store",
             "subtitle": "Jeff Bezos and the Age of Amazon",
@@ -266,6 +313,52 @@ export const usersMock = [
           timeline: '3 days',
       }],
       library: {
+        currentBook: {
+          "title": "Google Hacks",
+          "authors": [
+              "Tara Calishain",
+              "Rael Dornfest"
+          ],
+          "publisher": "\"O'Reilly Media, Inc.\"",
+          "publishedDate": "2003",
+          "description": "Explains how to take advantage of Google's user interface, discussing how to filter results, use Google's special services, integrate Google applications into a Web site or Weblog, write information retrieval programs, and play games.",
+          "industryIdentifiers": [
+              {
+                  "type": "ISBN_10",
+                  "identifier": "0596004478"
+              },
+              {
+                  "type": "ISBN_13",
+                  "identifier": "9780596004477"
+              }
+          ],
+          "readingModes": {
+              "text": false,
+              "image": true
+          },
+          "pageCount": 356,
+          "printType": "BOOK",
+          "categories": [
+              "Computer software"
+          ],
+          "averageRating": 5,
+          "ratingsCount": 2,
+          "maturityRating": "NOT_MATURE",
+          "allowAnonLogging": false,
+          "contentVersion": "2.2.4.0.preview.1",
+          "panelizationSummary": {
+              "containsEpubBubbles": false,
+              "containsImageBubbles": false
+          },
+          "imageLinks": {
+              "smallThumbnail": "http://books.google.com/books/content?id=GqTwl7-WZtUC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+              "thumbnail": "http://books.google.com/books/content?id=GqTwl7-WZtUC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+          },
+          "language": "en",
+          "previewLink": "http://books.google.ca/books?id=GqTwl7-WZtUC&pg=PA52&dq=intitle:&hl=&cd=4&source=gbs_api",
+          "infoLink": "http://books.google.ca/books?id=GqTwl7-WZtUC&dq=intitle:&hl=&source=gbs_api",
+          "canonicalVolumeLink": "https://books.google.com/books/about/Google_Hacks.html?hl=&id=GqTwl7-WZtUC"
+        },
           haveRead: [{
               title: 'title1',
               authors: [ 'John Smith', 'Julie Black' ],
@@ -336,6 +429,52 @@ export const usersMock = [
     image: 'https://media.npr.org/assets/img/2012/02/27/claudia-acua-ca_en-este-momento_press01_wide-e015cbf01b3d330dcd7d11c0ced61fa88bd48656-s1100-c50.jpg',
     goals: [],
     library: {
+      currentBook: {
+        "title": "Google Hacks",
+        "authors": [
+            "Tara Calishain",
+            "Rael Dornfest"
+        ],
+        "publisher": "\"O'Reilly Media, Inc.\"",
+        "publishedDate": "2003",
+        "description": "Explains how to take advantage of Google's user interface, discussing how to filter results, use Google's special services, integrate Google applications into a Web site or Weblog, write information retrieval programs, and play games.",
+        "industryIdentifiers": [
+            {
+                "type": "ISBN_10",
+                "identifier": "0596004478"
+            },
+            {
+                "type": "ISBN_13",
+                "identifier": "9780596004477"
+            }
+        ],
+        "readingModes": {
+            "text": false,
+            "image": true
+        },
+        "pageCount": 356,
+        "printType": "BOOK",
+        "categories": [
+            "Computer software"
+        ],
+        "averageRating": 5,
+        "ratingsCount": 2,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "2.2.4.0.preview.1",
+        "panelizationSummary": {
+            "containsEpubBubbles": false,
+            "containsImageBubbles": false
+        },
+        "imageLinks": {
+            "smallThumbnail": "http://books.google.com/books/content?id=GqTwl7-WZtUC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+            "thumbnail": "http://books.google.com/books/content?id=GqTwl7-WZtUC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.ca/books?id=GqTwl7-WZtUC&pg=PA52&dq=intitle:&hl=&cd=4&source=gbs_api",
+        "infoLink": "http://books.google.ca/books?id=GqTwl7-WZtUC&dq=intitle:&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Google_Hacks.html?hl=&id=GqTwl7-WZtUC"
+      },
         haveRead: [],
         toRead: []
     },
@@ -359,6 +498,52 @@ export const usersMock = [
     image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6Ia5l4WAe2j5B1E_f6PKoFjJ5W2J3gqbqUA&usqp=CAU',
     goals: [],
     library: {
+      currentBook: {
+        "title": "Google Hacks",
+        "authors": [
+            "Tara Calishain",
+            "Rael Dornfest"
+        ],
+        "publisher": "\"O'Reilly Media, Inc.\"",
+        "publishedDate": "2003",
+        "description": "Explains how to take advantage of Google's user interface, discussing how to filter results, use Google's special services, integrate Google applications into a Web site or Weblog, write information retrieval programs, and play games.",
+        "industryIdentifiers": [
+            {
+                "type": "ISBN_10",
+                "identifier": "0596004478"
+            },
+            {
+                "type": "ISBN_13",
+                "identifier": "9780596004477"
+            }
+        ],
+        "readingModes": {
+            "text": false,
+            "image": true
+        },
+        "pageCount": 356,
+        "printType": "BOOK",
+        "categories": [
+            "Computer software"
+        ],
+        "averageRating": 5,
+        "ratingsCount": 2,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "2.2.4.0.preview.1",
+        "panelizationSummary": {
+            "containsEpubBubbles": false,
+            "containsImageBubbles": false
+        },
+        "imageLinks": {
+            "smallThumbnail": "http://books.google.com/books/content?id=GqTwl7-WZtUC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+            "thumbnail": "http://books.google.com/books/content?id=GqTwl7-WZtUC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.ca/books?id=GqTwl7-WZtUC&pg=PA52&dq=intitle:&hl=&cd=4&source=gbs_api",
+        "infoLink": "http://books.google.ca/books?id=GqTwl7-WZtUC&dq=intitle:&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Google_Hacks.html?hl=&id=GqTwl7-WZtUC"
+      },
         haveRead: [],
         toRead: []
     },
@@ -386,6 +571,52 @@ export const usersMock = [
         timeline: '3 days',
     }],
     library: {
+      currentBook: {
+        "title": "Google Hacks",
+        "authors": [
+            "Tara Calishain",
+            "Rael Dornfest"
+        ],
+        "publisher": "\"O'Reilly Media, Inc.\"",
+        "publishedDate": "2003",
+        "description": "Explains how to take advantage of Google's user interface, discussing how to filter results, use Google's special services, integrate Google applications into a Web site or Weblog, write information retrieval programs, and play games.",
+        "industryIdentifiers": [
+            {
+                "type": "ISBN_10",
+                "identifier": "0596004478"
+            },
+            {
+                "type": "ISBN_13",
+                "identifier": "9780596004477"
+            }
+        ],
+        "readingModes": {
+            "text": false,
+            "image": true
+        },
+        "pageCount": 356,
+        "printType": "BOOK",
+        "categories": [
+            "Computer software"
+        ],
+        "averageRating": 5,
+        "ratingsCount": 2,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "2.2.4.0.preview.1",
+        "panelizationSummary": {
+            "containsEpubBubbles": false,
+            "containsImageBubbles": false
+        },
+        "imageLinks": {
+            "smallThumbnail": "http://books.google.com/books/content?id=GqTwl7-WZtUC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+            "thumbnail": "http://books.google.com/books/content?id=GqTwl7-WZtUC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.ca/books?id=GqTwl7-WZtUC&pg=PA52&dq=intitle:&hl=&cd=4&source=gbs_api",
+        "infoLink": "http://books.google.ca/books?id=GqTwl7-WZtUC&dq=intitle:&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Google_Hacks.html?hl=&id=GqTwl7-WZtUC"
+      },
         haveRead: [{
             title: 'title1',
             authors: [ 'John Smith', 'Julie Black' ],
@@ -456,6 +687,52 @@ export const usersMock = [
   image: 'https://img.freepik.com/free-photo/handsome-man-with-white-teeth-smiling-wearing-glasses-grey-wall_176420-21716.jpg?size=626&ext=jpg&ga=GA1.1.1546980028.1702598400&semt=ais',
   goals: [],
   library: {
+    currentBook: {
+      "title": "Google Hacks",
+      "authors": [
+          "Tara Calishain",
+          "Rael Dornfest"
+      ],
+      "publisher": "\"O'Reilly Media, Inc.\"",
+      "publishedDate": "2003",
+      "description": "Explains how to take advantage of Google's user interface, discussing how to filter results, use Google's special services, integrate Google applications into a Web site or Weblog, write information retrieval programs, and play games.",
+      "industryIdentifiers": [
+          {
+              "type": "ISBN_10",
+              "identifier": "0596004478"
+          },
+          {
+              "type": "ISBN_13",
+              "identifier": "9780596004477"
+          }
+      ],
+      "readingModes": {
+          "text": false,
+          "image": true
+      },
+      "pageCount": 356,
+      "printType": "BOOK",
+      "categories": [
+          "Computer software"
+      ],
+      "averageRating": 5,
+      "ratingsCount": 2,
+      "maturityRating": "NOT_MATURE",
+      "allowAnonLogging": false,
+      "contentVersion": "2.2.4.0.preview.1",
+      "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+      },
+      "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=GqTwl7-WZtUC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=GqTwl7-WZtUC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+      },
+      "language": "en",
+      "previewLink": "http://books.google.ca/books?id=GqTwl7-WZtUC&pg=PA52&dq=intitle:&hl=&cd=4&source=gbs_api",
+      "infoLink": "http://books.google.ca/books?id=GqTwl7-WZtUC&dq=intitle:&hl=&source=gbs_api",
+      "canonicalVolumeLink": "https://books.google.com/books/about/Google_Hacks.html?hl=&id=GqTwl7-WZtUC"
+    },
       haveRead: [],
       toRead: []
   },

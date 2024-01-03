@@ -2,12 +2,12 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import instance from "../utils/axiosConfig";
 
-import BookListItem from "./BookListItem";
 import BookClubListItem from "./BookClubListItem";
 import Goal from "./Goal";
 import GoalListItem from "./GoalListItem";
 import Input from "./Input";
 import Invitation from "./Invitation";
+import Library from "./Library";
 import MemberList from "./MemberList";
 import Nav from "./Nav";
 import SearchBar from "./Searchbar";
@@ -101,14 +101,7 @@ const Home = () => {
           />
         ))}
         <h2>My Library</h2>
-        <h3>Have Read</h3>
-        {user.library.haveRead.map((book, key) => (
-          <BookListItem bookObj={book} key={key} />
-        ))}
-        <h3>To Read</h3>
-        {user.library.toRead.map((book, key) => (
-          <BookListItem bookObj={book} key={key} />
-        ))}
+        <Library userObj={user} />
         <h2>My Friends</h2>
         <MemberList
           members={friendObjs}

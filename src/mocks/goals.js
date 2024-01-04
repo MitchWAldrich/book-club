@@ -7,9 +7,9 @@ export const goalsMock = [
     goal: 3,
     goalUnit: 'books',
     goalTimeline: 1,
-    goalTimelineUnit: 'month',
+    goalTimelineUnits: 'month',
     goalRecurrence: null,
-    goalRecurrenceUnit: null,
+    goalRecurrenceUnits: null,
   },
   {
     id: 2,
@@ -19,9 +19,9 @@ export const goalsMock = [
     goal: 1,
     goalUnit: 'book',
     goalTimeline: 1,
-    goalTimelineUnit: 'month',
+    goalTimelineUnits: 'month',
     goalRecurrence: 1,
-    goalRecurrenceUnit: 'year',
+    goalRecurrenceUnits: 'year',
   },
   {
     id: 3,
@@ -31,9 +31,9 @@ export const goalsMock = [
     goal: 1,
     goalUnit: 'book',
     goalTimeline: 1,
-    goalTimelineUnit: 'week',
+    goalTimelineUnits: 'week',
     goalRecurrence: 1,
-    goalRecurrenceUnit: 'year',
+    goalRecurrenceUnits: 'year',
   }
 ]
 

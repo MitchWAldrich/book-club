@@ -77,6 +77,8 @@ app.post("/api/users", async (req, res) => {
 app.patch("/api/users/:id", async (req) => {
     let { userId, bookObj, goalObj, readStatus, bookClubId, bookClubApprovalStatus, requestStatus } = req.body;
 
+    if (!goalObj) return;
+
     const user = usersMock.find(
         (user) => user.userId === userId
     );
@@ -86,7 +88,7 @@ app.patch("/api/users/:id", async (req) => {
     if ( readStatus === 'haveRead' ) user.library.haveRead.push(bookObj)
 
     // Update Goals
-    if (goalObj) user.goals.push(goalObj)
+    if (goalObj) user?.goals.push(goalObj)
 
     // Update Book Clubs
     if (bookClubApprovalStatus === 'invited') user.bookClubs.invited.push(bookClubId)
@@ -165,7 +167,7 @@ app.post("/api/bookclubs", async (req, res) => {
 
     bookClubsMock.push(newBookClub);
 
-    //👇🏻 logs all the user's credentials to the console.
+    //👇🏻 logs the bookclub to the console.
     console.log({ bookClubId, bookClubName });
 
     return res.json({
@@ -201,8 +203,8 @@ app.patch("/api/bookclubs/:id", async (req) => {
         bookClub.upcomingBooks.push(bookObj);
     }
 
-    //👇🏻 logs all the request fields to the console.
-    console.log({ bookClubId, newMembers });
+    //👇🏻 logs the bookclub to the console.
+    console.log({ bookClubId, bookClub });
 });
 
 /* *** GOAL ROUTES *** */
@@ -221,6 +223,67 @@ app.get("/api/goals/:id", (req, res) => {
         goal
     );
 });
+
+app.post("/api/goals", async (req, res) => {
+    const { goalObj } = req.body;
+
+    const { goalName,
+      goalUserId,
+      goal,
+      goalUnits,
+      goalTimeline,
+      goalTimelineUnits,
+      goalRecurrence,
+      goalRecurrenceUnits } = goalObj;
+
+    //👇🏻 holds the bookclub Id
+    // make unique
+    const goalId = generateID();
+
+    const newGoal = {
+        goalId: goalId,
+    goalName: goalName,
+    goalUserId: goalUserId,
+    goal: goal,
+    goalUnit: goalUnits,
+    goalTimeline: goalTimeline,
+    goalTimelineUnits: goalTimelineUnits,
+    goalRecurrence: goalRecurrence,
+    goalRecurrenceUnits: goalRecurrenceUnits,
+    }
+
+    goalsMock.push(newGoal);
+
+    //👇🏻 logs the goal object to the console.
+    console.log({ goalId, goalName });
+
+    return res.json({
+        message: "Goal created successfully!"
+    });
+});
+
+// app.patch("/api/goals/:id", async (req) => {
+//     const { goalObj, userId } = req.body;
+
+//     const {
+//         goalId,
+//     goalName,
+//     goalUserId,
+//     goal,
+//     goalUnit,
+//     goalTimeline,
+//     goalTimelineUnits,
+//     goalRecurrence,
+//     goalRecurrenceUnits,
+//     } = goalObj;
+
+//     const retrievedGoal = goalsMock.find( goal => goal.goalId === goalId )
+
+//     const updatedGoal = {...retrievedGoal, }
+
+//     //👇🏻 logs the goal object to the console.
+//     console.log({ goalId, goalObj });
+// });
 
 // Login Route
 app.post("/api/login", (req, res) => {

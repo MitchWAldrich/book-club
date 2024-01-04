@@ -69,12 +69,12 @@ const Home = () => {
   return (
     <>
       <Nav user={user} />
-      <Goal />
+      <Goal location='add' />
       {isInvited ? (
         <Invitation
           bookClubObj={getBookClubById(
             bookClubsMock,
-            user.bookClubs.invited[0]
+            user?.bookClubs?.invited[0] ?? {}
           )}
           userId={user.userId}
         />

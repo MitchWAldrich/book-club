@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 import PropTypes from "prop-types";
 
@@ -7,19 +8,34 @@ import Dropdown from "./Dropdown";
 import Input from "./Input";
 
 import userContext from "../userContext";
+import { getGoalByGoalId } from "../utils/selectors";
+
+import { goalsMock } from "../mocks/goals";
 
 const Goal = (props) => {
   const user = useContext(userContext);
-  const { goalObj, location } = props;
+  let { goalObj, location } = props;
+  const { id } = useParams();
 
-  const [goalName, setGoalName] = useState(goalObj?.name ?? "");
-  const [number, setNumber] = useState("");
-  const [numberUnits, setNumberUnits] = useState("");
-  const [recurrence, setRecurrence] = useState("");
-  const [recurrenceUnits, setRecurrenceUnits] = useState("");
-  const [timeline, setTimeline] = useState("");
-  const [timelineUnits, setTimelineUnits] = useState("");
+  goalObj = getGoalByGoalId(goalsMock, id);
+
+  const [goalName, setGoalName] = useState(goalObj?.goalName ?? "");
+  const [number, setNumber] = useState(goalObj?.goal ?? "");
+  const [numberUnits, setNumberUnits] = useState(goalObj?.goalUnits ?? "");
+  const [recurrence, setRecurrence] = useState(goalObj?.goalRecurrence ?? "");
+  const [recurrenceUnits, setRecurrenceUnits] = useState(
+    goalObj?.goalRecurrenceUnits ?? ""
+  );
+  const [timeline, setTimeline] = useState(goalObj?.goalTimeline ?? "");
+  const [timelineUnits, setTimelineUnits] = useState(
+    goalObj?.goalTimelineUnits ?? ""
+  );
   const [error, setError] = useState(false);
+
+  /* {variable && (
+    some code 
+    )
+    syntax */
 
   const handleNameChange = (e) => {
     setGoalName(e.target.value);
@@ -116,7 +132,26 @@ const Goal = (props) => {
 
   return (
     <main className='container'>
-      <div></div>
+      <div className='GoalListItemContainer'>
+        <h3>{goalName}</h3>
+        <p>
+          I will read
+          <br />
+          {number} {numberUnits}
+          <br />
+          every
+          <br />
+          {timeline} {timelineUnits}
+          {recurrence ? (
+            <>
+              <br />
+              for
+              <br />
+              {recurrence} {recurrenceUnits}
+            </>
+          ) : null}
+        </p>
+      </div>
       {location === "add" ? (
         <>
           <h2 className='homeTitle'>Create a Reading Goal</h2>

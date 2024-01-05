@@ -49,8 +49,8 @@ function App() {
                 <BookClubMain bookClubObj={bookClub} isLoading={isLoading} />
               }
             />
-            <Route path='/goals' element={<Goal goalObj={user} />} />
-            <Route path='/goals/:id' element={<Goal goalObj={bookClub} />} />
+            {/* <Route path='/goals' element={<Goal goalObj={user} />} /> */}
+            <Route path='/goals/:id' element={<Goal />} />
             <Route path='/:id/replies' element={<Replies />} />
           </Routes>
         </BrowserRouter>

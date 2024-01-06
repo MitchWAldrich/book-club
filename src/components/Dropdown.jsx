@@ -2,7 +2,9 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 
 const Dropdown = (props) => {
-  const { category, options, valueCallback, dropdownName } = props;
+  const { category, options, defaultValue, valueCallback, dropdownName } =
+    props;
+  console.log("defaultVal", defaultValue);
 
   const menu = options.map((item, id) => ({
     ["id"]: id,
@@ -13,7 +15,7 @@ const Dropdown = (props) => {
 
   const [menuItems, setMenuItems] = useState(menu);
   const [isListOpen, setIsListOpen] = useState(false);
-  const [titleHeader, setTitleHeader] = useState("Select");
+  const [titleHeader, setTitleHeader] = useState(defaultValue);
 
   const resetThenSet = (id) => {
     const tempMenu = [...menuItems];
@@ -75,6 +77,7 @@ const Dropdown = (props) => {
 Dropdown.propTypes = {
   category: PropTypes.string,
   options: PropTypes.array,
+  defaultValue: PropTypes.string,
   valueCallback: PropTypes.func,
   dropdownName: PropTypes.string,
 };

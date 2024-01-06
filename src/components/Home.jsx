@@ -32,7 +32,15 @@ const Home = () => {
 
   const [book, setBook] = useState({});
   const [bookClubName, setBookClubName] = useState("");
+  const [createGoal, setCreateGoal] = useState(false);
+  const [updateGoalBool, setUpdateGoalBool] = useState(false);
+  const [updateGoalObj, setUpdateGoalObj] = useState({});
   const [error, setError] = useState(false);
+
+  const updateGoal = (goalId) => {
+    setUpdateGoalObj(getGoalByGoalId(goalsMock, goalId));
+    setUpdateGoalBool(true);
+  };
 
   const handleCreateBookClub = (e) => {
     e.preventDefault();
@@ -69,8 +77,7 @@ const Home = () => {
   return (
     <>
       <Nav user={user} />
-      <Goal location='add' />
-      {isInvited ? (
+      {isInvited ?? (
         <Invitation
           bookClubObj={getBookClubById(
             bookClubsMock,
@@ -78,7 +85,7 @@ const Home = () => {
           )}
           userId={user.userId}
         />
-      ) : null}
+      )}
       <SearchBar
         className='searchBar'
         location='home'
@@ -89,8 +96,17 @@ const Home = () => {
       <main className='addBookClubContainer'>
         <h2>My Reading Goals</h2>
         {user.goals.map((goal, key) => (
-          <GoalListItem goalObj={getGoalByGoalId(goalsMock, goal)} key={key} />
+          <GoalListItem
+            goalObj={getGoalByGoalId(goalsMock, goal)}
+            valueCallback={updateGoal}
+            key={key}
+          />
         ))}
+        {updateGoalBool && <Goal goalObj={updateGoalObj} location='update' />}
+        <button className='btn' onClick={() => setCreateGoal(true)}>
+          CREATE GOAL
+        </button>
+        {createGoal && <Goal location='add' />}
         <h2>My BookClubs</h2>
         {user.bookClubs.accepted.map((bookClubId, key) => (
           <BookClubListItem

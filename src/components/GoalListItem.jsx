@@ -1,9 +1,9 @@
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 import PropTypes from "prop-types";
 
 const GoalListItem = (props) => {
-  const { goalObj } = props;
+  const { goalObj, valueCallback } = props;
 
   const {
     goalId,
@@ -12,50 +12,52 @@ const GoalListItem = (props) => {
     goal,
     goalUnit,
     goalTimeline,
-    goalTimelineUnit,
+    goalTimelineUnits,
     goalRecurrence,
-    goalRecurrenceUnit,
+    goalRecurrenceUnits,
   } = goalObj;
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleClick = (e) => {
     e.preventDefault();
-    navigate(`/goals/${goalId}`);
-    // valueCallback(bookId);
+    // navigate(`/goals/${goalId}`);
+    valueCallback(goalId);
   };
 
   return (
     // Make clickable
     <div>
-      <button type='button' onClick={handleClick}>
-        <div className='GoalListItemContainer'>
-          <h3>{goalName}</h3>
-          <p>
-            I will read
-            <br />
-            {goal} {goalUnit}
-            <br />
-            every
-            <br />
-            {goalTimeline} {goalTimelineUnit}
-            {goalRecurrence ? (
-              <>
-                <br />
-                for
-                <br />
-                {goalRecurrence} {goalRecurrenceUnit}
-              </>
-            ) : null}
-          </p>
-        </div>
-      </button>
+      <div className='GoalListItemContainer'>
+        <h3>{goalName}</h3>
+        <p>
+          I will read
+          <br />
+          {goal} {goalUnit}
+          <br />
+          every
+          <br />
+          {goalTimeline} {goalTimelineUnits}
+          {goalRecurrence ? (
+            <>
+              <br />
+              for
+              <br />
+              {goalRecurrence} {goalRecurrenceUnits}
+            </>
+          ) : null}
+        </p>
+        <button type='button' onClick={handleClick}>
+          Update Goal
+        </button>
+      </div>
     </div>
   );
 };
 
 GoalListItem.propTypes = {
   goalObj: PropTypes.object,
+  valueCallback: PropTypes.func,
   // goalId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   // goalName: PropTypes.string,
   // goalUserId: PropTypes.string,

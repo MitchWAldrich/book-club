@@ -4,7 +4,7 @@ import BookClubListItem from "./BookClubListItem";
 
 const BookClubsList = (props) => {
   const { bookClubObjs, userId } = props;
-  console.log("bookCObjs", bookClubObjs);
+
   return (
     <main>
       {bookClubObjs.length ? (

@@ -18,14 +18,14 @@ const MemberListItem = (props) => {
     } else null;
 
     if (membersArray?.length >= 1) {
-      return members.map((member, key) => (
+      return members?.map((member, key) => (
         <MemberItem
           key={key}
-          user={member}
-          userId={member.userId}
-          image={member.image}
-          username={member.username}
-          isOnline={member.isOnline}
+          user={member ?? {}}
+          userId={member?.userId ?? ""}
+          image={member?.image ?? ""}
+          username={member?.username ?? ""}
+          isOnline={member?.isOnline ?? null}
           valueCallback={valueCallback}
           container={container}
           location={location}
@@ -34,7 +34,7 @@ const MemberListItem = (props) => {
     }
   };
 
-  const memberDisplay = renderMembers(members);
+  const memberDisplay = renderMembers(members) ?? null;
 
   return <div className='member-list'>{memberDisplay}</div>;
 };

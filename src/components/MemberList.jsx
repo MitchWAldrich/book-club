@@ -6,7 +6,7 @@ import MemberListItem from "./MemberListItem";
 import Loading from "./Loading.jsx";
 
 const MemberList = (props) => {
-  const { members, valueCallback, location, isLoading } = props;
+  const { members, userId, valueCallback, location, isLoading } = props;
 
   const [membersAdd, setMembersAdd] = useState([]);
   // const [membersSuggested, setMembersSuggested] = useState(members);
@@ -82,6 +82,7 @@ const MemberList = (props) => {
 MemberList.propTypes = {
   members: PropTypes.array,
   bookClubId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  userId: PropTypes.string,
   valueCallback: PropTypes.func,
   location: PropTypes.string,
   isLoading: PropTypes.bool,

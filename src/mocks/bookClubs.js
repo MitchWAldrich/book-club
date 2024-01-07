@@ -1001,3 +1001,8 @@ export const bookClubsMock = [
 ]
 
 export const bookClubMock = bookClubsMock[0];
+
+export const bookClubMock2 = bookClubsMock[1];
+
+export const bookClubMock3 = bookClubsMock[2];
+

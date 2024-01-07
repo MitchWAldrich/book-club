@@ -14,11 +14,11 @@ import userContext from "./userContext";
 import { userMock2 } from "./mocks/users";
 
 import "./App.scss";
-import { bookClubMock } from "./mocks/bookClubs";
+import { bookClubMock2 } from "./mocks/bookClubs";
 
 function App() {
   const user = userMock2;
-  const bookClub = bookClubMock;
+  const bookClub = bookClubMock2;
   const isLoading = false;
 
   /* Implement Login

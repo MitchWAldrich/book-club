@@ -116,14 +116,6 @@ const Home = () => {
             key={key}
           />
         ))}
-        <h2>My Library</h2>
-        <Library userObj={user} />
-        <h2>My Friends</h2>
-        <MemberList
-          members={friendObjs}
-          // bookClubId={bookClubId}
-          // isLoading={isLoading}
-        />
         <h2 className='homeTitle'>Create a Book Club</h2>
         <div className='addBookClub'>
           <Input
@@ -137,10 +129,20 @@ const Home = () => {
           />
         </div>
         <div>
-          <button className='btn' onClick={handleCreateBookClub}>
+          <button type='button' className='btn' onClick={handleCreateBookClub}>
             CREATE BOOK CLUB
           </button>
         </div>
+        <h2>My Library</h2>
+        <Library userObj={user} />
+        <h2>My Friends</h2>
+        <MemberList
+          members={friendObjs}
+          userId={user.userId}
+          // bookClubId={bookClubId}
+          // location=""
+          // isLoading={isLoading}
+        />
       </main>
     </>
   );

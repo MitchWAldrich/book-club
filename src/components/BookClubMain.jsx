@@ -4,6 +4,7 @@ import { useContext } from "react";
 import PropTypes from "prop-types";
 
 import MemberList from "./MemberList";
+import Nav from "./Nav";
 // import SearchBar from "./Searchbar";
 
 import userContext from "../userContext";
@@ -19,7 +20,6 @@ import { formatCategories } from "../utils/helpers";
 const BookClubMain = (props) => {
   const user = useContext(userContext);
   const { bookClubObj, isLoading } = props;
-
   const {
     bookClubId,
     bookClubHostId,
@@ -75,14 +75,14 @@ const BookClubMain = (props) => {
     nextMeetingLocation,
   } = meetings;
   const { online, inPerson } = nextMeetingLocation;
-  const { city, province } = inPerson;
 
-  const streetAddress = formatStreetAddress(inPerson);
+  const streetAddress = inPerson ? formatStreetAddress(inPerson) : {};
 
   const formattedCategories = formatCategories(categories);
 
   return (
     <main>
+      <Nav user={user ?? "Guest"} />
       {/* <MemberList members={members} bookClubId={bookClubId} valueCallback={} location={} /> */}
       <div>
         <h3>Name:</h3>
@@ -139,7 +139,7 @@ const BookClubMain = (props) => {
             <>
               {streetAddress}
               <br />
-              {city}, {province}
+              {inPerson.city}, {inPerson.province}
             </>
           ) : null}
         </p>

@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 const Dropdown = (props) => {
   const { category, options, defaultValue, valueCallback, dropdownName } =
     props;
-  console.log("defaultVal", defaultValue);
 
   const menu = options.map((item, id) => ({
     ["id"]: id,

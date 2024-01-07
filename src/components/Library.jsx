@@ -9,6 +9,12 @@ const Library = (props) => {
   return (
     <main>
       <div>
+        <h2>What I'm Reading</h2>
+        <SingleBookItem
+          bookObj={userObj?.library.currentBook}
+          userId={userObj.userId}
+          location={"expanded"}
+        />
         <h2>To Read List</h2>
         {userObj?.library?.toRead.map((book, key) => (
           <BookListItem key={key} bookObj={book} />
@@ -17,12 +23,6 @@ const Library = (props) => {
         {userObj?.library?.haveRead.map((book, key) => (
           <BookListItem key={key} bookObj={book} />
         )) ?? null}
-        <br></br>
-        <SingleBookItem
-          bookObj={userObj?.library.currentBook}
-          userId={userObj.userId}
-          location={"expanded"}
-        />
       </div>
     </main>
   );

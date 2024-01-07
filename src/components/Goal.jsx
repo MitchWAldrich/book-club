@@ -15,7 +15,6 @@ import userContext from "../userContext";
 const Goal = (props) => {
   const user = useContext(userContext);
   let { goalObj, location } = props;
-  console.log("goalObj", goalObj);
   // const { id } = useParams();
 
   // goalObj = getGoalByGoalId(goalsMock, id);
@@ -114,14 +113,6 @@ const Goal = (props) => {
       !user ||
       !recurrence
     ) {
-      if (!goalName) console.log("goalName");
-      if (!number) console.log("number");
-      if (!timeline) console.log("timeline");
-      if (!numberUnits) console.log("numberUnits");
-      if (!recurrenceUnits) console.log("recurrenceUnits");
-      if (!timelineUnits) console.log("timelineUnits");
-      if (!user) console.log("user");
-      if (!recurrence) console.log("recurrence");
       setError(true);
     } else {
       setError(false);
@@ -143,6 +134,8 @@ const Goal = (props) => {
 
   const units = ["Page(s)", "Chapter(s)", "Book(s)"];
   const timeUnits = ["Day(s)", "Weeks(s)", "Month(s)", "Year(s)"];
+
+  /* Need to add update goal progress */
 
   return (
     <main className='container'>

@@ -11,6 +11,8 @@ const MemberList = (props) => {
   const [membersAdd, setMembersAdd] = useState([]);
   // const [membersSuggested, setMembersSuggested] = useState(members);
   const [membersSuggested, setMembersSuggested] = useState(members ?? []);
+  // const [friendsSuggested, setFriendsSuggested] = useState(users)
+  const [openAddFriends, setOpenAddFriends] = useState(false);
 
   if (location === "bookClubCreate") {
     valueCallback(membersAdd);
@@ -46,6 +48,10 @@ const MemberList = (props) => {
     }
   };
 
+  const clickToAdd = () => {
+    setOpenAddFriends(true);
+  };
+
   return (
     <main className='members-container'>
       {membersAdd.length > 0 ? (
@@ -60,6 +66,9 @@ const MemberList = (props) => {
           </div>
         </>
       ) : null}
+      <button type='button' onClick={clickToAdd}>
+        Add Friends
+      </button>
       {membersSuggested.length > 0 ? (
         <>
           {isLoading ? (

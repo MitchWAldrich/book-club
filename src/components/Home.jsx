@@ -35,6 +35,7 @@ const Home = () => {
   const [createGoal, setCreateGoal] = useState(false);
   const [updateGoalBool, setUpdateGoalBool] = useState(false);
   const [updateGoalObj, setUpdateGoalObj] = useState({});
+  const [openAddFriends, setOpenAddFriends] = useState(false);
   const [error, setError] = useState(false);
 
   const updateGoal = (goalId) => {
@@ -66,6 +67,10 @@ const Home = () => {
 
   const getChosenSearchResults = (searchValue) => {
     setBook(searchValue);
+  };
+
+  const clickToAdd = () => {
+    setOpenAddFriends(true);
   };
 
   const friendObjs = user.friends.accepted.map((member) =>
@@ -136,6 +141,9 @@ const Home = () => {
         <h2>My Library</h2>
         <Library userObj={user} />
         <h2>My Friends</h2>
+        <button type='button' onClick={clickToAdd}>
+          Add Friends
+        </button>
         <MemberList
           members={friendObjs}
           userId={user.userId}

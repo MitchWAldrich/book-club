@@ -77,6 +77,10 @@ const Home = () => {
     getUserByUserId(usersMock, member)
   );
 
+  const getChosenUser = (val) => {
+    return val;
+  };
+
   const isInvited = true;
 
   return (
@@ -144,6 +148,13 @@ const Home = () => {
         <button type='button' onClick={clickToAdd}>
           Add Friends
         </button>
+        {openAddFriends && (
+          <MemberList
+            members={usersMock}
+            userId={user.userId}
+            location='friends'
+          />
+        )}
         <MemberList
           members={friendObjs}
           userId={user.userId}

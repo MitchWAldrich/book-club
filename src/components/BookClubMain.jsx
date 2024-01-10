@@ -58,10 +58,14 @@ const BookClubMain = (props) => {
 
   const combinedMembers = combineUsers(members, "allMembers");
 
-  const myFriends =
-    members.accepted.map((user) =>
-      user?.friends?.accepted?.includes(user.userID)
+  const myFriendsStrings =
+    members?.accepted.map((member) =>
+      user?.friends?.accepted?.includes(member) ? member : null
     ) ?? [];
+
+  const myFriends = myFriendsStrings.map((friend) =>
+    getUserByUserId(usersMock, friend)
+  );
 
   // const isMember = combinedMembers.includes(user.userId) ? true : false;
   /* need to implement visibility === private and isMember */

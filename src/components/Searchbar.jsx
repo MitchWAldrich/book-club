@@ -101,8 +101,8 @@ const SearchBar = (props) => {
       .get(`/api/users/${id}`)
       .then(function (response) {
         console.log("userResp", response);
-        const friendsObjs = response.data.user.friends.accepted.map((friend) =>
-          getUserByUserId(usersMock, friend)
+        const friendsObjs = response?.data?.user?.friends?.accepted.map(
+          (friend) => getUserByUserId(usersMock, friend)
         );
         setUserResponse(friendsObjs);
       })

@@ -23,6 +23,7 @@ import {
 import { bookClubsMock } from "../mocks/bookClubs";
 import { goalsMock } from "../mocks/goals";
 import { usersMock } from "../mocks/users";
+import { filterSuggestedUsers } from "../utils/helpers";
 
 const Home = () => {
   const user = useContext(userContext);
@@ -76,6 +77,8 @@ const Home = () => {
   const friendObjs = user.friends.accepted.map((member) =>
     getUserByUserId(usersMock, member)
   );
+
+  const filteredOutFriends = filterSuggestedUsers(usersMock, friendObjs);
 
   const getChosenUser = (val) => {
     return val;
@@ -149,12 +152,16 @@ const Home = () => {
           Add Friends
         </button>
         {openAddFriends && (
-          <MemberList
-            members={usersMock}
-            userId={user.userId}
-            location='friends'
-          />
+          <>
+            <h3>Suggested Friends</h3>
+            <MemberList
+              members={filteredOutFriends}
+              userId={user.userId}
+              location='friends'
+            />
+          </>
         )}
+        <br></br>
         <MemberList
           members={friendObjs}
           userId={user.userId}

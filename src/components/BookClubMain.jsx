@@ -102,35 +102,28 @@ const BookClubMain = (props) => {
       </div>
       <div>
         <h3>Members</h3>
-        {visibility === "public" ? (
+        {visibility === "public" && (
           <MemberList
             members={combinedMembers}
             bookClubId={bookClubId}
             isLoading={isLoading}
           />
-        ) : null}
-        {visibility === "friendsCanSee" ? (
+        )}
+        {visibility === "friendsCanSee" && (
           <MemberList
             members={myFriends}
             bookClubId={bookClubId}
             isLoading={isLoading}
           />
-        ) : null}
-        {visibility === "private" ? (
+        )}
+        {visibility === "private" && (
           <p>Join this book club to see a list of its members</p>
-        ) : null}
+        )}
       </div>
-      {!isHost ? (
+      {isHost ? (
         <>
           <h3>Suggested Members</h3>
           <MemberList members={filteredMembers} />
-          {/* <SearchBar
-            className='searchInput'
-            location='bookClub'
-            dropDown={false}
-            // userId
-            // valueCallback={getChosenMemberResults}
-          /> */}
         </>
       ) : null}
       <div>

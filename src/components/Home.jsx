@@ -24,6 +24,7 @@ import { bookClubsMock } from "../mocks/bookClubs";
 import { goalsMock } from "../mocks/goals";
 import { usersMock } from "../mocks/users";
 import { filterSuggestedUsers } from "../utils/helpers";
+import AddMember from "./AddMember";
 
 const Home = () => {
   const user = useContext(userContext);
@@ -152,14 +153,7 @@ const Home = () => {
           Add Friends
         </button>
         {openAddFriends && (
-          <>
-            <h3>Suggested Friends</h3>
-            <MemberList
-              members={filteredOutFriends}
-              userId={user.userId}
-              location='friends'
-            />
-          </>
+          <AddMember members={filteredOutFriends} user={user.userId} />
         )}
         <br></br>
         <MemberList

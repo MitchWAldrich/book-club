@@ -100,6 +100,13 @@ export const filterSuggestedUsers = (usersFull, usersExempt) => {
   return filteredUsers;
 };
 
+export const isBookInLibrary = (myBookId, booksArray1, booksArray2) => {
+  const checkOne = booksArray1.find(book => book.bookId === myBookId) 
+  const checkTwo = booksArray2.find(book => book.bookId === myBookId) 
+
+  return (!checkOne || !checkTwo) ? false : true;
+};
+
 export const formatCategories = (categories) => {
   let formattedCategories = "";
 

@@ -4,8 +4,12 @@ import PropTypes from "prop-types";
 
 import BookRating from "./BookRating";
 
-import { formatByLocation, shortenDescription } from "../utils/helpers";
-import { bookMock } from "../mocks/books";
+import {
+  formatByLocation,
+  isBookInLibrary,
+  shortenDescription,
+} from "../utils/helpers";
+import { bookMock, bookMocks } from "../mocks/books";
 
 const SingleBookItem = (props) => {
   const { bookObj, userId, location } = props;
@@ -59,6 +63,9 @@ const SingleBookItem = (props) => {
 
   const locationsObject = formatByLocation(location);
   // console.log('locationsObj', locationsObject);
+
+  /* Have to decide how to handle BookId... 
+  const bookInLibrary = isBookInLibrary(bookId, bookMocks) */
 
   return (
     <main>
@@ -128,23 +135,25 @@ const SingleBookItem = (props) => {
                   </p>
                 </div>
               </div>
-              <div className='singleBookButtonsContainer'>
-                <button
-                  className='singleBookButton'
-                  type='button'
-                  onClick={() => addToToRead()}
-                >
-                  I want to read this
-                </button>
-                <br></br>
-                <button
-                  className='singleBookButton'
-                  type='button'
-                  onClick={() => addToHaveRead()}
-                >
-                  I have read this
-                </button>
-              </div>
+              {
+                <div className='singleBookButtonsContainer'>
+                  <button
+                    className='singleBookButton'
+                    type='button'
+                    onClick={() => addToToRead()}
+                  >
+                    I want to read this
+                  </button>
+                  <br></br>
+                  <button
+                    className='singleBookButton'
+                    type='button'
+                    onClick={() => addToHaveRead()}
+                  >
+                    I have read this
+                  </button>
+                </div>
+              }
             </>
           ) : null}
         </div>

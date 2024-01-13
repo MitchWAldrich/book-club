@@ -47,8 +47,13 @@ const GoalListItem = (props) => {
             </>
           ) : null}
         </p>
+        <h3>Progress</h3>
+        {/* Goal Progress */}
         <button type='button' onClick={handleClick}>
-          Update Goal
+          Track Progress
+        </button>
+        <button type='button' onClick={handleClick}>
+          Change Goal
         </button>
       </div>
     </div>

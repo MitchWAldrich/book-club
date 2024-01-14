@@ -138,6 +138,7 @@ const BookClubs = () => {
             imageLinks={bookMock.imageLinks}
             title={bookMock.title}
             location={"bookClubFeature"}
+            isBookInLibrary={false}
           />
         </div>
         <div className='bookClubBookDisplay'>
@@ -147,6 +148,7 @@ const BookClubs = () => {
             imageLinks={bookMock.imageLinks}
             title={bookMock.title}
             location={"bookClubFeature"}
+            isBookInLibrary={false}
           />
         </div>
         {isHost ? (

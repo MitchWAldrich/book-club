@@ -14,6 +14,7 @@ const Library = (props) => {
           bookObj={userObj?.library.currentBook}
           userId={userObj.userId}
           location={"expanded"}
+          isBookInLibrary={true}
         />
         <h2>To Read List</h2>
         {userObj?.library?.toRead.map((book, key) => (

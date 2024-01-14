@@ -148,13 +148,14 @@ const BookClubMain = (props) => {
         bookObj={books.currentBook}
         userId={user.userId}
         location={"bookClubMain"}
+        isBookInLibrary={false}
       />
-      {/* <SingleBookItem bookObj={} userId={} location={} /> */}
       <h3>Next Book:</h3>
       <SingleBookItem
         bookObj={books.nextBook}
         userId={user.userId}
         location={"bookClubMain"}
+        isBookInLibrary={false}
       />
       <h3>Past Books:</h3>
       {books.previousBooks.map((book, key) => {

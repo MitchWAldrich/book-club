@@ -4,16 +4,13 @@ import PropTypes from "prop-types";
 
 import BookRating from "./BookRating";
 
-import {
-  formatByLocation,
-  isBookInLibrary,
-  shortenDescription,
-} from "../utils/helpers";
+import { formatByLocation, shortenDescription } from "../utils/helpers";
 import { bookMock, bookMocks } from "../mocks/books";
 
 const SingleBookItem = (props) => {
-  const { bookObj, userId, location } = props;
+  const { bookObj, userId, location, isBookInLibrary } = props;
 
+  const bookId = bookObj?.id ?? "";
   const authors = bookObj?.authors ?? [];
   const categories = bookObj?.categories ?? [];
   const averageRating = bookObj?.averageRating ?? 0;
@@ -63,9 +60,6 @@ const SingleBookItem = (props) => {
 
   const locationsObject = formatByLocation(location);
   // console.log('locationsObj', locationsObject);
-
-  /* Have to decide how to handle BookId... 
-  const bookInLibrary = isBookInLibrary(bookId, bookMocks) */
 
   return (
     <main>
@@ -135,7 +129,7 @@ const SingleBookItem = (props) => {
                   </p>
                 </div>
               </div>
-              {
+              {!isBookInLibrary && (
                 <div className='singleBookButtonsContainer'>
                   <button
                     className='singleBookButton'
@@ -153,7 +147,7 @@ const SingleBookItem = (props) => {
                     I have read this
                   </button>
                 </div>
-              }
+              )}
             </>
           ) : null}
         </div>
@@ -175,6 +169,7 @@ SingleBookItem.propTypes = {
   // title: PropTypes.string,
   userId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   location: PropTypes.string,
+  isBookInLibrary: PropTypes.boolean,
 };
 
 export default SingleBookItem;

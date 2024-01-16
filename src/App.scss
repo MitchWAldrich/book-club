@@ -88,6 +88,7 @@ body {
   justify-content: flex-end;
   position: fixed;
   top: 0;
+  height: 6em;
   width: 100vw;
 }
 
@@ -809,8 +810,8 @@ input:focus {
 
 }
 
-.addBookClubContainer {
-
+.homeContainer {
+margin-top: 8em;
 }
 
 .addBookClub {

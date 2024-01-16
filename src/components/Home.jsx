@@ -88,7 +88,7 @@ const Home = () => {
   const isInvited = true;
 
   return (
-    <>
+    <main className='homeContainer'>
       <Nav user={user} />
       {isInvited ?? (
         <Invitation
@@ -106,65 +106,63 @@ const Home = () => {
         id={user.userId}
         valueCallback={getChosenSearchResults}
       />
-      <main className='addBookClubContainer'>
-        <h2>My Reading Goals</h2>
-        {user.goals.map((goal, key) => (
-          <GoalListItem
-            goalObj={getGoalByGoalId(goalsMock, goal)}
-            valueCallback={updateGoal}
-            key={key}
-          />
-        ))}
-        {updateGoalBool && <Goal goalObj={updateGoalObj} location='update' />}
-        <button className='btn' onClick={() => setCreateGoal(true)}>
-          CREATE GOAL
-        </button>
-        {createGoal && <Goal location='add' />}
-        <h2>My BookClubs</h2>
-        {user.bookClubs.accepted.map((bookClubId, key) => (
-          <BookClubListItem
-            bookClubObj={getBookClubByBookClubId(bookClubsMock, bookClubId)}
-            userId={user.userId}
-            isSearch={false}
-            key={key}
-          />
-        ))}
-        <h2 className='homeTitle'>Create a Book Club</h2>
-        <div className='addBookClub'>
-          <Input
-            type='text'
-            label='Book Club Name'
-            value={bookClubName}
-            name='bookClubName'
-            error={error}
-            onChange={(e) => setBookClubName(e.target.value)}
-            placeholder='Book Club Name'
-          />
-        </div>
-        <div>
-          <button type='button' className='btn' onClick={handleCreateBookClub}>
-            CREATE BOOK CLUB
-          </button>
-        </div>
-        <h2>My Library</h2>
-        <Library userObj={user} />
-        <h2>My Friends</h2>
-        <button type='button' onClick={clickToAdd}>
-          Add Friends
-        </button>
-        {openAddFriends && (
-          <AddMember members={filteredOutFriends} user={user.userId} />
-        )}
-        <br></br>
-        <MemberList
-          members={friendObjs}
-          userId={user.userId}
-          // bookClubId={bookClubId}
-          // location=""
-          // isLoading={isLoading}
+      <h2>My Reading Goals</h2>
+      {user.goals.map((goal, key) => (
+        <GoalListItem
+          goalObj={getGoalByGoalId(goalsMock, goal)}
+          valueCallback={updateGoal}
+          key={key}
         />
-      </main>
-    </>
+      ))}
+      {updateGoalBool && <Goal goalObj={updateGoalObj} location='update' />}
+      <button className='btn' onClick={() => setCreateGoal(true)}>
+        CREATE GOAL
+      </button>
+      {createGoal && <Goal location='add' />}
+      <h2>My BookClubs</h2>
+      {user.bookClubs.accepted.map((bookClubId, key) => (
+        <BookClubListItem
+          bookClubObj={getBookClubByBookClubId(bookClubsMock, bookClubId)}
+          userId={user.userId}
+          isSearch={false}
+          key={key}
+        />
+      ))}
+      <h2 className='homeTitle'>Create a Book Club</h2>
+      <div className='addBookClub'>
+        <Input
+          type='text'
+          label='Book Club Name'
+          value={bookClubName}
+          name='bookClubName'
+          error={error}
+          onChange={(e) => setBookClubName(e.target.value)}
+          placeholder='Book Club Name'
+        />
+      </div>
+      <div>
+        <button type='button' className='btn' onClick={handleCreateBookClub}>
+          CREATE BOOK CLUB
+        </button>
+      </div>
+      <h2>My Library</h2>
+      <Library userObj={user} />
+      <h2>My Friends</h2>
+      <button type='button' onClick={clickToAdd}>
+        Add Friends
+      </button>
+      {openAddFriends && (
+        <AddMember members={filteredOutFriends} user={user.userId} />
+      )}
+      <br></br>
+      <MemberList
+        members={friendObjs}
+        userId={user.userId}
+        // bookClubId={bookClubId}
+        // location=""
+        // isLoading={isLoading}
+      />
+    </main>
   );
 };
 

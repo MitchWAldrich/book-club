@@ -32,7 +32,7 @@ function App() {
     setBookClub(bookClubMock);
   }, [loggedIn]);
 */
-
+  console.log("test");
   return (
     <div>
       <userContext.Provider value={user}>

@@ -6,7 +6,7 @@ import MemberListItem from "./MemberListItem";
 import Loading from "./Loading.jsx";
 
 const MemberList = (props) => {
-  const { members, userId, valueCallback, location, isLoading } = props;
+  const { members, valueCallback, location, isLoading } = props;
 
   const [membersAdd, setMembersAdd] = useState([]);
   // const [membersSuggested, setMembersSuggested] = useState(members);

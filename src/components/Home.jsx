@@ -10,7 +10,6 @@ import Invitation from "./Invitation";
 import Library from "./Library";
 import MemberList from "./MemberList";
 import Nav from "./Nav";
-import SearchBar from "./Searchbar";
 
 import userContext from "../userContext";
 import {
@@ -32,7 +31,6 @@ const Home = () => {
 
   console.log("homeUser", user);
 
-  const [book, setBook] = useState({});
   const [bookClubName, setBookClubName] = useState("");
   const [createGoal, setCreateGoal] = useState(false);
   const [updateGoalBool, setUpdateGoalBool] = useState(false);
@@ -67,10 +65,6 @@ const Home = () => {
       .catch((error) => console.error("create Book Club error", error));
   };
 
-  const getChosenSearchResults = (searchValue) => {
-    setBook(searchValue);
-  };
-
   const clickToAdd = () => {
     setOpenAddFriends(true);
   };
@@ -99,13 +93,6 @@ const Home = () => {
           userId={user.userId}
         />
       )}
-      <SearchBar
-        className='searchBar'
-        location='home'
-        dropDown={true}
-        id={user.userId}
-        valueCallback={getChosenSearchResults}
-      />
       <h2>My Reading Goals</h2>
       {user.goals.map((goal, key) => (
         <GoalListItem

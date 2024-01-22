@@ -169,7 +169,7 @@ SingleBookItem.propTypes = {
   // title: PropTypes.string,
   userId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   location: PropTypes.string,
-  isBookInLibrary: PropTypes.boolean,
+  isBookInLibrary: PropTypes.bool,
 };
 
 export default SingleBookItem;

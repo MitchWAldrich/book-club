@@ -3,8 +3,8 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 
 import BookListItem from "./BookListItem";
-import SearchBar from "./Searchbar";
 import SingleBookItem from "./SingleBookItem";
+import BookSearch from "./BookSearch";
 
 const Library = (props) => {
   const { userObj } = props;
@@ -26,13 +26,7 @@ const Library = (props) => {
           isBookInLibrary={true}
         />
         <h2>Change Book?</h2>
-        <SearchBar
-          className='searchBar'
-          location='home'
-          dropDown={true}
-          id={userObj.userId}
-          valueCallback={getChosenSearchResults}
-        />
+        <BookSearch valueCallback={getChosenSearchResults} />
         <h2>To Read List</h2>
         {userObj?.library?.toRead.map((book, key) => (
           <BookListItem key={key} bookObj={book} />

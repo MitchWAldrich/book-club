@@ -7,7 +7,6 @@ import { getFontSize, shortenDescription } from "../utils/helpers";
 
 const BookListItem = (props) => {
   // const { author, categories, averageRating, description, imageLinks, language, pageCount, publisher, title } = props;
-  const { bookObj, valueCallback } = props;
   const {
     bookId,
     authors,
@@ -18,7 +17,8 @@ const BookListItem = (props) => {
     pageCount,
     publisher,
     title,
-  } = bookObj;
+    valueCallback,
+  } = props;
 
   const boxes = document.querySelectorAll("titleText");
 
@@ -104,17 +104,17 @@ const BookListItem = (props) => {
 };
 
 BookListItem.propTypes = {
-  bookObj: PropTypes.object,
-  // bookId: PropTypes.string,
-  // authors: PropTypes.array,
-  // categories: PropTypes.array,
-  // averageRating: PropTypes.number || PropTypes.string,
-  // description: PropTypes.string,
-  // imageLinks: PropTypes.object,
-  // language: PropTypes.string,
-  // pageCount: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  // publisher: PropTypes.string,
-  // title: PropTypes.string,
+  // bookObj: PropTypes.object,
+  bookId: PropTypes.string,
+  authors: PropTypes.array,
+  categories: PropTypes.array,
+  averageRating: PropTypes.number || PropTypes.string,
+  description: PropTypes.string,
+  imageLinks: PropTypes.object,
+  language: PropTypes.string,
+  pageCount: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  publisher: PropTypes.string,
+  title: PropTypes.string,
   valueCallback: PropTypes.func,
 };
 

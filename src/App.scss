@@ -105,6 +105,7 @@ body {
 
 .searchBar {
   display: flex;
+  flex-direction: column;
   height: 3em;
   width: 17em;
   align-self: center;

@@ -3,6 +3,7 @@ import instance from "../utils/axiosConfig";
 
 import BookClubItem from "./BookClubItem";
 import BookClubListItem from "./BookClubListItem";
+import BookSearch from "./BookSearch";
 import Nav from "./Nav";
 import NextMeeting from "./NextMeeting";
 import SearchBar from "./Searchbar";
@@ -17,6 +18,11 @@ const BookClubs = () => {
   const user = useContext(userContext);
 
   const [isAddBooksClicked, setIsAddBooksClicked] = useState(false);
+  const [book, setBook] = useState(user.library.currentBook);
+
+  const getBookSearchResults = (searchValue) => {
+    setBook(searchValue);
+  };
 
   const getIsNewBookClub = () => {
     setIsNewBookClub(false);
@@ -151,16 +157,12 @@ const BookClubs = () => {
             isBookInLibrary={false}
           />
         </div>
-        {isHost ? (
+        {!isHost ? (
           <>
             <div className='bookClubAddBookButton'>
-              {isAddBooksClicked ? (
-                <SearchBar
-                  className='searchBar'
-                  location='bookClubMain'
-                  dropDown={true}
-                />
-              ) : null}
+              {isAddBooksClicked && (
+                <BookSearch valueCallback={getBookSearchResults} />
+              )}
               <button type='button' onClick={addBooksToBookClub}>
                 Add Books
               </button>

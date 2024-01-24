@@ -64,17 +64,11 @@ const BookSearch = (props) => {
   const handleSearch = (e) => {
     e.preventDefault();
 
-    // if (!title.trim()) {
-    //   setError(true);
-    // } else {
-    //   setError(false);
-    // }
-
-    // if (!author.trim()) {
-    //   setError(true);
-    // } else {
-    //   setError(false);
-    // }
+    if (!title.trim() && !author.trim()) {
+      setError(true);
+    } else {
+      setError(false);
+    }
 
     setBookSearched(true);
     valueCallback(bookId);

@@ -108,7 +108,7 @@ BookListItem.propTypes = {
   bookId: PropTypes.string,
   authors: PropTypes.array,
   categories: PropTypes.array,
-  averageRating: PropTypes.number || PropTypes.string,
+  averageRating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   description: PropTypes.string,
   imageLinks: PropTypes.object,
   language: PropTypes.string,

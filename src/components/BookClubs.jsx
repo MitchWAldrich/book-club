@@ -161,7 +161,10 @@ const BookClubs = () => {
           <>
             <div className='bookClubAddBookButton'>
               {isAddBooksClicked && (
-                <BookSearch valueCallback={getBookSearchResults} />
+                <BookSearch
+                  userId={user.userId}
+                  valueCallback={getBookSearchResults}
+                />
               )}
               <button type='button' onClick={addBooksToBookClub}>
                 Add Books

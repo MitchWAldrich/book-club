@@ -1,4 +1,5 @@
-export const bookMocks = [{
+export const booksMock = [{
+  "bookId": "3grU*7dlP",
   "title": "The Wildest Ride",
   "subtitle": "A Novel",
   "authors": [
@@ -43,6 +44,7 @@ export const bookMocks = [{
   "canonicalVolumeLink": "https://play.google.com/store/books/details?id=_Z8AEAAAQBAJ"
 },
 {
+  "bookId": "vd^7jkPwuh",
   "title": "Sourcing and Recruitment Handbook",
   "authors": [
       "Jay Tarimala"
@@ -76,6 +78,7 @@ export const bookMocks = [{
   "canonicalVolumeLink": "https://play.google.com/store/books/details?id=6OYHEAAAQBAJ"
 },
 {
+  "bookId": "Dvf*jl0Asy",
   "title": "Escape Clause",
   "authors": [
       "John Sandford"
@@ -119,6 +122,7 @@ export const bookMocks = [{
   "canonicalVolumeLink": "https://books.google.com/books/about/Escape_Clause.html?hl=&id=K1wYDQAAQBAJ"
 },
 {
+  "bookId": "luh4g^ydq0",
   "title": "Google Hacks",
   "authors": [
       "Tara Calishain",
@@ -165,6 +169,7 @@ export const bookMocks = [{
   "canonicalVolumeLink": "https://books.google.com/books/about/Google_Hacks.html?hl=&id=GqTwl7-WZtUC"
 },
 {
+  "bookId": "cDw4^gfnQ1",
   "title": "The Everything Store",
   "subtitle": "Jeff Bezos and the Age of Amazon",
   "authors": [

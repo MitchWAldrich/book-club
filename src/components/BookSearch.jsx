@@ -8,12 +8,14 @@ import Input from "./Input";
 import Loading from "./Loading";
 
 import { getBooks } from "../utils/selectors";
+import { isBookInDatabase } from "../utils/helpers";
+import { booksMock } from "../mocks/books";
 
 const BookSearch = (props) => {
-  const { valueCallback } = props;
+  const { userId, valueCallback } = props;
   const [bookSearched, setBookSearched] = useState(false);
   const [error, setError] = useState(false);
-  const [searchTypeValue, setSearchTypeValue] = useState("title");
+  // const [searchTypeValue, setSearchTypeValue] = useState("title");
   const [bookResponse, setBookResponse] = useState([]);
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
@@ -35,9 +37,41 @@ const BookSearch = (props) => {
   };
 
   const handleChooseBook = () => {
-    setBookId(bookId);
-    setBookSearched(false);
-    valueCallback(bookId);
+    const isBook = isBookInDatabase(booksMock, bookId);
+    if (isBook) {
+      axios
+        .post(`http://localhost:4000/api/books`, {
+          bookId: bookId,
+          userId: userId,
+        })
+        .then(function (response) {
+          console.log("userResp", response);
+          //Set up Book Item response
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+        .finally(function () {
+          setBookSearched(false);
+          // always executed
+        });
+    }
+    axios
+      .patch(`http://localhost:4000/api/users/${userId}`, {
+        bookId: bookId,
+        userId: userId,
+      })
+      .then(function (response) {
+        console.log("userResp", response);
+        //Set up Book Item response
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .finally(function () {
+        setBookSearched(false);
+        // always executed
+      });
   };
 
   useEffect(() => {
@@ -129,8 +163,8 @@ const BookSearch = (props) => {
               />
             ))
           )}
-          <button type='button' onClick={handleChooseBook}>
-            CHOOSE BOOK
+          <button type='button' onClick={() => handleChooseBook}>
+            ADD BOOK
           </button>
         </>
       ) : null}
@@ -139,6 +173,7 @@ const BookSearch = (props) => {
 };
 
 BookSearch.propTypes = {
+  userId: PropTypes.string,
   valueCallback: PropTypes.func,
 };
 

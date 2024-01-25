@@ -60,6 +60,10 @@ export const getBooks = (bookArray) => {
   return bookObjects;
 };
 
+export const getBookObjByBookId = (books, bookId) => {
+  return books.find( book => book.bookId === bookId);
+}
+
 /* Goal Searches */
 
 export const getGoalByGoalId = (goalsArray, goalId) => {

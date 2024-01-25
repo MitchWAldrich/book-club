@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import BookRating from "./BookRating";
 
 import { formatByLocation, shortenDescription } from "../utils/helpers";
-import { bookMock, bookMocks } from "../mocks/books";
+import { bookMock } from "../mocks/books";
 
 const SingleBookItem = (props) => {
   const { bookObj, userId, location, isBookInLibrary } = props;

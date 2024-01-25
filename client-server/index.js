@@ -1,8 +1,9 @@
 import express from 'express';
 import cors from 'cors';
 
-import { getBookClubById, getGoalByGoalId, getUserById } from '../src/utils/selectors.js';
+import { getBookObjByBookId, getGoalByGoalId, getUserById } from '../src/utils/selectors.js';
 import { bookClubsMock } from '../src/mocks/bookClubs.js';
+import { booksMock } from '../src/mocks/books.js';
 import { usersMock } from '../src/mocks/users.js';
 import { goalsMock } from '../src/mocks/goals.js';
 
@@ -75,14 +76,20 @@ app.post("/api/users", async (req, res) => {
 });
 
 app.patch("/api/users/:id", async (req) => {
-    let { userId, bookObj, goalObj, readStatus, bookClubId, bookClubApprovalStatus, requestStatus } = req.body;
+    let { userId, bookObj, goalObj, readStatus, bookId, bookClubId, bookClubApprovalStatus, requestStatus } = req.body;
 
     if (!goalObj) return;
 
     const user = usersMock.find(
         (user) => user.userId === userId
     );
-    
+
+    // Update Book List
+    if (bookId) {
+        user.library.previousBooks.push(user.library.currentBook);
+        user.library.currentBook = getBookObjByBookId(booksMock, bookId);
+    }
+
     // Update Read Status
     if ( readStatus === 'toRead' ) user.library.toRead.push(bookObj)
     if ( readStatus === 'haveRead' ) user.library.haveRead.push(bookObj)
@@ -205,6 +212,33 @@ app.patch("/api/bookclubs/:id", async (req) => {
 
     //👇🏻 logs the bookclub to the console.
     console.log({ bookClubId, bookClub });
+});
+
+/* *** BOOKS ROUTES *** */
+
+app.get("/api/books", (req, res) => {
+    res.json(
+        booksMock
+    );
+});
+
+app.post("/api/books", async (req, res) => {
+    const { bookObj } = req.body;
+
+    //👇🏻 holds the book Id
+    // make unique
+    const bookId = generateID();
+
+    bookObj['bookId'] = bookId;
+
+    booksMock.push(bookObj);
+
+    //👇🏻 logs the bookclub to the console.
+    console.log({ bookId, bookObj });
+
+    return res.json({
+        message: "Book added successfully!"
+    });
 });
 
 /* *** GOAL ROUTES *** */

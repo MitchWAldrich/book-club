@@ -26,7 +26,10 @@ const Library = (props) => {
           isBookInLibrary={true}
         />
         <h2>Change Book?</h2>
-        <BookSearch valueCallback={getChosenSearchResults} />
+        <BookSearch
+          userId={userObj.userId}
+          valueCallback={getChosenSearchResults}
+        />
         <h2>To Read List</h2>
         {userObj?.library?.toRead.map((book, key) => (
           <BookListItem key={key} bookObj={book} />

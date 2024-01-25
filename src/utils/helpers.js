@@ -100,6 +100,10 @@ export const filterSuggestedUsers = (usersFull, usersExempt) => {
   return filteredUsers;
 };
 
+export const isBookInDatabase = (myBookId, booksArray) => {
+  return booksArray.find(book => book.bookId === myBookId)
+};
+
 export const isBookInLibrary = (myBookId, booksArray1, booksArray2) => {
   const checkOne = booksArray1.find(book => book.bookId === myBookId) 
   const checkTwo = booksArray2.find(book => book.bookId === myBookId) 

@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 
-import { getBookObjByBookId, getGoalByGoalId, getUserById } from '../src/utils/selectors.js';
+import { getBookClubById, getBookObjByBookId, getGoalByGoalId, getUserById } from '../src/utils/selectors.js';
 import { bookClubsMock } from '../src/mocks/bookClubs.js';
 import { booksMock } from '../src/mocks/books.js';
 import { usersMock } from '../src/mocks/users.js';

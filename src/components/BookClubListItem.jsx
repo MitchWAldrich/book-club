@@ -4,7 +4,7 @@ import instance from "../utils/axiosConfig";
 
 import PropTypes from "prop-types";
 
-import { bookMock } from "../mocks/books";
+// import { bookMock } from "../mocks/books";
 import MemberList from "./MemberList";
 
 import { getUserByUserId } from "../utils/selectors";
@@ -32,10 +32,10 @@ const BookClubListItem = (props) => {
 
   const { currentBook } = books;
 
-  let { title, authors, thumbnail } = currentBook;
-  title = bookMock.title;
-  authors = bookMock.authors;
-  thumbnail = bookMock.thumbnail;
+  const { title, authors, thumbnail } = currentBook;
+  // title = bookMock.title;
+  // authors = bookMock.authors;
+  // thumbnail = bookMock.thumbnail;
 
   const {
     meetingFrequency,

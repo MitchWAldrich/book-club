@@ -65,7 +65,7 @@ const BookClubs = () => {
     instance
       .patch(`/api/bookclubs/${bookClubMock.bookClubId}`, {
         bookClubId: bookClubMock.bookClubId,
-        bookObj: bookMock,
+        bookObj: book,
       })
       .then((response) => {
         console.log("addBooksToClub response", response.data);
@@ -140,9 +140,9 @@ const BookClubs = () => {
         <div>
           <h3>Current Book</h3>
           <SingleBookItem
-            authors={bookMock.authors}
-            imageLinks={bookMock.imageLinks}
-            title={bookMock.title}
+            authors={book.authors}
+            imageLinks={book.imageLinks}
+            title={book.title}
             location={"bookClubFeature"}
             isBookInLibrary={false}
           />

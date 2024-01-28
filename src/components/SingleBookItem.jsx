@@ -10,7 +10,7 @@ import { bookMock } from "../mocks/books";
 const SingleBookItem = (props) => {
   const { bookObj, userId, location, isBookInLibrary } = props;
 
-  const bookId = bookObj?.id ?? "";
+  // const bookId = bookObj?.id ?? "";
   const authors = bookObj?.authors ?? [];
   const categories = bookObj?.categories ?? [];
   const averageRating = bookObj?.averageRating ?? 0;

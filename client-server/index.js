@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 
+import { generateID } from '../src/utils/helpers.js';
 import { getBookClubById, getBookObjByBookId, getGoalByGoalId, getUserById } from '../src/utils/selectors.js';
 import { bookClubsMock } from '../src/mocks/bookClubs.js';
 import { booksMock } from '../src/mocks/books.js';
@@ -16,11 +17,6 @@ const PORT = 4000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
-
-//👇🏻 generates a random string as ID
-const generateID = () => Math.random().toString(36).substring(2, 10);
-//Need to make unique
-
 
 /* ***** ROUTES ***** */
 

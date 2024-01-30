@@ -125,8 +125,11 @@ export const formatCategories = (categories) => {
   return formattedCategories;
 };
 
+export const isUnique = (item, full) => {
+  return full.find(item)
+}
+
 //👇🏻 generates a random string as ID
 export const generateID = () => {
   Math.random().toString(36).substring(2, 10);
 }
-//Need to make unique

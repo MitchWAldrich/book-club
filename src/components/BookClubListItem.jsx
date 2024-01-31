@@ -103,8 +103,10 @@ const BookClubListItem = (props) => {
           </div>
           <div>
             <p>{`Contacts in Book Club:`}</p>
+            {friendObjs.map((friend, key) => (
+              <img key={key} src={friend.image} className='member-image' />
+            ))}
             {/* <MemberList members={members} valueCallback, location, isLoading/> */}
-            <MemberList members={friendObjs} />
           </div>
           {isSearch ? (
             <div>

@@ -133,3 +133,7 @@ export const isUnique = (item, full) => {
 export const generateID = () => {
   Math.random().toString(36).substring(2, 10);
 }
+
+export const calculateProgressInPercent = (current, total) => {
+  return ((current / total) * 100).toFixed(2);
+}

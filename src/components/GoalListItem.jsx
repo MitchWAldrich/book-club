@@ -2,6 +2,8 @@
 
 import PropTypes from "prop-types";
 
+import { calculateProgressInPercent } from "../utils/helpers";
+
 const GoalListItem = (props) => {
   const { goalObj, valueCallback } = props;
 
@@ -15,9 +17,16 @@ const GoalListItem = (props) => {
     goalTimelineUnits,
     goalRecurrence,
     goalRecurrenceUnits,
+    goalCurrentPages,
+    goalTotalPages,
   } = goalObj;
 
   // const navigate = useNavigate();
+
+  const goalProgressPercentage = calculateProgressInPercent(
+    goalCurrentPages,
+    goalTotalPages
+  );
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -48,7 +57,7 @@ const GoalListItem = (props) => {
           ) : null}
         </p>
         <h3>Progress</h3>
-        {/* Goal Progress */}
+        <p>{`${goalProgressPercentage}%`}</p>
         <button type='button' onClick={handleClick}>
           Track Progress
         </button>

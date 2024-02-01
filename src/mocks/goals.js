@@ -10,6 +10,8 @@ export const goalsMock = [
     goalTimelineUnits: 'month',
     goalRecurrence: null,
     goalRecurrenceUnits: null,
+    goalCurrentPages: 462,
+    goalTotalPages: 217,
   },
   {
     id: 2,
@@ -22,6 +24,8 @@ export const goalsMock = [
     goalTimelineUnits: 'month',
     goalRecurrence: 1,
     goalRecurrenceUnits: 'year',
+    goalCurrentPages: 209,
+    goalTotalPages: 348,
   },
   {
     id: 3,
@@ -34,6 +38,8 @@ export const goalsMock = [
     goalTimelineUnits: 'week',
     goalRecurrence: 1,
     goalRecurrenceUnits: 'year',
+    goalCurrentPages: 34,
+    goalTotalPages: 75,
   }
 ]
 

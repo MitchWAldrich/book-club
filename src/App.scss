@@ -932,3 +932,16 @@ justify-content: center;
   width: 45em;
   margin: 0 0 0 4em;
 }
+
+/* Progress Bar */
+
+.progress-bar-container {
+  display: flex;
+  // justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 200px;
+  border: solid;
+  border-width: 2px;
+  background-color: black;
+}

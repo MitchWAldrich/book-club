@@ -3,6 +3,7 @@
 import PropTypes from "prop-types";
 
 import { calculateProgressInPercent } from "../utils/helpers";
+import ProgressBar from "./ProgressBar";
 
 const GoalListItem = (props) => {
   const { goalObj, valueCallback } = props;
@@ -57,6 +58,7 @@ const GoalListItem = (props) => {
           ) : null}
         </p>
         <h3>Progress</h3>
+        <ProgressBar progressPercentage={goalProgressPercentage} />
         <p>{`${goalProgressPercentage}%`}</p>
         <button type='button' onClick={handleClick}>
           Track Progress

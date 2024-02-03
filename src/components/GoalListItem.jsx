@@ -1,4 +1,5 @@
 // import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 import PropTypes from "prop-types";
 
@@ -6,7 +7,7 @@ import { calculateProgressInPercent } from "../utils/helpers";
 import ProgressBar from "./ProgressBar";
 
 const GoalListItem = (props) => {
-  const { goalObj, valueCallback } = props;
+  const { goalObj, valueCallback, goalProgress } = props;
 
   const {
     goalId,
@@ -24,15 +25,15 @@ const GoalListItem = (props) => {
 
   // const navigate = useNavigate();
 
-  const goalProgressPercentage = calculateProgressInPercent(
-    goalCurrentPages,
-    goalTotalPages
-  );
+  const handleTrackClick = (e) => {
+    e.preventDefault();
+    valueCallback(goalId, "trackProgress");
+  };
 
   const handleClick = (e) => {
     e.preventDefault();
     // navigate(`/goals/${goalId}`);
-    valueCallback(goalId);
+    valueCallback(goalId, "updateGoal");
   };
 
   return (
@@ -58,9 +59,9 @@ const GoalListItem = (props) => {
           ) : null}
         </p>
         <h3>Progress</h3>
-        <ProgressBar progressPercentage={goalProgressPercentage} />
-        <p>{`${goalProgressPercentage}%`}</p>
-        <button type='button' onClick={handleClick}>
+        <ProgressBar progressPercentage={goalProgress} />
+        <p>{goalProgress}</p>
+        <button type='button' onClick={handleTrackClick}>
           Track Progress
         </button>
         <button type='button' onClick={handleClick}>
@@ -74,6 +75,7 @@ const GoalListItem = (props) => {
 GoalListItem.propTypes = {
   goalObj: PropTypes.object,
   valueCallback: PropTypes.func,
+  goalProgress: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   // goalId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   // goalName: PropTypes.string,
   // goalUserId: PropTypes.string,

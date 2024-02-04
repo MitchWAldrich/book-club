@@ -1,16 +1,22 @@
-// import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
 
 import PropTypes from "prop-types";
 
-import { calculateProgressInPercent } from "../utils/helpers";
+import Input from "./Input";
 import ProgressBar from "./ProgressBar";
 
+import { calculateProgressInPercent } from "../utils/helpers";
+
 const GoalListItem = (props) => {
-  const { goalObj, valueCallback, goalProgress } = props;
+  const { goalObj, valueCallback, userId } = props;
+
+  const [isTrackClicked, setIsTrackClicked] = useState(false);
+  const [goalProgressError, setGoalProgressError] = useState(false);
+  const [updatedGoalProgress, setUpdatedGoalProgress] = useState(null);
 
   const {
-    goalId,
+    // goalId,
     goalName,
     // goalUserId,
     goal,
@@ -25,15 +31,44 @@ const GoalListItem = (props) => {
 
   // const navigate = useNavigate();
 
+  const goalProgressPercentage = calculateProgressInPercent(
+    goalCurrentPages,
+    goalTotalPages
+  );
+
+  const [goalProgress, setGoalProgress] = useState(goalProgressPercentage);
+
   const handleTrackClick = (e) => {
     e.preventDefault();
-    valueCallback(goalId, "trackProgress");
+    setIsTrackClicked(true);
+    // valueCallback(goalId);
   };
 
   const handleClick = (e) => {
     e.preventDefault();
     // navigate(`/goals/${goalId}`);
-    valueCallback(goalId, "updateGoal");
+    valueCallback(goalObj.goalId, "updateGoal");
+  };
+
+  const handlePagesRead = (e) => {
+    if (!goalProgress) {
+      setGoalProgressError(true);
+    } else {
+      setGoalProgressError(false);
+    }
+
+    setUpdatedGoalProgress(e.target.value);
+  };
+
+  const handleUpdateGoalProgress = (e) => {
+    e.preventDefault();
+
+    axios.patch(`/goals/${goalObj.goalId}`, {
+      userId: userId,
+      goalId: goalObj.goalId,
+      id: goalObj.goalId,
+      updatedGoalProgress: updatedGoalProgress,
+    });
   };
 
   return (
@@ -59,8 +94,25 @@ const GoalListItem = (props) => {
           ) : null}
         </p>
         <h3>Progress</h3>
-        <ProgressBar progressPercentage={goalProgress} />
-        <p>{goalProgress}</p>
+        <ProgressBar progressPercentage={goalProgressPercentage} />
+        {!isTrackClicked && (
+          <div className='form'>
+            <h2>How many pages did you read?</h2>
+            <Input
+              // className='searchBar'
+              type='text'
+              // label="search"
+              value={updatedGoalProgress}
+              name='updateProgress'
+              error={goalProgressError}
+              onChange={handlePagesRead}
+              placeholder='Pages Read'
+            />
+            <button type='button' onClick={handleUpdateGoalProgress}>
+              UPDATE
+            </button>
+          </div>
+        )}
         <button type='button' onClick={handleTrackClick}>
           Track Progress
         </button>
@@ -75,7 +127,7 @@ const GoalListItem = (props) => {
 GoalListItem.propTypes = {
   goalObj: PropTypes.object,
   valueCallback: PropTypes.func,
-  goalProgress: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  userId: PropTypes.string,
   // goalId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   // goalName: PropTypes.string,
   // goalUserId: PropTypes.string,

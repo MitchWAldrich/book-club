@@ -36,18 +36,12 @@ const Home = () => {
   const [updateGoalBool, setUpdateGoalBool] = useState(false);
   const [updateGoalObj, setUpdateGoalObj] = useState({});
   const [openAddFriends, setOpenAddFriends] = useState(false);
-  // const [isTrackClicked, setIsTrackClicked] = useState(false);
-  // const [goalProgressError, setGoalProgressError] = useState(false);
   const [error, setError] = useState(false);
 
   const updateGoal = (goalId, goalButton) => {
     if (goalButton === "updateGoal") {
       setUpdateGoalObj(getGoalByGoalId(goalsMock, goalId));
       setUpdateGoalBool(true);
-    }
-
-    if (goalButton === "trackProgress") {
-      setIsTrackClicked(true);
     }
   };
 
@@ -89,16 +83,6 @@ const Home = () => {
 
   const isInvited = true;
 
-  // const handlePagesRead = (e) => {
-  //   if (!goalProgress) {
-  //     setGoalProgressError(true);
-  //   } else {
-  //     setGoalProgressError(false);
-  //   }
-
-  //   setGoalProgress(e.target.value);
-  // };
-
   return (
     <main className='homeContainer'>
       <Nav user={user} />
@@ -116,15 +100,11 @@ const Home = () => {
         <GoalListItem
           goalObj={getGoalByGoalId(goalsMock, goal)}
           valueCallback={updateGoal}
+          userId={user.userId}
           key={key}
         />
       ))}
       {updateGoalBool && <Goal goalObj={updateGoalObj} location='update' />}
-      {/* {isTrackClicked && (
-        <div className='form'>
-          <input></input>
-        </div>
-      )} */}
       <button className='btn' onClick={() => setCreateGoal(true)}>
         CREATE GOAL
       </button>

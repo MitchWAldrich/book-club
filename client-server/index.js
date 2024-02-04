@@ -72,7 +72,7 @@ app.post("/api/users", async (req, res) => {
 });
 
 app.patch("/api/users/:id", async (req) => {
-    let { userId, bookObj, goalObj, readStatus, bookId, bookClubId, bookClubApprovalStatus, requestStatus } = req.body;
+    let { userId, bookObj, goalObj, readStatus, bookId, bookClubId, bookClubApprovalStatus, requestStatus, goalId, updatedGoalProgress } = req.body;
 
     if (!goalObj) return;
 
@@ -292,28 +292,30 @@ app.post("/api/goals", async (req, res) => {
     });
 });
 
-// app.patch("/api/goals/:id", async (req) => {
-//     const { goalObj, userId } = req.body;
+app.patch("/api/goals/:id", async (req) => {
+    const { goalObj, id, goalId, userId, updatedGoalProgress } = req.body;
 
-//     const {
-//         goalId,
-//     goalName,
-//     goalUserId,
-//     goal,
-//     goalUnit,
-//     goalTimeline,
-//     goalTimelineUnits,
-//     goalRecurrence,
-//     goalRecurrenceUnits,
-//     } = goalObj;
+    // const {
+    //     goalId,
+    // goalName,
+    // goalUserId,
+    // goal,
+    // goalUnit,
+    // goalTimeline,
+    // goalTimelineUnits,
+    // goalRecurrence,
+    // goalRecurrenceUnits,
+    // } = goalObj;
 
-//     const retrievedGoal = goalsMock.find( goal => goal.goalId === goalId )
 
-//     const updatedGoal = {...retrievedGoal, }
 
-//     //👇🏻 logs the goal object to the console.
-//     console.log({ goalId, goalObj });
-// });
+    // const goalIndex = goalsMock.IndexOf( goal => goal.goalId === goalId )
+
+    // goalsMock[goalIndex][goalObj.goalCurrentPages] = updatedGoalProgress;
+
+    //👇🏻 logs the goal object to the console.
+    console.log({ goalId, goalObj, id });
+});
 
 // Login Route
 app.post("/api/login", (req, res) => {

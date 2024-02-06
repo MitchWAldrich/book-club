@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import instance from "../utils/axiosConfig";
 
 import PropTypes from "prop-types";
 
@@ -63,10 +63,11 @@ const GoalListItem = (props) => {
   const handleUpdateGoalProgress = (e) => {
     e.preventDefault();
 
-    axios.patch(`/goals/${goalObj.goalId}`, {
+    instance.patch(`/api/goals/${goalObj.goalId}`, {
+      goalObj: goalObj,
       userId: userId,
       goalId: goalObj.goalId,
-      id: goalObj.goalId,
+      id: goalObj.id,
       updatedGoalProgress: updatedGoalProgress,
     });
   };

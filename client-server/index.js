@@ -249,9 +249,9 @@ app.get("/api/goals/:id", (req, res) => {
     console.log('params', req.params);
     const goalId = req.params.id;
     const goal = getGoalByGoalId(goalsMock, goalId)
-    res.json(
+    res.json({
         goal
-    );
+    });
 });
 
 app.post("/api/goals", async (req, res) => {
@@ -307,11 +307,8 @@ app.patch("/api/goals/:id", async (req) => {
     // goalRecurrenceUnits,
     // } = goalObj;
 
-
-
-    // const goalIndex = goalsMock.IndexOf( goal => goal.goalId === goalId )
-
-    // goalsMock[goalIndex][goalObj.goalCurrentPages] = updatedGoalProgress;
+    const goalIndex = goalsMock.indexOf(goalsMock.find( goal => goal.goalId === goalId))
+    goalsMock[goalIndex]['goalCurrentPages'] =  Number(goalsMock[goalIndex]['goalCurrentPages']) + Number(updatedGoalProgress);
 
     //👇🏻 logs the goal object to the console.
     console.log({ goalId, goalObj, id });

@@ -31,12 +31,14 @@ const GoalListItem = (props) => {
 
   // const navigate = useNavigate();
 
-  const goalProgressPercentage = calculateProgressInPercent(
-    goalCurrentPages,
-    goalTotalPages
-  );
+  // const goalProgressPercentage = calculateProgressInPercent(
+  //   goalCurrentPages,
+  //   goalTotalPages
+  // );
 
-  const [goalProgress, setGoalProgress] = useState(goalProgressPercentage);
+  const [goalProgress, setGoalProgress] = useState(
+    calculateProgressInPercent(goalCurrentPages, goalTotalPages)
+  );
 
   const handleTrackClick = (e) => {
     e.preventDefault();
@@ -62,6 +64,12 @@ const GoalListItem = (props) => {
 
   const handleUpdateGoalProgress = (e) => {
     e.preventDefault();
+    setGoalProgress(
+      calculateProgressInPercent(
+        Number(goalCurrentPages) + Number(updatedGoalProgress),
+        goalTotalPages
+      )
+    );
 
     instance.patch(`/api/goals/${goalObj.goalId}`, {
       goalObj: goalObj,
@@ -95,7 +103,7 @@ const GoalListItem = (props) => {
           ) : null}
         </p>
         <h3>Progress</h3>
-        <ProgressBar progressPercentage={goalProgressPercentage} />
+        <ProgressBar progressPercentage={goalProgress} />
         {!isTrackClicked && (
           <div className='form'>
             <h2>How many pages did you read?</h2>
